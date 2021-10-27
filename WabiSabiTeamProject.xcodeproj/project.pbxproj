@@ -14,6 +14,7 @@
 		131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 131F76CF2727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld */; };
 		131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D22727E61400A7AB41 /* Assets.xcassets */; };
 		131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D42727E61400A7AB41 /* LaunchScreen.storyboard */; };
+		35495B6627294E1C006DEA4C /* OnBoardingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35495B6527294E1C006DEA4C /* OnBoardingStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		131F76D22727E61400A7AB41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		131F76D52727E61400A7AB41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		131F76D72727E61400A7AB41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35495B6527294E1C006DEA4C /* OnBoardingStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoardingStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				13ECEF8127294361006B5BFE /* Feature */,
 				131F76C62727E61300A7AB41 /* AppDelegate.swift */,
 				131F76C82727E61300A7AB41 /* SceneDelegate.swift */,
+				131F76D72727E61400A7AB41 /* Info.plist */,
 			);
 			path = WabiSabiTeamProject;
 			sourceTree = "<group>";
@@ -99,6 +102,8 @@
 		13ECEF84272943AC006B5BFE /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				35495B6427294E03006DEA4C /* ViewModel */,
+				35495B6327294DF7006DEA4C /* View */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -137,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				131F76D22727E61400A7AB41 /* Assets.xcassets */,
-				131F76D72727E61400A7AB41 /* Info.plist */,
 				13ECEF8B272943FC006B5BFE /* CloudKit */,
 				13ECEF8A272943F5006B5BFE /* CoreData */,
 			);
@@ -230,6 +234,21 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		35495B6327294DF7006DEA4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35495B6527294E1C006DEA4C /* OnBoardingStoryboard.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35495B6427294E03006DEA4C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,6 +309,7 @@
 			files = (
 				131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */,
 				131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */,
+				35495B6627294E1C006DEA4C /* OnBoardingStoryboard.storyboard in Resources */,
 				131F76CE2727E61300A7AB41 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,7 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9P49UTYHH6;
+				DEVELOPMENT_TEAM = TK9Q85JSJZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WabiSabiTeamProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -481,7 +501,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9P49UTYHH6;
+				DEVELOPMENT_TEAM = TK9Q85JSJZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WabiSabiTeamProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
