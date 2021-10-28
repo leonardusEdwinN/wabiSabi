@@ -17,7 +17,8 @@ class ActivityViewController: UIViewController {
     
     private func configureNavigationBar() {
         title = "Today"
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)]
+        let menuButton = UIBarButtonItem(image: UIImage(named: "Calender"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItems = [menuButton]
     }
 }
 
