@@ -90,28 +90,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmn-6g-cUJ">
-                                <rect key="frame" x="16" y="150" width="382" height="75"/>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="SHT-7g-c0M"/>
-                                </constraints>
-                            </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JF1-uG-ke6">
-                                <rect key="frame" x="0.0" y="245" width="414" height="177"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JF1-uG-ke6">
+                                <rect key="frame" x="0.0" y="108" width="414" height="177"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="177" id="JHQ-qT-qop"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yVf-9K-DXR">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yVf-9K-DXR">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fvd-Hx-I8H">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="Fvd-Hx-I8H">
+                                        <rect key="frame" x="0.0" y="24.5" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qxb-3F-Oq1">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -119,20 +112,24 @@
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="hWR-xw-Yfy" id="lqg-Xd-roo"/>
+                                    <outlet property="delegate" destination="hWR-xw-Yfy" id="s9q-FE-BYc"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5hZ-Nm-t8J"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5hZ-Nm-t8J" firstAttribute="trailing" secondItem="JF1-uG-ke6" secondAttribute="trailing" id="3S5-8U-cQT"/>
-                            <constraint firstItem="Qmn-6g-cUJ" firstAttribute="top" secondItem="5hZ-Nm-t8J" secondAttribute="top" constant="10" id="d43-5f-DPk"/>
-                            <constraint firstItem="5hZ-Nm-t8J" firstAttribute="trailing" secondItem="Qmn-6g-cUJ" secondAttribute="trailing" constant="16" id="fmk-Gx-zRs"/>
-                            <constraint firstItem="JF1-uG-ke6" firstAttribute="top" secondItem="Qmn-6g-cUJ" secondAttribute="bottom" constant="20" id="nNO-9W-3O1"/>
-                            <constraint firstItem="Qmn-6g-cUJ" firstAttribute="leading" secondItem="5hZ-Nm-t8J" secondAttribute="leading" constant="16" id="rs0-Au-AwS"/>
-                            <constraint firstItem="JF1-uG-ke6" firstAttribute="leading" secondItem="5hZ-Nm-t8J" secondAttribute="leading" id="vJK-R5-rt5"/>
+                            <constraint firstItem="JF1-uG-ke6" firstAttribute="top" secondItem="5hZ-Nm-t8J" secondAttribute="top" constant="20" id="Dpe-X0-T6t"/>
+                            <constraint firstItem="JF1-uG-ke6" firstAttribute="trailing" secondItem="5hZ-Nm-t8J" secondAttribute="trailing" id="WuP-po-IfP"/>
+                            <constraint firstItem="JF1-uG-ke6" firstAttribute="leading" secondItem="5hZ-Nm-t8J" secondAttribute="leading" id="ltS-py-2xo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Today" id="vh4-hi-9wK"/>
+                    <connections>
+                        <outlet property="progressIndicatorCollectionView" destination="JF1-uG-ke6" id="5OM-kh-pfC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pc-s2-CYL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

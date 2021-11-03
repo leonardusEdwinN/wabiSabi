@@ -14,6 +14,9 @@
 		131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 131F76CF2727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld */; };
 		131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D22727E61400A7AB41 /* Assets.xcassets */; };
 		131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D42727E61400A7AB41 /* LaunchScreen.storyboard */; };
+		970E415E272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 970E415C272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib */; };
+		970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */; };
+		970E4163272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E4162272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		131F76D22727E61400A7AB41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		131F76D52727E61400A7AB41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		131F76D72727E61400A7AB41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		970E415C272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressIndicatorHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
+		970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndictorModel.swift; sourceTree = "<group>"; };
+		970E4162272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorHorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 		13ECEF85272943B5006B5BFE /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				970E415F272FDDE80030EFD1 /* Model */,
 				13ECEF942729455E006B5BFE /* ViewModel */,
 				13ECEF9327294553006B5BFE /* View */,
 			);
@@ -136,8 +143,8 @@
 		13ECEF89272943EA006B5BFE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				131F76D22727E61400A7AB41 /* Assets.xcassets */,
 				131F76D72727E61400A7AB41 /* Info.plist */,
+				131F76D22727E61400A7AB41 /* Assets.xcassets */,
 				13ECEF8B272943FC006B5BFE /* CloudKit */,
 				13ECEF8A272943F5006B5BFE /* CoreData */,
 			);
@@ -217,6 +224,7 @@
 		13ECEF9327294553006B5BFE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				970E415C272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib */,
 				131F76CC2727E61300A7AB41 /* Main.storyboard */,
 			);
 			path = View;
@@ -226,8 +234,17 @@
 			isa = PBXGroup;
 			children = (
 				131F76CA2727E61300A7AB41 /* ActivityViewController.swift */,
+				970E4162272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		970E415F272FDDE80030EFD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */,
+				970E415E272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib in Resources */,
 				131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */,
 				131F76CE2727E61300A7AB41 /* Main.storyboard in Resources */,
 			);
@@ -303,6 +321,8 @@
 			files = (
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
 				131F76CB2727E61300A7AB41 /* ActivityViewController.swift in Sources */,
+				970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */,
+				970E4163272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift in Sources */,
 				131F76C72727E61300A7AB41 /* AppDelegate.swift in Sources */,
 				131F76C92727E61300A7AB41 /* SceneDelegate.swift in Sources */,
 			);
