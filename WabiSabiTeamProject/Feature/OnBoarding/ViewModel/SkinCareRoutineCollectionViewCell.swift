@@ -12,7 +12,3 @@ class SkinCareRoutineCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var skinCareRoutineNameLabel: UILabel!
     @IBOutlet weak var skinCareRoutineProductLabel: UILabel!
 }
-
-struct SkinCareRoutine {
-    var icon: String, name: String, product: Int;
-}

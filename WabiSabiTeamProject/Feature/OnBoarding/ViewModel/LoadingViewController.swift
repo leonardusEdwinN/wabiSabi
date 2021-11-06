@@ -21,7 +21,7 @@ class LoadingViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.025, repeats: true) { timer in
             DispatchQueue.main.async { [self] in
                 var counter = circularProgress.progress + 0.01
                 if counter <= 1.01 {

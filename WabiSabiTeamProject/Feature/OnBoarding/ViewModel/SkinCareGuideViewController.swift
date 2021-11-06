@@ -12,24 +12,66 @@ class SkinCareGuideViewController: UIViewController {
     @IBOutlet weak var skincareRoutineTitle: UILabel!
     @IBOutlet weak var skincareProductTableView: UITableView!
     
-    var indexSelected: Int = 0;
-    
-    var skinCareRoutineProducts: [SkinCareRoutineProduct] = [
-        SkinCareRoutineProduct(name: "Morning Skin Care", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "A gel, cream, or oil cleanser will be fine for a normal skin type.\n✔️ gentle cleanser\n✔️ lukewarm water\n✖️ avoid alcohol"),
+    let skinTypeRoutineProduct: [SkinTypeRoutine] = [
+        SkinTypeRoutine(icon: "🌞", name: "Morning Skin Care", skinType: [
+            SkinTypeProduct(name: "Oily", products: [
+                SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser that contain salicylic/glycolic acid"),
                 SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Moisturizer", description: "Use gel-based or a rich cream moisturizer."),
-                SkinCareProduct(icon: "", name: "Sunscreen", description: "Choose a sunscreen with SPF 30+. Use sun protection to help prevent wrinkles, age spots, and skin cancer")
-            ]
-        ),
-        SkinCareRoutineProduct(name: "Night Skin Care", products: [
-            SkinCareProduct(icon: "", name: "Makeup Removal", description: "Use a. gentle makeup remover. Resist the temptation to rub your skin because rubbing irritates the skin."),
-            SkinCareProduct(icon: "", name: "Cleanser", description: "Use a gentle, non-abrasive cleaner that does not contain alcohol. A cleanser helps remove excess oil and impurities from your face and keeps your pores unclogged."),
-            SkinCareProduct(icon: "", name: "Toner", description: "Use a toner for your skin type to balance your skin and prepare it for moisturizing. Avoid alcohol-based toner."),
-            SkinCareProduct(icon: "", name: "Moisturizer/Night Cream", description: "Apply a water-based moisturizer or night cream. It should be lightweight and absorb quickly.")
-            ]
-        )
+                SkinCareProduct(icon: "", name: "Serum", description: "Antioxidant Serum"),
+                SkinCareProduct(icon: "", name: "Sunscreen", description: "Zinc Oxide")
+            ]),
+            SkinTypeProduct(name: "Dry", products: [
+                SkinCareProduct(icon: "", name: "Cleanser", description: "Micellar water/cream Cleanser with humectants such as hyaluronic acid and glycerin"),
+                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
+                SkinCareProduct(icon: "", name: "Serum", description: "Antioxidant Serum"),
+                SkinCareProduct(icon: "", name: "Sunscreen", description: "Moisturizer with SPF")
+            ]),
+            SkinTypeProduct(name: "Combination", products: [
+                SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser"),
+                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
+                SkinCareProduct(icon: "", name: "Moisturizer", description: "Lightweight"),
+                SkinCareProduct(icon: "", name: "Sunscreen", description: "Zinc Oxide")
+            ]),
+            SkinTypeProduct(name: "Normal", products: [
+                SkinCareProduct(icon: "", name: "Cleanser", description: "Micellar Water, Gel, Oil, or Cream Cleanser with Hyaluronic Acid to keep the complexion youthful and glowing"),
+                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
+                SkinCareProduct(icon: "", name: "Moisturizer", description: "Moisturizer with SPF")
+            ])
+        ]),
+        SkinTypeRoutine(icon: "🌓", name: "Night Skin Care", skinType: [
+            SkinTypeProduct(name: "Oily", products: [
+                SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser that contain salicylic/glycolic acid"),
+                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
+                SkinCareProduct(icon: "", name: "Serum", description: "AHA/BHA, Retinol"),
+                SkinCareProduct(icon: "", name: "Moisturizer", description: "Oil-Free Water-Based"),
+                SkinCareProduct(icon: "", name: "Extras", description: "Clay Mask, Face Oil")
+            ]),
+            SkinTypeProduct(name: "Dry", products: [
+                SkinCareProduct(icon: "", name: "Cleanser", description: "Micellar water/cream Cleanser with humectants such as hyaluronic acid and glycerin"),
+                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
+                SkinCareProduct(icon: "", name: "Serum", description: "Retinol Serum"),
+                SkinCareProduct(icon: "", name: "Moisturizer", description: "Hydrating Moisturizer"),
+                SkinCareProduct(icon: "", name: "Extras", description: "At-Home Peel, Face Oil")
+            ]),
+            SkinTypeProduct(name: "Combination", products: [
+                SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser"),
+                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
+                SkinCareProduct(icon: "", name: "Serum", description: "AHA/BHA, Retinol"),
+                SkinCareProduct(icon: "", name: "Moisturizer", description: "Lightweight"),
+                SkinCareProduct(icon: "", name: "Extras", description: "Clay Mask, Face Oil")
+            ]),
+            SkinTypeProduct(name: "Normal", products: [
+                SkinCareProduct(icon: "", name: "Cleanser", description: "Micellar Water, Gel, Oil, or Cream Cleanser with Hyaluronic Acid to keep the complexion youthful and glowing"),
+                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
+                SkinCareProduct(icon: "", name: "Serum", description: "Antioxidant"),
+                SkinCareProduct(icon: "", name: "Moisturizer", description: "Moisturizer"),
+                SkinCareProduct(icon: "", name: "Extras", description: "Glycolic Acid Serum")
+            ])
+        ])
     ]
+    
+    var indexSelected: Int = 0;
+    var skinTypeIndex: Int = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +79,9 @@ class SkinCareGuideViewController: UIViewController {
         skincareProductTableView.delegate = self
         skincareProductTableView.dataSource = self
         
-        skincareRoutineTitle.text = skinCareRoutineProducts[indexSelected].name
+        skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")
+        
+        skincareRoutineTitle.text = skinTypeRoutineProduct[indexSelected].name
     }
 
     
@@ -48,7 +92,7 @@ class SkinCareGuideViewController: UIViewController {
 
 extension SkinCareGuideViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return skinCareRoutineProducts[indexSelected].products.count
+        return skinTypeRoutineProduct[indexSelected].skinType[skinTypeIndex].products.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,13 +100,14 @@ extension SkinCareGuideViewController : UITableViewDataSource, UITableViewDelega
         let cell = skincareProductTableView.dequeueReusableCell(withIdentifier: "skincareproductscell") as! SkinCareGuideTableViewCell
         
         // cell.skinCareProductIcon.image = UIImage(named: dataSources[indexSelected].detailDatas[indexPath.row].dataIcon)
-        cell.skinCareProductName.text = skinCareRoutineProducts[indexSelected].products[indexPath.row].name
-        cell.skinCareProductDescription.text = skinCareRoutineProducts[indexSelected].products[indexPath.row].description
+        cell.skinCareProductName.text = skinTypeRoutineProduct[indexSelected].skinType[skinTypeIndex].products[indexPath.row].name
+        cell.skinCareProductDescription.text = skinTypeRoutineProduct[indexSelected].skinType[skinTypeIndex].products[indexPath.row].description
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75 + CGFloat((skinCareRoutineProducts[indexSelected].products[indexPath.row].description.count) / 28) * 18;
+        return 75
+         return 75 + CGFloat((skinTypeRoutineProduct[indexSelected].skinType[skinTypeIndex].products[indexPath.row].description.count) / 28) * 18;
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 
 class QuestionBirthDateViewController: UIViewController {
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var birthdatePicker: UIDatePicker!
     
     override func viewDidLoad() {
@@ -24,12 +25,21 @@ class QuestionBirthDateViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
+        Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+            DispatchQueue.main.async { [self] in
+                var counter = progressView.progress + 0.01
+                if counter <= 1.01 {
+                    progressView.progress = counter
+                }
+                else {
+                    timer.invalidate()
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         UserDefaults.standard.set(birthdatePicker.date, forKey: "birthdate")
-        
         UserDefaults.standard.set(true, forKey: "isCompleteOnBoarding")
-        
-        // let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        // let vc = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
-        // self.show(vc, sender: nil)
     }
 }

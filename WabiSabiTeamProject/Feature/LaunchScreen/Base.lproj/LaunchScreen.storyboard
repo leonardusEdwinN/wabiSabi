@@ -23,7 +23,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Embracing our imperfection&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzR-br-6rh">
-                                <rect key="frame" x="30" y="441.66666666666669" width="330" height="14.333333333333314"/>
+                                <rect key="frame" x="30" y="441.66666666666669" width="330" height="15"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
     <resources>
         <image name="Mascot" width="101" height="74"/>
         <namedColor name="ColorPrimary">
-            <color red="0.32549019607843138" green="0.25882352941176467" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.37599998712539673" green="0.27099999785423279" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

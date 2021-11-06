@@ -14,13 +14,18 @@ class SkinCareGuideTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
 }
-struct SkinCareRoutineProduct {
-    var name: String, products: [SkinCareProduct];
+
+struct SkinTypeRoutine {
+    var icon: String, name: String, skinType: [SkinTypeProduct];
+}
+
+struct SkinTypeProduct {
+    var name: String, products: [SkinCareProduct]
 }
 
 struct SkinCareProduct {
     var icon: String, name: String, description: String;
 }
+

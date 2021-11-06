@@ -8,7 +8,8 @@
 import UIKit
 
 class QuestionSkinTypeViewController: UIViewController {
-    @IBOutlet weak var skinTypeColletionView: UICollectionView!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var skinTypeTableView: UITableView!
     @IBOutlet weak var buttonNext: UIButton!
     
     var skinTypes: [String] = ["Oily", "Dry", "Combination", "Normal"]
@@ -18,65 +19,54 @@ class QuestionSkinTypeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        skinTypeColletionView.delegate = self
-        skinTypeColletionView.dataSource = self
+        skinTypeTableView.delegate = self
+        skinTypeTableView.dataSource = self
         
-        buttonNext.isHidden = true
+        buttonNext.isEnabled = false
     }
     
     @IBAction func next(_ sender: Any) {
-        UserDefaults.standard.set(skinTypes[(indexSelected - 1)], forKey: "skinTypes")
+        UserDefaults.standard.set(indexSelected, forKey: "skinTypes")
     }
 }
 
-extension QuestionSkinTypeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension QuestionSkinTypeViewController : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return skinTypes.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = skinTypeColletionView.dequeueReusableCell(withReuseIdentifier: "skintypeoptioncell", for: indexPath) as! SkinTypeCollectionViewCell
+        let cell = skinTypeTableView.dequeueReusableCell(withIdentifier: "skintypecell") as! OptionTableViewCell
         
-        cell.skinTypeLabel.text = skinTypes[indexPath.row]
-
-        cell.skinTypeCheckList.tag = (indexPath.row + 1)
-        cell.skinTypeImageBackground.tag = ((indexPath.row + 1) * 10) + (indexPath.row + 1)
-        cell.skinTypeImageBackground.backgroundColor = UIColor(named: "ColorPrimary")
-        cell.skinTypeImageBackground.alpha = 0.5
+        cell.optionTitle.text = skinTypes[indexPath.row]
         
         return cell
     }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // return CGSize(width: view.frame.width / 3, height: view.frame.height / 3)
-        return CGSize(width: 100, height: 150)
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if buttonNext.isHidden == true {
-            buttonNext.isHidden = false
-        }
+        indexSelected = indexPath.row
         
-        indexSelected = indexPath.row + 1
-        
-        for index in 0...skinTypes.count {
-            if let imgView = collectionView.viewWithTag(index) as? UIImageView {
-                imgView.image = UIImage(systemName: "circle")
+        if buttonNext.isEnabled == false {
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+                DispatchQueue.main.async { [self] in
+                    var counter = progressView.progress + 0.01
+                    if counter <= 0.17 {
+                        progressView.progress = counter
+                    }
+                    else {
+                        timer.invalidate()
+                        
+                        buttonNext.isEnabled = true
+                    }
+                    
+                }
             }
-            if let backgroundView = collectionView.viewWithTag((index * 10) + index) as? UIImageView {
-                // backgroundView.backgroundColor = UIColor(named: "ColorSecondary")
-                backgroundView.alpha = 0.5
-            }
-        }
-        
-        if let imgView = collectionView.viewWithTag(indexSelected) as? UIImageView {
-            imgView.image = UIImage(systemName: "checkmark.circle.fill")
-        }
-        if let backgroundView = collectionView.viewWithTag((indexSelected * 10) + indexSelected) as? UIImageView {
-            // backgroundView.backgroundColor = UIColor(named: "ColorPrimary")
-            backgroundView.alpha = 1
         }
     }
 }

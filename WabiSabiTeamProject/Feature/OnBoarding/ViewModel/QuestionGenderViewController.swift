@@ -8,6 +8,7 @@
 import UIKit
 
 class QuestionGenderViewController: UIViewController {
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var genderTableView: UITableView!
     @IBOutlet weak var buttonNext: UIButton!
     
@@ -21,11 +22,11 @@ class QuestionGenderViewController: UIViewController {
         genderTableView.delegate = self
         genderTableView.dataSource = self
     
-        buttonNext.isHidden = true
+        buttonNext.isEnabled = false
     }
     
     @IBAction func next(_ sender: Any) {
-        UserDefaults.standard.set(genders[indexSelected], forKey: "gender")
+        UserDefaults.standard.set(indexSelected, forKey: "gender")
     }
 }
 
@@ -36,9 +37,9 @@ extension QuestionGenderViewController : UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = genderTableView.dequeueReusableCell(withIdentifier: "gendercell") as! GenderTableViewCell
+        let cell = genderTableView.dequeueReusableCell(withIdentifier: "gendercell") as! OptionTableViewCell
         
-        cell.genderLabel.text = genders[indexPath.row]
+        cell.optionTitle.text = genders[indexPath.row]
         
         return cell
     }
@@ -48,8 +49,21 @@ extension QuestionGenderViewController : UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if buttonNext.isHidden == true {
-            buttonNext.isHidden = false
+        if buttonNext.isEnabled == false {
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+                DispatchQueue.main.async { [self] in
+                    var counter = progressView.progress + 0.01
+                    if counter <= 0.83 {
+                        progressView.progress = counter
+                    }
+                    else {
+                        timer.invalidate()
+                        
+                        buttonNext.isEnabled = true
+                    }
+                    
+                }
+            }
         }
         
         indexSelected = indexPath.row

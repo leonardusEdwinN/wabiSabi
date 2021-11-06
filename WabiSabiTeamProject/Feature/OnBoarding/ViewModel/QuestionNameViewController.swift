@@ -8,7 +8,7 @@
 import UIKit
 
 class QuestionNameViewController: UIViewController {
-
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var borderTextField: UIView!
     @IBOutlet weak var buttonNext: UIButton!
@@ -16,7 +16,7 @@ class QuestionNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buttonNext.isHidden = true
+        buttonNext.isEnabled = false
     }
 
     @IBAction func beginEditTextField(_ sender: Any) {
@@ -25,10 +25,36 @@ class QuestionNameViewController: UIViewController {
     
     @IBAction func editTextField(_ sender: Any) {
         if textField.text?.count ?? 0 >= 3 {
-            buttonNext.isHidden = false
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+                DispatchQueue.main.async { [self] in
+                    var counter = progressView.progress + 0.01
+                    if counter <= 0.67 {
+                        progressView.progress = counter
+                    }
+                    else {
+                        timer.invalidate()
+                        
+                        buttonNext.isEnabled = true
+                    }
+                    
+                }
+            }
         }
         else {
-            buttonNext.isHidden = true
+            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+                DispatchQueue.main.async { [self] in
+                    var counter = progressView.progress - 0.01
+                    if counter >= 0.5 {
+                        progressView.progress = counter
+                    }
+                    else {
+                        timer.invalidate()
+                        
+                        buttonNext.isEnabled = false
+                    }
+                    
+                }
+            }
         }
     }
     
