@@ -96,6 +96,32 @@
 			path = WabiSabiTeamProject;
 			sourceTree = "<group>";
 		};
+		134394EC273A4B7500641983 /* SummaryAwards */ = {
+			isa = PBXGroup;
+			children = (
+				13E1D9182733EFB500FF90A9 /* SummaryAwardsTableViewCell.swift */,
+			);
+			path = SummaryAwards;
+			sourceTree = "<group>";
+		};
+		134394ED273A4B8300641983 /* SummaryCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				13AD9D9C273908080083AE29 /* DayCollectionViewCell.swift */,
+				13AD9D9D273908080083AE29 /* WeekCollectionViewCell.swift */,
+				137962EB2733D999008D1BCF /* SummaryCalendarTableViewCell.swift */,
+			);
+			path = SummaryCalendar;
+			sourceTree = "<group>";
+		};
+		134394EE273A4B8D00641983 /* SummaryActivity */ = {
+			isa = PBXGroup;
+			children = (
+				137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */,
+			);
+			path = SummaryActivity;
+			sourceTree = "<group>";
+		};
 		137962DE2733D189008D1BCF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +132,10 @@
 		137962DF2733D18E008D1BCF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				137962E32733D1D4008D1BCF /* SummaryViewController.swift */,
+				134394EE273A4B8D00641983 /* SummaryActivity */,
+				134394ED273A4B8300641983 /* SummaryCalendar */,
+				134394EC273A4B7500641983 /* SummaryAwards */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -113,11 +143,10 @@
 		137962E02733D1A8008D1BCF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				137962E12733D1C3008D1BCF /* Summary.storyboard */,
 				13E1D9172733EC2A00FF90A9 /* SummaryAwards */,
 				137962EA2733D981008D1BCF /* SummaryCalendar */,
 				137962E52733D477008D1BCF /* SummaryActivity */,
-				137962E12733D1C3008D1BCF /* Summary.storyboard */,
-				137962E32733D1D4008D1BCF /* SummaryViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,7 +154,6 @@
 		137962E52733D477008D1BCF /* SummaryActivity */ = {
 			isa = PBXGroup;
 			children = (
-				137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */,
 				137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */,
 			);
 			path = SummaryActivity;
@@ -134,11 +162,8 @@
 		137962EA2733D981008D1BCF /* SummaryCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				13AD9D9C273908080083AE29 /* DayCollectionViewCell.swift */,
 				13AD9DA0273908080083AE29 /* DayCollectionViewCell.xib */,
-				13AD9D9D273908080083AE29 /* WeekCollectionViewCell.swift */,
 				13AD9D9E273908080083AE29 /* WeekCollectionViewCell.xib */,
-				137962EB2733D999008D1BCF /* SummaryCalendarTableViewCell.swift */,
 				137962EC2733D999008D1BCF /* SummaryCalendarTableViewCell.xib */,
 			);
 			path = SummaryCalendar;
@@ -147,7 +172,6 @@
 		13E1D9172733EC2A00FF90A9 /* SummaryAwards */ = {
 			isa = PBXGroup;
 			children = (
-				13E1D9182733EFB500FF90A9 /* SummaryAwardsTableViewCell.swift */,
 				13E1D9192733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib */,
 			);
 			path = SummaryAwards;
