@@ -12,9 +12,13 @@ class QuestionExperienceViewController: UIViewController {
     @IBOutlet weak var skincareExperienceTableView: UITableView!
     @IBOutlet weak var buttonNext: UIButton!
     
-    var skinCareExperience: [String] = ["I want to start from the basic", "I want to maintain my current routine", "I want to step up my skincare routine"]
+    var skinCareExperience: [String] = [
+        "I want to start from the basic",
+        "I want to maintain my current routine",
+        "I want to step up my skincare routine"
+    ]
     
-    var indexSelected: [Int] = []
+    var indexSelected: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,37 +53,12 @@ extension QuestionExperienceViewController : UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        indexSelected.append(indexPath.row)
-        
+        indexSelected = indexPath.row
         if buttonNext.isEnabled == false {
             Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
                 DispatchQueue.main.async { [self] in
                     var counter = progressView.progress + 0.01
                     if counter <= 0.5 {
-                        progressView.progress = counter
-                    }
-                    else {
-                        timer.invalidate()
-                        
-                        buttonNext.isEnabled = true
-                    }
-                    
-                }
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let index = indexSelected.firstIndex(of: indexPath.row) {
-            indexSelected.remove(at: index)
-        }
-        
-        if indexSelected.count == 0 {
-            Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
-                DispatchQueue.main.async { [self] in
-                    var counter = progressView.progress - 0.01
-                    if counter >= 0.33 {
                         progressView.progress = counter
                     }
                     else {

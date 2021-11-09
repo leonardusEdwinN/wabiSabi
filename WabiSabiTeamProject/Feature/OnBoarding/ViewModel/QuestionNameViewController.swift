@@ -17,8 +17,23 @@ class QuestionNameViewController: UIViewController {
         super.viewDidLoad()
         
         buttonNext.isEnabled = false
+        
+        // textField.returnKeyType = UIReturnKeyType.done
+        textField.delegate = self
+        
+        self.hideKeyboardWhenTappedAround()
     }
 
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(QuestionNameViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @IBAction func beginEditTextField(_ sender: Any) {
         borderTextField.backgroundColor = UIColor(named: "ColorPrimary")
     }
@@ -64,5 +79,12 @@ class QuestionNameViewController: UIViewController {
     
     @IBAction func next(_ sender: Any) {
         UserDefaults.standard.set(textField.text, forKey: "name")
+    }
+}
+
+extension QuestionNameViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
