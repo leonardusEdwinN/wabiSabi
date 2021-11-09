@@ -1,101 +1,61 @@
 //
-//  ViewController.swift
+//  ActivityViewController.swift
 //  WabiSabiTeamProject
 //
-//  Created by Edwin Niwarlangga on 26/10/21.
+//  Created by Albert . on 05/11/21.
 //
 
 import UIKit
 
 class ActivityViewController: UIViewController {
     
-    @IBOutlet weak var progressIndicatorCollectionView: UICollectionView!
-    
-    let progressIndicatorCollectionViewCellId = "ProgressIndicatorHorizontalCollectionViewCell"
-    
-    var progressIndicators = [ProgressIndicator]()
-    let cellScale:CGFloat = 0.6
+    @IBOutlet weak var routineCollectionView: UICollectionView!
+    @IBOutlet weak var circularProgress: CircularProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        
-        let screenSize = UIScreen.main.bounds.size
-        let cellWidth = floor(screenSize.width * cellScale)
-        let cellHeight = floor(screenSize.height * cellScale)
-        let insetX = (view.bounds.width - cellWidth) / 2.0
-        let insetY = (view.bounds.height - cellHeight) / 2.0
-        
-        let layout = progressIndicatorCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        
-        print("insetX");
-        print(insetY)
-        print(insetX)
-        
-        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-        progressIndicatorCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0 , bottom: 0, right: 0)
-        
-        // Register Cell
-        let nibCell = UINib(nibName: progressIndicatorCollectionViewCellId, bundle: nil)
-        progressIndicatorCollectionView.register(nibCell, forCellWithReuseIdentifier: progressIndicatorCollectionViewCellId)
-        
-        // Init Data
-        for _ in 1...25 {
-            let progressIndicator = ProgressIndicator()
-            progressIndicator?.percentage = 80
-            progressIndicator?.status = "Haven't Complete"
-            progressIndicators.append(progressIndicator!)
-        }
-        
-        progressIndicatorCollectionView.reloadData()
+        setUpcircularProgress()
+        routineCollectionView.dataSource = self
+        routineCollectionView.delegate = self
+        routineCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
     private func configureNavigationBar() {
         title = "Today"
         let menuButton = UIBarButtonItem(image: UIImage(named: "Calender"), style: .plain, target: self, action: nil)
+        menuButton.tintColor = UIColor.systemIndigo
         navigationItem.rightBarButtonItems = [menuButton]
+    }
+    
+    private func setUpcircularProgress() {
+        circularProgress.progressColor = UIColor.systemIndigo
+        circularProgress.trackColor = UIColor.systemGray4
+        circularProgress.percentageValue = 0.8
     }
 }
 
-extension ActivityViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
+extension ActivityViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return progressIndicators.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let inset:CGFloat = 20
-        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 248, height: 177)
+        return routines.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = progressIndicatorCollectionView.dequeueReusableCell(withReuseIdentifier: progressIndicatorCollectionViewCellId, for: indexPath) as! ProgressIndicatorHorizontalCollectionViewCell
-        
-        let progressIndicatorCell = progressIndicators[indexPath.row]
-        cell.percentage.text = String(progressIndicatorCell.percentage!) + "%"
-        cell.status.text = progressIndicatorCell.status
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoutineCollectionViewCell", for: indexPath) as! RoutineCollectionViewCell
+        cell.setup(with: routines[indexPath.row])
         
         return cell
     }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let layout = progressIndicatorCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        
-        var offset = targetContentOffset.pointee
-        let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-        let roundedIndex = round(index)
-        
-        offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
-        
-        targetContentOffset.pointee = offset
+}
+
+extension ActivityViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 88)
+    }
+}
+
+extension ActivityViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(routines[indexPath.row])
     }
 }
