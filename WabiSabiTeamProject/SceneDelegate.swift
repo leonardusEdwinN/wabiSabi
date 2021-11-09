@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             self.window?.rootViewController = storyBoard.instantiateInitialViewController()
             window?.makeKeyAndVisible()
-            window?.rootViewController = ViewController()
             guard let _ = (scene as? UIWindowScene) else { return }
         }
         else {
