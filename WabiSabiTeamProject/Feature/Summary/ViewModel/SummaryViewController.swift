@@ -60,6 +60,8 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             return 450
         }else if (indexPath.item == 1){
             return 300
+        }else if (indexPath.item == 2){
+            return 250
         }
         
         return 100

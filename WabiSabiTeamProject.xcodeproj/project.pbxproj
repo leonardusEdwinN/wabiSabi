@@ -14,6 +14,8 @@
 		131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 131F76CF2727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld */; };
 		131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D22727E61400A7AB41 /* Assets.xcassets */; };
 		131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D42727E61400A7AB41 /* LaunchScreen.storyboard */; };
+		134394F1273A557A00641983 /* SummaryAwardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134394EF273A557A00641983 /* SummaryAwardsCollectionViewCell.swift */; };
+		134394F2273A557A00641983 /* SummaryAwardsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134394F0273A557A00641983 /* SummaryAwardsCollectionViewCell.xib */; };
 		137962E22733D1C3008D1BCF /* Summary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137962E12733D1C3008D1BCF /* Summary.storyboard */; };
 		137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E32733D1D4008D1BCF /* SummaryViewController.swift */; };
 		137962E82733D4B3008D1BCF /* SummaryActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */; };
@@ -40,6 +42,8 @@
 		131F76D22727E61400A7AB41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		131F76D52727E61400A7AB41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		131F76D72727E61400A7AB41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		134394EF273A557A00641983 /* SummaryAwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryAwardsCollectionViewCell.swift; sourceTree = "<group>"; };
+		134394F0273A557A00641983 /* SummaryAwardsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryAwardsCollectionViewCell.xib; sourceTree = "<group>"; };
 		137962E12733D1C3008D1BCF /* Summary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Summary.storyboard; sourceTree = "<group>"; };
 		137962E32733D1D4008D1BCF /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 		134394EC273A4B7500641983 /* SummaryAwards */ = {
 			isa = PBXGroup;
 			children = (
+				134394EF273A557A00641983 /* SummaryAwardsCollectionViewCell.swift */,
 				13E1D9182733EFB500FF90A9 /* SummaryAwardsTableViewCell.swift */,
 			);
 			path = SummaryAwards;
@@ -173,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				13E1D9192733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib */,
+				134394F0273A557A00641983 /* SummaryAwardsCollectionViewCell.xib */,
 			);
 			path = SummaryAwards;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				137962EE2733D999008D1BCF /* SummaryCalendarTableViewCell.xib in Resources */,
 				13AD9DA5273908080083AE29 /* DayCollectionViewCell.xib in Resources */,
 				13E1D91B2733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib in Resources */,
+				134394F2273A557A00641983 /* SummaryAwardsCollectionViewCell.xib in Resources */,
 				131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */,
 				131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */,
 				13AD9DA3273908080083AE29 /* WeekCollectionViewCell.xib in Resources */,
@@ -424,6 +431,7 @@
 				137962ED2733D999008D1BCF /* SummaryCalendarTableViewCell.swift in Sources */,
 				13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */,
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
+				134394F1273A557A00641983 /* SummaryAwardsCollectionViewCell.swift in Sources */,
 				13AD9DA72739083F0083AE29 /* Extension.swift in Sources */,
 				131F76CB2727E61300A7AB41 /* ViewController.swift in Sources */,
 				131F76C72727E61300A7AB41 /* AppDelegate.swift in Sources */,
