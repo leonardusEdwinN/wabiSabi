@@ -21,6 +21,7 @@ class SummaryViewController: UIViewController{
         summaryTableView.register(UINib.init(nibName: "SummaryCalendarTableViewCell", bundle: nil), forCellReuseIdentifier: "summaryCalendarTableViewCell")
         
         summaryTableView.register(UINib.init(nibName: "SummaryActivityTableViewCell", bundle: nil), forCellReuseIdentifier: "summaryActivityTableViewCell")
+        summaryTableView.register(UINib.init(nibName: "SummaryActivityEmptyStateTableViewCell", bundle: nil), forCellReuseIdentifier: "summaryActivityEmptyStateTableViewCell")
         
         summaryTableView.register(UINib.init(nibName: "SummaryAwardsTableViewCell", bundle: nil), forCellReuseIdentifier: "summaryAwardsTableViewCell")
         summaryTableView.delegate = self
@@ -41,8 +42,11 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             
             return cell
         }else if(indexPath.item == 1){
-            //sumarry activity
-            let cell = tableView.dequeueReusableCell(withIdentifier: "summaryActivityTableViewCell",for: indexPath) as! SummaryActivityTableViewCell
+            //summary activity
+            //            let cell = tableView.dequeueReusableCell(withIdentifier: "summaryActivityTableViewCell",for: indexPath) as! SummaryActivityTableViewCell
+            //
+            //            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "summaryActivityEmptyStateTableViewCell",for: indexPath) as! SummaryActivityEmptyStateTableViewCell
             
             return cell
         }else if(indexPath.item == 2){
@@ -59,7 +63,7 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
         if(indexPath.item == 0){
             return 450
         }else if (indexPath.item == 1){
-            return 300
+            return 200
         }else if (indexPath.item == 2){
             return 250
         }

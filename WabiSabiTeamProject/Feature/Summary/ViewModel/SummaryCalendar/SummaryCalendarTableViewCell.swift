@@ -13,6 +13,7 @@ class SummaryCalendarTableViewCell: UITableViewCell {
     
     //for Month
 //    var delegate: MonthViewDelegate?
+    @IBOutlet weak var shadowView: UIView!
     
     @IBOutlet weak var monthView: UIView!
 //    @IBOutlet weak var outerView: UIView!
@@ -46,11 +47,13 @@ class SummaryCalendarTableViewCell: UITableViewCell {
 //        outerView.layer.cornerRadius = 15
 //        outerView.layer.masksToBounds = true
         
+        shadowView.layer.cornerRadius = 15
+        calendarDayCollectionView.layer.cornerRadius = 15
+        
         //get bulan ini
         currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1 //soalnya arraynya di mulai dari 0
         currentYear = Calendar.current.component(.year, from: Date())
-        
-        print("current month index : \(currentMonthIndex) :: \(monthsArr[currentMonthIndex])")
+    
         labelBulan.text="\(monthsArr[currentMonthIndex]) \(currentYear)"
         
         setupViewWeekly()
@@ -76,7 +79,6 @@ class SummaryCalendarTableViewCell: UITableViewCell {
 extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.calendarDayCollectionView {
-            print("CELL month index : \(currentMonthIndex) :: \(numOfDaysInMonth[currentMonthIndex]) :: \(firstWeekDayOfMonth - 1))")
             return numOfDaysInMonth[currentMonthIndex] + firstWeekDayOfMonth - 1
         }
         return 0
@@ -141,27 +143,21 @@ extension SummaryCalendarTableViewCell: UICollectionViewDelegateFlowLayout {
 extension SummaryCalendarTableViewCell{
     
     @IBAction func buttonLeftOrRightPressed(_ sender: UIButton) {
-        print("BUTTON CLICK")
         if sender == buttonRight {
-            print("MASUK KE KANAN")
             currentMonthIndex += 1
             if currentMonthIndex > 11 {
                 currentMonthIndex = 0
                 currentYear += 1
             }
         } else {
-            print("MASUK KE KIRI")
             currentMonthIndex -= 1
             if currentMonthIndex < 0 {
                 currentMonthIndex = 11
                 currentYear -= 1
             }
         }
-        print("current index disini : \(currentMonthIndex)")
         labelBulan.text="\(monthsArr[currentMonthIndex]) \(currentYear)"
         didChangeMonth()
-        print("BUTTON END CLICK")
-        print("")
     }
 }
 
@@ -183,7 +179,6 @@ extension SummaryCalendarTableViewCell{
 extension SummaryCalendarTableViewCell{
     func setupViewDay(){
         currentMonthIndex = Calendar.current.component(.month, from: Date()) - 1
-        print("CURRENT MONTH INDEX SETUPVIEWDAY : \(currentMonthIndex)")
         currentYear = Calendar.current.component(.year, from: Date())
         todaysDate = Calendar.current.component(.day, from: Date())
         firstWeekDayOfMonth = getFirstWeekDay()
@@ -197,16 +192,12 @@ extension SummaryCalendarTableViewCell{
     }
     
     func getFirstWeekDay() -> Int {
-        print("current year : \(currentYear) ::currentmonth : \(currentMonthIndex) ")
         let day = ("\(currentYear)-\(currentMonthIndex + 1)-01".date?.firstDayOfTheMonth.weekday)!
-        print("D : \(day)")
 //        return day == 7 ? 1 : day
         return day
     }
     
     func didChangeMonth() {
-//        var index = monthIndex+1
-        print("DID CHANGE MONTH : \(currentMonthIndex)")
         
         //for leap year, make february month of 29 days
         if currentMonthIndex == 1 {

@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,17 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bWM-Bp-Fz0">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nlc-Ba-dnY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ys1-54-UiQ">
-                                        <rect key="frame" x="10" y="49" width="152" height="41"/>
+                                        <rect key="frame" x="15" y="100" width="152" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Yxw-oA-b3E"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7B3-JX-nWw">
@@ -37,23 +35,27 @@
                                         <buttonConfiguration key="configuration" style="plain" title=""/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.37647058823529411" green="0.27058823529411763" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="4HI-TW-nvM"/>
-                                    <constraint firstItem="Ys1-54-UiQ" firstAttribute="leading" secondItem="Nlc-Ba-dnY" secondAttribute="leading" constant="10" id="ALd-id-6Sz"/>
+                                    <constraint firstAttribute="height" constant="250" id="4HI-TW-nvM"/>
+                                    <constraint firstItem="Ys1-54-UiQ" firstAttribute="leading" secondItem="Nlc-Ba-dnY" secondAttribute="leading" constant="15" id="ALd-id-6Sz"/>
                                     <constraint firstItem="7B3-JX-nWw" firstAttribute="top" secondItem="Nlc-Ba-dnY" secondAttribute="top" constant="15" id="Dkq-RG-Uqc"/>
+                                    <constraint firstItem="Ys1-54-UiQ" firstAttribute="top" secondItem="Nlc-Ba-dnY" secondAttribute="top" constant="100" id="LLc-Ri-T4D"/>
                                     <constraint firstAttribute="trailing" secondItem="7B3-JX-nWw" secondAttribute="trailing" constant="15" id="N0X-5W-r1j"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ys1-54-UiQ" secondAttribute="bottom" constant="10" id="y8g-Ss-j6t"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bWM-Bp-Fz0">
+                                <rect key="frame" x="0.0" y="214" width="414" height="648"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.60358361484242129" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bWM-Bp-Fz0" firstAttribute="top" secondItem="Nlc-Ba-dnY" secondAttribute="bottom" id="6gw-SO-jBL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Nlc-Ba-dnY" secondAttribute="trailing" id="AAz-aF-OBe"/>
                             <constraint firstItem="Nlc-Ba-dnY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="BOB-Sm-mag"/>
-                            <constraint firstItem="Nlc-Ba-dnY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ImE-uo-Rp5"/>
+                            <constraint firstItem="Nlc-Ba-dnY" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ImE-uo-Rp5"/>
+                            <constraint firstItem="bWM-Bp-Fz0" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="170" id="YgE-gv-Yv9"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="bWM-Bp-Fz0" secondAttribute="bottom" id="ioN-25-gGa"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bWM-Bp-Fz0" secondAttribute="trailing" id="mBt-k5-wNU"/>
                             <constraint firstItem="bWM-Bp-Fz0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rkV-0I-eBS"/>
@@ -80,8 +82,5 @@
     </scenes>
     <resources>
         <image name="folder" catalog="system" width="128" height="97"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

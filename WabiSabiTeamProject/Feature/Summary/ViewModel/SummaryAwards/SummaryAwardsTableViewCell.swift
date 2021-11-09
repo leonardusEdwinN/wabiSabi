@@ -13,6 +13,7 @@ class SummaryAwardsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        awardItemCollectionView.layer.cornerRadius = 15
         
         awardItemCollectionView.register(UINib.init(nibName: "SummaryAwardsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "awardItem")
         awardItemCollectionView.delegate = self
@@ -52,7 +53,7 @@ extension SummaryAwardsTableViewCell: UICollectionViewDelegateFlowLayout {
             layout.minimumLineSpacing = 0
             layout.invalidateLayout()
             
-            widthCell =  CGSize(width: (self.frame.width - 20) / 3 , height: 200) // Set your item size here
+            widthCell =  CGSize(width: (self.frame.width - 20) / 3 , height: 180) // Set your item size here
         }else{
             widthCell =  CGSize(width: 125 , height:150)
         }

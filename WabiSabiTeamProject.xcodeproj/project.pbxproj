@@ -16,6 +16,8 @@
 		131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D42727E61400A7AB41 /* LaunchScreen.storyboard */; };
 		134394F1273A557A00641983 /* SummaryAwardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134394EF273A557A00641983 /* SummaryAwardsCollectionViewCell.swift */; };
 		134394F2273A557A00641983 /* SummaryAwardsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134394F0273A557A00641983 /* SummaryAwardsCollectionViewCell.xib */; };
+		134394F5273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134394F3273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift */; };
+		134394F6273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134394F4273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib */; };
 		137962E22733D1C3008D1BCF /* Summary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137962E12733D1C3008D1BCF /* Summary.storyboard */; };
 		137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E32733D1D4008D1BCF /* SummaryViewController.swift */; };
 		137962E82733D4B3008D1BCF /* SummaryActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */; };
@@ -44,6 +46,8 @@
 		131F76D72727E61400A7AB41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		134394EF273A557A00641983 /* SummaryAwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryAwardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		134394F0273A557A00641983 /* SummaryAwardsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryAwardsCollectionViewCell.xib; sourceTree = "<group>"; };
+		134394F3273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityEmptyStateTableViewCell.swift; sourceTree = "<group>"; };
+		134394F4273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryActivityEmptyStateTableViewCell.xib; sourceTree = "<group>"; };
 		137962E12733D1C3008D1BCF /* Summary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Summary.storyboard; sourceTree = "<group>"; };
 		137962E32733D1D4008D1BCF /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityTableViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */,
+				134394F3273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift */,
 			);
 			path = SummaryActivity;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */,
+				134394F4273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib */,
 			);
 			path = SummaryActivity;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				13E1D91B2733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib in Resources */,
 				134394F2273A557A00641983 /* SummaryAwardsCollectionViewCell.xib in Resources */,
 				131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */,
+				134394F6273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib in Resources */,
 				131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */,
 				13AD9DA3273908080083AE29 /* WeekCollectionViewCell.xib in Resources */,
 				131F76CE2727E61300A7AB41 /* Main.storyboard in Resources */,
@@ -429,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				137962ED2733D999008D1BCF /* SummaryCalendarTableViewCell.swift in Sources */,
+				134394F5273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift in Sources */,
 				13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */,
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
 				134394F1273A557A00641983 /* SummaryAwardsCollectionViewCell.swift in Sources */,

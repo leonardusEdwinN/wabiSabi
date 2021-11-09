@@ -56,6 +56,9 @@
                 <constraint firstItem="hyc-aK-o0y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="wdN-YZ-y7F"/>
             </constraints>
             <size key="customSize" width="135" height="170"/>
+            <connections>
+                <outlet property="viewCircle" destination="fFh-wj-Ypx" id="gho-xd-0Jo"/>
+            </connections>
             <point key="canvasLocation" x="199.27536231884059" y="170.75892857142856"/>
         </collectionViewCell>
     </objects>
