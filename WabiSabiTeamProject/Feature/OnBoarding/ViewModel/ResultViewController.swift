@@ -11,10 +11,11 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var skinCareRoutineCollectionView: UICollectionView!
     
-    let levels: [String] = ["Beginner", "Beginner", "Intermediate", "Advance"]
+    let levels: [String] = ["Beginner", "Intermediate", "Advance"]
     
     var skinTypeIndex: Int = 0
     var skinCareRoutineIndex: Int = 0
+    var skinExperienceIndex: Int = 0
     
     let skinTypeRoutineProduct: [SkinTypeRoutine] = [
         SkinTypeRoutine(icon: "🌞", name: "Morning Skin Care", skinType: [
@@ -82,8 +83,37 @@ class ResultViewController: UIViewController {
         
         skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")
         skinCareRoutineIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
+        skinExperienceIndex = UserDefaults.standard.integer(forKey: "skinCareExperience")
+        
+        // check index bigger than first "Beginner"
+        if skinCareRoutineIndex > 0 {
+            skinCareRoutineIndex = skinCareRoutineIndex - 1
+            print(skinCareRoutineIndex)
+        }
+        
+        // user want to start from basic
+        if skinExperienceIndex == 0 {
+            skinCareRoutineIndex = 0
+        }
+        
+        // user want to do current routine (do nothing...)
+        
+        // user want to step up
+        else if skinExperienceIndex == 2 {
+            skinCareRoutineIndex = skinCareRoutineIndex + 1
+        }
+        if skinCareRoutineIndex > 2 {
+            skinCareRoutineIndex = 2
+        }
         
         levelLabel.text = "Level:  \(levels[skinCareRoutineIndex])"
+        
+    }
+    @IBAction func getStarted(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Dashboard") as! ActivityViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

@@ -107,7 +107,6 @@ extension SkinCareGuideViewController : UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-         return 75 + CGFloat((skinTypeRoutineProduct[indexSelected].skinType[skinTypeIndex].products[indexPath.row].description.count) / 28) * 18;
+        return 75 + CGFloat((skinTypeRoutineProduct[indexSelected].skinType[skinTypeIndex].products[indexPath.row].description.count) / 28) * 18;
     }
 }

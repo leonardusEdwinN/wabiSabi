@@ -16,16 +16,3 @@ class SkinCareGuideTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 }
-
-struct SkinTypeRoutine {
-    var icon: String, name: String, skinType: [SkinTypeProduct];
-}
-
-struct SkinTypeProduct {
-    var name: String, products: [SkinCareProduct]
-}
-
-struct SkinCareProduct {
-    var icon: String, name: String, description: String;
-}
-
