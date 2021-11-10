@@ -1,3 +1,11 @@
+//
+//  CircularProgress.swift
+//  WabiSabiTeamProject
+//
+//  Created by Giovanni Tjahyamulia on 01/11/21.
+//
+
+import Foundation
 import UIKit
 
 class CircularProgressBar: UIView {
@@ -20,21 +28,12 @@ class CircularProgressBar: UIView {
 
     override func draw(_ rect: CGRect) {
         // Background Layer
-        backgroundLayer = createCircularLayer(rect: rect, strokeColor: UIColor.systemIndigo.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: 2)
+        backgroundLayer = createCircularLayer(rect: rect, strokeColor: UIColor.white.cgColor, fillColor: UIColor.tertiarySystemFill.cgColor, lineWidth: 15)
+        backgroundLayer.opacity = 0.25
         // Foreground Layer
-        foregroundLayer = createCircularLayer(rect: rect, strokeColor: UIColor.white.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: 5)
+        foregroundLayer = createCircularLayer(rect: rect, strokeColor: UIColor.white.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: 15)
         // Text Layer
         textLayer = createTextLayer(rect: rect, textColor: UIColor.white.cgColor)
-        
-        /*
-        // Gradient Layer
-        gradientLayer = CAGradientLayer()
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        gradientLayer.colors = [UIColor.systemTeal.cgColor, UIColor.systemBlue.cgColor]
-        gradientLayer.frame = rect
-        gradientLayer.mask = foregroundLayer
-        */
         
         // Add Layer
         layer.addSublayer(backgroundLayer)
@@ -76,7 +75,6 @@ class CircularProgressBar: UIView {
         textLayer.backgroundColor = UIColor.clear.cgColor
         textLayer.foregroundColor = textColor
         textLayer.fontSize = fontSize
-        textLayer.font = UIFont(name: "Euphemia UCAS", size: fontSize)
         textLayer.frame = CGRect(x: 0.0, y: (height - fontSize - offset) / 2, width: width, height: fontSize + offset)
         textLayer.alignmentMode = .center
         

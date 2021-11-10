@@ -10,7 +10,8 @@ import UIKit
 class DayCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var labelDate: UILabel!
-    @IBOutlet weak var circularProgressView: CircularProgressBar!
+    @IBOutlet weak var circularProgressView: CircularProgressBarCalendar!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
