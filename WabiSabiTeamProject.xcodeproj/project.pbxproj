@@ -18,7 +18,6 @@
 		134394F2273A557A00641983 /* SummaryAwardsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134394F0273A557A00641983 /* SummaryAwardsCollectionViewCell.xib */; };
 		134394F5273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134394F3273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift */; };
 		134394F6273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134394F4273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib */; };
-		137962E22733D1C3008D1BCF /* Summary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 137962E12733D1C3008D1BCF /* Summary.storyboard */; };
 		137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E32733D1D4008D1BCF /* SummaryViewController.swift */; };
 		137962E82733D4B3008D1BCF /* SummaryActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */; };
 		137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */; };
@@ -28,6 +27,20 @@
 		139A3015273B78EE00104A92 /* SkinTypeRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A3012273B78EE00104A92 /* SkinTypeRoutine.swift */; };
 		139A3016273B78EE00104A92 /* SkinTypeProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A3013273B78EE00104A92 /* SkinTypeProduct.swift */; };
 		139A6309273B84CB008D54A8 /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A6308273B84CB008D54A8 /* CircularProgressBar.swift */; };
+		139A630E273BC15D008D54A8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A630D273BC15D008D54A8 /* ProfileViewController.swift */; };
+		139A6318273BC2D2008D54A8 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A630F273BC2D0008D54A8 /* SF-Pro-Rounded-Medium.otf */; };
+		139A6319273BC2D2008D54A8 /* SF-Pro-Rounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A6310273BC2D1008D54A8 /* SF-Pro-Rounded-Light.otf */; };
+		139A631A273BC2D2008D54A8 /* SF-Pro-Rounded-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A6311273BC2D1008D54A8 /* SF-Pro-Rounded-Thin.otf */; };
+		139A631B273BC2D2008D54A8 /* SF-Pro-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A6312273BC2D1008D54A8 /* SF-Pro-Rounded-Regular.otf */; };
+		139A631C273BC2D2008D54A8 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A6313273BC2D1008D54A8 /* SF-Pro-Rounded-Semibold.otf */; };
+		139A631D273BC2D2008D54A8 /* SF-Pro-Rounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A6314273BC2D1008D54A8 /* SF-Pro-Rounded-Black.otf */; };
+		139A631E273BC2D2008D54A8 /* SF-Pro-Rounded-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A6315273BC2D2008D54A8 /* SF-Pro-Rounded-Heavy.otf */; };
+		139A631F273BC2D2008D54A8 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A6316273BC2D2008D54A8 /* SF-Pro-Rounded-Bold.otf */; };
+		139A6320273BC2D2008D54A8 /* SF-Pro-Rounded-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 139A6317273BC2D2008D54A8 /* SF-Pro-Rounded-Ultralight.otf */; };
+		139A6325273BCB4A008D54A8 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A6323273BCB4A008D54A8 /* ProductTableViewCell.swift */; };
+		139A6326273BCB4A008D54A8 /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139A6324273BCB4A008D54A8 /* ProductTableViewCell.xib */; };
+		139A6329273BCB59008D54A8 /* RoutineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A6327273BCB59008D54A8 /* RoutineTableViewCell.swift */; };
+		139A632A273BCB59008D54A8 /* RoutineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139A6328273BCB59008D54A8 /* RoutineTableViewCell.xib */; };
 		13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD9D9C273908080083AE29 /* DayCollectionViewCell.swift */; };
 		13AD9DA4273908080083AE29 /* CircularProgressBarCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD9D9F273908080083AE29 /* CircularProgressBarCalendar.swift */; };
 		13AD9DA5273908080083AE29 /* DayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13AD9DA0273908080083AE29 /* DayCollectionViewCell.xib */; };
@@ -71,7 +84,6 @@
 		134394F0273A557A00641983 /* SummaryAwardsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryAwardsCollectionViewCell.xib; sourceTree = "<group>"; };
 		134394F3273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityEmptyStateTableViewCell.swift; sourceTree = "<group>"; };
 		134394F4273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryActivityEmptyStateTableViewCell.xib; sourceTree = "<group>"; };
-		137962E12733D1C3008D1BCF /* Summary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Summary.storyboard; sourceTree = "<group>"; };
 		137962E32733D1D4008D1BCF /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityTableViewCell.swift; sourceTree = "<group>"; };
 		137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -81,6 +93,20 @@
 		139A3012273B78EE00104A92 /* SkinTypeRoutine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkinTypeRoutine.swift; path = WabiSabiTeamProject/Feature/OnBoarding/SkinTypeRoutine.swift; sourceTree = SOURCE_ROOT; };
 		139A3013273B78EE00104A92 /* SkinTypeProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkinTypeProduct.swift; path = WabiSabiTeamProject/Feature/OnBoarding/SkinTypeProduct.swift; sourceTree = SOURCE_ROOT; };
 		139A6308273B84CB008D54A8 /* CircularProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		139A630D273BC15D008D54A8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		139A630F273BC2D0008D54A8 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
+		139A6310273BC2D1008D54A8 /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
+		139A6311273BC2D1008D54A8 /* SF-Pro-Rounded-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Thin.otf"; sourceTree = "<group>"; };
+		139A6312273BC2D1008D54A8 /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		139A6313273BC2D1008D54A8 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
+		139A6314273BC2D1008D54A8 /* SF-Pro-Rounded-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Black.otf"; sourceTree = "<group>"; };
+		139A6315273BC2D2008D54A8 /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
+		139A6316273BC2D2008D54A8 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
+		139A6317273BC2D2008D54A8 /* SF-Pro-Rounded-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Ultralight.otf"; sourceTree = "<group>"; };
+		139A6323273BCB4A008D54A8 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		139A6324273BCB4A008D54A8 /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
+		139A6327273BCB59008D54A8 /* RoutineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineTableViewCell.swift; sourceTree = "<group>"; };
+		139A6328273BCB59008D54A8 /* RoutineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutineTableViewCell.xib; sourceTree = "<group>"; };
 		13AD9D9C273908080083AE29 /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		13AD9D9F273908080083AE29 /* CircularProgressBarCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressBarCalendar.swift; sourceTree = "<group>"; };
 		13AD9DA0273908080083AE29 /* DayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -198,7 +224,6 @@
 		137962E02733D1A8008D1BCF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				137962E12733D1C3008D1BCF /* Summary.storyboard */,
 				13E1D9172733EC2A00FF90A9 /* SummaryAwards */,
 				137962EA2733D981008D1BCF /* SummaryCalendar */,
 				137962E52733D477008D1BCF /* SummaryActivity */,
@@ -234,9 +259,46 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		139A630A273BC138008D54A8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				139A6322273BCB08008D54A8 /* ViewModel */,
+				139A6321273BCB00008D54A8 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		139A6321273BCB00008D54A8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				139A6323273BCB4A008D54A8 /* ProductTableViewCell.swift */,
+				139A6324273BCB4A008D54A8 /* ProductTableViewCell.xib */,
+				139A6327273BCB59008D54A8 /* RoutineTableViewCell.swift */,
+				139A6328273BCB59008D54A8 /* RoutineTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		139A6322273BCB08008D54A8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				139A630D273BC15D008D54A8 /* ProfileViewController.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		13E02AC5273B76BC0065DC89 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				139A6314273BC2D1008D54A8 /* SF-Pro-Rounded-Black.otf */,
+				139A6316273BC2D2008D54A8 /* SF-Pro-Rounded-Bold.otf */,
+				139A6315273BC2D2008D54A8 /* SF-Pro-Rounded-Heavy.otf */,
+				139A6310273BC2D1008D54A8 /* SF-Pro-Rounded-Light.otf */,
+				139A630F273BC2D0008D54A8 /* SF-Pro-Rounded-Medium.otf */,
+				139A6312273BC2D1008D54A8 /* SF-Pro-Rounded-Regular.otf */,
+				139A6313273BC2D1008D54A8 /* SF-Pro-Rounded-Semibold.otf */,
+				139A6311273BC2D1008D54A8 /* SF-Pro-Rounded-Thin.otf */,
+				139A6317273BC2D2008D54A8 /* SF-Pro-Rounded-Ultralight.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -253,6 +315,7 @@
 		13ECEF8127294361006B5BFE /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				139A630A273BC138008D54A8 /* Profile */,
 				13ECEF9227294542006B5BFE /* LaunchScreen */,
 				13ECEF87272943C5006B5BFE /* Summary */,
 				13ECEF85272943B5006B5BFE /* Activity */,
@@ -452,12 +515,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */,
-				137962E22733D1C3008D1BCF /* Summary.storyboard in Resources */,
+				139A6319273BC2D2008D54A8 /* SF-Pro-Rounded-Light.otf in Resources */,
+				139A6318273BC2D2008D54A8 /* SF-Pro-Rounded-Medium.otf in Resources */,
+				139A631D273BC2D2008D54A8 /* SF-Pro-Rounded-Black.otf in Resources */,
+				139A631A273BC2D2008D54A8 /* SF-Pro-Rounded-Thin.otf in Resources */,
+				139A631E273BC2D2008D54A8 /* SF-Pro-Rounded-Heavy.otf in Resources */,
 				137962EE2733D999008D1BCF /* SummaryCalendarTableViewCell.xib in Resources */,
 				13AD9DA5273908080083AE29 /* DayCollectionViewCell.xib in Resources */,
+				139A631C273BC2D2008D54A8 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				13E1D91B2733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib in Resources */,
+				139A632A273BCB59008D54A8 /* RoutineTableViewCell.xib in Resources */,
+				139A6326273BCB4A008D54A8 /* ProductTableViewCell.xib in Resources */,
+				139A631F273BC2D2008D54A8 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				134394F2273A557A00641983 /* SummaryAwardsCollectionViewCell.xib in Resources */,
+				139A6320273BC2D2008D54A8 /* SF-Pro-Rounded-Ultralight.otf in Resources */,
 				131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */,
+				139A631B273BC2D2008D54A8 /* SF-Pro-Rounded-Regular.otf in Resources */,
 				970E415E272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib in Resources */,
 				134394F6273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib in Resources */,
 				131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */,
@@ -493,6 +566,7 @@
 				13AD9DA72739083F0083AE29 /* Extension.swift in Sources */,
 				139A6309273B84CB008D54A8 /* CircularProgressBar.swift in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
+				139A6325273BCB4A008D54A8 /* ProductTableViewCell.swift in Sources */,
 				131F76C72727E61300A7AB41 /* AppDelegate.swift in Sources */,
 				97177DDA2738D5E3007FF0E9 /* RoutineModel.swift in Sources */,
 				13AD9DA4273908080083AE29 /* CircularProgressBarCalendar.swift in Sources */,
@@ -501,6 +575,8 @@
 				131F76C92727E61300A7AB41 /* SceneDelegate.swift in Sources */,
 				3532C89D272AAD1A00745F73 /* QuestionBirthDateViewController.swift in Sources */,
 				35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */,
+				139A630E273BC15D008D54A8 /* ProfileViewController.swift in Sources */,
+				139A6329273BCB59008D54A8 /* RoutineTableViewCell.swift in Sources */,
 				3532C897272AACEB00745F73 /* QuestionExperienceViewController.swift in Sources */,
 				3532C89B272AAD0C00745F73 /* QuestionGenderViewController.swift in Sources */,
 				35904E7C272FBDF200C15202 /* OptionTableViewCell.swift in Sources */,
