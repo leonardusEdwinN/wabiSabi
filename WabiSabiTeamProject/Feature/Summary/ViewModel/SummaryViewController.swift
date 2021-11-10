@@ -46,6 +46,8 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             //            let cell = tableView.dequeueReusableCell(withIdentifier: "summaryActivityTableViewCell",for: indexPath) as! SummaryActivityTableViewCell
             //
             //            return cell
+            
+            //no state
             let cell = tableView.dequeueReusableCell(withIdentifier: "summaryActivityEmptyStateTableViewCell",for: indexPath) as! SummaryActivityEmptyStateTableViewCell
             
             return cell

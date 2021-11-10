@@ -7,9 +7,21 @@
 
 import UIKit
 
+struct dummyData {
+    var title : String
+    var detail : String
+}
+
 class SummaryAwardsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var awardItemCollectionView: UICollectionView!
+    
+    let dataDummy : [dummyData] = [
+        dummyData(title: "Newbie", detail: "Awards Condition"),
+        dummyData(title: "Cleanser", detail: "Awards Condition"),
+        dummyData(title: "Step Up", detail: "Awards Condition"),
+    ]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,6 +48,10 @@ extension SummaryAwardsTableViewCell : UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "awardItem", for: indexPath) as! SummaryAwardsCollectionViewCell
         
+        DispatchQueue.main.async {
+            cell.setUI(self.dataDummy[indexPath.item].title, self.dataDummy[indexPath.item].detail)
+        }
+        
         return cell
     }
     
@@ -53,7 +69,7 @@ extension SummaryAwardsTableViewCell: UICollectionViewDelegateFlowLayout {
             layout.minimumLineSpacing = 0
             layout.invalidateLayout()
             
-            widthCell =  CGSize(width: (self.frame.width - 20) / 3 , height: 180) // Set your item size here
+            widthCell =  CGSize(width: (self.frame.width - 40) / 3 , height: 180) // Set your item size here
         }else{
             widthCell =  CGSize(width: 125 , height:150)
         }

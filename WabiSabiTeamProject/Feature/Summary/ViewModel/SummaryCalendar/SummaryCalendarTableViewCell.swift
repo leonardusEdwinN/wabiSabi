@@ -130,7 +130,7 @@ extension SummaryCalendarTableViewCell: UICollectionViewDelegateFlowLayout {
             layout.minimumLineSpacing = 0
             layout.invalidateLayout()
             
-            widthCell =  CGSize(width: (self.frame.width - 30) / 7 , height: self.frame.width / 7) // Set your item size here
+            widthCell =  CGSize(width: (self.frame.width - 40) / 7 , height: self.frame.width / 7) // Set your item size here
         }else{
             widthCell =  CGSize(width: 125 , height:150)
         }

@@ -8,6 +8,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Regular.otf">
+            <string>SFProRounded-Regular</string>
+        </array>
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,10 +27,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQA-xs-cE3">
-                        <rect key="frame" x="10" y="10" width="300" height="135"/>
+                        <rect key="frame" x="15" y="10" width="290" height="135"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fE8-JK-oNw">
-                                <rect key="frame" x="133" y="5" width="34" height="40"/>
+                                <rect key="frame" x="128" y="5" width="34" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nlw-k1-BHV"/>
                                 </constraints>
@@ -31,17 +39,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are doing great!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyf-JS-oOo">
-                                <rect key="frame" x="5" y="50" width="290" height="25"/>
+                                <rect key="frame" x="5" y="50" width="280" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="7oD-fu-KWN"/>
+                                    <constraint firstAttribute="height" constant="25" id="hl8-Xy-SaO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" text="It would be better if you be more consistent in your Morning and Night Skin Care" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7R-7a-xZS">
-                                <rect key="frame" x="5" y="80" width="290" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="It would be better if you be more consistent in your Morning and Night Skin Care" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7R-7a-xZS">
+                                <rect key="frame" x="5" y="80" width="280" height="50"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -60,15 +68,16 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="TQA-xs-cE3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2za-Ut-Q9A"/>
+                    <constraint firstItem="TQA-xs-cE3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="2za-Ut-Q9A"/>
                     <constraint firstItem="TQA-xs-cE3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Lta-Zm-rUR"/>
                     <constraint firstAttribute="bottom" secondItem="TQA-xs-cE3" secondAttribute="bottom" constant="10" id="c9U-JE-WS4"/>
-                    <constraint firstAttribute="trailing" secondItem="TQA-xs-cE3" secondAttribute="trailing" constant="10" id="jKn-E0-uoq"/>
+                    <constraint firstAttribute="trailing" secondItem="TQA-xs-cE3" secondAttribute="trailing" constant="15" id="jKn-E0-uoq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="shadowView" destination="TQA-xs-cE3" id="MrR-Cx-riW"/>
             </connections>
