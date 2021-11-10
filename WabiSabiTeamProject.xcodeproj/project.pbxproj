@@ -14,6 +14,9 @@
 		131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 131F76CF2727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld */; };
 		131F76D32727E61400A7AB41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D22727E61400A7AB41 /* Assets.xcassets */; };
 		131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131F76D42727E61400A7AB41 /* LaunchScreen.storyboard */; };
+		139A3014273B78EE00104A92 /* SkinCareProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A3011273B78EE00104A92 /* SkinCareProduct.swift */; };
+		139A3015273B78EE00104A92 /* SkinTypeRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A3012273B78EE00104A92 /* SkinTypeRoutine.swift */; };
+		139A3016273B78EE00104A92 /* SkinTypeProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A3013273B78EE00104A92 /* SkinTypeProduct.swift */; };
 		3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C888272A9F5900745F73 /* QuestionSkinTypeViewController.swift */; };
 		3532C88B272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C88A272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift */; };
 		3532C897272AACEB00745F73 /* QuestionExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C896272AACEB00745F73 /* QuestionExperienceViewController.swift */; };
@@ -48,6 +51,9 @@
 		131F76D22727E61400A7AB41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		131F76D52727E61400A7AB41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		131F76D72727E61400A7AB41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		139A3011273B78EE00104A92 /* SkinCareProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkinCareProduct.swift; path = WabiSabiTeamProject/Feature/OnBoarding/SkinCareProduct.swift; sourceTree = SOURCE_ROOT; };
+		139A3012273B78EE00104A92 /* SkinTypeRoutine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkinTypeRoutine.swift; path = WabiSabiTeamProject/Feature/OnBoarding/SkinTypeRoutine.swift; sourceTree = SOURCE_ROOT; };
+		139A3013273B78EE00104A92 /* SkinTypeProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SkinTypeProduct.swift; path = WabiSabiTeamProject/Feature/OnBoarding/SkinTypeProduct.swift; sourceTree = SOURCE_ROOT; };
 		3532C888272A9F5900745F73 /* QuestionSkinTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSkinTypeViewController.swift; sourceTree = "<group>"; };
 		3532C88A272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSkinCareRoutineViewController.swift; sourceTree = "<group>"; };
 		3532C896272AACEB00745F73 /* QuestionExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionExperienceViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +118,16 @@
 			path = WabiSabiTeamProject;
 			sourceTree = "<group>";
 		};
+		139A3010273B78E500104A92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				139A3011273B78EE00104A92 /* SkinCareProduct.swift */,
+				139A3013273B78EE00104A92 /* SkinTypeProduct.swift */,
+				139A3012273B78EE00104A92 /* SkinTypeRoutine.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		13ECEF8127294361006B5BFE /* Feature */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +160,7 @@
 		13ECEF84272943AC006B5BFE /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				139A3010273B78E500104A92 /* Model */,
 				35495B6427294E03006DEA4C /* ViewModel */,
 				35495B6327294DF7006DEA4C /* View */,
 			);
@@ -282,23 +299,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-          970E415F272FDDE80030EFD1 /* Model */ = {
-            isa = PBXGroup;
-            children = (
-                970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */,
-                97177DD92738D5E3007FF0E9 /* RoutineModel.swift */,
-            );
-            path = Model;
-            sourceTree = "<group>";
-        };
-        979889C7273282700052B862 /* Components */ = {
-            isa = PBXGroup;
-            children = (
-                979889C8273282A20052B862 /* CircularProgressView.swift */,
-            );
-            path = Components;
-            sourceTree = "<group>";
-        };
 		35495B6327294DF7006DEA4C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +326,23 @@
 				35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		970E415F272FDDE80030EFD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */,
+				97177DD92738D5E3007FF0E9 /* RoutineModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		979889C7273282700052B862 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				979889C8273282A20052B862 /* CircularProgressView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,11 +421,14 @@
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
 				970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */,
+				139A3015273B78EE00104A92 /* SkinTypeRoutine.swift in Sources */,
 				97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */,
 				979889C9273282A20052B862 /* CircularProgressView.swift in Sources */,
 				970E4163272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift in Sources */,
 				97177DD82738CB8A007FF0E9 /* RoutineCollectionViewCell.swift in Sources */,
 				35904E85272FDA5100C15202 /* LoadingViewController.swift in Sources */,
+				139A3014273B78EE00104A92 /* SkinCareProduct.swift in Sources */,
+				139A3016273B78EE00104A92 /* SkinTypeProduct.swift in Sources */,
 				35904E87272FF48D00C15202 /* ResultViewController.swift in Sources */,
 				3532C899272AACFE00745F73 /* QuestionNameViewController.swift in Sources */,
 				131F76C72727E61300A7AB41 /* AppDelegate.swift in Sources */,
