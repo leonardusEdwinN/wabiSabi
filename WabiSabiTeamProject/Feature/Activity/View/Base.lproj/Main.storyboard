@@ -2,12 +2,18 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YAU-Tf-tyc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Dashboard-->
         <scene sceneID="MWr-wR-PBK">
@@ -27,22 +33,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efc-G6-zKC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1565" y="-518"/>
-        </scene>
-        <!--Summary-->
-        <scene sceneID="reR-2r-15s">
-            <objects>
-                <viewController id="1hV-36-e53" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2FQ-Cf-TCi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="tLW-lQ-tIB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Summary" image="newspaper" catalog="system" selectedImage="newspaper" id="mNV-JM-MTS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HkQ-cU-vDR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1565" y="991"/>
         </scene>
         <!--Explore-->
         <scene sceneID="XEB-fW-vbs">
@@ -74,7 +64,7 @@
                     <connections>
                         <segue destination="orE-BM-W85" kind="relationship" relationship="viewControllers" id="s8R-of-bzj"/>
                         <segue destination="ZWC-rh-G1l" kind="relationship" relationship="viewControllers" id="0rh-2C-g37"/>
-                        <segue destination="1hV-36-e53" kind="relationship" relationship="viewControllers" id="Kyz-2T-hTC"/>
+                        <segue destination="R4r-OD-10x" kind="relationship" relationship="viewControllers" id="HoH-ch-BBC"/>
                         <segue destination="utm-Zl-MCe" kind="relationship" relationship="viewControllers" id="eea-gx-cBT"/>
                     </connections>
                 </tabBarController>
@@ -359,9 +349,82 @@
             </objects>
             <point key="canvasLocation" x="-3539" y="-518"/>
         </scene>
+        <!--Summary-->
+        <scene sceneID="bHm-WN-Cbz">
+            <objects>
+                <viewController storyboardIdentifier="SummaryViewController" id="R4r-OD-10x" customClass="SummaryViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0FY-7o-Nn5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWE-6P-4SW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-lI-OKs">
+                                        <rect key="frame" x="15" y="100" width="146" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="pcV-Un-dd2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="34"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEa-s4-cp2">
+                                        <rect key="frame" x="375" y="15" width="24" height="14"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.27058823529999998" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="TEa-s4-cp2" secondAttribute="trailing" constant="15" id="3u2-NY-FOH"/>
+                                    <constraint firstItem="MQu-lI-OKs" firstAttribute="top" secondItem="LWE-6P-4SW" secondAttribute="top" constant="100" id="8q7-Hm-l0j"/>
+                                    <constraint firstItem="MQu-lI-OKs" firstAttribute="leading" secondItem="LWE-6P-4SW" secondAttribute="leading" constant="15" id="Du7-fM-NGr"/>
+                                    <constraint firstItem="TEa-s4-cp2" firstAttribute="top" secondItem="LWE-6P-4SW" secondAttribute="top" constant="15" id="rPV-QO-CmQ"/>
+                                    <constraint firstAttribute="height" constant="250" id="si3-4d-xN9"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="G6T-HH-Fmv">
+                                <rect key="frame" x="0.0" y="170" width="414" height="643"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="O5B-49-pMM"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="O5B-49-pMM" firstAttribute="trailing" secondItem="G6T-HH-Fmv" secondAttribute="trailing" id="4sM-J2-WO4"/>
+                            <constraint firstItem="G6T-HH-Fmv" firstAttribute="leading" secondItem="O5B-49-pMM" secondAttribute="leading" id="D5u-Fh-eov"/>
+                            <constraint firstItem="LWE-6P-4SW" firstAttribute="leading" secondItem="O5B-49-pMM" secondAttribute="leading" id="LAo-ix-MDo"/>
+                            <constraint firstItem="O5B-49-pMM" firstAttribute="bottom" secondItem="G6T-HH-Fmv" secondAttribute="bottom" id="N9S-2y-YFZ"/>
+                            <constraint firstItem="G6T-HH-Fmv" firstAttribute="top" secondItem="0FY-7o-Nn5" secondAttribute="top" constant="170" id="fJS-6d-9Xa"/>
+                            <constraint firstItem="O5B-49-pMM" firstAttribute="trailing" secondItem="LWE-6P-4SW" secondAttribute="trailing" id="o6v-2j-Sm6"/>
+                            <constraint firstItem="LWE-6P-4SW" firstAttribute="top" secondItem="0FY-7o-Nn5" secondAttribute="top" id="yiy-4I-i9J"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Summary" image="newspaper" catalog="system" selectedImage="newspaper" id="m3Q-Qx-Bk8"/>
+                    <navigationItem key="navigationItem" title="Summary" id="Y5P-W3-EPw">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Kn7-xO-hM8">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="XS8-dI-Xwp">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="folder" catalog="system" title="Filter"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="summaryTableView" destination="G6T-HH-Fmv" id="va9-NC-dZi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nPw-Ne-gln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1565" y="948"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="folder" catalog="system" width="128" height="97"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="moon.stars" catalog="system" width="124" height="128"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>

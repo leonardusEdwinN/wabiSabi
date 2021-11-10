@@ -126,7 +126,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let cell = skinCareRoutineCollectionView.dequeueReusableCell(withReuseIdentifier: "skincareroutinecell", for: indexPath) as! SkinCareRoutineCollectionViewCell
         
-        var data = skinTypeRoutineProduct[indexPath.row]
+        let data = skinTypeRoutineProduct[indexPath.row]
         cell.skinCareRoutineIconLabel.text = data.icon
         cell.skinCareRoutineNameLabel.text = data.name
         cell.skinCareRoutineProductLabel.text = "\(data.skinType[skinTypeIndex].products.count) products"
