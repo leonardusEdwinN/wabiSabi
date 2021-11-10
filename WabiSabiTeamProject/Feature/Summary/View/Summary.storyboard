@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ys1-54-UiQ">
-                                        <rect key="frame" x="15" y="100" width="150" height="40"/>
+                                        <rect key="frame" x="15" y="100" width="146" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Yxw-oA-b3E"/>
                                         </constraints>
@@ -40,7 +41,7 @@
                                         <buttonConfiguration key="configuration" style="plain" title=""/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.37647058823529411" green="0.27058823529411763" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="ColorPrimary"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="4HI-TW-nvM"/>
                                     <constraint firstItem="Ys1-54-UiQ" firstAttribute="leading" secondItem="Nlc-Ba-dnY" secondAttribute="leading" constant="15" id="ALd-id-6Sz"/>
@@ -87,5 +88,8 @@
     </scenes>
     <resources>
         <image name="folder" catalog="system" width="128" height="97"/>
+        <namedColor name="ColorPrimary">
+            <color red="0.37599998712539673" green="0.27099999785423279" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
