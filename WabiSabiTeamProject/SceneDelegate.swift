@@ -17,19 +17,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
+        
+        guard let _ = (scene as? UIWindowScene) else { return }
+           
         if UserDefaults.standard.bool(forKey: "isCompleteOnBoarding") == true {
+            
+            
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            self.window?.rootViewController = storyBoard.instantiateInitialViewController()
+            self.window?.rootViewController = storyBoard.instantiateViewController(identifier:"MainTabBarController")
             window?.makeKeyAndVisible()
-            guard let _ = (scene as? UIWindowScene) else { return }
+//            guard let _ = (scene as? UIWindowScene) else { return }
         }
         else {
             let storyBoard = UIStoryboard(name: "OnBoarding", bundle: nil)
             self.window?.rootViewController = storyBoard.instantiateInitialViewController()
             window?.makeKeyAndVisible()
             
-            guard let _ = (scene as? UIWindowScene) else { return }
+//            guard let _ = (scene as? UIWindowScene) else { return }
         }
+    }
+    
+    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard let window = self.window else {
+            return
+        }
+        
+        // change the root view controller to your specific view controller
+        window.rootViewController = vc
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

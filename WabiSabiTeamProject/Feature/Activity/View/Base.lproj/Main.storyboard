@@ -55,7 +55,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="qu8-fW-XzQ">
             <objects>
-                <tabBarController id="YAU-Tf-tyc" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" id="YAU-Tf-tyc" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Uo-rT-qWD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

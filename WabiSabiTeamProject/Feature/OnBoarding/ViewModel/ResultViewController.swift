@@ -111,7 +111,7 @@ class ResultViewController: UIViewController {
     }
     @IBAction func getStarted(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Dashboard") as! ActivityViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
