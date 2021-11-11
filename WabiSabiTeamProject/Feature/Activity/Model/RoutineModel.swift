@@ -14,7 +14,7 @@ struct Routine{
     let productAmount: Int
 }
 
-let routines: [Routine] = [
+var routines: [Routine] = [
     Routine(image: UIImage(systemName: "sun.max.fill")!, name: "Morning Skin Care Routine", productAmount: 5),
     Routine(image: UIImage(systemName: "moon.stars.fill")!, name: "Night Skin Care Routine", productAmount: 5)
 ]

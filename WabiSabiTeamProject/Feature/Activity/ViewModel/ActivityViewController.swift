@@ -8,17 +8,14 @@
 import UIKit
 
 class ActivityViewController: UIViewController {
-    
-    @IBOutlet weak var routineCollectionView: UICollectionView!
+    @IBOutlet weak var routineTableView: UITableView!
     @IBOutlet weak var circularProgress: CircularProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
         setUpcircularProgress()
-        routineCollectionView.dataSource = self
-        routineCollectionView.delegate = self
-        routineCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        setUpTableView()
     }
     
     private func configureNavigationBar() {
@@ -33,29 +30,55 @@ class ActivityViewController: UIViewController {
         circularProgress.trackColor = UIColor.systemGray4
         circularProgress.percentageValue = 0.8
     }
+    
+    private func setUpTableView() {
+        routineTableView.dataSource = self
+        routineTableView.delegate = self
+        let nib = UINib(nibName: "RoutinesTableViewCell", bundle: nil)
+        routineTableView.register(nib, forCellReuseIdentifier: "RoutinesTableViewCell")
+    }
 }
 
-extension ActivityViewController: UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return routines.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RoutineCollectionViewCell", for: indexPath) as! RoutineCollectionViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesTableViewCell", for: indexPath) as! RoutinesTableViewCell
         cell.setup(with: routines[indexPath.row])
-        
         return cell
     }
-}
-
-extension ActivityViewController: UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 88)
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 78
     }
-}
-
-extension ActivityViewController: UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(routines[indexPath.row])
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let closeAction = UIContextualAction(style: .normal, title:  "Finish", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("Finish")
+            success(true)
+        })
+        closeAction.image = UIImage(named: "tick")
+        closeAction.backgroundColor = .systemGreen
+        
+        return UISwipeActionsConfiguration(actions: [closeAction])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let modifyAction = UIContextualAction(style: .normal, title:  "Skip", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            tableView.beginUpdates()
+            routines.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            tableView.endUpdates()
+            print("SKIP")
+            success(true)
+        })
+        modifyAction.backgroundColor = .red
+        
+        return UISwipeActionsConfiguration(actions: [modifyAction])
     }
 }
