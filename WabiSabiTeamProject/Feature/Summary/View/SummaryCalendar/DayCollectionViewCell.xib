@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarDayCollectionViewCell" id="gTV-IL-0wX" customClass="DayCollectionViewCell" customModule="WabiSabiTeamProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="dyM-u9-sbe" customClass="CircularProgressBarCalendar" customModule="WabiSabiTeamProject" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="100" height="100"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNq-AG-Yyy">
+                        <rect key="frame" x="44" y="43" width="22.5" height="24"/>
+                        <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="dyM-u9-sbe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Png-Ma-7rp"/>
+                <constraint firstItem="dyM-u9-sbe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="f8j-Oz-muW"/>
+                <constraint firstAttribute="bottom" secondItem="dyM-u9-sbe" secondAttribute="bottom" constant="5" id="o6Z-fa-Tpr"/>
+                <constraint firstItem="iNq-AG-Yyy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="oY5-Cc-j5j"/>
+                <constraint firstItem="iNq-AG-Yyy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="osa-jS-9WF"/>
+                <constraint firstAttribute="trailing" secondItem="dyM-u9-sbe" secondAttribute="trailing" constant="5" id="sTl-cU-FKb"/>
+            </constraints>
+            <size key="customSize" width="142" height="136"/>
+            <connections>
+                <outlet property="circularProgressView" destination="dyM-u9-sbe" id="18t-Gj-Xle"/>
+                <outlet property="labelDate" destination="iNq-AG-Yyy" id="fLR-eI-mXg"/>
+            </connections>
+            <point key="canvasLocation" x="44.20289855072464" y="-1.6741071428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
