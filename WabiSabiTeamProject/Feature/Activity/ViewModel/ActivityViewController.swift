@@ -10,18 +10,46 @@ import UIKit
 class ActivityViewController: UIViewController {
     @IBOutlet weak var routineTableView: UITableView!
     @IBOutlet weak var circularProgress: CircularProgressView!
+    @IBOutlet weak var todoButton: UIButton!
+    @IBOutlet weak var skippedButton: UIButton!
+    @IBOutlet weak var completedButton: UIButton!
+    @IBOutlet weak var backgoundWhite: UIView!
+    @IBOutlet weak var backgroundPurple: UIView!
+    @IBOutlet weak var circularProgressBackground: UIView!
+    var selectedDate: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
         setUpcircularProgress()
         setUpTableView()
+        configureButton()
+        configureBackground()
+    }
+    
+    private func configureBackground() {
+        backgoundWhite.layer.cornerRadius = 40
+        backgoundWhite.layer.masksToBounds = true
+    }
+    
+    private func configureButton() {
+        todoButton.titleLabel?.numberOfLines = 1
+        todoButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        todoButton.titleLabel?.lineBreakMode = .byClipping
+        
+        completedButton.titleLabel?.numberOfLines = 1
+        completedButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        completedButton.titleLabel?.lineBreakMode = .byClipping
+        
+        skippedButton.titleLabel?.numberOfLines = 1
+        skippedButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        skippedButton.titleLabel?.lineBreakMode = .byClipping
     }
     
     private func configureNavigationBar() {
         title = "Today"
-        let menuButton = UIBarButtonItem(image: UIImage(named: "Calender"), style: .plain, target: self, action: nil)
-        menuButton.tintColor = UIColor.systemIndigo
+        let menuButton = UIBarButtonItem(image: UIImage(named: "Calender"), style: .plain, target: self, action: #selector(tapMenuButton))
+        menuButton.tintColor = UIColor.white
         navigationItem.rightBarButtonItems = [menuButton]
     }
     
@@ -29,6 +57,9 @@ class ActivityViewController: UIViewController {
         circularProgress.progressColor = UIColor.systemIndigo
         circularProgress.trackColor = UIColor.systemGray4
         circularProgress.percentageValue = 0.8
+        
+        circularProgressBackground.layer.cornerRadius = 40
+        circularProgressBackground.layer.masksToBounds = true
     }
     
     private func setUpTableView() {
@@ -36,6 +67,49 @@ class ActivityViewController: UIViewController {
         routineTableView.delegate = self
         let nib = UINib(nibName: "RoutinesTableViewCell", bundle: nil)
         routineTableView.register(nib, forCellReuseIdentifier: "RoutinesTableViewCell")
+    }
+    
+    private lazy var datePicker : UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.autoresizingMask = .flexibleWidth
+        if #available(iOS 13, *) {
+            datePicker.backgroundColor = .label
+        } else {
+            datePicker.backgroundColor = .white
+        }
+        datePicker.datePickerMode = .date
+        return datePicker
+    }()
+    
+    @objc func tapMenuButton() {
+        datePicker.datePickerMode = UIDatePicker.Mode.date
+        if #available(iOS 14.0, *) {
+            datePicker.preferredDatePickerStyle = .inline
+        }
+        datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+        
+        datePicker.backgroundColor = .secondarySystemBackground
+        self.view.addSubview(datePicker)
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        datePicker.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        datePicker.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+    }
+    
+    @objc func onDoneButtonClick() {
+        datePicker.removeFromSuperview()
+    }
+    
+    @objc func dateChanged(_ sender: UIDatePicker?) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        
+        if let date = sender?.date {
+            self.selectedDate = dateFormatter.string(from: date)
+            datePicker.removeFromSuperview()
+        }
     }
 }
 
