@@ -357,6 +357,16 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxb-dy-j0k">
+                                        <rect key="frame" x="322" y="44" width="67" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="dummyButtonPressed:" destination="R4r-OD-10x" eventType="touchUpInside" id="VX8-BC-9I6"/>
+                                            <segue destination="imZ-kz-38U" kind="presentation" identifier="moveToAddRoutinePage" modalPresentationStyle="fullScreen" id="c63-OV-nKk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="ColorPrimary"/>
                                 <constraints>
@@ -394,12 +404,23 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dummyButton" destination="gxb-dy-j0k" id="nDV-lz-NWN"/>
                         <outlet property="summaryTableView" destination="G6T-HH-Fmv" id="va9-NC-dZi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPw-Ne-gln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1565" y="948"/>
+        </scene>
+        <!--addRoutineVC-->
+        <scene sceneID="orR-cW-hGx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddRoutine" referencedIdentifier="addRoutineVC" id="imZ-kz-38U" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="foJ-bA-rEi"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5wp-vZ-qYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-917" y="654"/>
         </scene>
         <!--Profile-->
         <scene sceneID="6UQ-Qx-TS2">
