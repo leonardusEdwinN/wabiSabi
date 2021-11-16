@@ -21,6 +21,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QT3-cH-sge">
                         <rect key="frame" x="16" y="5" width="313" height="68"/>
                         <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7IL-H8-hR8">
+                                <rect key="frame" x="7" y="63" width="299" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="fC7-aG-YTe"/>
+                                </constraints>
+                            </progressView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZnR-hu-jkq">
                                 <rect key="frame" x="12" y="15" width="28" height="37.5"/>
                                 <color key="tintColor" name="ColorPrimary"/>
@@ -87,7 +93,10 @@
                             <constraint firstItem="fE9-BI-LEH" firstAttribute="leading" secondItem="ZnR-hu-jkq" secondAttribute="trailing" constant="8" symbolic="YES" id="ApM-Cv-7eA"/>
                             <constraint firstItem="5nh-vL-UmX" firstAttribute="leading" secondItem="fE9-BI-LEH" secondAttribute="trailing" constant="12" id="D0X-pF-gtN"/>
                             <constraint firstAttribute="trailing" secondItem="5nh-vL-UmX" secondAttribute="trailing" constant="10" id="F2A-pd-rqh"/>
+                            <constraint firstItem="7IL-H8-hR8" firstAttribute="leading" secondItem="QT3-cH-sge" secondAttribute="leading" constant="7" id="JhK-zo-sCa"/>
+                            <constraint firstAttribute="bottom" secondItem="7IL-H8-hR8" secondAttribute="bottom" id="ZVe-22-UDQ"/>
                             <constraint firstItem="fE9-BI-LEH" firstAttribute="centerY" secondItem="QT3-cH-sge" secondAttribute="centerY" id="kWv-vy-o57"/>
+                            <constraint firstAttribute="trailing" secondItem="7IL-H8-hR8" secondAttribute="trailing" constant="7" id="kns-tw-uSh"/>
                             <constraint firstItem="ZnR-hu-jkq" firstAttribute="leading" secondItem="QT3-cH-sge" secondAttribute="leading" constant="12" id="liP-dM-Z3L"/>
                             <constraint firstItem="ZnR-hu-jkq" firstAttribute="centerY" secondItem="QT3-cH-sge" secondAttribute="centerY" id="pe2-Sw-iJk"/>
                         </constraints>
@@ -102,10 +111,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="progressView" destination="7IL-H8-hR8" id="o9n-zE-e9p"/>
                 <outlet property="routineContentView" destination="QT3-cH-sge" id="Wcr-eU-WIx"/>
                 <outlet property="routineImage" destination="ZnR-hu-jkq" id="2sa-j5-Sev"/>
                 <outlet property="routineName" destination="mCW-SJ-wcL" id="48L-7F-7I4"/>
-                <outlet property="routineProductAmount" destination="Owm-C3-DyU" id="ek0-r4-9aM"/>
+                <outlet property="routineProduct" destination="Owm-C3-DyU" id="ek0-r4-9aM"/>
             </connections>
             <point key="canvasLocation" x="155.79710144927537" y="120.53571428571428"/>
         </tableViewCell>

@@ -11,7 +11,8 @@ class RoutinesTableViewCell: UITableViewCell {
     @IBOutlet weak var routineImage: UIImageView!
     @IBOutlet weak var routineName: UILabel!
     @IBOutlet weak var routineContentView: UIView!
-    @IBOutlet weak var routineProductAmount: UILabel!
+    @IBOutlet weak var routineProduct: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,9 +26,12 @@ class RoutinesTableViewCell: UITableViewCell {
     }
     
     func setup(with routine: Routine) {
+        let routineProductAmount : Float = 5
+        let routineProgress : Float = 2
+        
         routineImage.image = routine.image
         routineName.text = routine.name
-        routineProductAmount.text = "0/\(routine.productAmount)"
+        routineProduct.text = "\(Int(routineProgress)) / \(Int(routineProductAmount))"
 
         routineContentView.backgroundColor = UIColor.white
         routineContentView.layer.cornerRadius = 15.0
@@ -36,6 +40,8 @@ class RoutinesTableViewCell: UITableViewCell {
         routineContentView.layer.shadowRadius = 1
         routineContentView.layer.shadowOpacity = 5
         routineContentView.layer.masksToBounds = false
+        
+        progressView.progress = routineProgress / routineProductAmount
     }
     
 }
