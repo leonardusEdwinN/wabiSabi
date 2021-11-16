@@ -33,6 +33,19 @@ class ResultViewController: UIViewController {
         calculateLevel()
         
         checkProduct()
+        
+        let birthdate = UserDefaults.standard.object(forKey: "birthdate") as! Date
+        let df = DateFormatter()
+        df.dateFormat = "dd/MM/yyyy HH:mm"
+        
+        PersistanceManager.shared.setUser(
+            dateOfBirth: birthdate,
+            gender: Utilities().genders[UserDefaults.standard.integer(forKey: "gender")],
+            isNotify: false,
+            level: Utilities().levels[levelIndex].level,
+            localization: "en",
+            name: UserDefaults.standard.string(forKey: "name") ?? "",
+            skinType: Utilities().skinTypeRoutineProduct[0].skinType[skinTypeIndex].name)
     }
     
     func calculateLevel() {

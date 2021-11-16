@@ -12,7 +12,7 @@ class QuestionGenderViewController: UIViewController {
     @IBOutlet weak var genderTableView: UITableView!
     @IBOutlet weak var buttonNext: UIButton!
     
-    var genders: [String] = ["Female", "Male", "Non-Binary", "Prefer not to disclose"]
+    
     
     var indexSelected: Int = 0;
     
@@ -32,14 +32,14 @@ class QuestionGenderViewController: UIViewController {
 
 extension QuestionGenderViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return genders.count
+        return Utilities().genders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = genderTableView.dequeueReusableCell(withIdentifier: "gendercell") as! OptionTableViewCell
         
-        cell.optionTitle.text = genders[indexPath.row]
+        cell.optionTitle.text = Utilities().genders[indexPath.row]
         
         return cell
     }

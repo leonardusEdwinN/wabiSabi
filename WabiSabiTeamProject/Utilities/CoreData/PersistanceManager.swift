@@ -1,5 +1,5 @@
 //
-//  PersistentManager.swift
+//  PersistanceManager.swift
 //  WabiSabiTeamProject
 //
 //  Created by Giovanni Tjahyamulia on 12/11/21.
@@ -13,16 +13,25 @@ class PersistanceManager {
     
     lazy var persistentContainer: NSPersistentContainer = {
         
-        let container = NSPersistentContainer(name: "WabiSabiTeamProject")
+        let container = NSPersistentCloudKitContainer(name: "WabiSabiTeamProject")
+        let description = container.persistentStoreDescriptions.first
+         
+         // Load both stores
+        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.id.infinitelearning.wabisabi")
+
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        
         return container
-        
     }()
+    
+    var context: NSManagedObjectContext {
+        let context = PersistanceManager.shared.persistentContainer.viewContext
+        context.automaticallyMergesChangesFromParent = true
+        return context
+    }
     
     func setLocation(lang: String, long: String, name: String) {
         let location = Location(context: persistentContainer.viewContext)

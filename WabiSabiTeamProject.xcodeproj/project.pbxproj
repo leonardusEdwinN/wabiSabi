@@ -47,6 +47,7 @@
 		13AD9DA72739083F0083AE29 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD9DA62739083F0083AE29 /* Extension.swift */; };
 		13E1D91A2733EFB500FF90A9 /* SummaryAwardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1D9182733EFB500FF90A9 /* SummaryAwardsTableViewCell.swift */; };
 		13E1D91B2733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E1D9192733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib */; };
+		3526FD9C273D1D0300C8F4DB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3526FD9B273D1D0300C8F4DB /* CloudKit.framework */; };
 		3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C888272A9F5900745F73 /* QuestionSkinTypeViewController.swift */; };
 		3532C88B272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C88A272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift */; };
 		3532C897272AACEB00745F73 /* QuestionExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C896272AACEB00745F73 /* QuestionExperienceViewController.swift */; };
@@ -54,10 +55,14 @@
 		3532C89B272AAD0C00745F73 /* QuestionGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C89A272AAD0C00745F73 /* QuestionGenderViewController.swift */; };
 		3532C89D272AAD1A00745F73 /* QuestionBirthDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C89C272AAD1A00745F73 /* QuestionBirthDateViewController.swift */; };
 		35495B6627294E1C006DEA4C /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35495B6527294E1C006DEA4C /* OnBoarding.storyboard */; };
+		3575BD292742184A00804502 /* SkinRoutineLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3575BD282742184A00804502 /* SkinRoutineLevel.swift */; };
+		3575BD312742213400804502 /* SkinRoutineProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3575BD302742213400804502 /* SkinRoutineProduct.swift */; };
+		3575BD392742686700804502 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3575BD382742686700804502 /* Utilities.swift */; };
 		35904E7C272FBDF200C15202 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E7B272FBDF200C15202 /* OptionTableViewCell.swift */; };
 		35904E85272FDA5100C15202 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E84272FDA5100C15202 /* LoadingViewController.swift */; };
 		35904E87272FF48D00C15202 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E86272FF48D00C15202 /* ResultViewController.swift */; };
 		35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E88272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift */; };
+		35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950D4F273E129000CBF2E1 /* PersistanceManager.swift */; };
 		35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */; };
 		35D9D8DD272FFF5A00C255F1 /* SkinTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */; };
 		35E47A092730C4C90033E5F4 /* SkinCareGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E47A082730C4C90033E5F4 /* SkinCareGuideViewController.swift */; };
@@ -113,6 +118,8 @@
 		13AD9DA62739083F0083AE29 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		13E1D9182733EFB500FF90A9 /* SummaryAwardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryAwardsTableViewCell.swift; sourceTree = "<group>"; };
 		13E1D9192733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryAwardsTableViewCell.xib; sourceTree = "<group>"; };
+		3526FD99273D1CF100C8F4DB /* WabiSabiTeamProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WabiSabiTeamProject.entitlements; sourceTree = "<group>"; };
+		3526FD9B273D1D0300C8F4DB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3532C888272A9F5900745F73 /* QuestionSkinTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSkinTypeViewController.swift; sourceTree = "<group>"; };
 		3532C88A272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSkinCareRoutineViewController.swift; sourceTree = "<group>"; };
 		3532C896272AACEB00745F73 /* QuestionExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionExperienceViewController.swift; sourceTree = "<group>"; };
@@ -120,10 +127,14 @@
 		3532C89A272AAD0C00745F73 /* QuestionGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGenderViewController.swift; sourceTree = "<group>"; };
 		3532C89C272AAD1A00745F73 /* QuestionBirthDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBirthDateViewController.swift; sourceTree = "<group>"; };
 		35495B6527294E1C006DEA4C /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
+		3575BD282742184A00804502 /* SkinRoutineLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkinRoutineLevel.swift; path = WabiSabiTeamProject/Utilities/CoreData/SkinRoutineLevel.swift; sourceTree = SOURCE_ROOT; };
+		3575BD302742213400804502 /* SkinRoutineProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkinRoutineProduct.swift; path = WabiSabiTeamProject/Utilities/CoreData/SkinRoutineProduct.swift; sourceTree = SOURCE_ROOT; };
+		3575BD382742686700804502 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = WabiSabiTeamProject/Utilities/CoreData/Utilities.swift; sourceTree = SOURCE_ROOT; };
 		35904E7B272FBDF200C15202 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		35904E84272FDA5100C15202 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		35904E86272FF48D00C15202 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		35904E88272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		35950D4F273E129000CBF2E1 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareGuideTableViewCell.swift; sourceTree = "<group>"; };
 		35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTypeViewController.swift; sourceTree = "<group>"; };
 		35E47A082730C4C90033E5F4 /* SkinCareGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareGuideViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3526FD9C273D1D0300C8F4DB /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +164,7 @@
 			children = (
 				131F76C52727E61300A7AB41 /* WabiSabiTeamProject */,
 				131F76C42727E61300A7AB41 /* Products */,
+				3526FD9A273D1D0300C8F4DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +179,7 @@
 		131F76C52727E61300A7AB41 /* WabiSabiTeamProject */ = {
 			isa = PBXGroup;
 			children = (
+				3526FD99273D1CF100C8F4DB /* WabiSabiTeamProject.entitlements */,
 				13ECEF89272943EA006B5BFE /* Utilities */,
 				13ECEF8127294361006B5BFE /* Feature */,
 				131F76C62727E61300A7AB41 /* AppDelegate.swift */,
@@ -255,6 +269,9 @@
 				139A3011273B78EE00104A92 /* SkinCareProduct.swift */,
 				139A3013273B78EE00104A92 /* SkinTypeProduct.swift */,
 				139A3012273B78EE00104A92 /* SkinTypeRoutine.swift */,
+				3575BD282742184A00804502 /* SkinRoutineLevel.swift */,
+				3575BD302742213400804502 /* SkinRoutineProduct.swift */,
+				3575BD382742686700804502 /* Utilities.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				131F76CF2727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld */,
+				35950D4F273E129000CBF2E1 /* PersistanceManager.swift */,
 				13ECEF8C2729440B006B5BFE /* Model */,
 			);
 			path = CoreData;
@@ -408,6 +426,14 @@
 				97177DD72738CB8A007FF0E9 /* RoutineCollectionViewCell.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3526FD9A273D1D0300C8F4DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3526FD9B273D1D0300C8F4DB /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		35495B6327294DF7006DEA4C /* View */ = {
@@ -548,12 +574,14 @@
 			files = (
 				137962ED2733D999008D1BCF /* SummaryCalendarTableViewCell.swift in Sources */,
 				134394F5273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift in Sources */,
+				3575BD392742686700804502 /* Utilities.swift in Sources */,
 				13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */,
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
 				970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */,
 				139A3015273B78EE00104A92 /* SkinTypeRoutine.swift in Sources */,
 				97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */,
+				3575BD292742184A00804502 /* SkinRoutineLevel.swift in Sources */,
 				979889C9273282A20052B862 /* CircularProgressView.swift in Sources */,
 				970E4163272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift in Sources */,
 				97177DD82738CB8A007FF0E9 /* RoutineCollectionViewCell.swift in Sources */,
@@ -572,6 +600,7 @@
 				13AD9DA4273908080083AE29 /* CircularProgressBarCalendar.swift in Sources */,
 				13E1D91A2733EFB500FF90A9 /* SummaryAwardsTableViewCell.swift in Sources */,
 				137962E82733D4B3008D1BCF /* SummaryActivityTableViewCell.swift in Sources */,
+				3575BD312742213400804502 /* SkinRoutineProduct.swift in Sources */,
 				131F76C92727E61300A7AB41 /* SceneDelegate.swift in Sources */,
 				3532C89D272AAD1A00745F73 /* QuestionBirthDateViewController.swift in Sources */,
 				35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */,
@@ -584,6 +613,7 @@
 				3532C88B272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift in Sources */,
 				35E47A092730C4C90033E5F4 /* SkinCareGuideViewController.swift in Sources */,
 				35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */,
+				35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */,
 				3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */,
 				137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */,
 			);
@@ -732,6 +762,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WabiSabiTeamProject/WabiSabiTeamProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TK9Q85JSJZ;
@@ -747,7 +778,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.WabiSabiTeamProject;
+				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -760,6 +791,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WabiSabiTeamProject/WabiSabiTeamProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TK9Q85JSJZ;
@@ -775,7 +807,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.WabiSabiTeamProject;
+				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

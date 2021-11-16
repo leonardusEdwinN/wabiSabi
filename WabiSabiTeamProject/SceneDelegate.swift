@@ -26,14 +26,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             self.window?.rootViewController = storyBoard.instantiateViewController(identifier:"MainTabBarController")
             window?.makeKeyAndVisible()
-//            guard let _ = (scene as? UIWindowScene) else { return }
+            // guard let _ = (scene as? UIWindowScene) else { return }
         }
         else {
             let storyBoard = UIStoryboard(name: "OnBoarding", bundle: nil)
             self.window?.rootViewController = storyBoard.instantiateInitialViewController()
             window?.makeKeyAndVisible()
             
-//            guard let _ = (scene as? UIWindowScene) else { return }
+            // guard let _ = (scene as? UIWindowScene) else { return }
         }
     }
     

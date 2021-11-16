@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the container options on the cloud store
         cloudStoreDescription.cloudKitContainerOptions =
             NSPersistentCloudKitContainerOptions(
-                containerIdentifier: "com.my.container")
+                containerIdentifier: "iCloud.id.infinitelearning.wabisabi")
         
         // Update the container's list of store descriptions
         container.persistentStoreDescriptions = [
@@ -65,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return container
+        
     }()
 
     // MARK: - Core Data Saving support
@@ -83,4 +84,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-
