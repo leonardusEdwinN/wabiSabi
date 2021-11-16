@@ -55,7 +55,6 @@
 		35495B6627294E1C006DEA4C /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35495B6527294E1C006DEA4C /* OnBoarding.storyboard */; };
 		35904E7C272FBDF200C15202 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E7B272FBDF200C15202 /* OptionTableViewCell.swift */; };
 		35904E85272FDA5100C15202 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E84272FDA5100C15202 /* LoadingViewController.swift */; };
-		35904E87272FF48D00C15202 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E86272FF48D00C15202 /* ResultViewController.swift */; };
 		35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E88272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift */; };
 		35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */; };
 		35D9D8DD272FFF5A00C255F1 /* SkinTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */; };
@@ -67,6 +66,10 @@
 		97177DDA2738D5E3007FF0E9 /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97177DD92738D5E3007FF0E9 /* RoutineModel.swift */; };
 		97177DE9273D0557007FF0E9 /* RoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97177DE7273D0557007FF0E9 /* RoutinesTableViewCell.swift */; };
 		97177DEA273D0557007FF0E9 /* RoutinesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97177DE8273D0557007FF0E9 /* RoutinesTableViewCell.xib */; };
+		973711B92743C5BE00F61D30 /* SkinRoutineLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973711B82743C5BE00F61D30 /* SkinRoutineLevel.swift */; };
+		973711BB2743C5C500F61D30 /* SkinRoutineProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973711BA2743C5C500F61D30 /* SkinRoutineProduct.swift */; };
+		973711BD2743C5CB00F61D30 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973711BC2743C5CB00F61D30 /* Utilities.swift */; };
+		973711BF2743C61A00F61D30 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973711BE2743C61A00F61D30 /* ResultViewController.swift */; };
 		979889C9273282A20052B862 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979889C8273282A20052B862 /* CircularProgressView.swift */; };
 		97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FB8A35273531B200F7A341 /* ActivityViewController.swift */; };
 /* End PBXBuildFile section */
@@ -123,7 +126,6 @@
 		35495B6527294E1C006DEA4C /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		35904E7B272FBDF200C15202 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		35904E84272FDA5100C15202 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		35904E86272FF48D00C15202 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		35904E88272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareGuideTableViewCell.swift; sourceTree = "<group>"; };
 		35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTypeViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,10 @@
 		97177DD92738D5E3007FF0E9 /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
 		97177DE7273D0557007FF0E9 /* RoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewCell.swift; sourceTree = "<group>"; };
 		97177DE8273D0557007FF0E9 /* RoutinesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutinesTableViewCell.xib; sourceTree = "<group>"; };
+		973711B82743C5BE00F61D30 /* SkinRoutineLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinRoutineLevel.swift; sourceTree = "<group>"; };
+		973711BA2743C5C500F61D30 /* SkinRoutineProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinRoutineProduct.swift; sourceTree = "<group>"; };
+		973711BC2743C5CB00F61D30 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		973711BE2743C61A00F61D30 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultViewController.swift; path = ../../../../../../Downloads/ResultViewController.swift; sourceTree = "<group>"; };
 		979889C8273282A20052B862 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		97FB8A35273531B200F7A341 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +261,9 @@
 		139A3010273B78E500104A92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				973711BC2743C5CB00F61D30 /* Utilities.swift */,
+				973711BA2743C5C500F61D30 /* SkinRoutineProduct.swift */,
+				973711B82743C5BE00F61D30 /* SkinRoutineLevel.swift */,
 				139A3011273B78EE00104A92 /* SkinCareProduct.swift */,
 				139A3013273B78EE00104A92 /* SkinTypeProduct.swift */,
 				139A3012273B78EE00104A92 /* SkinTypeRoutine.swift */,
@@ -426,6 +435,7 @@
 		35495B6427294E03006DEA4C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				973711BE2743C61A00F61D30 /* ResultViewController.swift */,
 				139A6308273B84CB008D54A8 /* CircularProgressBar.swift */,
 				35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */,
 				3532C888272A9F5900745F73 /* QuestionSkinTypeViewController.swift */,
@@ -436,7 +446,6 @@
 				3532C89C272AAD1A00745F73 /* QuestionBirthDateViewController.swift */,
 				35904E7B272FBDF200C15202 /* OptionTableViewCell.swift */,
 				35904E84272FDA5100C15202 /* LoadingViewController.swift */,
-				35904E86272FF48D00C15202 /* ResultViewController.swift */,
 				35904E88272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift */,
 				35E47A082730C4C90033E5F4 /* SkinCareGuideViewController.swift */,
 				35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */,
@@ -567,7 +576,7 @@
 				35904E85272FDA5100C15202 /* LoadingViewController.swift in Sources */,
 				139A3014273B78EE00104A92 /* SkinCareProduct.swift in Sources */,
 				139A3016273B78EE00104A92 /* SkinTypeProduct.swift in Sources */,
-				35904E87272FF48D00C15202 /* ResultViewController.swift in Sources */,
+				973711B92743C5BE00F61D30 /* SkinRoutineLevel.swift in Sources */,
 				3532C899272AACFE00745F73 /* QuestionNameViewController.swift in Sources */,
 				134394F1273A557A00641983 /* SummaryAwardsCollectionViewCell.swift in Sources */,
 				13AD9DA72739083F0083AE29 /* Extension.swift in Sources */,
@@ -585,6 +594,7 @@
 				139A630E273BC15D008D54A8 /* ProfileViewController.swift in Sources */,
 				3532C897272AACEB00745F73 /* QuestionExperienceViewController.swift in Sources */,
 				3532C89B272AAD0C00745F73 /* QuestionGenderViewController.swift in Sources */,
+				973711BD2743C5CB00F61D30 /* Utilities.swift in Sources */,
 				35904E7C272FBDF200C15202 /* OptionTableViewCell.swift in Sources */,
 				35D9D8DD272FFF5A00C255F1 /* SkinTypeViewController.swift in Sources */,
 				3532C88B272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift in Sources */,
@@ -592,6 +602,8 @@
 				35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */,
 				3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */,
 				137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */,
+				973711BB2743C5C500F61D30 /* SkinRoutineProduct.swift in Sources */,
+				973711BF2743C61A00F61D30 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
