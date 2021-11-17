@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct SkinTypeRoutine {
+struct skinTypeRoutine {
     var icon: String, name: String, skinType: [SkinTypeProduct];
 }
