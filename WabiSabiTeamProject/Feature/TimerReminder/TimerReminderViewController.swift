@@ -8,8 +8,37 @@
 import UIKit
 
 //timerTableViewCell
+struct TimerModel {
+    var timerName : String
+    var timerImage : String
+}
 
-class TimerReminderViewController: UIViewController {
+
+class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
+    func buttonSavePressed(time: String) {
+        print("WAKTU PROTOCOL : \(time)")
+        tableAlarmArray.append(TimerModel(timerName: time, timerImage: "alarm"))
+        
+        
+        self.dismiss(animated: false) {
+            DispatchQueue.main.async {
+                
+                
+                // MARK: checki data
+                if self.tableAlarmArray.count == 0 {
+                    self.timerReminderTableView.isHidden = true
+                    self.viewEmptyState.isHidden = false
+                }else{
+                    
+                    self.timerReminderTableView.isHidden = false
+                    self.viewEmptyState.isHidden = true
+                }
+                
+                self.timerReminderTableView.reloadData()
+            }
+        }
+    }
+    
     
     
     // MARK: Navigation
@@ -22,6 +51,11 @@ class TimerReminderViewController: UIViewController {
     }
     
     @IBAction func buttonAddPressed(_ sender: Any) {
+        let slideVC = OverlayView()
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        slideVC.delegate = self
+        self.present(slideVC, animated: true, completion: nil)
     }
     
     // MARK: TableView
@@ -30,7 +64,7 @@ class TimerReminderViewController: UIViewController {
     // MARK: EmptyState
     @IBOutlet weak var viewEmptyState: UIView!
     @IBOutlet weak var viewCircle: UIView!
-    var tableAlarmArray : [String] = []
+    var tableAlarmArray : [TimerModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,9 +104,21 @@ extension TimerReminderViewController : UITableViewDelegate, UITableViewDataSour
         
         let row = tableView.dequeueReusableCell(withIdentifier: "timerTableViewCell") as! TimerTableViewCell
         
+        
+        row.setUI(
+            title: tableAlarmArray[indexPath.item].timerName,
+            image: tableAlarmArray[indexPath.item].timerImage
+        )
+        
         return row
         
     }
     
     
+}
+
+extension TimerReminderViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting)
+    }
 }

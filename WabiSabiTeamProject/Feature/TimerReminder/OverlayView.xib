@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OverlayView" customModule="WabiSabiTeamProject" customModuleProvider="target">
+            <connections>
+                <outlet property="timePickerAlarm" destination="S6g-zs-4tF" id="Ze6-vu-uaM"/>
+                <outlet property="view" destination="iN0-l3-epB" id="opn-YC-DFv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="362"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9S-VP-hF8">
+                    <rect key="frame" x="0.0" y="59" width="414" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind Me At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-D5-Emo">
+                            <rect key="frame" x="154" y="14.5" width="106.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkH-Fb-bmP">
+                            <rect key="frame" x="343.5" y="9.5" width="55.5" height="31"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="-1" eventType="touchUpInside" id="EhR-Bx-Tc8"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15N-sG-g3v">
+                            <rect key="frame" x="15" y="9.5" width="60.5" height="31"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="-1" eventType="touchUpInside" id="uLE-95-lph"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="15N-sG-g3v" firstAttribute="centerY" secondItem="x9S-VP-hF8" secondAttribute="centerY" id="NQz-Aa-KsM"/>
+                        <constraint firstItem="EqD-D5-Emo" firstAttribute="centerY" secondItem="x9S-VP-hF8" secondAttribute="centerY" id="fDt-Nl-eXc"/>
+                        <constraint firstAttribute="height" constant="50" id="fhS-dV-N5v"/>
+                        <constraint firstItem="CkH-Fb-bmP" firstAttribute="centerY" secondItem="x9S-VP-hF8" secondAttribute="centerY" id="qeb-Fg-JbZ"/>
+                        <constraint firstAttribute="trailing" secondItem="CkH-Fb-bmP" secondAttribute="trailing" constant="15" id="tka-vH-lex"/>
+                        <constraint firstItem="15N-sG-g3v" firstAttribute="leading" secondItem="x9S-VP-hF8" secondAttribute="leading" constant="15" id="vYS-hW-QhB"/>
+                        <constraint firstItem="EqD-D5-Emo" firstAttribute="centerX" secondItem="x9S-VP-hF8" secondAttribute="centerX" id="wIW-6W-S4S"/>
+                    </constraints>
+                </view>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="S6g-zs-4tF">
+                    <rect key="frame" x="0.0" y="124" width="414" height="213"/>
+                </datePicker>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S6g-zs-4tF" secondAttribute="trailing" id="2Qr-s5-aRf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="x9S-VP-hF8" secondAttribute="trailing" id="CT8-eK-F7T"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="S6g-zs-4tF" secondAttribute="bottom" constant="25" id="Fpn-mO-8h4"/>
+                <constraint firstItem="x9S-VP-hF8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KUT-ED-j4O"/>
+                <constraint firstItem="S6g-zs-4tF" firstAttribute="top" secondItem="x9S-VP-hF8" secondAttribute="bottom" constant="15" id="eek-aX-sOz"/>
+                <constraint firstItem="S6g-zs-4tF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nFv-Xd-thI"/>
+                <constraint firstItem="x9S-VP-hF8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="sCg-xX-aiZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="127.90178571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
