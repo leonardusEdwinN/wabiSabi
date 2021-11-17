@@ -141,4 +141,6 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         self.show(vc, sender: nil)
     }
+    
+    
 }

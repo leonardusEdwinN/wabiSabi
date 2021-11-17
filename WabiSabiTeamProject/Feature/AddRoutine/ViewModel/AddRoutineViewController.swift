@@ -16,6 +16,10 @@ import UIKit
 class AddRoutineViewController : UIViewController{
     @IBOutlet weak var routineTableView: UITableView!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    @IBOutlet weak var backButton: UIButton!
     var tableLength : Int = 8
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,9 +122,11 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
         }else if(indexPath.item == tableLength - 2){
             //timer reminder
             print("TIME REMINDER ROW CLICKED")
+            performSegue(withIdentifier: "moveToTimeReminder", sender: self)
         }else if(indexPath.item == tableLength - 1){
             //location reminder
             print("LOCATION REMINDER ROW CLICKED")
+            performSegue(withIdentifier: "moveToLocationReminder", sender: self)
         }else{
             print("ADD PRODUCT ROW CLICKED")
             performSegue(withIdentifier: "moveToAddProduct", sender: self)
