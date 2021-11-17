@@ -11,6 +11,10 @@ import UIKit
 class SummaryViewController: UIViewController{
     @IBOutlet weak var summaryTableView: UITableView!
     
+    @IBOutlet weak var dummyButton: UIButton!
+    @IBAction func dummyButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
@@ -26,6 +30,19 @@ class SummaryViewController: UIViewController{
         summaryTableView.register(UINib.init(nibName: "SummaryAwardsTableViewCell", bundle: nil), forCellReuseIdentifier: "summaryAwardsTableViewCell")
         summaryTableView.delegate = self
         summaryTableView.dataSource = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "moveToAddRoutinePage"{
+            //for navigation navigation
+//            if let destVC = segue.destination as? UINavigationController,
+//               let targetController = destVC.topViewController as? AddRoutineViewController {
+//                destVC.modalPresentationStyle = .fullScreen
+//            }
+            if let destVC = segue.destination as? AddRoutineViewController {
+                destVC.modalPresentationStyle = .fullScreen
+            }
+        }
     }
 }
 
