@@ -8,6 +8,8 @@
 import Foundation
 
 struct Utilities {
+    let genders: [String] = ["Female", "Male", "Non-Binary", "Prefer not to disclose"]
+    
     let levels: [SkinRoutineLevel] = [
         SkinRoutineLevel(level: "Beginner", productIndex: [0, 1, 4, 5]),
         SkinRoutineLevel(level: "Intermediate", productIndex: [0, 1, 2, 3, 4, 5]),
