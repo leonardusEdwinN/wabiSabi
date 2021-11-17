@@ -22,9 +22,9 @@ class TimerTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    func setUI(title : String, image: UIImage){
+    func setUI(title : String, image: String){
         labelAlarm.text = title
+        imageTimer.image = UIImage(named: image)
     }
     
 }

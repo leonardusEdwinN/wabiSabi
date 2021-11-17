@@ -20,7 +20,7 @@ class AddRoutineViewController : UIViewController{
         self.dismiss(animated: false, completion: nil)
     }
     @IBOutlet weak var backButton: UIButton!
-    var tableLength : Int = 8
+    var tableLength : Int = 5
     override func viewDidLoad() {
         super.viewDidLoad()
         
