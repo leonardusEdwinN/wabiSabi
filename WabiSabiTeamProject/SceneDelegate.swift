@@ -19,21 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         guard let _ = (scene as? UIWindowScene) else { return }
-           
+        
         if UserDefaults.standard.bool(forKey: "isCompleteOnBoarding") == true {
-            
-            
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             self.window?.rootViewController = storyBoard.instantiateViewController(identifier:"MainTabBarController")
             window?.makeKeyAndVisible()
-            // guard let _ = (scene as? UIWindowScene) else { return }
         }
         else {
             let storyBoard = UIStoryboard(name: "OnBoarding", bundle: nil)
             self.window?.rootViewController = storyBoard.instantiateInitialViewController()
             window?.makeKeyAndVisible()
-            
-            // guard let _ = (scene as? UIWindowScene) else { return }
         }
     }
     

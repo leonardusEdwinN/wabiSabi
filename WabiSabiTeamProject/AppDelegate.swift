@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let localStoreLocation = URL(fileURLWithPath: "/path/to/local.store")
         let localStoreDescription =
             NSPersistentStoreDescription(url: localStoreLocation)
-        localStoreDescription.configuration = "Local"
+        localStoreDescription.configuration = "Default"
         
         // Create a store description for a CloudKit-backed local store
         let cloudStoreLocation = URL(fileURLWithPath: "/path/to/cloud.store")

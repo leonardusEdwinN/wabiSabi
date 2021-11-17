@@ -11,7 +11,7 @@ import CoreData
 class PersistanceManager {
     static let shared = PersistanceManager()
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: NSPersistentCloudKitContainer = {
         
         let container = NSPersistentCloudKitContainer(name: "WabiSabiTeamProject")
         let description = container.persistentStoreDescriptions.first
@@ -24,6 +24,7 @@ class PersistanceManager {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
         return container
     }()
     
