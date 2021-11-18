@@ -140,6 +140,14 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         return UISwipeActionsConfiguration(actions: [closeAction])
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "addRoutineVC") as! AddRoutineViewController
+        vc.selectedRoutine = PersistanceManager.shared.fetchRoutines().first!
+        
+        self.show(vc, sender: nil)
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let modifyAction = UIContextualAction(style: .normal, title:  "Skip", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in

@@ -77,10 +77,19 @@ class ResultViewController: UIViewController {
     func checkProduct(){
         let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
         for routineIndex in 0...1 {
+            var routine: Routines = Routines(context: PersistanceManager.shared.persistentContainer.viewContext)
+            routine.isEveryday = true
+            routine.name = skinTypeRoutine[routineIndex].name
+            
+            PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name, startHabit: Date())
+            
             for index in 0..<productIndex.count {
-                let temp = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]
-                if !(temp.description == "") {
-                    skinTypeRoutine[routineIndex].products.append(temp)
+                let product = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]
+                
+                if !(product.description == "") {
+                    skinTypeRoutine[routineIndex].products.append(product)
+                    
+                    PersistanceManager.shared.setProduct(name: product.name, routine: routine)
                 }
             }
         }

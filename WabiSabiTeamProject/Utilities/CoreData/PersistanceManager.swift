@@ -42,13 +42,21 @@ class PersistanceManager {
         save()
     }
     
-    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String) {
+    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines) {
         let product = Product(context: persistentContainer.viewContext)
         product.brand = brand
         product.expiredDate = expiredDate
         product.name = name
         product.periodAfterOpening = periodAfterOpening
         product.picture = picture
+        product.routineproduct = routine
+        save()
+    }
+    
+    func setProduct(name: String, routine: Routines) {
+        let product = Product(context: persistentContainer.viewContext)
+        product.name = name
+        product.routineproduct = routine
         save()
     }
     
@@ -63,6 +71,13 @@ class PersistanceManager {
         routines.isEveryday = isEveryday
         routines.name = name
         routines.startHabit = startHabit
+        save()
+    }
+    
+    func setRoutine(isEveryday: Bool, name: String) {
+        let routines = Routines(context: persistentContainer.viewContext)
+        routines.isEveryday = isEveryday
+        routines.name = name
         save()
     }
     
@@ -122,15 +137,30 @@ class PersistanceManager {
     func fetchProduct() -> [Product] {
         let request: NSFetchRequest<Product> = Product.fetchRequest()
         
-        var product: [Product] = []
+        var products: [Product] = []
         
         do {
-            product = try persistentContainer.viewContext.fetch(request)
+            products = try persistentContainer.viewContext.fetch(request)
         } catch {
             print("Error fetching authors")
         }
         
-        return product
+        return products
+    }
+    
+    func fetchProduct(routine: Routines) -> [Product] {
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        request.predicate = NSPredicate(format: "routineproduct = %@", routine)
+        
+        var products: [Product] = []
+        
+        do {
+            products = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error fetching authors")
+        }
+        
+        return products
     }
     
     func fetchReminder() -> [Reminder] {

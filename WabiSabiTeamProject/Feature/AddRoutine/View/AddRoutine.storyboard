@@ -108,7 +108,7 @@
         <!--Add Routine View Controller-->
         <scene sceneID="I66-BV-c49">
             <objects>
-                <viewController storyboardIdentifier="addRoutineVC" id="YqF-f5-mFH" customClass="AddRoutineViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addRoutineVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YqF-f5-mFH" customClass="AddRoutineViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lk5-Bz-Uhw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
