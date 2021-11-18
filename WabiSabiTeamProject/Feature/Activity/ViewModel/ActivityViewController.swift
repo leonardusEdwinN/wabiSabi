@@ -82,19 +82,12 @@ class ActivityViewController: UIViewController {
         return datePicker
     }()
     
-    @objc func tapMenuButton() {
-        datePicker.datePickerMode = UIDatePicker.Mode.date
-        if #available(iOS 14.0, *) {
-            datePicker.preferredDatePickerStyle = .inline
-        }
-        datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+    @objc func tapMenuButton(_ sender: Any) {
         
-        datePicker.backgroundColor = .secondarySystemBackground
-        self.view.addSubview(datePicker)
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        datePicker.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        datePicker.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        let slideVC = OverlayCalenderView()
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        self.present(slideVC, animated: true, completion: nil)
     }
     
     @objc func onDoneButtonClick() {
@@ -162,5 +155,11 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         modifyAction.backgroundColor = .red
         
         return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
+}
+
+extension ActivityViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationCalenderController(presentedViewController: presented, presenting: presenting)
     }
 }
