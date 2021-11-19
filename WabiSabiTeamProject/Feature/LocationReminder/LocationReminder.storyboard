@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Location Reminder View Controller-->
+        <!--Location-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="locationReminderVC" id="Y6W-OH-hqX" customClass="LocationReminderViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,42 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E7K-zg-3Ql">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cow-ne-yHW">
-                                        <rect key="frame" x="174.5" y="14.5" width="65.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6r2-YW-5S7">
-                                        <rect key="frame" x="357.5" y="9.5" width="41.5" height="31"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
-                                        <connections>
-                                            <action selector="buttonAddPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ly1-z7-HpE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMW-Cv-6Ji">
-                                        <rect key="frame" x="15" y="9.5" width="56" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Back"/>
-                                        <connections>
-                                            <action selector="buttonBackPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bh1-sX-lWc"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="6r2-YW-5S7" firstAttribute="centerY" secondItem="E7K-zg-3Ql" secondAttribute="centerY" id="4ko-vZ-Y4A"/>
-                                    <constraint firstItem="Cow-ne-yHW" firstAttribute="centerX" secondItem="E7K-zg-3Ql" secondAttribute="centerX" id="RVl-Bl-Mbu"/>
-                                    <constraint firstAttribute="trailing" secondItem="6r2-YW-5S7" secondAttribute="trailing" constant="15" id="TjV-V6-pKz"/>
-                                    <constraint firstAttribute="height" constant="50" id="aDN-SR-woM"/>
-                                    <constraint firstItem="VMW-Cv-6Ji" firstAttribute="leading" secondItem="E7K-zg-3Ql" secondAttribute="leading" constant="15" id="hVe-G5-LPV"/>
-                                    <constraint firstItem="VMW-Cv-6Ji" firstAttribute="centerY" secondItem="E7K-zg-3Ql" secondAttribute="centerY" id="tgf-MI-WHE"/>
-                                    <constraint firstItem="Cow-ne-yHW" firstAttribute="centerY" secondItem="E7K-zg-3Ql" secondAttribute="centerY" id="w5r-ex-5Wf"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMw-8s-3pE">
                                 <rect key="frame" x="32" y="348" width="350" height="200"/>
                                 <subviews>
@@ -97,28 +61,47 @@ Add one by tapping the + button</string>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jLW-aC-Gtt">
-                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="jLW-aC-Gtt" firstAttribute="top" secondItem="E7K-zg-3Ql" secondAttribute="bottom" id="78N-Ma-GcE"/>
-                            <constraint firstItem="E7K-zg-3Ql" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="EWE-iu-K1e"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="E7K-zg-3Ql" secondAttribute="trailing" id="HbZ-76-4yW"/>
                             <constraint firstItem="JMw-8s-3pE" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Pxm-Vc-J6l"/>
                             <constraint firstItem="jLW-aC-Gtt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RTo-Q0-twy"/>
                             <constraint firstItem="JMw-8s-3pE" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="XyW-Jc-orD"/>
-                            <constraint firstItem="E7K-zg-3Ql" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="imH-zj-OPi"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jLW-aC-Gtt" secondAttribute="bottom" id="nAF-Ug-u4J"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jLW-aC-Gtt" secondAttribute="trailing" id="saP-83-yrQ"/>
+                            <constraint firstItem="jLW-aC-Gtt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="yQs-6j-CBy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Location" id="obL-iA-1jt">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="VVT-5e-fge">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VMW-Cv-6Ji">
+                                <rect key="frame" x="20" y="5" width="62" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="buttonBackPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Bh1-sX-lWc"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="izN-WP-lfe">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="6r2-YW-5S7">
+                                <rect key="frame" x="348.5" y="5" width="45.5" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="buttonAddPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ly1-z7-HpE"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonAdd" destination="6r2-YW-5S7" id="IZT-8e-7NA"/>
                         <outlet property="buttonBack" destination="VMW-Cv-6Ji" id="pek-H7-cnf"/>
-                        <outlet property="labelTitlePage" destination="Cow-ne-yHW" id="ype-dt-G0V"/>
                         <outlet property="locationsReminderTableView" destination="jLW-aC-Gtt" id="HXq-XE-BJF"/>
                         <outlet property="viewCircle" destination="aUJ-hk-a89" id="jmD-fO-V7i"/>
                         <outlet property="viewEmptyState" destination="JMw-8s-3pE" id="bXH-sy-MYa"/>
@@ -127,68 +110,21 @@ Add one by tapping the + button</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63.768115942028992" y="80.357142857142847"/>
+            <point key="canvasLocation" x="973.91304347826099" y="80.357142857142847"/>
         </scene>
-        <!--Add Geotification Controller-->
+        <!--Select Location-->
         <scene sceneID="y3Q-Zg-74F">
             <objects>
                 <viewController id="ivj-ER-xU9" customClass="AddGeotificationController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2HO-ff-EUO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyJ-fV-mlZ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHL-b5-SwZ">
-                                        <rect key="frame" x="148" y="14.5" width="118" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mg4-HR-FrY">
-                                        <rect key="frame" x="15" y="9.5" width="56" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Back"/>
-                                        <connections>
-                                            <action selector="backButtonPressed:" destination="ivj-ER-xU9" eventType="touchUpInside" id="5Ht-Fn-MwE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQD-tU-U2F">
-                                        <rect key="frame" x="348" y="9.5" width="56" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
-                                        <connections>
-                                            <action selector="buttonSavePressed:" destination="ivj-ER-xU9" eventType="touchUpInside" id="6fI-5f-wHD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCJ-BH-wdO">
-                                        <rect key="frame" x="293.5" y="9.5" width="44.5" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="location.viewfinder" catalog="system"/>
-                                        <connections>
-                                            <action selector="locationFinderButtonPressed:" destination="ivj-ER-xU9" eventType="touchUpInside" id="Bsq-sI-H2f"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="WQD-tU-U2F" firstAttribute="leading" secondItem="NCJ-BH-wdO" secondAttribute="trailing" constant="10" id="5kW-e2-Dh3"/>
-                                    <constraint firstItem="mg4-HR-FrY" firstAttribute="centerY" secondItem="uyJ-fV-mlZ" secondAttribute="centerY" id="Me1-tV-ztQ"/>
-                                    <constraint firstItem="NCJ-BH-wdO" firstAttribute="centerY" secondItem="uyJ-fV-mlZ" secondAttribute="centerY" id="TNY-TB-x2W"/>
-                                    <constraint firstItem="WQD-tU-U2F" firstAttribute="centerY" secondItem="uyJ-fV-mlZ" secondAttribute="centerY" id="U0O-Hl-1GP"/>
-                                    <constraint firstAttribute="trailing" secondItem="WQD-tU-U2F" secondAttribute="trailing" constant="10" id="WFb-of-pPP"/>
-                                    <constraint firstItem="mg4-HR-FrY" firstAttribute="leading" secondItem="uyJ-fV-mlZ" secondAttribute="leading" constant="15" id="fjd-Vo-uZq"/>
-                                    <constraint firstItem="BHL-b5-SwZ" firstAttribute="centerY" secondItem="uyJ-fV-mlZ" secondAttribute="centerY" id="kvw-id-LLl"/>
-                                    <constraint firstItem="BHL-b5-SwZ" firstAttribute="centerX" secondItem="uyJ-fV-mlZ" secondAttribute="centerX" id="s2U-k8-HnR"/>
-                                    <constraint firstAttribute="height" constant="50" id="wT8-Pp-10P"/>
-                                </constraints>
-                            </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jCh-N6-VSe">
-                                <rect key="frame" x="0.0" y="50" width="414" height="358"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="374"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQq-Lf-LPx">
-                                <rect key="frame" x="0.0" y="408" width="414" height="400"/>
+                                <rect key="frame" x="0.0" y="462" width="414" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I want to be reminded when I’m . . . " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pW3-gr-45Q">
                                         <rect key="frame" x="15" y="15" width="384" height="21"/>
@@ -237,22 +173,42 @@ Add one by tapping the + button</string>
                         <constraints>
                             <constraint firstItem="cQq-Lf-LPx" firstAttribute="top" secondItem="jCh-N6-VSe" secondAttribute="bottom" id="7EN-t6-lff"/>
                             <constraint firstItem="ckG-Q0-DPO" firstAttribute="trailing" secondItem="jCh-N6-VSe" secondAttribute="trailing" id="Maw-EN-x8m"/>
+                            <constraint firstItem="jCh-N6-VSe" firstAttribute="top" secondItem="ckG-Q0-DPO" secondAttribute="top" id="fVy-HZ-ey0"/>
                             <constraint firstItem="ckG-Q0-DPO" firstAttribute="bottom" secondItem="cQq-Lf-LPx" secondAttribute="bottom" id="frl-gT-ReT"/>
-                            <constraint firstItem="ckG-Q0-DPO" firstAttribute="trailing" secondItem="uyJ-fV-mlZ" secondAttribute="trailing" id="hja-w1-DRl"/>
-                            <constraint firstItem="uyJ-fV-mlZ" firstAttribute="top" secondItem="ckG-Q0-DPO" secondAttribute="top" id="iUG-RL-4os"/>
                             <constraint firstItem="cQq-Lf-LPx" firstAttribute="leading" secondItem="ckG-Q0-DPO" secondAttribute="leading" id="mio-Vd-NU7"/>
-                            <constraint firstItem="uyJ-fV-mlZ" firstAttribute="leading" secondItem="ckG-Q0-DPO" secondAttribute="leading" id="o2z-7e-zuS"/>
-                            <constraint firstItem="jCh-N6-VSe" firstAttribute="top" secondItem="uyJ-fV-mlZ" secondAttribute="bottom" id="pFA-L4-cLf"/>
                             <constraint firstItem="jCh-N6-VSe" firstAttribute="leading" secondItem="ckG-Q0-DPO" secondAttribute="leading" id="pRA-vn-sTr"/>
                             <constraint firstItem="ckG-Q0-DPO" firstAttribute="trailing" secondItem="cQq-Lf-LPx" secondAttribute="trailing" id="tqJ-dK-bTv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rLB-Hh-JrS"/>
+                    <navigationItem key="navigationItem" title="Select Location" id="rLB-Hh-JrS">
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="hyd-DJ-6Sv">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="WQD-tU-U2F">
+                                    <rect key="frame" x="333" y="5" width="61" height="34.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                    <connections>
+                                        <action selector="buttonSavePressed:" destination="ivj-ER-xU9" eventType="touchUpInside" id="6fI-5f-wHD"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="4t6-fM-4jp">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="NCJ-BH-wdO">
+                                    <rect key="frame" x="271.5" y="5" width="53.5" height="34.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="location.viewfinder" catalog="system" title=" "/>
+                                    <connections>
+                                        <action selector="locationFinderButtonPressed:" destination="ivj-ER-xU9" eventType="touchUpInside" id="Bsq-sI-H2f"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="mg4-HR-FrY" id="KgG-gQ-oPy"/>
                         <outlet property="buttonSave" destination="WQD-tU-U2F" id="6DH-Ec-7f6"/>
                         <outlet property="eventTypeSegmentedControl" destination="gsS-1T-UTT" id="E4M-Df-MNf"/>
-                        <outlet property="labelTitle" destination="BHL-b5-SwZ" id="X1m-zo-GrF"/>
                         <outlet property="locationFinderButton" destination="NCJ-BH-wdO" id="2OU-lG-uUy"/>
                         <outlet property="mapView" destination="jCh-N6-VSe" id="abh-Xp-kKg"/>
                         <outlet property="searchResultTableView" destination="YvR-3O-hmf" id="Dsk-Xa-wqf"/>
@@ -261,7 +217,25 @@ Add one by tapping the + button</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1P2-bM-dlk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961" y="80"/>
+            <point key="canvasLocation" x="1871.0144927536232" y="79.6875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ETa-au-9Xe">
+            <objects>
+                <navigationController storyboardIdentifier="LocationReminderNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="YWX-Fp-7uC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="978-Xf-0yv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="U3Q-23-WgC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YNe-jg-V3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="63.768115942028992" y="80.357142857142847"/>
         </scene>
     </scenes>
     <resources>

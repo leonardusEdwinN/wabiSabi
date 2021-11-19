@@ -12,9 +12,9 @@ class SummaryViewController: UIViewController{
     @IBOutlet weak var summaryTableView: UITableView!
     
     @IBOutlet weak var dummyButton: UIButton!
-    @IBAction func dummyButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
-    }
+//    @IBAction func dummyButtonPressed(_ sender: Any) {
+//        performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()

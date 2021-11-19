@@ -64,6 +64,8 @@
 		13AD9DA4273908080083AE29 /* CircularProgressBarCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD9D9F273908080083AE29 /* CircularProgressBarCalendar.swift */; };
 		13AD9DA5273908080083AE29 /* DayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13AD9DA0273908080083AE29 /* DayCollectionViewCell.xib */; };
 		13AD9DA72739083F0083AE29 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD9DA62739083F0083AE29 /* Extension.swift */; };
+		13B428A9274819A200DE2E6D /* SaveButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B428A7274819A200DE2E6D /* SaveButtonTableViewCell.swift */; };
+		13B428AA274819A200DE2E6D /* SaveButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B428A8274819A200DE2E6D /* SaveButtonTableViewCell.xib */; };
 		13C90574273D1AAE007E8A32 /* AddRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C90573273D1AAE007E8A32 /* AddRoutineViewController.swift */; };
 		13CD1F252742588700F537EB /* ProductUsedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CD1F232742588700F537EB /* ProductUsedTableViewCell.swift */; };
 		13CD1F262742588700F537EB /* ProductUsedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CD1F242742588700F537EB /* ProductUsedTableViewCell.xib */; };
@@ -167,6 +169,8 @@
 		13AD9D9F273908080083AE29 /* CircularProgressBarCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressBarCalendar.swift; sourceTree = "<group>"; };
 		13AD9DA0273908080083AE29 /* DayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayCollectionViewCell.xib; sourceTree = "<group>"; };
 		13AD9DA62739083F0083AE29 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		13B428A7274819A200DE2E6D /* SaveButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonTableViewCell.swift; sourceTree = "<group>"; };
+		13B428A8274819A200DE2E6D /* SaveButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveButtonTableViewCell.xib; sourceTree = "<group>"; };
 		13C90573273D1AAE007E8A32 /* AddRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineViewController.swift; sourceTree = "<group>"; };
 		13CD1F232742588700F537EB /* ProductUsedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUsedTableViewCell.swift; sourceTree = "<group>"; };
 		13CD1F242742588700F537EB /* ProductUsedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductUsedTableViewCell.xib; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				13CD1F3A27426E8B00F537EB /* ViewModel */,
 				13CD1F3927426E7600F537EB /* View */,
 				13CD1F3827426E7200F537EB /* Model */,
+				13B428A7274819A200DE2E6D /* SaveButtonTableViewCell.swift */,
+				13B428A8274819A200DE2E6D /* SaveButtonTableViewCell.xib */,
 			);
 			path = AddRoutine;
 			sourceTree = "<group>";
@@ -698,6 +704,7 @@
 				139A6318273BC2D2008D54A8 /* SF-Pro-Rounded-Medium.otf in Resources */,
 				139A631D273BC2D2008D54A8 /* SF-Pro-Rounded-Black.otf in Resources */,
 				139A631A273BC2D2008D54A8 /* SF-Pro-Rounded-Thin.otf in Resources */,
+				13B428AA274819A200DE2E6D /* SaveButtonTableViewCell.xib in Resources */,
 				130424EC2744F50300720D35 /* OverlayView.xib in Resources */,
 				139A631E273BC2D2008D54A8 /* SF-Pro-Rounded-Heavy.otf in Resources */,
 				13CD1F2A274258A200F537EB /* ButtonRoutinePageTableViewCell.xib in Resources */,
@@ -793,6 +800,7 @@
 				35E47A092730C4C90033E5F4 /* SkinCareGuideViewController.swift in Sources */,
 				1371B4B9274397BB00A16A45 /* ProductTypeTableViewCell.swift in Sources */,
 				130825672746409A005CB024 /* AddGeotificationViewController.swift in Sources */,
+				13B428A9274819A200DE2E6D /* SaveButtonTableViewCell.swift in Sources */,
 				35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */,
 				35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */,
 				3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */,

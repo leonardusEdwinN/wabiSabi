@@ -225,11 +225,22 @@
                         <outlet property="routineTableView" destination="T3c-gO-kzX" id="GRn-eH-fc9"/>
                         <outlet property="skippedButton" destination="9Ia-bt-QbQ" id="G2u-S8-8mU"/>
                         <outlet property="todoButton" destination="xAt-L3-MtF" id="hny-s7-ASG"/>
+                        <segue destination="HUT-Du-YTH" kind="show" identifier="moveToAddRoutinePage" id="wEe-gW-wo1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pc-s2-CYL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-313.04347826086956" y="-518.30357142857144"/>
+        </scene>
+        <!--AddRoutineNavigationController-->
+        <scene sceneID="mcL-Bw-VIn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddRoutine" referencedIdentifier="AddRoutineNavigationController" id="HUT-Du-YTH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bHf-Ll-vmR"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pba-CJ-tV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="396" y="-577"/>
         </scene>
         <!--Today-->
         <scene sceneID="MPh-tE-yyR">
@@ -303,7 +314,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-lI-OKs">
-                                        <rect key="frame" x="20" y="100" width="149.66666666666666" height="40"/>
+                                        <rect key="frame" x="20" y="100" width="149.33333333333334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="pcV-Un-dd2"/>
                                         </constraints>
@@ -311,16 +322,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxb-dy-j0k">
-                                        <rect key="frame" x="322" y="44" width="67" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                        <connections>
-                                            <action selector="dummyButtonPressed:" destination="R4r-OD-10x" eventType="touchUpInside" id="VX8-BC-9I6"/>
-                                            <segue destination="imZ-kz-38U" kind="presentation" identifier="moveToAddRoutinePage" modalPresentationStyle="fullScreen" id="c63-OV-nKk"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="ColorPrimary"/>
                                 <constraints>
@@ -358,23 +359,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dummyButton" destination="gxb-dy-j0k" id="nDV-lz-NWN"/>
                         <outlet property="summaryTableView" destination="G6T-HH-Fmv" id="va9-NC-dZi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPw-Ne-gln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1565" y="948"/>
-        </scene>
-        <!--addRoutineVC-->
-        <scene sceneID="orR-cW-hGx">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AddRoutine" referencedIdentifier="addRoutineVC" id="imZ-kz-38U" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="foJ-bA-rEi"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5wp-vZ-qYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-917" y="654"/>
         </scene>
         <!--Profile-->
         <scene sceneID="6UQ-Qx-TS2">

@@ -111,6 +111,16 @@ class ActivityViewController: UIViewController {
             datePicker.removeFromSuperview()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nav = segue.destination as? UINavigationController else {
+            fatalError("NavigationController not found")
+        }
+        
+        guard let AddRoutineVC = nav.topViewController as? AddRoutineViewController else {
+            fatalError("AddRoutineViewController not found")
+        }
+    }
 }
 
 extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
@@ -154,5 +164,14 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         modifyAction.backgroundColor = .red
         
         return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if(indexPath.item == 0){
+            performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
+        }
+        
+        
     }
 }
