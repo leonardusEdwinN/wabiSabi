@@ -25,15 +25,6 @@ class PersistanceManager {
             }
         })
         
-        #if DEBUG
-        do {
-            // Use the container to initialize the development schema.
-            try container.initializeCloudKitSchema(options: [])
-        } catch {
-            // Handle any errors.
-        }
-        #endif
-        
         return container
     }()
     
