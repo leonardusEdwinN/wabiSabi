@@ -22,6 +22,7 @@ class LocationReminderViewController: UIViewController {
     }
     
     @IBAction func buttonAddPressed(_ sender: Any) {
+        performSegue(withIdentifier: "GoToAddGeoLocationPage", sender: self)
     }
     
     // MARK: TableView
@@ -30,9 +31,8 @@ class LocationReminderViewController: UIViewController {
     // MARK: EmptyState
     @IBOutlet weak var viewEmptyState: UIView!
     @IBOutlet weak var viewCircle: UIView!
-    var tableLocationArray : [LocationModel] = [ LocationModel(locationName: "Bandung, Jawa Barat", locationImage: "mappin")
-        
-    ]
+    var tableLocationArray : [LocationModel] = []
+//    = [ LocationModel(locationName: "Bandung, Jawa Barat", locationImage: "mappin")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,14 @@ class LocationReminderViewController: UIViewController {
         
         locationsReminderTableView.delegate = self
         locationsReminderTableView.dataSource = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToAddGeoLocationPage"{
+            if let destVC = segue.destination as? AddGeotificationController {
+                destVC.modalPresentationStyle = .fullScreen
+            }
+        }
     }
 
 }

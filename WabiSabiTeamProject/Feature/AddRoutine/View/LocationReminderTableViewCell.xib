@@ -27,18 +27,30 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ag-QN-FbB">
                         <rect key="frame" x="15" y="46" width="290" height="50"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="􀎪 None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfG-c8-vBJ">
-                                <rect key="frame" x="5" y="14.5" width="64.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfG-c8-vBJ">
+                                <rect key="frame" x="55" y="14.5" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BVg-fG-yXx">
+                                <rect key="frame" x="10" y="9.5" width="30" height="30"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="JXQ-Z0-5aN"/>
+                                    <constraint firstAttribute="height" constant="30" id="cpv-3b-7Gh"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RfG-c8-vBJ" firstAttribute="centerY" secondItem="1ag-QN-FbB" secondAttribute="centerY" id="2si-Bw-ZpE"/>
                             <constraint firstAttribute="height" constant="50" id="7BT-Ji-M0F"/>
-                            <constraint firstItem="RfG-c8-vBJ" firstAttribute="leading" secondItem="1ag-QN-FbB" secondAttribute="leading" constant="5" id="wFM-an-4Ev"/>
+                            <constraint firstItem="BVg-fG-yXx" firstAttribute="top" secondItem="1ag-QN-FbB" secondAttribute="top" constant="10" id="ErP-Ko-dde"/>
+                            <constraint firstItem="RfG-c8-vBJ" firstAttribute="leading" secondItem="BVg-fG-yXx" secondAttribute="trailing" constant="15" id="Lxi-ve-Jvq"/>
+                            <constraint firstItem="BVg-fG-yXx" firstAttribute="leading" secondItem="1ag-QN-FbB" secondAttribute="leading" constant="10" id="TCe-FO-O2y"/>
+                            <constraint firstItem="BVg-fG-yXx" firstAttribute="centerY" secondItem="1ag-QN-FbB" secondAttribute="centerY" id="pbf-HD-V0L"/>
+                            <constraint firstAttribute="bottom" secondItem="BVg-fG-yXx" secondAttribute="bottom" constant="10" id="tsJ-lP-bkH"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You can add up to 3 location reminders" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaR-tk-WJP">
@@ -71,6 +83,10 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="mappin" catalog="system" width="105" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
