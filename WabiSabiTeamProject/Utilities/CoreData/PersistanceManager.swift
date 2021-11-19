@@ -25,6 +25,15 @@ class PersistanceManager {
             }
         })
         
+        #if DEBUG
+        do {
+            // Use the container to initialize the development schema.
+            try container.initializeCloudKitSchema(options: [])
+        } catch {
+            // Handle any errors.
+        }
+        #endif
+        
         return container
     }()
     
@@ -44,6 +53,7 @@ class PersistanceManager {
     
     func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines) {
         let product = Product(context: persistentContainer.viewContext)
+        product.id = "\(UUID())"
         product.brand = brand
         product.expiredDate = expiredDate
         product.name = name
@@ -53,10 +63,11 @@ class PersistanceManager {
         save()
     }
     
-    func setProduct(name: String, routine: Routines) {
+    func setProduct(name: String) {
         let product = Product(context: persistentContainer.viewContext)
+        product.id = "\(UUID())"
         product.name = name
-        product.routineproduct = routine
+        product.routineproduct = fetchRoutine(id: UserDefaults.standard.string(forKey: "routineID")!)
         product.userproduct = fetchUser()
         save()
     }
@@ -68,20 +79,32 @@ class PersistanceManager {
     }
     
     func setRoutine(isEveryday: Bool, name: String, startHabit: Date) {
-        let routines = Routines(context: persistentContainer.viewContext)
-        routines.isEveryday = isEveryday
-        routines.name = name
-        routines.startHabit = startHabit
-        routines.userroutine = fetchUser()
+        let routine = Routines(context: persistentContainer.viewContext)
+        routine.id = "\(UUID())"
+        routine.isEveryday = isEveryday
+        routine.name = name
+        routine.startHabit = startHabit
+        routine.userroutine = fetchUser()
         save()
+        
+        if let routineID = routine.id {
+            UserDefaults.standard.set(routineID, forKey: "routineID")
+            print("Routine ID \(routineID) has been saved")
+        }
     }
     
     func setRoutine(isEveryday: Bool, name: String) {
-        let routines = Routines(context: persistentContainer.viewContext)
-        routines.isEveryday = isEveryday
-        routines.name = name
-        routines.userroutine = fetchUser()
+        let routine = Routines(context: persistentContainer.viewContext)
+        routine.id = "\(UUID())"
+        routine.isEveryday = isEveryday
+        routine.name = name
+        routine.userroutine = fetchUser()
         save()
+        
+        if let routineID = routine.id {
+            UserDefaults.standard.set(routineID, forKey: "routineID")
+            print("Routine ID \(routineID) has been saved")
+        }
     }
     
     func setSchedule(time: String) {
@@ -198,6 +221,21 @@ class PersistanceManager {
         }
         
         return routines
+    }
+    
+    func fetchRoutine(id: String) -> Routines {
+        let request: NSFetchRequest<Routines> = Routines.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as! CVarArg)
+        
+        var routines: [Routines] = []
+        
+        do {
+            routines = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error fetching authors")
+        }
+        
+        return routines[0]
     }
     
     func fetchSchedule() -> [Schedule] {

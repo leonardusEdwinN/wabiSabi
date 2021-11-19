@@ -119,7 +119,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesTableViewCell", for: indexPath) as! RoutinesTableViewCell
         cell.setup(with: routines[indexPath.row])
         
-        cell.routineProduct.text = "\(PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row]).count) products"
+        cell.routineProduct.text = "0/\(PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row]).count)"
         return cell
     }
     
