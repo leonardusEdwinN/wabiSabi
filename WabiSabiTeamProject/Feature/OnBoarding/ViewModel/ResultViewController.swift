@@ -15,6 +15,8 @@ class ResultViewController: UIViewController {
     var levelIndex: Int = 0
     var skinExperienceIndex: Int = 0
     
+    var user: User!
+    
     var skinTypeRoutine: [SkinRoutineProduct] = [
         SkinRoutineProduct(icon: "🌞", name: "Morning Skin Care", products: []),
         SkinRoutineProduct(icon: "🌓", name: "Night Skin Care", products: [])
@@ -31,9 +33,9 @@ class ResultViewController: UIViewController {
         skinExperienceIndex = UserDefaults.standard.integer(forKey: "skinCareExperience")
         
         calculateLevel()
-        
-        checkProduct()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let birthdate = UserDefaults.standard.object(forKey: "birthdate") as! Date
         let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy HH:mm"
@@ -46,6 +48,8 @@ class ResultViewController: UIViewController {
             localization: "en",
             name: UserDefaults.standard.string(forKey: "name") ?? "",
             skinType: Utilities().skinTypeRoutineProduct[0].skinType[skinTypeIndex].name)
+        
+        checkProduct()
     }
     
     func calculateLevel() {
@@ -81,7 +85,7 @@ class ResultViewController: UIViewController {
             routine.isEveryday = true
             routine.name = skinTypeRoutine[routineIndex].name
             
-            PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name, startHabit: Date())
+            PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name)
             
             for index in 0..<productIndex.count {
                 let product = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]

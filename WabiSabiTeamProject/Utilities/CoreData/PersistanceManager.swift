@@ -57,6 +57,7 @@ class PersistanceManager {
         let product = Product(context: persistentContainer.viewContext)
         product.name = name
         product.routineproduct = routine
+        product.userproduct = fetchUser()
         save()
     }
     
@@ -71,6 +72,7 @@ class PersistanceManager {
         routines.isEveryday = isEveryday
         routines.name = name
         routines.startHabit = startHabit
+        routines.userroutine = fetchUser()
         save()
     }
     
@@ -78,6 +80,7 @@ class PersistanceManager {
         let routines = Routines(context: persistentContainer.viewContext)
         routines.isEveryday = isEveryday
         routines.name = name
+        routines.userroutine = fetchUser()
         save()
     }
     
@@ -96,6 +99,7 @@ class PersistanceManager {
     
     func setUser(dateOfBirth: Date, gender: String, isNotify: Bool, level: String, localization: String, name: String, skinType: String) {
         let user = User(context: persistentContainer.viewContext)
+        user.id = "\(UUID())"
         user.dateOfBirth = dateOfBirth
         user.gender = gender
         user.isNotify = isNotify
@@ -104,6 +108,11 @@ class PersistanceManager {
         user.name = name
         user.skinType = skinType
         save()
+        
+        if let userID = user.id {
+            UserDefaults.standard.set(userID, forKey: "userID")
+            print("User ID \(userID) has been saved")
+        }
     }
     
     func fetchCategory() -> [Category] {
@@ -233,8 +242,11 @@ class PersistanceManager {
         return type
     }
     
-    func fetchUser() -> [User] {
+    func fetchUser() -> User {
+        var userID = UserDefaults.standard.string(forKey: "userID")
+        
         let request: NSFetchRequest<User> = User.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", userID as! CVarArg)
         
         var user: [User] = []
         
@@ -244,7 +256,11 @@ class PersistanceManager {
             print("Error fetching authors")
         }
         
-        return user
+        if user.count > 0 {
+            return user[0]
+        }
+        
+        return User()
     }
     
     func deleteLocation(location : Location) {

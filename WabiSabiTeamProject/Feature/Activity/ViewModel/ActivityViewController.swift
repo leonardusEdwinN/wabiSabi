@@ -18,6 +18,8 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var circularProgressBackground: UIView!
     var selectedDate: String = ""
     
+    var skinCareRoutines: [Routines]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
@@ -25,6 +27,8 @@ class ActivityViewController: UIViewController {
         setUpTableView()
         configureButton()
         configureBackground()
+        
+        skinCareRoutines = PersistanceManager.shared.fetchRoutines()
     }
     
     private func configureBackground() {
@@ -114,6 +118,8 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesTableViewCell", for: indexPath) as! RoutinesTableViewCell
         cell.setup(with: routines[indexPath.row])
+        
+        cell.routineProduct.text = "\(PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row]).count) products"
         return cell
     }
     
@@ -136,7 +142,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "addRoutineVC") as! AddRoutineViewController
-        vc.selectedRoutine = PersistanceManager.shared.fetchRoutines().first!
+        vc.selectedRoutine = skinCareRoutines[indexPath.row]
         
         self.show(vc, sender: nil)
     }
@@ -147,6 +153,8 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
             tableView.beginUpdates()
             routines.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            PersistanceManager.shared.deleteRoutines(routines: self.skinCareRoutines[indexPath.row])
             
             tableView.endUpdates()
             print("SKIP")

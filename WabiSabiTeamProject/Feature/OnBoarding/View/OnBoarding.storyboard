@@ -93,7 +93,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="What is your skin type?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zs-8W-rSN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="What is your skin type?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zs-8W-rSN">
                                 <rect key="frame" x="50" y="168.5" width="314" height="30"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
@@ -122,7 +122,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="4Eq-TZ-h6u">
-                                <rect key="frame" x="190.5" y="746" width="117" height="31"/>
+                                <rect key="frame" x="148.5" y="746" width="117" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Find out more" titleAlignment="trailing">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
@@ -134,8 +134,8 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not sure?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj5-us-P6a">
-                                <rect key="frame" x="120.5" y="754" width="63" height="17"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not sure?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mj5-us-P6a">
+                                <rect key="frame" x="95.5" y="754" width="63" height="17"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -208,7 +208,7 @@
                             <constraint firstItem="oPd-op-N34" firstAttribute="top" secondItem="tvb-3a-M9b" secondAttribute="top" constant="30" id="GTn-YD-61k"/>
                             <constraint firstItem="4rE-FT-6mq" firstAttribute="top" secondItem="oPd-op-N34" secondAttribute="bottom" constant="20" id="I1Q-nb-yuf"/>
                             <constraint firstItem="oPd-op-N34" firstAttribute="leading" secondItem="tvb-3a-M9b" secondAttribute="leading" constant="30" id="Jev-HA-Lop"/>
-                            <constraint firstItem="4Eq-TZ-h6u" firstAttribute="centerX" secondItem="lV2-52-tyD" secondAttribute="centerX" constant="42" id="NzK-aV-LBK"/>
+                            <constraint firstItem="4Eq-TZ-h6u" firstAttribute="centerX" secondItem="lV2-52-tyD" secondAttribute="centerX" id="NzK-aV-LBK"/>
                             <constraint firstItem="KYK-cT-yyA" firstAttribute="centerX" secondItem="lV2-52-tyD" secondAttribute="centerX" id="Stu-Cg-XOh"/>
                             <constraint firstItem="2Zs-8W-rSN" firstAttribute="leading" secondItem="tvb-3a-M9b" secondAttribute="leading" constant="50" id="TKG-WE-YHu"/>
                             <constraint firstItem="tvb-3a-M9b" firstAttribute="trailing" secondItem="2Zs-8W-rSN" secondAttribute="trailing" constant="50" id="VtT-eT-um4"/>
@@ -219,7 +219,7 @@
                             <constraint firstItem="T0G-JM-GNX" firstAttribute="top" secondItem="2Zs-8W-rSN" secondAttribute="bottom" constant="85" id="hQ1-G0-atH"/>
                             <constraint firstItem="KYK-cT-yyA" firstAttribute="top" secondItem="mj5-us-P6a" secondAttribute="bottom" constant="12" id="iiy-j2-gQB"/>
                             <constraint firstItem="KYK-cT-yyA" firstAttribute="top" secondItem="4Eq-TZ-h6u" secondAttribute="bottom" constant="6" id="kg5-Bf-VQT"/>
-                            <constraint firstItem="mj5-us-P6a" firstAttribute="centerX" secondItem="lV2-52-tyD" secondAttribute="centerX" constant="-55" id="klI-ll-7aS"/>
+                            <constraint firstItem="mj5-us-P6a" firstAttribute="centerX" secondItem="lV2-52-tyD" secondAttribute="centerX" constant="-80" id="klI-ll-7aS"/>
                             <constraint firstItem="p9f-BS-aIk" firstAttribute="top" secondItem="T0G-JM-GNX" secondAttribute="bottom" constant="10" id="pN6-v1-kGY"/>
                             <constraint firstItem="4Eq-TZ-h6u" firstAttribute="top" secondItem="p9f-BS-aIk" secondAttribute="bottom" constant="15" id="qW3-Ps-Ejw"/>
                             <constraint firstItem="4rE-FT-6mq" firstAttribute="leading" secondItem="tvb-3a-M9b" secondAttribute="leading" constant="30" id="rPB-tt-nYk"/>

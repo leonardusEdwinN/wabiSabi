@@ -2,13 +2,13 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="subcategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subcategory" inverseName="subcategory" inverseEntity="Subcategory"/>
+        <relationship name="category" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subcategory" inverseName="subcategory" inverseEntity="Subcategory"/>
     </entity>
     <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
         <attribute name="lang" optional="YES" attributeType="String"/>
         <attribute name="long" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="location" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Routines" inverseName="locations" inverseEntity="Routines"/>
+        <relationship name="routineslocation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Routines" inverseName="locations" inverseEntity="Routines"/>
     </entity>
     <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
         <attribute name="brand" optional="YES" attributeType="String"/>
@@ -16,9 +16,9 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="periodAfterOpening" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="picture" optional="YES" attributeType="String"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="User" inverseName="products" inverseEntity="User" spotlightIndexingEnabled="YES"/>
         <relationship name="routineproduct" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routines" inverseName="routineproduct" inverseEntity="Routines"/>
-        <relationship name="types" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Type" inverseName="type" inverseEntity="Type"/>
+        <relationship name="types" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Type" inverseName="producttype" inverseEntity="Type"/>
+        <relationship name="userproduct" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="User" inverseName="products" inverseEntity="User" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
         <attribute name="reminderTime" optional="YES" attributeType="String"/>
@@ -28,37 +28,38 @@
         <attribute name="isEveryday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="startHabit" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Location" inverseName="location" inverseEntity="Location"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Location" inverseName="routineslocation" inverseEntity="Location"/>
         <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reminder" inverseName="reminder" inverseEntity="Reminder"/>
-        <relationship name="routine" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="routines" inverseEntity="User"/>
         <relationship name="routineproduct" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product" inverseName="routineproduct" inverseEntity="Product"/>
-        <relationship name="schedules" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Schedule" inverseName="schedules" inverseEntity="Schedule"/>
+        <relationship name="schedules" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Schedule" inverseName="routineschedules" inverseEntity="Schedule"/>
+        <relationship name="userroutine" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="routines" inverseEntity="User"/>
     </entity>
     <entity name="Schedule" representedClassName="Schedule" syncable="YES" codeGenerationType="class">
         <attribute name="schedule" optional="YES" attributeType="String"/>
-        <relationship name="schedules" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Routines" inverseName="schedules" inverseEntity="Routines"/>
+        <relationship name="routineschedules" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Routines" inverseName="schedules" inverseEntity="Routines"/>
     </entity>
     <entity name="Subcategory" representedClassName="Subcategory" syncable="YES" codeGenerationType="class">
         <attribute name="duration" optional="YES" attributeType="String"/>
         <attribute name="frequencyUsed" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="subcategory" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Category" inverseName="subcategories" inverseEntity="Category"/>
+        <relationship name="subcategory" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Category" inverseName="category" inverseEntity="Category"/>
     </entity>
     <entity name="Type" representedClassName="Type" syncable="YES" codeGenerationType="class">
         <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="type" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Product" inverseName="types" inverseEntity="Product"/>
+        <relationship name="producttype" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Product" inverseName="types" inverseEntity="Product"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="isNotify" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="level" optional="YES" attributeType="String"/>
         <attribute name="localization" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="skinType" optional="YES" attributeType="String"/>
-        <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="product" inverseEntity="Product"/>
-        <relationship name="routines" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Routines" inverseName="routine" inverseEntity="Routines"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="userproduct" inverseEntity="Product"/>
+        <relationship name="routines" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Routines" inverseName="userroutine" inverseEntity="Routines"/>
     </entity>
     <configuration name="Cloud" usedWithCloudKit="YES">
         <memberEntity name="Category"/>
@@ -91,6 +92,6 @@
         <element name="Schedule" positionX="-9" positionY="81" width="128" height="59"/>
         <element name="Subcategory" positionX="202.573486328125" positionY="47.44537353515625" width="128" height="89"/>
         <element name="Type" positionX="47.02947998046875" positionY="306.0305786132812" width="128" height="74"/>
-        <element name="User" positionX="-318.422119140625" positionY="-131.8194580078125" width="128" height="164"/>
+        <element name="User" positionX="-318.422119140625" positionY="-131.8194580078125" width="128" height="179"/>
     </elements>
 </model>
