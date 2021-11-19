@@ -11,6 +11,10 @@
 		130424EB2744F50300720D35 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130424E82744F50200720D35 /* OverlayView.swift */; };
 		130424EC2744F50300720D35 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130424E92744F50200720D35 /* OverlayView.xib */; };
 		130424ED2744F50300720D35 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130424EA2744F50300720D35 /* PresentationController.swift */; };
+		130825672746409A005CB024 /* AddGeotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130825662746409A005CB024 /* AddGeotificationViewController.swift */; };
+		1308256927464463005CB024 /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308256827464463005CB024 /* Geotification.swift */; };
+		1308256C27464625005CB024 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308256A27464625005CB024 /* SearchResultTableViewCell.swift */; };
+		1308256D27464625005CB024 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1308256B27464625005CB024 /* SearchResultTableViewCell.xib */; };
 		130A695F273D121C007E8E29 /* AddRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130A695E273D121C007E8E29 /* AddRoutine.storyboard */; };
 		131F76C72727E61300A7AB41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131F76C62727E61300A7AB41 /* AppDelegate.swift */; };
 		131F76C92727E61300A7AB41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131F76C82727E61300A7AB41 /* SceneDelegate.swift */; };
@@ -107,6 +111,10 @@
 		130424E82744F50200720D35 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		130424E92744F50200720D35 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		130424EA2744F50300720D35 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		130825662746409A005CB024 /* AddGeotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeotificationViewController.swift; sourceTree = "<group>"; };
+		1308256827464463005CB024 /* Geotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
+		1308256A27464625005CB024 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		1308256B27464625005CB024 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		130A695E273D121C007E8E29 /* AddRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRoutine.storyboard; sourceTree = "<group>"; };
 		131F76C32727E61300A7AB41 /* WabiSabiTeamProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WabiSabiTeamProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		131F76C62727E61300A7AB41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -303,6 +311,10 @@
 				1371B4C92743E2C700A16A45 /* LocationReminder.storyboard */,
 				1371B4CF2743EDE000A16A45 /* LocationTableViewCell.swift */,
 				1371B4D02743EDE000A16A45 /* LocationTableViewCell.xib */,
+				130825662746409A005CB024 /* AddGeotificationViewController.swift */,
+				1308256827464463005CB024 /* Geotification.swift */,
+				1308256A27464625005CB024 /* SearchResultTableViewCell.swift */,
+				1308256B27464625005CB024 /* SearchResultTableViewCell.xib */,
 			);
 			path = LocationReminder;
 			sourceTree = "<group>";
@@ -697,6 +709,7 @@
 				139A631C273BC2D2008D54A8 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				13E1D91B2733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib in Resources */,
 				13CD1F3227425D5100F537EB /* TimerReminderTableViewCell.xib in Resources */,
+				1308256D27464625005CB024 /* SearchResultTableViewCell.xib in Resources */,
 				139A632A273BCB59008D54A8 /* RoutineTableViewCell.xib in Resources */,
 				139A6326273BCB4A008D54A8 /* ProductTableViewCell.xib in Resources */,
 				139A631F273BC2D2008D54A8 /* SF-Pro-Rounded-Bold.otf in Resources */,
@@ -727,12 +740,14 @@
 				137962ED2733D999008D1BCF /* SummaryCalendarTableViewCell.swift in Sources */,
 				134394F5273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift in Sources */,
 				3575BD392742686700804502 /* Utilities.swift in Sources */,
+				1308256927464463005CB024 /* Geotification.swift in Sources */,
 				97177DE9273D0557007FF0E9 /* RoutinesTableViewCell.swift in Sources */,
 				13CD1F2D27425D1900F537EB /* LocationReminderTableViewCell.swift in Sources */,
 				13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */,
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
 				970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */,
+				1308256C27464625005CB024 /* SearchResultTableViewCell.swift in Sources */,
 				1371B4BE2743C49400A16A45 /* TimerReminderViewController.swift in Sources */,
 				139A3015273B78EE00104A92 /* SkinTypeRoutine.swift in Sources */,
 				13CD1F3127425D5100F537EB /* TimerReminderTableViewCell.swift in Sources */,
@@ -777,6 +792,7 @@
 				3532C88B272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift in Sources */,
 				35E47A092730C4C90033E5F4 /* SkinCareGuideViewController.swift in Sources */,
 				1371B4B9274397BB00A16A45 /* ProductTypeTableViewCell.swift in Sources */,
+				130825672746409A005CB024 /* AddGeotificationViewController.swift in Sources */,
 				35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */,
 				35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */,
 				3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */,
@@ -930,11 +946,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
 				CODE_SIGN_ENTITLEMENTS = WabiSabiTeamProject/WabiSabiTeamProject.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9P49UTYHH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WabiSabiTeamProject/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We Need Access Your Camera";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Wabi - Sabi requires constant access to your phone’s location to notify you when you enter or leave a geofence.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Wabi - Sabi requires constant access to your phone’s location to notify you when you enter or leave a geofence.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need Your Permission To Access Photo Library";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We Need Your Permission to Accsess Photo Library ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -945,8 +967,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabi;
+				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabiMacro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -960,11 +983,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES;
 				CODE_SIGN_ENTITLEMENTS = WabiSabiTeamProject/WabiSabiTeamProject.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9P49UTYHH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WabiSabiTeamProject/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We Need Access Your Camera";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Wabi - Sabi requires constant access to your phone’s location to notify you when you enter or leave a geofence.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Wabi - Sabi requires constant access to your phone’s location to notify you when you enter or leave a geofence.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need Your Permission To Access Photo Library";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We Need Your Permission to Accsess Photo Library ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -975,8 +1004,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabi;
+				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabiMacro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
