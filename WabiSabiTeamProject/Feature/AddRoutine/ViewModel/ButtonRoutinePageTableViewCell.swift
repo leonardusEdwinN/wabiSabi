@@ -6,11 +6,18 @@
 //
 
 import UIKit
+protocol AddProductDelegate{
+    func addNewProduct()
+}
 
 class ButtonRoutinePageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var buttonImport: UIButton!
     @IBOutlet weak var buttonAddOtherProduct: UIButton!
+    
+    // MARK: Variable
+    var delegate: AddProductDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -30,5 +37,7 @@ class ButtonRoutinePageTableViewCell: UITableViewCell {
     @IBAction func buttonImportPressed(_ sender: Any) {
     }
     @IBAction func buttonAddOtherProductPressed(_ sender: Any) {
+        delegate?.addNewProduct()
+        
     }
 }

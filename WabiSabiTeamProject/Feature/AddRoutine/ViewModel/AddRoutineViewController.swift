@@ -21,6 +21,7 @@ class AddRoutineViewController : UIViewController{
     }
     @IBOutlet weak var backButton: UIButton!
     
+    var tableLength :Int = 7
     var products: [Product] = []
     var indexSelected: Int = 0
     
@@ -28,11 +29,10 @@ class AddRoutineViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         registerCell()
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.backgroundColor = UIColor.systemIndigo
-        
         checkProduct()
     }
     
@@ -48,14 +48,41 @@ class AddRoutineViewController : UIViewController{
         
         routineTableView.register(UINib.init(nibName: "LocationReminderTableViewCell", bundle: nil), forCellReuseIdentifier: "locationReminderTableViewCell")
         
+        routineTableView.register(UINib.init(nibName: "SaveButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "saveButtonTableViewCell")
+        
+        
+        
         routineTableView.delegate = self
         routineTableView.dataSource = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "moveToAddProduct"{
-            if let destVC = segue.destination as? AddProductViewController {
-                print("Asd")
+            
+            guard let nav = segue.destination as? UINavigationController else {
+                fatalError("NavigationController not found")
+            }
+            
+            guard let AddProductVC = nav.topViewController as? AddProductViewController else {
+                fatalError("AddProductViewController not found")
+            }
+        }else if segue.identifier == "moveToTimeReminder"{
+            
+            guard let nav = segue.destination as? UINavigationController else {
+                fatalError("NavigationController not found")
+            }
+            
+            guard let TimerReminderVC = nav.topViewController as? TimerReminderViewController else {
+                fatalError("TimerReminderViewController not found")
+            }
+        }else if segue.identifier == "moveToLocationReminder"{
+            
+            guard let nav = segue.destination as? UINavigationController else {
+                fatalError("NavigationController not found")
+            }
+            
+            guard let AddProductVC = nav.topViewController as? LocationReminderViewController else {
+                fatalError("LocationReminderViewController not found")
             }
         }
     }
@@ -64,7 +91,7 @@ class AddRoutineViewController : UIViewController{
 
 extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count + 3
+        return products.count + 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,6 +106,7 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             //button
             let row = tableView.dequeueReusableCell(withIdentifier: "buttonRoutineTableViewCell") as! ButtonRoutinePageTableViewCell
             
+            row.delegate = self
             return row
         }
                 else if(indexPath.row == products.count + 1){
@@ -91,6 +119,13 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             let row = tableView.dequeueReusableCell(withIdentifier: "locationReminderTableViewCell") as! LocationReminderTableViewCell
             
             return row
+
+        }else if(indexPath.row == products.count + 3){
+            //location reminder
+            let row = tableView.dequeueReusableCell(withIdentifier: "saveButtonTableViewCell") as! SaveButtonTableViewCell
+            row.delegate = self
+            return row
+
         }
         
         return UITableViewCell()
@@ -99,15 +134,18 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var heightForRow : CGFloat = 0
         
-        if(indexPath.item ==  products.count - 3){
+        if(indexPath.row == products.count){
             //button
             heightForRow = 160
-        }else if(indexPath.item ==  products.count - 2){
+        }else if(indexPath.row == products.count + 1){
             //timer reminder
             heightForRow = 140
-        }else if(indexPath.item ==  products.count - 1){
+        }else if(indexPath.row == products.count + 2){
             //location reminder
             heightForRow = 140
+        }else if(indexPath.row == products.count + 3){
+            //save button
+            heightForRow = 50
         }else{
             heightForRow = 125
         }
@@ -128,17 +166,20 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if(indexPath.item ==  products.count - 3){
+        if(indexPath.row == products.count){
             //button
             print("BUTTON ROW CLICKED")
-        }else if(indexPath.item ==  products.count - 2){
+        }else if(indexPath.row == products.count + 1){
             //timer reminder
             print("TIME REMINDER ROW CLICKED")
             performSegue(withIdentifier: "moveToTimeReminder", sender: self)
-        }else if(indexPath.item ==  products.count - 1){
+        }else if(indexPath.row == products.count + 2){
             //location reminder
             print("LOCATION REMINDER ROW CLICKED")
             performSegue(withIdentifier: "moveToLocationReminder", sender: self)
+        }else if(indexPath.row == products.count + 3){
+            //Save Button
+//            performSegue(withIdentifier: "moveToLocationReminder", sender: self)
         }else{
             print("ADD PRODUCT ROW CLICKED")
             performSegue(withIdentifier: "moveToAddProduct", sender: self)
@@ -148,4 +189,16 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     
+}
+
+
+extension AddRoutineViewController : AddRoutineDelegate{
+    func addRoutineDidSave() {
+        self.dismiss(animated: false, completion: nil)
+    }
+}
+extension AddRoutineViewController : AddProductDelegate{
+    func addNewProduct() {
+        self.performSegue(withIdentifier: "moveToAddProduct", sender: self)
+    }
 }

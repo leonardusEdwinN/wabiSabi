@@ -14,12 +14,6 @@
 		<string>SF-Pro-Rounded-Thin</string>
 		<string>SF-Pro-Rounded-Ultralight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>We Need Access Your Camera</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need Your Permission To Access Photo Library</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We Need Your Permission to Accsess Photo Library </string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

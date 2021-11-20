@@ -19,6 +19,7 @@ class ActivityViewController: UIViewController {
     var selectedDate: String = ""
     
     var skinCareRoutines: [Routines]!
+    var selectedIndex : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +109,24 @@ class ActivityViewController: UIViewController {
             datePicker.removeFromSuperview()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nav = segue.destination as? UINavigationController else {
+            fatalError("NavigationController not found")
+        }
+        
+        guard let AddRoutineVC = nav.topViewController as? AddRoutineViewController else {
+            fatalError("AddRoutineViewController not found")
+            
+//            let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "addRoutineVC") as! AddRoutineViewController
+//            vc.selectedRoutine = skinCareRoutines[indexPath.row]
+//
+//            self.show(vc, sender: nil)
+        }
+        
+        AddRoutineVC.selectedRoutine = skinCareRoutines[selectedIndex]
+    }
 }
 
 extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
@@ -140,11 +159,12 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "addRoutineVC") as! AddRoutineViewController
-        vc.selectedRoutine = skinCareRoutines[indexPath.row]
         
-        self.show(vc, sender: nil)
+        if(indexPath.item == 0){
+            performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
+            self.selectedIndex = indexPath.item
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
