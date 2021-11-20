@@ -12,7 +12,7 @@ class QuestionSkinCareRoutineViewController: UIViewController {
     @IBOutlet weak var skinCareRoutineTableView: UITableView!
     @IBOutlet weak var buttonNext: UIButton!
     
-    var skinCareRoutines: [String] = ["I barely know any skin care routine", "I only do it if I remember", "I’m quite familiar with it", "You can basically call me a skin care expert"]
+    var skinCareRoutines: [String] = ["I barely know any skin care routine", "I only do it if I remember", "I’m quite familiar with it", "You can call me a skin care expert"]
     
     var indexSelected: Int = 0
     
@@ -45,7 +45,7 @@ extension QuestionSkinCareRoutineViewController : UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 90
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

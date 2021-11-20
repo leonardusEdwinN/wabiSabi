@@ -18,6 +18,9 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var circularProgressBackground: UIView!
     var selectedDate: String = ""
     
+    var skinCareRoutines: [Routines]!
+    var selectedIndex : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
@@ -25,6 +28,8 @@ class ActivityViewController: UIViewController {
         setUpTableView()
         configureButton()
         configureBackground()
+        
+        skinCareRoutines = PersistanceManager.shared.fetchRoutines()
     }
     
     private func configureBackground() {
@@ -82,19 +87,12 @@ class ActivityViewController: UIViewController {
         return datePicker
     }()
     
-    @objc func tapMenuButton() {
-        datePicker.datePickerMode = UIDatePicker.Mode.date
-        if #available(iOS 14.0, *) {
-            datePicker.preferredDatePickerStyle = .inline
-        }
-        datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
+    @objc func tapMenuButton(_ sender: Any) {
         
-        datePicker.backgroundColor = .secondarySystemBackground
-        self.view.addSubview(datePicker)
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        datePicker.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        datePicker.widthAnchor.constraint(equalToConstant: view.frame.size.width).isActive = true
+        let slideVC = OverlayCalenderView()
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        self.present(slideVC, animated: true, completion: nil)
     }
     
     @objc func onDoneButtonClick() {
@@ -119,7 +117,15 @@ class ActivityViewController: UIViewController {
         
         guard let AddRoutineVC = nav.topViewController as? AddRoutineViewController else {
             fatalError("AddRoutineViewController not found")
+            
+//            let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "addRoutineVC") as! AddRoutineViewController
+//            vc.selectedRoutine = skinCareRoutines[indexPath.row]
+//
+//            self.show(vc, sender: nil)
         }
+        
+        AddRoutineVC.selectedRoutine = skinCareRoutines[selectedIndex]
     }
 }
 
@@ -131,6 +137,8 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesTableViewCell", for: indexPath) as! RoutinesTableViewCell
         cell.setup(with: routines[indexPath.row])
+        
+        cell.routineProduct.text = "0/\(PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row]).count)"
         return cell
     }
     
@@ -150,12 +158,23 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         return UISwipeActionsConfiguration(actions: [closeAction])
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if(indexPath.item == 0){
+            performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
+            self.selectedIndex = indexPath.item
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let modifyAction = UIContextualAction(style: .normal, title:  "Skip", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             tableView.beginUpdates()
             routines.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            PersistanceManager.shared.deleteRoutines(routines: self.skinCareRoutines[indexPath.row])
             
             tableView.endUpdates()
             print("SKIP")
@@ -165,13 +184,10 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if(indexPath.item == 0){
-            performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
-        }
-        
-        
+}
+
+extension ActivityViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationCalenderController(presentedViewController: presented, presenting: presenting)
     }
 }
