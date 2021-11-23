@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Timer Reminder View Controller-->
+        <!--Reminders-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="timerReminderVC" id="Y6W-OH-hqX" customClass="TimerReminderViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,71 +60,72 @@ Add one by tapping the + button</string>
                                     <constraint firstItem="HQJ-CL-Lf6" firstAttribute="top" secondItem="lgN-IG-xj9" secondAttribute="bottom" constant="20" id="y37-7l-L8C"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcx-SN-bFs">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTm-Fb-fup">
-                                        <rect key="frame" x="166.5" y="14.5" width="81" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Gu-Gs-jTy">
-                                        <rect key="frame" x="357.5" y="9.5" width="41.5" height="31"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
-                                        <connections>
-                                            <action selector="buttonAddPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fah-dD-Uht"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSR-5L-Xl4">
-                                        <rect key="frame" x="15" y="9.5" width="56" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Back"/>
-                                        <connections>
-                                            <action selector="buttonBackPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aXN-gO-gye"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="xSR-5L-Xl4" firstAttribute="leading" secondItem="Pcx-SN-bFs" secondAttribute="leading" constant="15" id="1jM-6X-oUk"/>
-                                    <constraint firstItem="eTm-Fb-fup" firstAttribute="centerY" secondItem="Pcx-SN-bFs" secondAttribute="centerY" id="GW2-4c-6Z8"/>
-                                    <constraint firstItem="xSR-5L-Xl4" firstAttribute="centerY" secondItem="Pcx-SN-bFs" secondAttribute="centerY" id="IVb-Xa-F8M"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Gu-Gs-jTy" secondAttribute="trailing" constant="15" id="Pya-9V-XEh"/>
-                                    <constraint firstItem="eTm-Fb-fup" firstAttribute="centerX" secondItem="Pcx-SN-bFs" secondAttribute="centerX" id="dQF-Va-uZd"/>
-                                    <constraint firstItem="9Gu-Gs-jTy" firstAttribute="centerY" secondItem="Pcx-SN-bFs" secondAttribute="centerY" id="rNA-v2-4v1"/>
-                                    <constraint firstAttribute="height" constant="50" id="wZr-Ml-zxn"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Hfi-vu-hMX">
-                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Hfi-vu-hMX" firstAttribute="top" secondItem="Pcx-SN-bFs" secondAttribute="bottom" id="9uU-Qq-wdr"/>
                             <constraint firstItem="8Kh-Wv-yn2" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="THJ-fY-yuE"/>
                             <constraint firstItem="Hfi-vu-hMX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dDJ-j7-lnD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Hfi-vu-hMX" secondAttribute="trailing" id="dov-Ok-jwP"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Pcx-SN-bFs" secondAttribute="trailing" id="ePh-hM-eFZ"/>
-                            <constraint firstItem="Pcx-SN-bFs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ihY-DF-yce"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Hfi-vu-hMX" secondAttribute="bottom" id="jT1-yU-MnS"/>
-                            <constraint firstItem="Pcx-SN-bFs" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="rpC-Z0-RQR"/>
+                            <constraint firstItem="Hfi-vu-hMX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="s38-U5-Wcg"/>
                             <constraint firstItem="8Kh-Wv-yn2" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="x7y-Fb-QUB"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Reminders" id="Db3-IU-FKv">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="vhw-ga-rVL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="xSR-5L-Xl4">
+                                <rect key="frame" x="20" y="5" width="62" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="buttonBackPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aXN-gO-gye"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="gjV-AS-UiW">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9Gu-Gs-jTy">
+                                <rect key="frame" x="348.5" y="5" width="45.5" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="buttonAddPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fah-dD-Uht"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonAdd" destination="9Gu-Gs-jTy" id="qna-ka-8Ra"/>
                         <outlet property="buttonBack" destination="xSR-5L-Xl4" id="hsD-eX-AJT"/>
-                        <outlet property="labelTitlePage" destination="eTm-Fb-fup" id="BIq-9d-AXY"/>
                         <outlet property="timerReminderTableView" destination="Hfi-vu-hMX" id="nUB-Hk-LAx"/>
                         <outlet property="viewCircle" destination="lgN-IG-xj9" id="koL-4n-XHx"/>
                         <outlet property="viewEmptyState" destination="8Kh-Wv-yn2" id="566-jq-F4M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="80.357142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6te-Gt-FSL">
+            <objects>
+                <navigationController storyboardIdentifier="TimerReminderNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="FX4-hP-2sp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XnE-g0-M90">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="RZU-Qd-rES"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="00G-S5-dy9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="80.357142857142847"/>
         </scene>

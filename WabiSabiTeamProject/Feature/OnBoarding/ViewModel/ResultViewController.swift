@@ -15,6 +15,8 @@ class ResultViewController: UIViewController {
     var levelIndex: Int = 0
     var skinExperienceIndex: Int = 0
     
+    var user: User!
+    
     var skinTypeRoutine: [SkinRoutineProduct] = [
         SkinRoutineProduct(icon: "🌞", name: "Morning Skin Care", products: []),
         SkinRoutineProduct(icon: "🌓", name: "Night Skin Care", products: [])
@@ -31,9 +33,9 @@ class ResultViewController: UIViewController {
         skinExperienceIndex = UserDefaults.standard.integer(forKey: "skinCareExperience")
         
         calculateLevel()
-        
-        checkProduct()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let birthdate = UserDefaults.standard.object(forKey: "birthdate") as! Date
         let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy HH:mm"
@@ -46,6 +48,8 @@ class ResultViewController: UIViewController {
             localization: "en",
             name: UserDefaults.standard.string(forKey: "name") ?? "",
             skinType: Utilities().skinTypeRoutineProduct[0].skinType[skinTypeIndex].name)
+        
+        checkProduct()
     }
     
     func calculateLevel() {
@@ -71,16 +75,25 @@ class ResultViewController: UIViewController {
         
         levelLabel.text = "Level:  \(Utilities().levels[levelIndex].level)"
         
+        
+        print("LEVEL INDEX : \(Utilities().levels[levelIndex].level)")
+        
         UserDefaults.standard.set(levelIndex, forKey: "levelIndex")
     }
     
     func checkProduct(){
         let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
+        print("PRODUCT INDEX : \(productIndex)")
         for routineIndex in 0...1 {
+            PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name)
+            
             for index in 0..<productIndex.count {
-                let temp = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]
-                if !(temp.description == "") {
-                    skinTypeRoutine[routineIndex].products.append(temp)
+                let product = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]
+                
+                if !(product.description == "") {
+                    skinTypeRoutine[routineIndex].products.append(product)
+                    
+                    PersistanceManager.shared.setProduct(name: product.name)
                 }
             }
         }

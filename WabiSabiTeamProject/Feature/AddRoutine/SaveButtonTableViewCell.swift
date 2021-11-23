@@ -1,15 +1,22 @@
 //
-//  ProductUsedTableViewCell.swift
+//  SaveButtonTableViewCell.swift
 //  WabiSabiTeamProject
 //
-//  Created by Edwin Niwarlangga on 15/11/21.
+//  Created by Edwin Niwarlangga on 20/11/21.
 //
 
 import UIKit
+protocol AddRoutineDelegate{
+    func addRoutineDidSave()
+}
 
-class ProductUsedTableViewCell: UITableViewCell {
+class SaveButtonTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var productNameLabel: UILabel!
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        delegate?.addRoutineDidSave()
+    }
+    
+    var delegate : AddRoutineDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

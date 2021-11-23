@@ -40,6 +40,7 @@ struct Utilities {
                 SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser"),
                 SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
                 SkinCareProduct(icon: "", name: "Serum", description: ""),
+                SkinCareProduct(icon: "", name: "Eye Cream", description: ""),
                 SkinCareProduct(icon: "", name: "Moisturizer", description: "Lightweight"),
                 SkinCareProduct(icon: "", name: "Sunscreen", description: "Zinc Oxide"),
                 SkinCareProduct(icon: "", name: "Extras", description: "")

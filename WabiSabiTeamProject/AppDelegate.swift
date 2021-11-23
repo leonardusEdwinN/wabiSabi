@@ -49,7 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the container options on the cloud store
         cloudStoreDescription.cloudKitContainerOptions =
             NSPersistentCloudKitContainerOptions(
-                containerIdentifier: "iCloud.id.infinitelearning.wabisabi")
+                containerIdentifier: "iCloud.com.id.infinitelearning.wabisabi")
+//                containerIdentifier: "id.infinitelearning.wabisabiMacro")
         
         // Update the container's list of store descriptions
         container.persistentStoreDescriptions = [
@@ -57,11 +58,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             localStoreDescription
         ]
         
+        
         // Load both stores
         container.loadPersistentStores { storeDescription, error in
-            guard error == nil else {
-                fatalError("Could not load persistent stores. \(error!)")
+//
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+//                fatalError("Could not load persistent stores. \(error)")
+                print("Couldnot load persistent stores \(error)")
             }
+            
+//            guard error == nil else {
+//                print("Couldnot load persistent stores \(error)")
+////                fatalError("Could not load persistent stores. \(error)")
+//            }
         }
         
         return container

@@ -17,13 +17,27 @@ class PersistanceManager {
         let description = container.persistentStoreDescriptions.first
          
          // Load both stores
-        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.id.infinitelearning.wabisabi")
+        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.id.infinitelearning.wabisabi")
 
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+
+        // MARK: DEBUG
+//        // Only initialize the schema when building the app with the
+//        // Debug build configuration.
+//        #if DEBUG
+//        do {
+//            // Use the container to initialize the development schema.
+//            try container.initializeCloudKitSchema(options: [])
+//        } catch {
+//            // Handle any errors.
+//        }
+//        #endif
+
+        
         
         return container
     }()
@@ -42,13 +56,24 @@ class PersistanceManager {
         save()
     }
     
-    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String) {
+    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines) {
         let product = Product(context: persistentContainer.viewContext)
+        product.id = "\(UUID())"
         product.brand = brand
         product.expiredDate = expiredDate
         product.name = name
         product.periodAfterOpening = periodAfterOpening
         product.picture = picture
+        product.routineproduct = routine
+        save()
+    }
+    
+    func setProduct(name: String) {
+        let product = Product(context: persistentContainer.viewContext)
+        product.id = "\(UUID())"
+        product.name = name
+        product.routineproduct = fetchRoutine(id: UserDefaults.standard.string(forKey: "routineID")!)
+        product.userproduct = fetchUser()
         save()
     }
     
@@ -59,11 +84,32 @@ class PersistanceManager {
     }
     
     func setRoutine(isEveryday: Bool, name: String, startHabit: Date) {
-        let routines = Routines(context: persistentContainer.viewContext)
-        routines.isEveryday = isEveryday
-        routines.name = name
-        routines.startHabit = startHabit
+        let routine = Routines(context: persistentContainer.viewContext)
+        routine.id = "\(UUID())"
+        routine.isEveryday = isEveryday
+        routine.name = name
+        routine.startHabit = startHabit
+        routine.userroutine = fetchUser()
         save()
+        
+        if let routineID = routine.id {
+            UserDefaults.standard.set(routineID, forKey: "routineID")
+            print("Routine ID \(routineID) has been saved")
+        }
+    }
+    
+    func setRoutine(isEveryday: Bool, name: String) {
+        let routine = Routines(context: persistentContainer.viewContext)
+        routine.id = "\(UUID())"
+        routine.isEveryday = isEveryday
+        routine.name = name
+        routine.userroutine = fetchUser()
+        save()
+        
+        if let routineID = routine.id {
+            UserDefaults.standard.set(routineID, forKey: "routineID")
+            print("Routine ID \(routineID) has been saved")
+        }
     }
     
     func setSchedule(time: String) {
@@ -81,6 +127,7 @@ class PersistanceManager {
     
     func setUser(dateOfBirth: Date, gender: String, isNotify: Bool, level: String, localization: String, name: String, skinType: String) {
         let user = User(context: persistentContainer.viewContext)
+        user.id = "\(UUID())"
         user.dateOfBirth = dateOfBirth
         user.gender = gender
         user.isNotify = isNotify
@@ -89,6 +136,11 @@ class PersistanceManager {
         user.name = name
         user.skinType = skinType
         save()
+        
+        if let userID = user.id {
+            UserDefaults.standard.set(userID, forKey: "userID")
+            print("User ID \(userID) has been saved")
+        }
     }
     
     func fetchCategory() -> [Category] {
@@ -122,15 +174,30 @@ class PersistanceManager {
     func fetchProduct() -> [Product] {
         let request: NSFetchRequest<Product> = Product.fetchRequest()
         
-        var product: [Product] = []
+        var products: [Product] = []
         
         do {
-            product = try persistentContainer.viewContext.fetch(request)
+            products = try persistentContainer.viewContext.fetch(request)
         } catch {
             print("Error fetching authors")
         }
         
-        return product
+        return products
+    }
+    
+    func fetchProduct(routine: Routines) -> [Product] {
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        request.predicate = NSPredicate(format: "routineproduct = %@", routine)
+        
+        var products: [Product] = []
+        
+        do {
+            products = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error fetching authors")
+        }
+        
+        return products
     }
     
     func fetchReminder() -> [Reminder] {
@@ -159,6 +226,21 @@ class PersistanceManager {
         }
         
         return routines
+    }
+    
+    func fetchRoutine(id: String) -> Routines {
+        let request: NSFetchRequest<Routines> = Routines.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as! CVarArg)
+        
+        var routines: [Routines] = []
+        
+        do {
+            routines = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error fetching authors")
+        }
+        
+        return routines[0]
     }
     
     func fetchSchedule() -> [Schedule] {
@@ -203,8 +285,11 @@ class PersistanceManager {
         return type
     }
     
-    func fetchUser() -> [User] {
+    func fetchUser() -> User {
+        var userID = UserDefaults.standard.string(forKey: "userID")
+        
         let request: NSFetchRequest<User> = User.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", userID as! CVarArg)
         
         var user: [User] = []
         
@@ -214,7 +299,11 @@ class PersistanceManager {
             print("Error fetching authors")
         }
         
-        return user
+        if user.count > 0 {
+            return user[0]
+        }
+        
+        return User()
     }
     
     func deleteLocation(location : Location) {
