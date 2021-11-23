@@ -17,13 +17,27 @@ class PersistanceManager {
         let description = container.persistentStoreDescriptions.first
          
          // Load both stores
-        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.id.infinitelearning.wabisabi")
+        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.id.infinitelearning.wabisabi")
 
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+
+        // MARK: DEBUG
+//        // Only initialize the schema when building the app with the
+//        // Debug build configuration.
+//        #if DEBUG
+//        do {
+//            // Use the container to initialize the development schema.
+//            try container.initializeCloudKitSchema(options: [])
+//        } catch {
+//            // Handle any errors.
+//        }
+//        #endif
+
+        
         
         return container
     }()

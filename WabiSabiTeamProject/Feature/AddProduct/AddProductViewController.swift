@@ -66,6 +66,8 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
         
 //        imageViewProduct.frame = CGRect(x: viewAddPhoto.frame.size.width / 2 - 25 , y: viewAddPhoto.frame.size.height / 2 - 25, width: 25, height: 25)
         
+        self.hideKeyboardWhenTappedAround()
+        
         // 1. create a gesture recognizer (tap gesture)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addProductType(_:)))
         
@@ -74,6 +76,16 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
         
         let addPhotoTapGesture = UITapGestureRecognizer(target: self, action: #selector(addPhotoFromGallery(_:)))
         viewAddPhoto.addGestureRecognizer(addPhotoTapGesture)
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(QuestionNameViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @objc func addProductType(_ sender: UITapGestureRecognizer) {

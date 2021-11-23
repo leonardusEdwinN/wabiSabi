@@ -232,10 +232,10 @@
             </objects>
             <point key="canvasLocation" x="-313.04347826086956" y="-518.30357142857144"/>
         </scene>
-        <!--AddRoutineNavigationController-->
+        <!--addRoutineNVC-->
         <scene sceneID="mcL-Bw-VIn">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddRoutine" referencedIdentifier="AddRoutineNavigationController" id="HUT-Du-YTH" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="AddRoutine" referencedIdentifier="addRoutineNVC" id="HUT-Du-YTH" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="bHf-Ll-vmR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pba-CJ-tV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -314,7 +314,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-lI-OKs">
-                                        <rect key="frame" x="20" y="100" width="145.66666666666666" height="40"/>
+                                        <rect key="frame" x="20" y="100" width="149.33333333333334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="pcV-Un-dd2"/>
                                         </constraints>
@@ -378,7 +378,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="324.66666666666669"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubz-hE-flT">
-                                        <rect key="frame" x="20" y="50" width="96" height="39.666666666666657"/>
+                                        <rect key="frame" x="20.000000000000007" y="50" width="99.666666666666686" height="40.666666666666657"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="34"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -402,13 +402,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nadia (25 y.o)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX8-Rw-pfw">
-                                        <rect key="frame" x="140.33333333333337" y="235" width="133.66666666666663" height="25.666666666666686"/>
+                                        <rect key="frame" x="143" y="235" width="128.33333333333337" height="25.666666666666686"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1Y-qH-YWX">
-                                        <rect key="frame" x="154" y="270.66666666666669" width="106.33333333333331" height="34"/>
+                                        <rect key="frame" x="157.33333333333334" y="270.66666666666669" width="99.666666666666657" height="34"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Edit Profile">

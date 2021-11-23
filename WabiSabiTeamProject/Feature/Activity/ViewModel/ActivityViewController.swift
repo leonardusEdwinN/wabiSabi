@@ -111,6 +111,7 @@ class ActivityViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         guard let nav = segue.destination as? UINavigationController else {
             fatalError("NavigationController not found")
         }

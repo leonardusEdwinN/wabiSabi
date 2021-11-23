@@ -75,11 +75,15 @@ class ResultViewController: UIViewController {
         
         levelLabel.text = "Level:  \(Utilities().levels[levelIndex].level)"
         
+        
+        print("LEVEL INDEX : \(Utilities().levels[levelIndex].level)")
+        
         UserDefaults.standard.set(levelIndex, forKey: "levelIndex")
     }
     
     func checkProduct(){
         let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
+        print("PRODUCT INDEX : \(productIndex)")
         for routineIndex in 0...1 {
             PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name)
             

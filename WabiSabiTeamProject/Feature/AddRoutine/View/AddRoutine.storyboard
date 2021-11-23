@@ -77,13 +77,14 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="YqF-f5-mFH" eventType="touchUpInside" id="6hF-nS-dbV"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="backButtonPressed:" destination="YqF-f5-mFH" id="dhj-Kl-gMq"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="etL-9O-a3n" id="DcG-0b-dkw"/>
                         <outlet property="routineTableView" destination="Z3M-WS-p8T" id="fgK-7e-d5P"/>
                         <segue destination="ZpM-g2-4jm" kind="show" identifier="moveToAddProduct" id="xsd-M1-9K8"/>
                         <segue destination="Nx4-ue-bJP" kind="show" identifier="moveToLocationReminder" id="B5b-15-0Ju"/>
@@ -92,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvs-rK-S03" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931.8840579710147" y="-523.66071428571422"/>
+            <point key="canvasLocation" x="2842.0289855072465" y="-523.66071428571422"/>
         </scene>
         <!--AddProductNavigationViewController-->
         <scene sceneID="t7S-ri-DF1">
@@ -102,7 +103,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9q-6e-QkT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2581.1594202898555" y="-673.66071428571422"/>
+            <point key="canvasLocation" x="3490.579710144928" y="-673.66071428571422"/>
         </scene>
         <!--TimerReminderNavigationViewController-->
         <scene sceneID="gFw-8G-HaS">
@@ -112,7 +113,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUI-mG-UHE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2592.0289855072465" y="-581.25"/>
+            <point key="canvasLocation" x="3502.1739130434785" y="-581.25"/>
         </scene>
         <!--LocationReminderNavigationViewController-->
         <scene sceneID="5cJ-Lh-IsP">
@@ -122,33 +123,25 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6l9-WF-wTq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2581.1594202898555" y="-504.24107142857139"/>
+            <point key="canvasLocation" x="3491.3043478260875" y="-504.24107142857139"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="9hj-Rz-3gs">
+        <scene sceneID="v67-sZ-VwJ">
             <objects>
-                <navigationController storyboardIdentifier="AddRoutineNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="OAL-LV-U0R" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="addRoutineNVC" automaticallyAdjustsScrollViewInsets="NO" id="SCQ-O5-Q6x" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LaL-wl-87Q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Flr-4j-eGj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.37647058820000001" green="0.27058823529999998" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="YqF-f5-mFH" kind="relationship" relationship="rootViewController" id="65Q-rM-uQv"/>
+                        <segue destination="YqF-f5-mFH" kind="relationship" relationship="rootViewController" id="VuC-k9-PhX"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2l7-t0-lQY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LnW-KY-Cuf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1021.7391304347827" y="-523.66071428571422"/>
+            <point key="canvasLocation" x="1931.8840579710147" y="-523.66071428571422"/>
         </scene>
     </scenes>
     <resources>
