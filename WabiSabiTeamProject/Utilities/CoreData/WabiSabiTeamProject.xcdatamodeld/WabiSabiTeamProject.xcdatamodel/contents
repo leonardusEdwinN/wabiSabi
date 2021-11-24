@@ -18,8 +18,13 @@
         <attribute name="periodAfterOpening" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="picture" optional="YES" attributeType="String"/>
         <relationship name="routineproduct" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routines" inverseName="routineproduct" inverseEntity="Routines"/>
-        <relationship name="types" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Type" inverseName="producttype" inverseEntity="Type"/>
+        <relationship name="types" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProductType" inverseName="producttype" inverseEntity="ProductType"/>
         <relationship name="userproduct" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="User" inverseName="products" inverseEntity="User" spotlightIndexingEnabled="YES"/>
+    </entity>
+    <entity name="ProductType" representedClassName="ProductType" syncable="YES" codeGenerationType="class">
+        <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="producttype" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Product" inverseName="types" inverseEntity="Product"/>
     </entity>
     <entity name="Reminder" representedClassName="Reminder" syncable="YES" codeGenerationType="class">
         <attribute name="reminderTime" optional="YES" attributeType="String"/>
@@ -46,11 +51,6 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="subcategory" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Category" inverseName="category" inverseEntity="Category"/>
     </entity>
-    <entity name="Type" representedClassName="Type" syncable="YES" codeGenerationType="class">
-        <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="producttype" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Product" inverseName="types" inverseEntity="Product"/>
-    </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
@@ -71,7 +71,7 @@
         <memberEntity name="Routines"/>
         <memberEntity name="Schedule"/>
         <memberEntity name="Subcategory"/>
-        <memberEntity name="Type"/>
+        <memberEntity name="ProductType"/>
         <memberEntity name="User"/>
     </configuration>
     <configuration name="Local">
@@ -82,7 +82,7 @@
         <memberEntity name="Routines"/>
         <memberEntity name="Schedule"/>
         <memberEntity name="Subcategory"/>
-        <memberEntity name="Type"/>
+        <memberEntity name="ProductType"/>
         <memberEntity name="User"/>
     </configuration>
     <elements>
@@ -93,7 +93,7 @@
         <element name="Routines" positionX="-6.75592041015625" positionY="-152.2463684082031" width="128" height="164"/>
         <element name="Schedule" positionX="-9" positionY="81" width="128" height="59"/>
         <element name="Subcategory" positionX="202.573486328125" positionY="47.44537353515625" width="128" height="89"/>
-        <element name="Type" positionX="47.02947998046875" positionY="306.0305786132812" width="128" height="74"/>
+        <element name="ProductType" positionX="47.02947998046875" positionY="306.0305786132812" width="128" height="74"/>
         <element name="User" positionX="-318.422119140625" positionY="-131.8194580078125" width="128" height="179"/>
     </elements>
 </model>

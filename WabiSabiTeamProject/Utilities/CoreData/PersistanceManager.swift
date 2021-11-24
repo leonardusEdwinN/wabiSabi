@@ -26,8 +26,8 @@ class PersistanceManager {
         })
 
         // MARK: DEBUG
-//        // Only initialize the schema when building the app with the
-//        // Debug build configuration.
+        // Only initialize the schema when building the app with the
+        // Debug build configuration.
 //        #if DEBUG
 //        do {
 //            // Use the container to initialize the development schema.
@@ -36,7 +36,7 @@ class PersistanceManager {
 //            // Handle any errors.
 //        }
 //        #endif
-
+        
         
         
         return container
@@ -66,6 +66,7 @@ class PersistanceManager {
         product.picture = picture
         product.routineproduct = routine
         save()
+        print ("DATA SAVED")
     }
     
     func setProduct(name: String) {
@@ -119,7 +120,7 @@ class PersistanceManager {
     }
     
     func setType(isSelected: Bool, name: String) {
-        let type = Type(context: persistentContainer.viewContext)
+        let type = ProductType(context: persistentContainer.viewContext)
         type.isSelected = isSelected
         type.name = name
         save()
@@ -271,18 +272,18 @@ class PersistanceManager {
         return subcategory
     }
     
-    func fetchType() -> [Type] {
-        let request: NSFetchRequest<Type> = Type.fetchRequest()
+    func fetchType() -> [ProductType] {
+        let request: NSFetchRequest<ProductType> = ProductType.fetchRequest()
         
-        var type: [Type] = []
+        var productType: [ProductType] = []
         
         do {
-            type = try persistentContainer.viewContext.fetch(request)
+            productType = try persistentContainer.viewContext.fetch(request)
         } catch {
-            print("Error fetching authors")
+            print("Error fetching product type")
         }
         
-        return type
+        return productType
     }
     
     func fetchUser() -> User {

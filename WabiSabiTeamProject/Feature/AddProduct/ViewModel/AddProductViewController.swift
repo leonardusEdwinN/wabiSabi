@@ -7,12 +7,19 @@
 
 import Foundation
 import UIKit
+protocol SaveProductDelegate{
+    func saveProductAndReloadIt()
+}
 
 class AddProductViewController : UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     // MARK: variable
     private var imagePickerControler =  UIImagePickerController()
     var imagePicker = UIImagePickerController()
+    var selectedRoutine: Routines!
+    var productTypeArray: [ProductTypeModel] = []
+    var delegate: SaveProductDelegate?
+    var selectedProduct: Product!
     
     // MARK: Navigation Bar
     @IBOutlet weak var labelTitlePage: UILabel!
@@ -21,6 +28,32 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         
+        
+        if let name = textfieldProductName.text,
+           let brand = textfieldProductBrand.text,
+           let productType = labelProductTypeValue.text,
+           let expiredDate = paoDatePicker,
+           let periodAfterOpen = expDatePicker,
+           let image = imageViewProduct.image{
+            
+            let imageData:Data = image.pngData()!
+            let imgStrBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+            
+            print("name : \(name), brand : \(brand), product type:\(productType), expdate: \(expiredDate.date), pao: \(periodAfterOpen.date), image: \(imgStrBase64) :: \(image)")
+            
+            PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate.date, name: name, periodAfterOpening: periodAfterOpen.date, picture: imgStrBase64, routine: selectedRoutine)
+//            guard let decodedData = Data(base64Encoded: imgStrBase64, options: .ignoreUnknownCharacters) else { return  }
+//            let decodedimage: UIImage = UIImage(data: decodedData)!
+//
+//            print("name : \(decodedData) DECODED IMAGE \(decodedimage)")
+            
+        }else {
+            Util.displayAlert(title: "Please fill the dara properly", message: "Something missing when you add product")
+        }
+        
+        
+//        var data = PersistanceManager.shared.setProduct(brand: <#T##String#>, expiredDate: <#T##Date#>, name: <#T##String#>, periodAfterOpening: <#T##Date#>, picture: <#T##String#>, routine: <#T##Routines#>)
+            delegate?.saveProductAndReloadIt()
             self.dismiss(animated: false, completion: nil)
     }
     
@@ -41,22 +74,75 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     
     @IBOutlet weak var labelProductType: UILabel!
     @IBOutlet weak var viewProductType: UIView!
+    @IBOutlet weak var labelProductTypeValue: UILabel!
     
     @IBOutlet weak var labelDateInformation: UILabel!
     @IBOutlet weak var stackViewDateInformation: UIStackView!
     
     @IBOutlet weak var viewOpenDate: UIView!
     @IBOutlet weak var labelOpenDate: UILabel!
-    @IBOutlet weak var textFieldOpenDate : UITextField!
+    @IBOutlet weak var paoDatePicker: UIDatePicker!
     
     @IBOutlet weak var viewExpiredDate: UIView!
     @IBOutlet weak var labelExpiredDate: UILabel!
-    @IBOutlet weak var textFieldExpiredDate: UITextField!
+    @IBOutlet weak var expDatePicker: UIDatePicker!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let name = selectedProduct.name,
+           let brand = selectedProduct.brand,
+           let image = selectedProduct.picture,
+           let pao = selectedProduct.periodAfterOpening,
+           let exp = selectedProduct.expiredDate{
+            
+            guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return  }
+            let decodedimage: UIImage = UIImage(data: decodedData)!
+            
+            textfieldProductName.text = name
+            textfieldProductBrand.text = brand
+//            labelProductTypeValue.text = product.types
+            imageViewProduct.image = decodedimage
+            paoDatePicker.date = pao
+            expDatePicker.date = exp
+        }
+        
+        print("selected product : \(selectedProduct.name) :: \(selectedProduct.brand)")
+        setDataProductType()
+        setUI()
+        
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(QuestionNameViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func setDataProductType(){
+        // MARK: ProductType
+        productTypeArray.append(ProductTypeModel(name: "Cleanser", isSelected: true))
+        productTypeArray.append(ProductTypeModel(name: "Chemical Peel", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Exfoliator", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Eye Cream", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Face Mask", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Face Oil", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Makeup Remover", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Moizturizer", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Serum", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Sunscreen", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Toner", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Treatment", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Other", isSelected: false))
+    }
+    
+    func setUI(){
+        // MARK: SET UI
         viewAddPhoto.layer.cornerRadius = viewAddPhoto.frame.size.width / 2
         imageViewProduct.layer.cornerRadius = imageViewProduct.frame.size.width / 2
         viewProductType.layer.cornerRadius = 15
@@ -64,7 +150,6 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
         viewOpenDate.roundCorners(corners: [.topLeft, .topRight], radius: 15.0)
         viewExpiredDate.roundCorners(corners: [.bottomLeft, .bottomRight], radius: 15.0)
         
-//        imageViewProduct.frame = CGRect(x: viewAddPhoto.frame.size.width / 2 - 25 , y: viewAddPhoto.frame.size.height / 2 - 25, width: 25, height: 25)
         
         self.hideKeyboardWhenTappedAround()
         
@@ -78,39 +163,26 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
         viewAddPhoto.addGestureRecognizer(addPhotoTapGesture)
     }
     
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(QuestionNameViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
     
     @objc func addProductType(_ sender: UITapGestureRecognizer) {
         self.performSegue(withIdentifier: "moveToProductTypeSelection", sender: self)
     }
     
-    @objc func addPhotoFromGallery(_ sender: UITapGestureRecognizer) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-//        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-//            print("Button capture")
-//
-//            imagePicker.delegate = self
-//            imagePicker.sourceType = .savedPhotosAlbum
-//            imagePicker.allowsEditing = false
-//
-//            present(imagePicker, animated: true, completion: nil)
-//        }else  if UIImagePickerController.isSourceTypeAvailable(.camera){
-//            self.imagePickerControler.sourceType = .camera
-//            self.imagePickerControler.delegate = self
-//            self.imagePickerControler.allowsEditing = true
-//            self.present(self.imagePickerControler, animated: true, completion: nil)
-////                self.usingCamera = true
-//        }
+        
+        guard let nav = segue.destination as? UINavigationController else {
+            return
+        }
+        
+        if let destVC = nav.topViewController as? ProductTypeViewController {
+            destVC.delegate = self
+            destVC.productTypeArray = self.productTypeArray
+        }
+    }
+    
+    @objc func addPhotoFromGallery(_ sender: UITapGestureRecognizer) {
         PresentActionSheet()
-
     }
     
     //presentation Action sheet
@@ -129,7 +201,6 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
                 self.imagePickerControler.allowsEditing = false
                 
                 self.present(self.imagePickerControler, animated: true, completion: nil)
-//                self.usingCamera = false
             }else{
                 fatalError("Photo library not avaliable")
             }
@@ -142,10 +213,9 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
                 self.imagePickerControler.delegate = self
                 self.imagePickerControler.allowsEditing = true
                 self.present(self.imagePickerControler, animated: true, completion: nil)
-//                self.usingCamera = true
             }
             else{
-                fatalError("Camera not Avaliable")
+                Util.displayAlert(title: "Camera Not Available", message: "")
             }
             
         }
@@ -169,28 +239,10 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
         }
 
 //        if let image = info[.cropRect] as? UIImage {
-        viewAddPhoto.backgroundColor = UIColor.clear
+            viewAddPhoto.backgroundColor = UIColor.clear
             imageViewProduct.image = selectedImage
 //        }
     }
-    
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//
-//            // The info dictionary may contain multiple representations of the image. You want to use the original.
-//            guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-//                fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-//            }
-//
-//            // Set photoImageView to display the selected image.
-//            photoImageView.image = selectedImage
-//
-//            // Dismiss the picker.
-//            dismiss(animated: true, completion: nil)
-//        }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        <#code#>
-//    }
-    
     
 }
 
@@ -201,5 +253,20 @@ extension UIView {
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         layer.mask = mask
+    }
+}
+
+
+extension AddProductViewController : SelectProductTypeDelegate{
+    func selectProductTypeCell(productType: String, indexPath : IndexPath) {
+        print("PRODUCT TYPE : \(productType)")
+        
+        
+        for (index, productType) in productTypeArray.enumerated(){
+            productTypeArray[index].isSelected = false
+        }
+        
+        labelProductTypeValue.text = productType
+        self.productTypeArray[indexPath.row].isSelected = true
     }
 }

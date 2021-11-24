@@ -15,6 +15,9 @@
 		1308256C27464625005CB024 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308256A27464625005CB024 /* SearchResultTableViewCell.swift */; };
 		1308256D27464625005CB024 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1308256B27464625005CB024 /* SearchResultTableViewCell.xib */; };
 		130A695F273D121C007E8E29 /* AddRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130A695E273D121C007E8E29 /* AddRoutine.storyboard */; };
+		1316910B274E359700049D3D /* AddProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910A274E359700049D3D /* AddProductModel.swift */; };
+		1316910D274E3D3800049D3D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910C274E3D3800049D3D /* Util.swift */; };
+		1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910E274E502800049D3D /* ProductTypeModel.swift */; };
 		131F76C72727E61300A7AB41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131F76C62727E61300A7AB41 /* AppDelegate.swift */; };
 		131F76C92727E61300A7AB41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131F76C82727E61300A7AB41 /* SceneDelegate.swift */; };
 		131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131F76CA2727E61300A7AB41 /* ArchieveActivityViewController.swift */; };
@@ -120,6 +123,9 @@
 		1308256A27464625005CB024 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		1308256B27464625005CB024 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		130A695E273D121C007E8E29 /* AddRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRoutine.storyboard; sourceTree = "<group>"; };
+		1316910A274E359700049D3D /* AddProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductModel.swift; sourceTree = "<group>"; };
+		1316910C274E3D3800049D3D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		1316910E274E502800049D3D /* ProductTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeModel.swift; sourceTree = "<group>"; };
 		131F76C32727E61300A7AB41 /* WabiSabiTeamProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WabiSabiTeamProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		131F76C62727E61300A7AB41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		131F76C82727E61300A7AB41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +248,34 @@
 				13B428A8274819A200DE2E6D /* SaveButtonTableViewCell.xib */,
 			);
 			path = AddRoutine;
+			sourceTree = "<group>";
+		};
+		13169110274E50E000049D3D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1316910A274E359700049D3D /* AddProductModel.swift */,
+				1316910E274E502800049D3D /* ProductTypeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		13169111274E50E700049D3D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				13CD1F3427426C3700F537EB /* AddProductViewController.swift */,
+				1371B4B5274396E000A16A45 /* ProductTypeViewController.swift */,
+				1371B4B7274397BB00A16A45 /* ProductTypeTableViewCell.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		13169112274E50EF00049D3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				13CD1F3627426E5000F537EB /* AddProduct.storyboard */,
+				1371B4B8274397BB00A16A45 /* ProductTypeTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		131F76BA2727E61300A7AB41 = {
@@ -421,11 +455,9 @@
 		13CD1F3327426A3200F537EB /* AddProduct */ = {
 			isa = PBXGroup;
 			children = (
-				13CD1F3427426C3700F537EB /* AddProductViewController.swift */,
-				13CD1F3627426E5000F537EB /* AddProduct.storyboard */,
-				1371B4B5274396E000A16A45 /* ProductTypeViewController.swift */,
-				1371B4B7274397BB00A16A45 /* ProductTypeTableViewCell.swift */,
-				1371B4B8274397BB00A16A45 /* ProductTypeTableViewCell.xib */,
+				13169112274E50EF00049D3D /* View */,
+				13169111274E50E700049D3D /* ViewModel */,
+				13169110274E50E000049D3D /* Model */,
 			);
 			path = AddProduct;
 			sourceTree = "<group>";
@@ -540,6 +572,7 @@
 				131F76D22727E61400A7AB41 /* Assets.xcassets */,
 				13ECEF8A272943F5006B5BFE /* CoreData */,
 				13AD9DA62739083F0083AE29 /* Extension.swift */,
+				1316910C274E3D3800049D3D /* Util.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -759,6 +792,7 @@
 				3575BD392742686700804502 /* Utilities.swift in Sources */,
 				1308256927464463005CB024 /* Geotification.swift in Sources */,
 				97177DE9273D0557007FF0E9 /* RoutinesTableViewCell.swift in Sources */,
+				1316910B274E359700049D3D /* AddProductModel.swift in Sources */,
 				13CD1F2D27425D1900F537EB /* LocationReminderTableViewCell.swift in Sources */,
 				13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */,
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
@@ -767,6 +801,7 @@
 				1308256C27464625005CB024 /* SearchResultTableViewCell.swift in Sources */,
 				1371B4BE2743C49400A16A45 /* TimerReminderViewController.swift in Sources */,
 				139A3015273B78EE00104A92 /* SkinTypeRoutine.swift in Sources */,
+				1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */,
 				13CD1F3127425D5100F537EB /* TimerReminderTableViewCell.swift in Sources */,
 				97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */,
 				3575BD292742184A00804502 /* SkinRoutineLevel.swift in Sources */,
@@ -777,6 +812,7 @@
 				35904E85272FDA5100C15202 /* LoadingViewController.swift in Sources */,
 				139A3014273B78EE00104A92 /* SkinCareProduct.swift in Sources */,
 				139A3016273B78EE00104A92 /* SkinTypeProduct.swift in Sources */,
+				1316910D274E3D3800049D3D /* Util.swift in Sources */,
 				1371B4D12743EDE000A16A45 /* LocationTableViewCell.swift in Sources */,
 				13CD1F3527426C3700F537EB /* AddProductViewController.swift in Sources */,
 				973711E92746401F00F61D30 /* OverlayCalenderView.swift in Sources */,

@@ -21,11 +21,11 @@ class AddRoutineViewController : UIViewController{
     }
     @IBOutlet weak var backButton: UIButton!
     
-    var tableLength :Int = 7
     var products: [Product] = []
     var indexSelected: Int = 0
     
     var selectedRoutine: Routines!
+    var selectedProduct: Product!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,12 +60,18 @@ class AddRoutineViewController : UIViewController{
         if segue.identifier == "moveToAddProduct"{
             
             guard let nav = segue.destination as? UINavigationController else {
-                fatalError("NavigationController not found")
+                return
             }
             
-            guard let AddProductVC = nav.topViewController as? AddProductViewController else {
-                fatalError("AddProductViewController not found")
+            guard let addProductVC = nav.topViewController as? AddProductViewController else {
+               return
             }
+            
+            addProductVC.selectedRoutine = self.selectedRoutine
+            addProductVC.delegate = self
+            addProductVC.selectedProduct = self.selectedProduct
+            addProductVC.modalPresentationStyle = .fullScreen
+            
         }else if segue.identifier == "moveToTimeReminder"{
             
             guard let nav = segue.destination as? UINavigationController else {
@@ -98,7 +104,23 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
         
         if (indexPath.row < products.count) {
             let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
-            row.productNameLabel.text = products[indexPath.row].name
+            print("PRODUCT : \(products[indexPath.row].name)")
+            
+            DispatchQueue.main.async {
+                row.setUIText(title: self.products[indexPath.row].name ?? "", desc: self.products[indexPath.row].brand ?? "Add your product description")
+            }
+            
+            if let image = products[indexPath.row].picture{
+                
+                guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return UITableViewCell() }
+                let decodedimage: UIImage = UIImage(data: decodedData)!
+                
+                DispatchQueue.main.async {
+                    row.setUIImage(image: decodedimage, isDone: true)
+                }
+            }
+            
+            
             
             return row
         }
@@ -182,6 +204,7 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
 //            performSegue(withIdentifier: "moveToLocationReminder", sender: self)
         }else{
             print("ADD PRODUCT ROW CLICKED")
+            self.selectedProduct = products[indexPath.row]
             performSegue(withIdentifier: "moveToAddProduct", sender: self)
         }
         
@@ -201,4 +224,15 @@ extension AddRoutineViewController : AddProductDelegate{
     func addNewProduct() {
         self.performSegue(withIdentifier: "moveToAddProduct", sender: self)
     }
+}
+
+extension AddRoutineViewController : SaveProductDelegate{
+    func saveProductAndReloadIt() {
+        checkProduct()
+        DispatchQueue.main.async {
+            self.routineTableView.reloadData()
+        }
+    }
+    
+    
 }
