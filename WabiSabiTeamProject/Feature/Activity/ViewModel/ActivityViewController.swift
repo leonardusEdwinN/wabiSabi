@@ -45,13 +45,16 @@ class ActivityViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTutorialTap(_:)))
         tutorialBackground.addGestureRecognizer(tap)
         
-//        tutorialBackground.removeFromSuperview()
-        tutorial1.isHidden = false
-        tutorial2.isHidden = true
-        tutorial3.isHidden = true
-        tutorial4.isHidden = true
-        tutorial5.isHidden = true
-        tutorial6.isHidden = true
+        if UserDefaults.standard.bool(forKey: "isCompleteTutorial") == true {
+            tutorialBackground.removeFromSuperview()
+        } else {
+            tutorial1.isHidden = false
+            tutorial2.isHidden = true
+            tutorial3.isHidden = true
+            tutorial4.isHidden = true
+            tutorial5.isHidden = true
+            tutorial6.isHidden = true
+        }
     }
     
     private func configureBackground() {
@@ -84,7 +87,6 @@ class ActivityViewController: UIViewController {
         circularProgress.progressColor = UIColor.white
         circularProgress.trackColor = UIColor.systemGray4
         circularProgress.percentageValue = 0.8
-        
     }
     
     private func setUpTableView() {
@@ -146,12 +148,12 @@ class ActivityViewController: UIViewController {
             tutorial5.isHidden = true
             tutorial6.isHidden = false
         } else {
+            UserDefaults.standard.set(true, forKey: "isCompleteTutorial")
             tutorialBackground.removeFromSuperview()
         }
     }
     
     @objc func tapMenuButton(_ sender: Any) {
-        
         let slideVC = OverlayCalenderView()
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
