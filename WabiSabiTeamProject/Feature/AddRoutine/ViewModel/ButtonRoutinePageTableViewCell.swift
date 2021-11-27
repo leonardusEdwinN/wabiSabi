@@ -8,6 +8,7 @@
 import UIKit
 protocol AddProductDelegate{
     func addNewProduct()
+    func importProductFromExisting()
 }
 
 class ButtonRoutinePageTableViewCell: UITableViewCell {
@@ -35,6 +36,7 @@ class ButtonRoutinePageTableViewCell: UITableViewCell {
     }
     
     @IBAction func buttonImportPressed(_ sender: Any) {
+        delegate?.importProductFromExisting()
     }
     @IBAction func buttonAddOtherProductPressed(_ sender: Any) {
         delegate?.addNewProduct()

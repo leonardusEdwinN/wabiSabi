@@ -15,6 +15,12 @@
 		1308256C27464625005CB024 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308256A27464625005CB024 /* SearchResultTableViewCell.swift */; };
 		1308256D27464625005CB024 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1308256B27464625005CB024 /* SearchResultTableViewCell.xib */; };
 		130A695F273D121C007E8E29 /* AddRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130A695E273D121C007E8E29 /* AddRoutine.storyboard */; };
+		130C92692752622E00A416F9 /* Import.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130C92682752622E00A416F9 /* Import.storyboard */; };
+		130C926B2752625A00A416F9 /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C926A2752625A00A416F9 /* ImportViewController.swift */; };
+		130C926E275262A400A416F9 /* ImportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C926C275262A400A416F9 /* ImportTableViewCell.swift */; };
+		130C926F275262A400A416F9 /* ImportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130C926D275262A400A416F9 /* ImportTableViewCell.xib */; };
+		130C927227526A0B00A416F9 /* ImportProduct.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130C927127526A0B00A416F9 /* ImportProduct.storyboard */; };
+		130C927427526F7500A416F9 /* ImportProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927327526F7500A416F9 /* ImportProductViewController.swift */; };
 		13159C4F274F8EAC00EA5319 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13159C4E274F8EAC00EA5319 /* Loading.swift */; };
 		1316910D274E3D3800049D3D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910C274E3D3800049D3D /* Util.swift */; };
 		1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910E274E502800049D3D /* ProductTypeModel.swift */; };
@@ -125,6 +131,12 @@
 		1308256A27464625005CB024 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		1308256B27464625005CB024 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		130A695E273D121C007E8E29 /* AddRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRoutine.storyboard; sourceTree = "<group>"; };
+		130C92682752622E00A416F9 /* Import.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Import.storyboard; sourceTree = "<group>"; };
+		130C926A2752625A00A416F9 /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
+		130C926C275262A400A416F9 /* ImportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportTableViewCell.swift; sourceTree = "<group>"; };
+		130C926D275262A400A416F9 /* ImportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportTableViewCell.xib; sourceTree = "<group>"; };
+		130C927127526A0B00A416F9 /* ImportProduct.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImportProduct.storyboard; sourceTree = "<group>"; };
+		130C927327526F7500A416F9 /* ImportProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportProductViewController.swift; sourceTree = "<group>"; };
 		13159C4E274F8EAC00EA5319 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		1316910C274E3D3800049D3D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1316910E274E502800049D3D /* ProductTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeModel.swift; sourceTree = "<group>"; };
@@ -255,6 +267,10 @@
 		130C926327525E5500A416F9 /* Import */ = {
 			isa = PBXGroup;
 			children = (
+				130C92682752622E00A416F9 /* Import.storyboard */,
+				130C926A2752625A00A416F9 /* ImportViewController.swift */,
+				130C926C275262A400A416F9 /* ImportTableViewCell.swift */,
+				130C926D275262A400A416F9 /* ImportTableViewCell.xib */,
 			);
 			path = Import;
 			sourceTree = "<group>";
@@ -300,6 +316,15 @@
 				1308256B27464625005CB024 /* SearchResultTableViewCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		130C9270275269F800A416F9 /* ImportProduct */ = {
+			isa = PBXGroup;
+			children = (
+				130C927127526A0B00A416F9 /* ImportProduct.storyboard */,
+				130C927327526F7500A416F9 /* ImportProductViewController.swift */,
+			);
+			path = ImportProduct;
 			sourceTree = "<group>";
 		};
 		13169110274E50E000049D3D /* Model */ = {
@@ -565,6 +590,7 @@
 		13ECEF8127294361006B5BFE /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				130C9270275269F800A416F9 /* ImportProduct */,
 				130C926327525E5500A416F9 /* Import */,
 				1371B4C62743E29D00A16A45 /* LocationReminder */,
 				1371B4BB2743C47700A16A45 /* TimerReminder */,
@@ -782,10 +808,12 @@
 				1371B4D22743EDE000A16A45 /* LocationTableViewCell.xib in Resources */,
 				139A6319273BC2D2008D54A8 /* SF-Pro-Rounded-Light.otf in Resources */,
 				139A6318273BC2D2008D54A8 /* SF-Pro-Rounded-Medium.otf in Resources */,
+				130C927227526A0B00A416F9 /* ImportProduct.storyboard in Resources */,
 				139A631D273BC2D2008D54A8 /* SF-Pro-Rounded-Black.otf in Resources */,
 				139A631A273BC2D2008D54A8 /* SF-Pro-Rounded-Thin.otf in Resources */,
 				13B428AA274819A200DE2E6D /* BeRemindedTableViewCell.xib in Resources */,
 				130424EC2744F50300720D35 /* OverlayView.xib in Resources */,
+				130C926F275262A400A416F9 /* ImportTableViewCell.xib in Resources */,
 				971434472750D7270001AED7 /* EditProfileView.storyboard in Resources */,
 				139A631E273BC2D2008D54A8 /* SF-Pro-Rounded-Heavy.otf in Resources */,
 				13CD1F2A274258A200F537EB /* ButtonRoutinePageTableViewCell.xib in Resources */,
@@ -804,6 +832,7 @@
 				139A631F273BC2D2008D54A8 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				13CD1F2E27425D1900F537EB /* LocationReminderTableViewCell.xib in Resources */,
 				13CD1F3727426E5000F537EB /* AddProduct.storyboard in Resources */,
+				130C92692752622E00A416F9 /* Import.storyboard in Resources */,
 				134394F2273A557A00641983 /* SummaryAwardsCollectionViewCell.xib in Resources */,
 				139A6320273BC2D2008D54A8 /* SF-Pro-Rounded-Ultralight.otf in Resources */,
 				97177DEA273D0557007FF0E9 /* RoutinesTableViewCell.xib in Resources */,
@@ -835,10 +864,12 @@
 				13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */,
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
+				130C926B2752625A00A416F9 /* ImportViewController.swift in Sources */,
 				970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */,
 				1308256C27464625005CB024 /* SearchResultTableViewCell.swift in Sources */,
 				1371B4BE2743C49400A16A45 /* TimerReminderViewController.swift in Sources */,
 				139A3015273B78EE00104A92 /* SkinTypeRoutine.swift in Sources */,
+				130C926E275262A400A416F9 /* ImportTableViewCell.swift in Sources */,
 				1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */,
 				971434432750D6C00001AED7 /* EditProfileViewController.swift in Sources */,
 				13CD1F3127425D5100F537EB /* TimerReminderTableViewCell.swift in Sources */,
@@ -855,6 +886,7 @@
 				1316910D274E3D3800049D3D /* Util.swift in Sources */,
 				1371B4D12743EDE000A16A45 /* LocationTableViewCell.swift in Sources */,
 				13CD1F3527426C3700F537EB /* AddProductViewController.swift in Sources */,
+				130C927427526F7500A416F9 /* ImportProductViewController.swift in Sources */,
 				973711E92746401F00F61D30 /* OverlayCalenderView.swift in Sources */,
 				13CD1F252742588700F537EB /* ProductUsedTableViewCell.swift in Sources */,
 				3532C899272AACFE00745F73 /* QuestionNameViewController.swift in Sources */,

@@ -60,6 +60,8 @@ class AddRoutineViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("ROUTINE : \(selectedRoutine.name)")
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
@@ -118,20 +120,20 @@ class AddRoutineViewController : UIViewController{
         }else if segue.identifier == "moveToTimeReminder"{
             
             guard let nav = segue.destination as? UINavigationController else {
-                fatalError("NavigationController not found")
+                return
             }
             
             guard let TimerReminderVC = nav.topViewController as? TimerReminderViewController else {
-                fatalError("TimerReminderViewController not found")
+                return
             }
         }else if segue.identifier == "moveToLocationReminder"{
             
             guard let nav = segue.destination as? UINavigationController else {
-                fatalError("NavigationController not found")
+                return
             }
             
             guard let AddProductVC = nav.topViewController as? LocationReminderViewController else {
-                fatalError("LocationReminderViewController not found")
+                return
             }
         }else if segue.identifier == "goToDetailSkinCareGuide"{
             print(selectedRoutine.name)
@@ -148,6 +150,16 @@ class AddRoutineViewController : UIViewController{
                     vc.skinTypeRoutine = skinTypeRoutine[1]
                 }
             }
+        }else if segue.identifier == "moveToImportRoutine"{
+            guard let nav = segue.destination as? UINavigationController else {
+                return
+            }
+            
+            guard let importVC = nav.topViewController as? ImportViewController else {
+               return
+            }
+            
+            importVC.selectedRoutineToImport = selectedRoutine
         }
     }
     
@@ -275,14 +287,53 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             print("LOCATION REMINDER ROW CLICKED")
             performSegue(withIdentifier: "moveToLocationReminder", sender: self)
         }else{
-            if(!isEdit){
-                // MARK: Ketika tidak melakukan edit(dragable or delete)
-                print("ADD PRODUCT ROW CLICKED")
-                self.selectedProduct = products[indexPath.row]
-                performSegue(withIdentifier: "moveToAddProduct", sender: self)
+//            if(!isEdit){
+//                // MARK: Ketika tidak melakukan edit(dragable or delete)
+//                print("ADD PRODUCT ROW CLICKED")
+//                self.selectedProduct = products[indexPath.row]
+//                performSegue(withIdentifier: "moveToAddProduct", sender: self)
+//            }else{
+//
+//            }
+            
+            if(!isEdit)
+            {
+                let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
+                if(products[indexPath.row].isDone){
+                    //di uncheck
+                    row.setStatusUndone()
+                    if let id = self.products[indexPath.row].id{
+                        //update data status
+                        PersistanceManager.shared.changeProductStatus(id: id, status: false)
+                    }
+                    
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
+                }else{
+                    // di check
+                    
+                    row.setStatusDone()
+                    if let id = self.products[indexPath.row].id{
+                        //update data status
+                        PersistanceManager.shared.changeProductStatus(id: id, status: true)
+                    }
+                    
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
             }else{
                 
             }
+            
+            
+//            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
+//            
+//            row.setStatusUndone()
+//            if let id = self?.products[indexPath.row].id{
+//                //update data status
+//                PersistanceManager.shared.changeProductStatus(id: id, status: false)
+//            }
+//            print("UPDATE DATA UNCHECKED")
+//            
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
         
@@ -339,20 +390,13 @@ extension AddRoutineViewController : AddProductDelegate{
     func addNewProduct() {
         self.performSegue(withIdentifier: "moveToAddProduct", sender: self)
     }
+    
+    func importProductFromExisting() {
+        self.performSegue(withIdentifier: "moveToImportRoutine", sender: self)
+    }
 }
 
 extension AddRoutineViewController : SaveProductDelegate{
-//    func saveProductAndReloadIt(completion: () -> Void) {
-//        print("DELEGATE VBERHASIL")
-//        checkProduct()
-//        DispatchQueue.main.async {
-//            self.routineTableView.reloadData()
-//        }
-//
-//    }
-    
-
-    
     // MARK: Delegate from AddProductViewController class
     func saveProductAndReloadIt() {
         DispatchQueue.main.async {
@@ -374,6 +418,12 @@ extension AddRoutineViewController : deleteProductItemDelegate{
             self.checkProduct()
             self.routineTableView.reloadData()
         }
+    }
+    
+    func editProductItem(editedProduct product: Product) {
+        print("ADD PRODUCT ROW CLICKED")
+        self.selectedProduct = product
+        performSegue(withIdentifier: "moveToAddProduct", sender: self)
     }
     
 }
