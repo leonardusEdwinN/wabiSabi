@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 protocol SaveProductDelegate{
+//    func saveProductAndReloadIt(completion : () -> Void)
     func saveProductAndReloadIt()
 }
 
@@ -27,13 +28,17 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBAction func saveButtonPressed(_ sender: Any) {
-        DispatchQueue.main.async {
-            print("SHOW INDICATOR LAODING")
-            Loading.sharedInstance.showIndicator()
-        }
+//        DispatchQueue.main.async {
+//            print("SHOW INDICATOR LAODING")
+//            self.loadingIndicator.isHidden = false
+//            self.loadingIndicator.startAnimating()
+//
+//        }
         
-        
+        print("INDICATOR SHOW")
+        Loading.sharedInstance.showIndicator()
         
         if let name = textfieldProductName.text,
            let brand = textfieldProductBrand.text,
@@ -50,6 +55,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
             if selectedProduct != nil{
                 if let id = selectedProduct.id{
                     //update data
+                    print("UPDATE DATA PRODUCT \(name) \(brand)")
                     PersistanceManager.shared.updateProduct(id: id, name: name, brand: brand, periodAfterOpening: periodAfterOpen.date , picture: imgStrBase64, routine: selectedRoutine, expiredDate: expiredDate.date, productType: productType)
                 }
             }else{
@@ -57,6 +63,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
                 PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate.date, name: name, periodAfterOpening: periodAfterOpen.date, picture: imgStrBase64, routine: selectedRoutine, productType: productType)
             }
             
+            delegate?.saveProductAndReloadIt()
             
 //            PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate.date, name: name, periodAfterOpening: periodAfterOpen.date, picture: imgStrBase64, routine: selectedRoutine, productType: productType)
             
@@ -69,9 +76,18 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
             Util.displayAlert(title: "Please fill the dara properly", message: "Something missing when you add product")
         }
         
+//        delegate?.saveProductAndReloadIt(completion: {
+//            print("STOP ANIMATING AND MOVE")
+//            self.loadingIndicator.stopAnimating()
+//            self.loadingIndicator.isHidden = true
+//            self.dismiss(animated: false, completion: nil)
+//        })
         
-            delegate?.saveProductAndReloadIt()
-            self.dismiss(animated: false, completion: nil)
+        print("DISMISS PAGE")
+        self.dismiss(animated: false, completion: nil)
+        
+        
+            
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
@@ -108,6 +124,9 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadingIndicator.isHidden = true
+        
         
         if self.isEdit{
             //true, melakukan update date
