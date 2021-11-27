@@ -142,11 +142,34 @@ class AddRoutineViewController : UIViewController{
             }
             
             if let routineName = selectedRoutine.name{
+                
+                let skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")
+                let levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
+                let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
+                
                 if(routineName == "Morning Skin Care"){
                     //Go to morning skin care
+                    
+                    for index in 0..<productIndex.count {
+                        let product = Utilities().skinTypeRoutineProduct[0].skinType[skinTypeIndex].products[productIndex[index]]
+                        
+                        if !(product.description == "") {
+                            skinTypeRoutine[0].products.append(product)
+
+                        }
+                    }
+                    
                     vc.skinTypeRoutine = skinTypeRoutine[0]
                 }else{
                     //Go to Night Routine
+                    for index in 0..<productIndex.count {
+                        let product = Utilities().skinTypeRoutineProduct[1].skinType[skinTypeIndex].products[productIndex[index]]
+                        
+                        if !(product.description == "") {
+                            skinTypeRoutine[1].products.append(product)
+
+                        }
+                    }
                     vc.skinTypeRoutine = skinTypeRoutine[1]
                 }
             }
@@ -162,6 +185,7 @@ class AddRoutineViewController : UIViewController{
             importVC.selectedRoutineToImport = selectedRoutine
         }
     }
+    
     
 }
 
