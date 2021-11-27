@@ -19,13 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="TZ0-ik-tR1">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IO-yL-tnf">
                                 <rect key="frame" x="157" y="108" width="100" height="100"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UAB-ij-Exv">
-                                        <rect key="frame" x="0.0" y="2" width="100" height="95"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UAB-ij-Exv">
+                                        <rect key="frame" x="0.0" y="0.5" width="100" height="98"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <imageReference key="image" image="camera" catalog="system" symbolScale="small"/>
+                                        <imageReference key="image" image="camera" catalog="system" symbolScale="default"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
@@ -75,8 +79,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddk-Z0-Yoi">
                                 <rect key="frame" x="20" y="459.5" width="374" height="45"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cleanser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3l-eu-AMs">
-                                        <rect key="frame" x="10" y="12.5" width="67.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Product Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3l-eu-AMs">
+                                        <rect key="frame" x="10" y="12.5" width="154.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -116,7 +120,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4NJ-Yf-qNa">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="4NJ-Yf-qNa">
                                                 <rect key="frame" x="209" y="2.5" width="150" height="45"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <constraints>
@@ -150,7 +154,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xve-s2-EBN">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="xve-s2-EBN">
                                                 <rect key="frame" x="209" y="2.5" width="150" height="45"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <constraints>
@@ -201,6 +205,8 @@
                             <constraint firstItem="ac8-YM-wmd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="dvc-1J-Suh"/>
                             <constraint firstItem="6IO-yL-tnf" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="iQl-hO-rN7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ACu-hO-93Z" secondAttribute="trailing" constant="20" id="iZl-OV-8PW"/>
+                            <constraint firstItem="TZ0-ik-tR1" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="kkk-Qj-YsP"/>
+                            <constraint firstItem="TZ0-ik-tR1" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="s3D-FV-raS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ac8-YM-wmd" secondAttribute="trailing" constant="20" id="ws5-1y-LdM"/>
                             <constraint firstItem="ddk-Z0-Yoi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="yHw-Vj-t6l"/>
                         </constraints>
@@ -208,7 +214,7 @@
                     <navigationItem key="navigationItem" title="Add Product" id="3ii-BU-lps">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="UKr-U7-0Nv">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="xO3-uE-7s4">
-                                <rect key="frame" x="20" y="5" width="67" height="34.5"/>
+                                <rect key="frame" x="20" y="4.5" width="67" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Close"/>
@@ -219,7 +225,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="P3Q-yR-Dwf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Zkn-Li-pxI">
-                                <rect key="frame" x="333" y="5" width="61" height="34.5"/>
+                                <rect key="frame" x="333" y="4.5" width="61" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
@@ -231,6 +237,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="closeButton" destination="xO3-uE-7s4" id="2XI-lD-HYS"/>
+                        <outlet property="expDatePicker" destination="xve-s2-EBN" id="ESM-1t-0TL"/>
                         <outlet property="imageViewProduct" destination="UAB-ij-Exv" id="5WI-an-VWN"/>
                         <outlet property="labelDateInformation" destination="75M-ud-U3v" id="ESD-fO-9TX"/>
                         <outlet property="labelExpiredDate" destination="RVh-7i-7AS" id="SgA-js-MCP"/>
@@ -238,6 +245,9 @@
                         <outlet property="labelProductBrand" destination="jff-nf-I9l" id="q05-vs-ACX"/>
                         <outlet property="labelProductName" destination="ac8-YM-wmd" id="dRP-IE-BYy"/>
                         <outlet property="labelProductType" destination="ACu-hO-93Z" id="ZS7-es-MUW"/>
+                        <outlet property="labelProductTypeValue" destination="o3l-eu-AMs" id="srG-n3-Tyr"/>
+                        <outlet property="loadingIndicator" destination="TZ0-ik-tR1" id="Rpc-zN-ISw"/>
+                        <outlet property="paoDatePicker" destination="4NJ-Yf-qNa" id="xTx-NO-Kx9"/>
                         <outlet property="saveButton" destination="Zkn-Li-pxI" id="4RT-cl-S0r"/>
                         <outlet property="stackViewDateInformation" destination="SwH-Sn-wl6" id="EqK-w6-40W"/>
                         <outlet property="textfieldProductBrand" destination="04m-ZH-vVA" id="YBF-6b-sck"/>
@@ -246,7 +256,7 @@
                         <outlet property="viewExpiredDate" destination="Y88-gG-Kkp" id="jUQ-T2-lR6"/>
                         <outlet property="viewOpenDate" destination="Zzo-kP-9PO" id="V4U-RQ-lvc"/>
                         <outlet property="viewProductType" destination="ddk-Z0-Yoi" id="oZS-Fq-bHf"/>
-                        <segue destination="bkt-o0-pMV" kind="show" identifier="moveToProductTypeSelection" id="IH0-Xd-tuN"/>
+                        <segue destination="36m-kk-jkl" kind="show" identifier="moveToProductTypeSelection" id="IH0-Xd-tuN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -275,14 +285,37 @@
                             <constraint firstItem="r1q-pb-FBJ" firstAttribute="top" secondItem="fJi-52-5tb" secondAttribute="top" id="YLY-t3-dNl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Product Type" id="kgr-lX-e24"/>
+                    <navigationItem key="navigationItem" title="Product Type" id="kgr-lX-e24">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="LGw-XW-81n">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="K3v-La-kGM">
+                                <rect key="frame" x="20" y="4.5" width="92" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="bkt-o0-pMV" eventType="touchUpInside" id="YF8-ts-W2Q"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="fW3-xo-eOw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Fbe-M7-din">
+                                <rect key="frame" x="302" y="4.5" width="92" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="bkt-o0-pMV" eventType="touchUpInside" id="TWL-uS-5Kf"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="productTypeTableView" destination="r1q-pb-FBJ" id="y9c-8d-aBa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2f-ex-pdw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2008.6956521739132" y="-419.19642857142856"/>
+            <point key="canvasLocation" x="2957.971014492754" y="79.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fdf-zE-xCD">
@@ -301,6 +334,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waE-8e-jyS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="80.357142857142847"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Hhy-xW-Wfg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="36m-kk-jkl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="TIS-bJ-AZ2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zN5-dY-7iA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bkt-o0-pMV" kind="relationship" relationship="rootViewController" id="5Kb-iH-8fI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1g-R3-QcL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2047.826086956522" y="79.6875"/>
         </scene>
     </scenes>
     <resources>

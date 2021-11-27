@@ -17,6 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
+        
         guard let _ = (scene as? UIWindowScene) else { return }
         
         if UserDefaults.standard.bool(forKey: "isCompleteOnBoarding") == true {

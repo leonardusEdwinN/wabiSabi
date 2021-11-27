@@ -10,8 +10,24 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
+        
+        if UserDefaults.standard.bool(forKey: "isCompleteOnBoarding") == true {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            self.window?.rootViewController = storyBoard.instantiateViewController(identifier:"MainTabBarController")
+            window?.makeKeyAndVisible()
+        }
+        else {
+            let storyBoard = UIStoryboard(name: "OnBoarding", bundle: nil)
+            self.window?.rootViewController = storyBoard.instantiateInitialViewController()
+            window?.makeKeyAndVisible()
+        }
         return true
     }
 
@@ -75,12 +91,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  Check the error message to determine what the actual problem was.
                  */
 //                fatalError("Could not load persistent stores. \(error)")
-                print("Couldnot load persistent stores \(error)")
+                print("Could not load persistent stores \(error)")
             }
             
 //            guard error == nil else {
-//                print("Couldnot load persistent stores \(error)")
-////                fatalError("Could not load persistent stores. \(error)")
+////                print("Couldnot load persistent stores \(error)")
+//                fatalError("Could not load persistent stores. \(error)")
 //            }
         }
         

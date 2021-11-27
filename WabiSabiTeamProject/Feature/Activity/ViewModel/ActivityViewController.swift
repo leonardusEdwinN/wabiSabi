@@ -15,11 +15,19 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var completedButton: UIButton!
     @IBOutlet weak var backgoundWhite: UIView!
     @IBOutlet weak var backgroundPurple: UIView!
-    @IBOutlet weak var circularProgressBackground: UIView!
-    var selectedDate: String = ""
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var tutorialBackground: UIView!
+    @IBOutlet weak var tutorial1: UIImageView!
+    @IBOutlet weak var tutorial2: UIImageView!
+    @IBOutlet weak var tutorial3: UIImageView!
+    @IBOutlet weak var tutorial4: UIImageView!
+    @IBOutlet weak var tutorial5: UIImageView!
+    @IBOutlet weak var tutorial6: UIImageView!
     
+    var selectedDate: String = ""
     var skinCareRoutines: [Routines]!
     var selectedIndex : Int = 0
+    var tutorialIndex : Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +36,25 @@ class ActivityViewController: UIViewController {
         setUpTableView()
         configureButton()
         configureBackground()
+        configureTutorial()
         
         skinCareRoutines = PersistanceManager.shared.fetchRoutines()
+    }
+    
+    private func configureTutorial() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTutorialTap(_:)))
+        tutorialBackground.addGestureRecognizer(tap)
+        
+        if UserDefaults.standard.bool(forKey: "isCompleteTutorial") == true {
+            tutorialBackground.removeFromSuperview()
+        } else {
+            tutorial1.isHidden = false
+            tutorial2.isHidden = true
+            tutorial3.isHidden = true
+            tutorial4.isHidden = true
+            tutorial5.isHidden = true
+            tutorial6.isHidden = true
+        }
     }
     
     private func configureBackground() {
@@ -54,17 +79,14 @@ class ActivityViewController: UIViewController {
     private func configureNavigationBar() {
         title = "Today"
         let menuButton = UIBarButtonItem(image: UIImage(named: "Calender"), style: .plain, target: self, action: #selector(tapMenuButton))
-        menuButton.tintColor = UIColor.white
+        menuButton.tintColor = UIColor.black
         navigationItem.rightBarButtonItems = [menuButton]
     }
     
     private func setUpcircularProgress() {
-        circularProgress.progressColor = UIColor.systemIndigo
+        circularProgress.progressColor = UIColor.white
         circularProgress.trackColor = UIColor.systemGray4
         circularProgress.percentageValue = 0.8
-        
-        circularProgressBackground.layer.cornerRadius = 40
-        circularProgressBackground.layer.masksToBounds = true
     }
     
     private func setUpTableView() {
@@ -81,14 +103,57 @@ class ActivityViewController: UIViewController {
         if #available(iOS 13, *) {
             datePicker.backgroundColor = .label
         } else {
-            datePicker.backgroundColor = .white
+            datePicker.backgroundColor = .black
         }
         datePicker.datePickerMode = .date
         return datePicker
     }()
     
+    @objc func handleTutorialTap(_ sender: Any) {
+        tutorialIndex += 1
+        print(tutorialIndex)
+        if (tutorialIndex == 2) {
+            tutorial1.isHidden = true
+            tutorial2.isHidden = false
+            tutorial3.isHidden = true
+            tutorial4.isHidden = true
+            tutorial5.isHidden = true
+            tutorial6.isHidden = true
+        } else if (tutorialIndex == 3) {
+            tutorial1.isHidden = true
+            tutorial2.isHidden = true
+            tutorial3.isHidden = false
+            tutorial4.isHidden = true
+            tutorial5.isHidden = true
+            tutorial6.isHidden = true
+        } else if (tutorialIndex == 4) {
+            tutorial1.isHidden = true
+            tutorial2.isHidden = true
+            tutorial3.isHidden = true
+            tutorial4.isHidden = false
+            tutorial5.isHidden = true
+            tutorial6.isHidden = true
+        } else if (tutorialIndex == 5) {
+            tutorial1.isHidden = true
+            tutorial2.isHidden = true
+            tutorial3.isHidden = true
+            tutorial4.isHidden = true
+            tutorial5.isHidden = false
+            tutorial6.isHidden = true
+        } else if (tutorialIndex == 6) {
+            tutorial1.isHidden = true
+            tutorial2.isHidden = true
+            tutorial3.isHidden = true
+            tutorial4.isHidden = true
+            tutorial5.isHidden = true
+            tutorial6.isHidden = false
+        } else {
+            UserDefaults.standard.set(true, forKey: "isCompleteTutorial")
+            tutorialBackground.removeFromSuperview()
+        }
+    }
+    
     @objc func tapMenuButton(_ sender: Any) {
-        
         let slideVC = OverlayCalenderView()
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
@@ -113,20 +178,15 @@ class ActivityViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let nav = segue.destination as? UINavigationController else {
-            fatalError("NavigationController not found")
+            return
         }
         
-        guard let AddRoutineVC = nav.topViewController as? AddRoutineViewController else {
-            fatalError("AddRoutineViewController not found")
-            
-//            let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "addRoutineVC") as! AddRoutineViewController
-//            vc.selectedRoutine = skinCareRoutines[indexPath.row]
-//
-//            self.show(vc, sender: nil)
+        guard let addRoutineVC = nav.topViewController as? AddRoutineViewController else {
+            return
         }
         
-        AddRoutineVC.selectedRoutine = skinCareRoutines[selectedIndex]
+        addRoutineVC.selectedRoutine = self.skinCareRoutines[selectedIndex]
+        nav.modalPresentationStyle = .fullScreen
     }
 }
 
@@ -161,11 +221,10 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if(indexPath.item == 0){
-            performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
-            self.selectedIndex = indexPath.item
-        }
+            self.selectedIndex = indexPath.row
         
+        
+        performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?

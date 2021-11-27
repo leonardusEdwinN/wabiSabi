@@ -1,23 +1,15 @@
 //
-//  SaveButtonTableViewCell.swift
+//  ImportTableViewCell.swift
 //  WabiSabiTeamProject
 //
-//  Created by Edwin Niwarlangga on 20/11/21.
+//  Created by Edwin Niwarlangga on 27/11/21.
 //
 
 import UIKit
-protocol AddRoutineDelegate{
-    func addRoutineDidSave()
-}
 
-class SaveButtonTableViewCell: UITableViewCell {
+class ImportTableViewCell: UITableViewCell {
 
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        delegate?.addRoutineDidSave()
-    }
-    
-    var delegate : AddRoutineDelegate?
-    
+    @IBOutlet weak var routineNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +19,10 @@ class SaveButtonTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setUI(setTitle title: String){
+        routineNameLabel.text = title
     }
     
 }

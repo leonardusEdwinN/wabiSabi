@@ -140,7 +140,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p9f-BS-aIk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p9f-BS-aIk">
                                 <rect key="frame" x="30" y="265.5" width="354" height="465.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -268,7 +268,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ONg-mz-EiZ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ONg-mz-EiZ">
                                 <rect key="frame" x="30" y="267" width="354" height="496"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -401,7 +401,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qvH-ep-ZM8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qvH-ep-ZM8">
                                 <rect key="frame" x="30" y="267" width="354" height="496"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -659,7 +659,7 @@
                                 <color key="progressTintColor" name="ColorPrimary"/>
                                 <color key="trackTintColor" systemColor="systemGray3Color"/>
                             </progressView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mFb-n2-Zd3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mFb-n2-Zd3">
                                 <rect key="frame" x="30" y="292" width="354" height="481"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -1002,8 +1002,8 @@ based on your skin type</string>
                                     <constraint firstAttribute="width" constant="17" id="vf9-of-ypO"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqB-hk-OGO">
-                                <rect key="frame" x="83" y="620.5" width="248.5" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqB-hk-OGO">
+                                <rect key="frame" x="50" y="620.5" width="314" height="157.5"/>
                                 <string key="text">You can customize routines by adding 
 products that you usually use later.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -1068,7 +1068,7 @@ products that you usually use later.</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="LM4-6l-cGv"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TFq-5r-0Oy">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TFq-5r-0Oy">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1076,7 +1076,7 @@ products that you usually use later.</string>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="skincareroutinecell" id="RwD-Tq-cPw" customClass="SkinCareRoutineCollectionViewCell" customModule="WabiSabiTeamProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                        <rect key="frame" x="0.0" y="-5" width="160" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Evj-qL-pCW">
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
@@ -1086,7 +1086,7 @@ products that you usually use later.</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 products" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOz-9O-PlX">
-                                                            <rect key="frame" x="30" y="103" width="100" height="14.5"/>
+                                                            <rect key="frame" x="30" y="125.5" width="100" height="14.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1097,8 +1097,8 @@ products that you usually use later.</string>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning Skin care" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgo-cX-rwV">
-                                                            <rect key="frame" x="30" y="57" width="100" height="36"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Morning Skin care" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgo-cX-rwV">
+                                                            <rect key="frame" x="30" y="57" width="100" height="58.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1111,6 +1111,7 @@ products that you usually use later.</string>
                                                         <constraint firstAttribute="width" constant="160" id="LE0-qz-mAe"/>
                                                         <constraint firstItem="abc-Qw-XCH" firstAttribute="leading" secondItem="RKN-VO-eid" secondAttribute="leading" constant="10" id="N01-CA-dwT"/>
                                                         <constraint firstItem="abc-Qw-XCH" firstAttribute="top" secondItem="RKN-VO-eid" secondAttribute="top" constant="10" id="NIl-FD-uGe"/>
+                                                        <constraint firstAttribute="bottom" secondItem="WOz-9O-PlX" secondAttribute="bottom" constant="20" id="QJo-q8-eHs"/>
                                                         <constraint firstItem="WOz-9O-PlX" firstAttribute="top" secondItem="kgo-cX-rwV" secondAttribute="bottom" constant="10" id="UFq-ZM-r6K"/>
                                                         <constraint firstItem="kgo-cX-rwV" firstAttribute="leading" secondItem="RKN-VO-eid" secondAttribute="leading" constant="30" id="iYZ-bu-qAs"/>
                                                         <constraint firstAttribute="trailing" secondItem="WOz-9O-PlX" secondAttribute="trailing" constant="30" id="mvd-SI-C7A"/>
@@ -1151,12 +1152,15 @@ products that you usually use later.</string>
                         <viewLayoutGuide key="safeArea" id="9nk-3t-anc"/>
                         <color key="backgroundColor" name="ColorPrimary"/>
                         <constraints>
+                            <constraint firstItem="9nk-3t-anc" firstAttribute="trailing" secondItem="yqB-hk-OGO" secondAttribute="trailing" constant="50" id="0Yv-ee-mcr"/>
                             <constraint firstItem="9nk-3t-anc" firstAttribute="trailing" secondItem="apI-g6-Ktc" secondAttribute="trailing" constant="50" id="2Ai-Yy-ESU"/>
                             <constraint firstItem="jP4-a9-7MS" firstAttribute="top" secondItem="9nk-3t-anc" secondAttribute="top" constant="10" id="3XF-VU-w3s"/>
                             <constraint firstItem="9nk-3t-anc" firstAttribute="bottom" secondItem="bhS-af-cDJ" secondAttribute="bottom" constant="20" id="4JJ-XR-wGn"/>
                             <constraint firstItem="3Ju-Im-88Q" firstAttribute="top" secondItem="k9N-a1-1ar" secondAttribute="bottom" constant="10" id="5Sc-FA-bhC"/>
+                            <constraint firstItem="yqB-hk-OGO" firstAttribute="leading" secondItem="9nk-3t-anc" secondAttribute="leading" constant="50" id="5VN-O5-kfa"/>
                             <constraint firstItem="l0h-jj-e8g" firstAttribute="leading" secondItem="9nk-3t-anc" secondAttribute="leading" constant="40" id="BYy-ie-gQx"/>
                             <constraint firstItem="hhF-1U-rpV" firstAttribute="trailing" secondItem="9nk-3t-anc" secondAttribute="trailing" id="Ft8-l0-Vgo"/>
+                            <constraint firstItem="80Z-Sr-X0l" firstAttribute="leading" secondItem="k9N-a1-1ar" secondAttribute="trailing" constant="10" id="GXE-f5-BCp"/>
                             <constraint firstItem="k9N-a1-1ar" firstAttribute="top" secondItem="apI-g6-Ktc" secondAttribute="bottom" constant="20" id="Iw0-nC-LZO"/>
                             <constraint firstAttribute="bottom" secondItem="hhF-1U-rpV" secondAttribute="bottom" id="JkA-xq-FWI"/>
                             <constraint firstItem="k9N-a1-1ar" firstAttribute="centerX" secondItem="xmq-1u-dgB" secondAttribute="centerX" constant="-70" id="NeA-Ek-mcd"/>
@@ -1175,6 +1179,7 @@ products that you usually use later.</string>
                             <constraint firstItem="krd-5y-r2T" firstAttribute="leading" secondItem="9nk-3t-anc" secondAttribute="leading" constant="30" id="d30-7i-qzl"/>
                             <constraint firstItem="3Ju-Im-88Q" firstAttribute="centerX" secondItem="xmq-1u-dgB" secondAttribute="centerX" id="eHp-aC-fG6"/>
                             <constraint firstItem="biI-Oh-GkH" firstAttribute="top" secondItem="qZK-YO-0Zz" secondAttribute="bottom" constant="20" id="epY-BA-MsS"/>
+                            <constraint firstItem="bhS-af-cDJ" firstAttribute="top" secondItem="yqB-hk-OGO" secondAttribute="bottom" constant="15" id="evn-2Y-e8X"/>
                             <constraint firstItem="hhF-1U-rpV" firstAttribute="leading" secondItem="9nk-3t-anc" secondAttribute="leading" id="fJE-5D-hdH"/>
                             <constraint firstItem="xxZ-Vk-nZa" firstAttribute="centerX" secondItem="xmq-1u-dgB" secondAttribute="centerX" id="k8U-O7-n9D"/>
                             <constraint firstItem="qZK-YO-0Zz" firstAttribute="leading" secondItem="9nk-3t-anc" secondAttribute="leading" constant="30" id="l7l-nk-gQz"/>
@@ -1238,7 +1243,7 @@ products that you usually use later.</string>
                                 <rect key="frame" x="30" y="209.5" width="354" height="652.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="skincareproductscell" rowHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-V0-7ta" customClass="SkinCareGuideTableViewCell" customModule="WabiSabiTeamProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="skincareproductscell" rowHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-V0-7ta" customClass="SkinCareGuideTableViewCell" customModule="WabiSabiTeamProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="354" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vvE-V0-7ta" id="pZ6-wg-VV8">

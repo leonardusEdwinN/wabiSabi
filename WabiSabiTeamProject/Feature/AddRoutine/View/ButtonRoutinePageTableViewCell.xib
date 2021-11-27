@@ -6,47 +6,43 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="buttonRoutineTableViewCell" rowHeight="142" id="KGk-i7-Jjw" customClass="ButtonRoutinePageTableViewCell" customModule="WabiSabiTeamProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="buttonRoutineTableViewCell" rowHeight="111" id="KGk-i7-Jjw" customClass="ButtonRoutinePageTableViewCell" customModule="WabiSabiTeamProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRv-HD-Mcq">
-                        <rect key="frame" x="5" y="5" width="310" height="2"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="2" id="yTW-wB-QgA"/>
-                        </constraints>
-                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsE-gx-tlP">
-                        <rect key="frame" x="20" y="27" width="280" height="45"/>
+                        <rect key="frame" x="20" y="10" width="280" height="40"/>
                         <color key="backgroundColor" name="ColorPrimary"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="45" id="ZKP-QE-5ZN"/>
+                            <constraint firstAttribute="height" constant="40" id="ZKP-QE-5ZN"/>
                         </constraints>
                         <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Add Other Product"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Add Other Product">
+                            <fontDescription key="titleFontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="17"/>
+                        </buttonConfiguration>
                         <connections>
                             <action selector="buttonAddOtherProductPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qdY-jx-aZf"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LcH-9U-QYc">
-                        <rect key="frame" x="20" y="82" width="280" height="45"/>
+                        <rect key="frame" x="20" y="60" width="280" height="45"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="45" id="Br5-2z-HGj"/>
                         </constraints>
-                        <color key="tintColor" name="ColorSecondary"/>
+                        <color key="tintColor" name="ColorPrimary"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Import from existing routine"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Import from existing routine">
+                            <fontDescription key="titleFontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="17"/>
+                        </buttonConfiguration>
                         <connections>
                             <action selector="buttonImportPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MhD-su-crM"/>
                         </connections>
@@ -55,15 +51,12 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="LcH-9U-QYc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="3BY-ZG-rIg"/>
-                    <constraint firstItem="ZRv-HD-Mcq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="boA-bA-R8w"/>
+                    <constraint firstItem="RsE-gx-tlP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Z0c-qT-YEq"/>
                     <constraint firstAttribute="trailing" secondItem="RsE-gx-tlP" secondAttribute="trailing" constant="20" id="em1-O4-cAL"/>
                     <constraint firstAttribute="trailing" secondItem="LcH-9U-QYc" secondAttribute="trailing" constant="20" id="heg-gQ-KJS"/>
-                    <constraint firstItem="RsE-gx-tlP" firstAttribute="top" secondItem="ZRv-HD-Mcq" secondAttribute="bottom" constant="20" id="k9w-Ft-H35"/>
                     <constraint firstItem="LcH-9U-QYc" firstAttribute="top" secondItem="RsE-gx-tlP" secondAttribute="bottom" constant="10" id="qPK-tt-cMG"/>
                     <constraint firstItem="RsE-gx-tlP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="uSS-dl-vWF"/>
-                    <constraint firstItem="ZRv-HD-Mcq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="w2J-GD-bHh"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="LcH-9U-QYc" secondAttribute="bottom" constant="20" id="x1n-Tg-mJj"/>
-                    <constraint firstAttribute="trailing" secondItem="ZRv-HD-Mcq" secondAttribute="trailing" constant="5" id="yW5-Fg-Dqt"/>
+                    <constraint firstAttribute="bottom" secondItem="LcH-9U-QYc" secondAttribute="bottom" constant="10" id="x1n-Tg-mJj"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -72,18 +65,12 @@
                 <outlet property="buttonAddOtherProduct" destination="RsE-gx-tlP" id="9CW-CS-FBo"/>
                 <outlet property="buttonImport" destination="LcH-9U-QYc" id="Cfo-nC-KYy"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="163.39285714285714"/>
+            <point key="canvasLocation" x="137.68115942028987" y="153.01339285714286"/>
         </tableViewCell>
     </objects>
     <resources>
         <namedColor name="ColorPrimary">
             <color red="0.37599998712539673" green="0.27099999785423279" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="ColorSecondary">
-            <color red="0.37599998712539673" green="0.27099999785423279" blue="0.77600002288818359" alpha="0.70099997520446777" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
