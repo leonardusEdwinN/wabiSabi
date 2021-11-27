@@ -9,6 +9,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Bold.otf">
+            <string>SFProRounded-Bold</string>
+        </array>
+        <array key="SF-Pro-Rounded-Regular.otf">
+            <string>SFProRounded-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Skin Care-->
         <scene sceneID="I66-BV-c49">
@@ -20,13 +28,25 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ5-8U-4KC">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
-                                <color key="backgroundColor" name="ColorPrimary"/>
+                                <color key="backgroundColor" name="Secondary"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="ai6-yC-xYp"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Routine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xa0-xU-v4F">
+                                <rect key="frame" x="20" y="98" width="374" height="41"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore other routine that you can do for your skin!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gio-1M-xhj">
+                                <rect key="frame" x="20" y="144" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEl-xM-61c">
-                                <rect key="frame" x="0.0" y="188" width="414" height="674"/>
+                                <rect key="frame" x="0.0" y="189.5" width="414" height="672.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product used" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFZ-md-aQc">
                                         <rect key="frame" x="20" y="15" width="102" height="21"/>
@@ -40,7 +60,7 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Edit"/>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Z3M-WS-p8T">
-                                        <rect key="frame" x="15" y="46" width="384" height="618"/>
+                                        <rect key="frame" x="15" y="46" width="384" height="616.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
@@ -61,11 +81,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="R2K-GK-Xl4" firstAttribute="trailing" secondItem="hZ5-8U-4KC" secondAttribute="trailing" id="42x-Lt-ZXm"/>
-                            <constraint firstItem="EEl-xM-61c" firstAttribute="top" secondItem="R2K-GK-Xl4" secondAttribute="top" constant="100" id="B21-ZM-vhy"/>
+                            <constraint firstItem="EEl-xM-61c" firstAttribute="top" secondItem="gio-1M-xhj" secondAttribute="bottom" constant="25" id="B21-ZM-vhy"/>
+                            <constraint firstItem="gio-1M-xhj" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" constant="20" id="BA5-f6-5Wp"/>
                             <constraint firstItem="R2K-GK-Xl4" firstAttribute="bottom" secondItem="EEl-xM-61c" secondAttribute="bottom" id="JPk-We-F5G"/>
+                            <constraint firstItem="Xa0-xU-v4F" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" constant="20" id="LXj-uv-MO1"/>
+                            <constraint firstItem="Xa0-xU-v4F" firstAttribute="top" secondItem="R2K-GK-Xl4" secondAttribute="top" constant="10" id="M72-MD-IsT"/>
                             <constraint firstItem="hZ5-8U-4KC" firstAttribute="top" secondItem="lk5-Bz-Uhw" secondAttribute="top" id="QZ7-tJ-A55"/>
                             <constraint firstItem="hZ5-8U-4KC" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" id="bbS-gt-G7G"/>
+                            <constraint firstItem="R2K-GK-Xl4" firstAttribute="trailing" secondItem="gio-1M-xhj" secondAttribute="trailing" constant="20" id="exH-9p-agx"/>
                             <constraint firstItem="EEl-xM-61c" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" id="f5p-rZ-Nai"/>
+                            <constraint firstItem="R2K-GK-Xl4" firstAttribute="trailing" secondItem="Xa0-xU-v4F" secondAttribute="trailing" constant="20" id="pec-NU-cmH"/>
+                            <constraint firstItem="gio-1M-xhj" firstAttribute="top" secondItem="Xa0-xU-v4F" secondAttribute="bottom" constant="5" id="s4C-4x-m86"/>
                             <constraint firstItem="R2K-GK-Xl4" firstAttribute="trailing" secondItem="EEl-xM-61c" secondAttribute="trailing" id="zhg-P5-vhN"/>
                         </constraints>
                     </view>
@@ -74,12 +100,21 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="etL-9O-a3n">
                                 <rect key="frame" x="20" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="YqF-f5-mFH" eventType="touchUpInside" id="6hF-nS-dbV"/>
                                 </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="GNa-T3-H50">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sbX-F3-wIn">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="info.circle" catalog="system"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -145,8 +180,9 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="ColorPrimary">
-            <color red="0.37599998712539673" green="0.27099999785423279" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="Secondary">
+            <color red="0.90196078431372551" green="0.82352941176470584" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

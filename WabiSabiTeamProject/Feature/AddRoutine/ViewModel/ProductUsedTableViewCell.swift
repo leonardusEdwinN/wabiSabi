@@ -13,11 +13,13 @@ class ProductUsedTableViewCell: UITableViewCell {
     @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var imageCell: UIImageView!
     @IBOutlet weak var viewCheckBox: UIView!
+    @IBOutlet weak var viewOuterAdd: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         imageCell.layer.cornerRadius = 15
+        viewOuterAdd.layer.cornerRadius = 15
         // Initialization code
     }
 

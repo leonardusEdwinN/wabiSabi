@@ -70,6 +70,7 @@ class AddRoutineViewController : UIViewController{
             addProductVC.selectedRoutine = self.selectedRoutine
             addProductVC.delegate = self
             addProductVC.selectedProduct = self.selectedProduct
+            addProductVC.isEdit = (self.selectedProduct != nil) ? true : false
             addProductVC.modalPresentationStyle = .fullScreen
             
         }else if segue.identifier == "moveToTimeReminder"{
@@ -106,9 +107,19 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
             print("PRODUCT : \(products[indexPath.row].name)")
             
-            DispatchQueue.main.async {
-                row.setUIText(title: self.products[indexPath.row].name ?? "", desc: self.products[indexPath.row].brand ?? "Add your product description")
+            if((products[indexPath.row].brand) != nil){
+                if let name = self.products[indexPath.row].name, let brand = self.products[indexPath.row].brand{
+                    
+                    DispatchQueue.main.async {
+                        row.setUIText(title: self.products[indexPath.row].productType ?? "", desc: "\(name) \(brand)")
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    row.setUIText(title: self.products[indexPath.row].name ?? "", desc: "Add your Product")
+                }
             }
+           
             
             if let image = products[indexPath.row].picture{
                 
@@ -228,8 +239,11 @@ extension AddRoutineViewController : AddProductDelegate{
 
 extension AddRoutineViewController : SaveProductDelegate{
     func saveProductAndReloadIt() {
+//        Util.displayAlert(title: "Data Saved", message: "Successfully Saved Data")
         checkProduct()
         DispatchQueue.main.async {
+            
+            Loading.sharedInstance.hideIndicator()
             self.routineTableView.reloadData()
         }
     }

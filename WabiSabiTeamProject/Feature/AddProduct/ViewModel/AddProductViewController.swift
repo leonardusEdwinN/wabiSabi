@@ -20,6 +20,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     var productTypeArray: [ProductTypeModel] = []
     var delegate: SaveProductDelegate?
     var selectedProduct: Product!
+    var isEdit: Bool = false
     
     // MARK: Navigation Bar
     @IBOutlet weak var labelTitlePage: UILabel!
@@ -27,6 +28,11 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var closeButton: UIButton!
     
     @IBAction func saveButtonPressed(_ sender: Any) {
+        DispatchQueue.main.async {
+            print("SHOW INDICATOR LAODING")
+            Loading.sharedInstance.showIndicator()
+        }
+        
         
         
         if let name = textfieldProductName.text,
@@ -39,9 +45,21 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
             let imageData:Data = image.pngData()!
             let imgStrBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
             
-            print("name : \(name), brand : \(brand), product type:\(productType), expdate: \(expiredDate.date), pao: \(periodAfterOpen.date), image: \(imgStrBase64) :: \(image)")
+            print("name : \(name), brand : \(brand), product type:\(productType), expdate: \(expiredDate.date), pao: \(periodAfterOpen.date)")
             
-            PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate.date, name: name, periodAfterOpening: periodAfterOpen.date, picture: imgStrBase64, routine: selectedRoutine)
+            if selectedProduct != nil{
+                if let id = selectedProduct.id{
+                    //update data
+                    PersistanceManager.shared.updateProduct(id: id, name: name, brand: brand, periodAfterOpening: periodAfterOpen.date , picture: imgStrBase64, routine: selectedRoutine, expiredDate: expiredDate.date, productType: productType)
+                }
+            }else{
+                //create data
+                PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate.date, name: name, periodAfterOpening: periodAfterOpen.date, picture: imgStrBase64, routine: selectedRoutine, productType: productType)
+            }
+            
+            
+//            PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate.date, name: name, periodAfterOpening: periodAfterOpen.date, picture: imgStrBase64, routine: selectedRoutine, productType: productType)
+            
 //            guard let decodedData = Data(base64Encoded: imgStrBase64, options: .ignoreUnknownCharacters) else { return  }
 //            let decodedimage: UIImage = UIImage(data: decodedData)!
 //
@@ -52,7 +70,6 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
         }
         
         
-//        var data = PersistanceManager.shared.setProduct(brand: <#T##String#>, expiredDate: <#T##Date#>, name: <#T##String#>, periodAfterOpening: <#T##Date#>, picture: <#T##String#>, routine: <#T##Routines#>)
             delegate?.saveProductAndReloadIt()
             self.dismiss(animated: false, completion: nil)
     }
@@ -91,24 +108,40 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let name = selectedProduct.name,
-           let brand = selectedProduct.brand,
-           let image = selectedProduct.picture,
-           let pao = selectedProduct.periodAfterOpening,
-           let exp = selectedProduct.expiredDate{
+        
+        if self.isEdit{
+            //true, melakukan update date
+            if let name = selectedProduct.name,
+               let brand = selectedProduct.brand,
+               let image = selectedProduct.picture,
+               let productType = selectedProduct.productType,
+               let pao = selectedProduct.periodAfterOpening,
+               let exp = selectedProduct.expiredDate{
+                
+                guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return  }
+                let decodedimage: UIImage = UIImage(data: decodedData)!
+                
+                
+                imageViewProduct.image = decodedimage
+                textfieldProductName.text = name
+                textfieldProductBrand.text = brand
+                labelProductTypeValue.text = productType
+                paoDatePicker.date = pao
+                expDatePicker.date = exp
+            }
             
-            guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return  }
-            let decodedimage: UIImage = UIImage(data: decodedData)!
             
-            textfieldProductName.text = name
-            textfieldProductBrand.text = brand
-//            labelProductTypeValue.text = product.types
-            imageViewProduct.image = decodedimage
-            paoDatePicker.date = pao
-            expDatePicker.date = exp
+            print("selected product : \(selectedProduct.name) :: \(selectedProduct.brand)")
+        }else{
+            textfieldProductName.text = ""
+            textfieldProductBrand.text = ""
+            labelProductTypeValue.text = ""
+            imageViewProduct.image = UIImage(systemName: "camera")
         }
         
-        print("selected product : \(selectedProduct.name) :: \(selectedProduct.brand)")
+        
+        
+        
         setDataProductType()
         setUI()
         
@@ -165,6 +198,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     
     
     @objc func addProductType(_ sender: UITapGestureRecognizer) {
+        self.dismissKeyboard()
         self.performSegue(withIdentifier: "moveToProductTypeSelection", sender: self)
     }
     

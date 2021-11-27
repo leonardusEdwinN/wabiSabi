@@ -15,6 +15,7 @@
 		1308256C27464625005CB024 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308256A27464625005CB024 /* SearchResultTableViewCell.swift */; };
 		1308256D27464625005CB024 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1308256B27464625005CB024 /* SearchResultTableViewCell.xib */; };
 		130A695F273D121C007E8E29 /* AddRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130A695E273D121C007E8E29 /* AddRoutine.storyboard */; };
+		13159C4F274F8EAC00EA5319 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13159C4E274F8EAC00EA5319 /* Loading.swift */; };
 		1316910B274E359700049D3D /* AddProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910A274E359700049D3D /* AddProductModel.swift */; };
 		1316910D274E3D3800049D3D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910C274E3D3800049D3D /* Util.swift */; };
 		1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910E274E502800049D3D /* ProductTypeModel.swift */; };
@@ -123,6 +124,7 @@
 		1308256A27464625005CB024 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		1308256B27464625005CB024 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		130A695E273D121C007E8E29 /* AddRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRoutine.storyboard; sourceTree = "<group>"; };
+		13159C4E274F8EAC00EA5319 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		1316910A274E359700049D3D /* AddProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductModel.swift; sourceTree = "<group>"; };
 		1316910C274E3D3800049D3D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1316910E274E502800049D3D /* ProductTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeModel.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				13ECEF8A272943F5006B5BFE /* CoreData */,
 				13AD9DA62739083F0083AE29 /* Extension.swift */,
 				1316910C274E3D3800049D3D /* Util.swift */,
+				13159C4E274F8EAC00EA5319 /* Loading.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				13CD1F3127425D5100F537EB /* TimerReminderTableViewCell.swift in Sources */,
 				97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */,
 				3575BD292742184A00804502 /* SkinRoutineLevel.swift in Sources */,
+				13159C4F274F8EAC00EA5319 /* Loading.swift in Sources */,
 				1371B4CD2743E64900A16A45 /* TimerTableViewCell.swift in Sources */,
 				979889C9273282A20052B862 /* CircularProgressView.swift in Sources */,
 				970E4163272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift in Sources */,

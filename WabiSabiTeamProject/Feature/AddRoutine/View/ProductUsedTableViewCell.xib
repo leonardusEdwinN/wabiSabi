@@ -23,6 +23,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="avC-CT-lTS">
                                 <rect key="frame" x="0.0" y="-1.5" width="100" height="102.5"/>
+                                <color key="backgroundColor" red="0.83529411764705885" green="0.81568627450980391" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                             </imageView>
@@ -80,6 +81,7 @@
                 <outlet property="productDescriptionLabel" destination="gbG-FW-i3q" id="bSd-i2-pqy"/>
                 <outlet property="productNameLabel" destination="Cdm-Qy-pr2" id="G0h-kl-fdv"/>
                 <outlet property="viewCheckBox" destination="I1o-Jp-Pyy" id="WIi-NJ-5Wq"/>
+                <outlet property="viewOuterAdd" destination="eO2-P5-HcV" id="lD7-Kr-pww"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="157.36607142857142"/>
         </tableViewCell>
