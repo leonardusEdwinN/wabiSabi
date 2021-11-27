@@ -97,6 +97,36 @@ class PersistanceManager {
         }
     }
     
+    func changeRoutineStatus(id: String, statusType: StatusRoutine, status: Bool){
+        // 1. fetch data
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routines")
+        
+        // 2. set predicate (condition)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", id)
+        
+        // 3. execute update
+        do {
+            let objects = try context.fetch(fetchRequest)
+            let objectToBeUpdated = objects[0] as!NSManagedObject
+            
+            if statusType == StatusRoutine.isCompleted {
+                objectToBeUpdated.setValue(status, forKey: "isCompleted")
+            } else {
+                objectToBeUpdated.setValue(status, forKey: "isSkipped")
+            }
+        } catch {
+            // do something if error
+        }
+        
+        // 4. save
+        do {
+            try
+            context.save()
+        } catch let error as NSError {
+            // do something if error...
+        }
+    }
+    
     func updateProduct(id: String, name: String, brand: String, periodAfterOpening: Date, picture: String, routine: Routines, expiredDate: Date, productType : String){
             // 1. fetch data
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
@@ -434,4 +464,9 @@ class PersistanceManager {
         }
     }
 
+}
+
+enum StatusRoutine {
+    case isCompleted
+    case isSkipped
 }

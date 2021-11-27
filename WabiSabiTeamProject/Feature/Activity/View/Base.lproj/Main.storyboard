@@ -146,11 +146,6 @@
                                     <constraint firstItem="SH0-6b-1OC" firstAttribute="centerY" secondItem="9dh-dK-NJC" secondAttribute="centerY" id="jbz-Zy-emO"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" id="bEX-J1-A2p">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.67119655479999996" alpha="0.54042053219999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xTk-Lw-C0G">
                                 <rect key="frame" x="20" y="382" width="374" height="29"/>
                                 <constraints>
@@ -170,6 +165,11 @@
                                 <rect key="frame" x="0.0" y="428" width="414" height="428"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" id="bEX-J1-A2p">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.67119655479999996" alpha="0.54042053219999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tutorial1" translatesAutoresizingMaskIntoConstraints="NO" id="SG1-Ru-5mt">
                                 <rect key="frame" x="113.66666666666669" y="113" width="187" height="82"/>
                                 <constraints>
@@ -258,6 +258,7 @@
                         <outlet property="backgroundPurple" destination="Spc-yC-GOe" id="tex-gf-BAs"/>
                         <outlet property="backgroundTutorial" destination="bEX-J1-A2p" id="qPQ-Jo-1Kg"/>
                         <outlet property="circularProgress" destination="9dh-dK-NJC" id="bPd-MI-SAn"/>
+                        <outlet property="circularProgressPercentageLabel" destination="zOf-Zu-CH6" id="3Kd-CB-Ra9"/>
                         <outlet property="routineTableView" destination="T3c-gO-kzX" id="GRn-eH-fc9"/>
                         <outlet property="statusSegmentedControl" destination="xTk-Lw-C0G" id="tdR-SR-dD0"/>
                         <outlet property="tutorial1" destination="SG1-Ru-5mt" id="gYg-Wz-Pbc"/>

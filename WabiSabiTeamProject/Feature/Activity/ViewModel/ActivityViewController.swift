@@ -10,6 +10,7 @@ import UIKit
 class ActivityViewController: UIViewController {
     @IBOutlet weak var routineTableView: UITableView!
     @IBOutlet weak var circularProgress: CircularProgressView!
+    @IBOutlet weak var circularProgressPercentageLabel : UILabel!
     @IBOutlet weak var backgoundWhite: UIView!
     @IBOutlet weak var backgroundPurple: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -34,12 +35,12 @@ class ActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableViewDataByStatus()
         configureNavigationBar()
-        setUpcircularProgress()
         setUpTableView()
         configureBackground()
         configureTutorial()
+        setUpcircularProgress()
+        configureTableViewDataByStatus()
         configureSegmented()
     }
     
@@ -92,9 +93,25 @@ class ActivityViewController: UIViewController {
     }
     
     private func setUpcircularProgress() {
+        let products = PersistanceManager.shared.fetchProduct()
+        var productDoneCount : Int = 0
+        
+        for product in products {
+            if product.isDone {
+                productDoneCount += 1
+            }
+        }
+        
+        let percentage : Float = Float(productDoneCount) / Float(products.count) * 100.0
+        
+        print("percentageeeee")
+        print(percentage)
+        print(productDoneCount)
+        print(products.count)
+        
         circularProgress.progressColor = UIColor.white
         circularProgress.trackColor = UIColor.systemGray4
-        circularProgress.percentageValue = 0.8
+        circularProgress.percentageValue = CGFloat(percentage)
     }
     
     private func setUpTableView() {
@@ -245,9 +262,16 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
                 productDoneCount += 1
             }
         }
-        let closeAction = UIContextualAction(style: .normal, title:  "Finish", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let closeAction = UIContextualAction(style: .normal, title:  "Finish", handler: { [self] (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isCompleted ,status: true)
+            if (self.currentTableView[indexPath.row].isSkipped == true) {
+                PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isSkipped ,status: false)
+            }
             print("Finish")
+            self.configureTableViewDataByStatus()
+            self.configureSegmented()
+            self.setUpTableView()
+            self.setUpcircularProgress()
             tableView.reloadData()
             success(true)
         })
@@ -265,18 +289,22 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         } else {
             print("TAP LAINNYA")
         }
-        
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let modifyAction = UIContextualAction(style: .normal, title:  "Skip", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isSkipped, status: true)
             
-            PersistanceManager.shared.deleteRoutines(routines: self.currentTableView[indexPath.row])
+            if (self.currentTableView[indexPath.row].isCompleted == true) {
+                PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isCompleted ,status: false)
+            }
             
-            tableView.endUpdates()
+            self.configureTableViewDataByStatus()
+            self.configureSegmented()
+            self.setUpTableView()
+            self.setUpcircularProgress()
+            tableView.reloadData()
             print("SKIP")
             success(true)
         })
