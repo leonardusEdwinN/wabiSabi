@@ -151,8 +151,6 @@ class ActivityViewController: UIViewController {
     }
     
     @objc func tapMenuButton(_ sender: Any) {
-        print("DATE CHANGEEEED")
-//        print(skinCareRoutines[0].routineproduct.)
         let slideVC = OverlayCalenderView()
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
@@ -200,10 +198,21 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let productsByRoutine = PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesTableViewCell", for: indexPath) as! RoutinesTableViewCell
         cell.setup(with: skinCareRoutines[indexPath.row])
         
-        cell.routineProduct.text = "0/\(PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row]).count)"
+        var productDoneCount : Int = 0
+        
+        for product in productsByRoutine {
+            print("PRODUUUUUUCT")
+            print(product.isDone)
+            if product.isDone {
+                productDoneCount += 1
+            }
+        }
+        
+        cell.routineProduct.text = "\(productDoneCount)/\(productsByRoutine.count)"
         return cell
     }
     
@@ -213,6 +222,17 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
+        let productsByRoutine = PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row])
+        var productDoneCount : Int = 0
+        
+        for product in productsByRoutine {
+            print("PRODUUUUUUCT")
+            print(product.name)
+            print(product.isDone)
+            if product.isDone {
+                productDoneCount += 1
+            }
+        }
         let closeAction = UIContextualAction(style: .normal, title:  "Finish", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Finish")
             success(true)
@@ -224,7 +244,6 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if(indexPath.item == 0){
             print("TAP 1")
             performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
