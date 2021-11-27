@@ -26,8 +26,8 @@ class PersistanceManager {
         })
 
         // MARK: DEBUG
-//        // Only initialize the schema when building the app with the
-//        // Debug build configuration.
+        // Only initialize the schema when building the app with the
+        // Debug build configuration.
 //        #if DEBUG
 //        do {
 //            // Use the container to initialize the development schema.
@@ -36,7 +36,7 @@ class PersistanceManager {
 //            // Handle any errors.
 //        }
 //        #endif
-
+        
         
         
         return container
@@ -56,7 +56,7 @@ class PersistanceManager {
         save()
     }
     
-    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines) {
+    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines, productType: String) {
         let product = Product(context: persistentContainer.viewContext)
         product.id = "\(UUID())"
         product.brand = brand
@@ -65,8 +65,44 @@ class PersistanceManager {
         product.periodAfterOpening = periodAfterOpening
         product.picture = picture
         product.routineproduct = routine
+        product.productType = productType
         save()
+        print ("DATA SAVED")
     }
+    
+    func updateProduct(id: String, name: String, brand: String, periodAfterOpening: Date, picture: String, routine: Routines, expiredDate: Date, productType : String){
+            // 1. fetch data
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
+            
+            // 2. set predicate (condition)
+            fetchRequest.predicate = NSPredicate(format: "id = %@", id)
+            
+            // 3. execute update
+            do {
+                let objects = try context.fetch(fetchRequest)
+                let objectToBeUpdated = objects[0] as!NSManagedObject
+                objectToBeUpdated.setValue(brand, forKey: "brand")
+                objectToBeUpdated.setValue(expiredDate, forKey: "expiredDate")
+                objectToBeUpdated.setValue(name, forKey: "name")
+                objectToBeUpdated.setValue(periodAfterOpening, forKey: "periodAfterOpening")
+                objectToBeUpdated.setValue(picture, forKey: "picture")
+                objectToBeUpdated.setValue(productType, forKey: "productType")
+            } catch {
+                // do something if error
+            }
+            
+            // 4. save
+            do {
+                try
+                context.save()
+            } catch let error as NSError {
+                // do something if error...
+            }
+            
+            // 5. reload data
+            fetchProduct()
+        }
+    
     
     func setProduct(name: String) {
         let product = Product(context: persistentContainer.viewContext)
@@ -118,12 +154,12 @@ class PersistanceManager {
         save()
     }
     
-    func setType(isSelected: Bool, name: String) {
-        let type = Type(context: persistentContainer.viewContext)
-        type.isSelected = isSelected
-        type.name = name
-        save()
-    }
+//    func setType(isSelected: Bool, name: String) {
+//        let type = ProductType(context: persistentContainer.viewContext)
+//        type.isSelected = isSelected
+//        type.name = name
+//        save()
+//    }
     
     func setUser(dateOfBirth: Date, gender: String, isNotify: Bool, level: String, localization: String, name: String, skinType: String) {
         let user = User(context: persistentContainer.viewContext)
@@ -271,19 +307,19 @@ class PersistanceManager {
         return subcategory
     }
     
-    func fetchType() -> [Type] {
-        let request: NSFetchRequest<Type> = Type.fetchRequest()
-        
-        var type: [Type] = []
-        
-        do {
-            type = try persistentContainer.viewContext.fetch(request)
-        } catch {
-            print("Error fetching authors")
-        }
-        
-        return type
-    }
+//    func fetchType() -> [ProductType] {
+//        let request: NSFetchRequest<ProductType> = ProductType.fetchRequest()
+//        
+//        var productType: [ProductType] = []
+//        
+//        do {
+//            productType = try persistentContainer.viewContext.fetch(request)
+//        } catch {
+//            print("Error fetching product type")
+//        }
+//        
+//        return productType
+//    }
     
     func fetchUser() -> User {
         var userID = UserDefaults.standard.string(forKey: "userID")
