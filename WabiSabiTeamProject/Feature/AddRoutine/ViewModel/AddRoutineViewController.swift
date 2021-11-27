@@ -371,6 +371,7 @@ extension AddRoutineViewController : deleteProductItemDelegate{
         print("DELETE PRODUCT \(product.name)")
         PersistanceManager.shared.deleteProduct(product: product)
         DispatchQueue.main.async {
+            self.checkProduct()
             self.routineTableView.reloadData()
         }
     }
