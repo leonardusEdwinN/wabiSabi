@@ -95,6 +95,7 @@ class AddRoutineViewController : UIViewController{
         
         routineTableView.delegate = self
         routineTableView.dataSource = self
+        routineTableView.dragInteractionEnabled = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -166,6 +167,11 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
                 //dragable and delete state
                 row.setDragableandTrashIcon()
             }else{
+                self.products[indexPath.row].isDone ? row.setStatusDone() : row.setStatusUndone()
+                
+            }
+            
+            
                 if((products[indexPath.row].brand) != nil){
                     if let name = self.products[indexPath.row].name, let brand = self.products[indexPath.row].brand{
                         DispatchQueue.main.async {
@@ -185,15 +191,9 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
                         }
                     
                 }
-            }
-            
-            
-            
-            
             print("SELECTED PRODUCT \(self.products[indexPath.row])")
             row.selectedProduct = self.products[indexPath.row]
             row.delegate = self
-            row.delegateCheckUncheck = self
             row.selectedIndexPath = indexPath
             
             return row
@@ -288,6 +288,49 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
         
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        // Checked action
+        let check = UIContextualAction(style: .normal,
+                                         title: "Checked") { [weak self] (action, view, completionHandler) in
+            
+            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
+            
+            row.setStatusDone()
+            if let id = self?.products[indexPath.row].id{
+                //update data status
+                PersistanceManager.shared.changeProductStatus(id: id, status: true)
+            }
+            
+            print("UPDATE DATA CHECKED")
+            
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            completionHandler(true)
+        }
+        check.backgroundColor = .systemGreen
+        
+        // uncheck action
+        let uncheck = UIContextualAction(style: .normal,
+                                       title: "Unchecked") { [weak self] (action, view, completionHandler) in
+            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
+            
+            row.setStatusUndone()
+            if let id = self?.products[indexPath.row].id{
+                //update data status
+                PersistanceManager.shared.changeProductStatus(id: id, status: false)
+            }
+            print("UPDATE DATA UNCHECKED")
+            
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            completionHandler(true)
+        }
+        uncheck.backgroundColor = .systemOrange
+        
+        let configuration = UISwipeActionsConfiguration(actions: [uncheck, check])
+
+        return configuration
+    }
+    
     
 }
 
@@ -322,15 +365,7 @@ extension AddRoutineViewController : SaveProductDelegate{
     
 }
 
-extension AddRoutineViewController : deleteProductItemDelegate, checkOrUncheckedDelegate{
-    func checkedItem(for indexPath: IndexPath) {
-        print("")
-    }
-    
-    func uncheckedItem(for indexPath: IndexPath) {
-        print("")
-    }
-    
+extension AddRoutineViewController : deleteProductItemDelegate{
     // MARK: Delegate from ProductUsedTableViewCell trash icon
     func deleteProductItem(deletedProduct product: Product) {
         print("DELETE PRODUCT \(product.name)")

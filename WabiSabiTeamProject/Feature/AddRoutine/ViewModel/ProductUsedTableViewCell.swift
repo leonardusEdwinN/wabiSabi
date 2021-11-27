@@ -9,11 +9,11 @@ import UIKit
 protocol deleteProductItemDelegate{
     func deleteProductItem(deletedProduct product : Product)
 }
-
-protocol checkOrUncheckedDelegate{
-    func checkedItem(for indexPath : IndexPath)
-    func uncheckedItem(for indexPath : IndexPath)
-}
+//
+//protocol checkOrUncheckedDelegate{
+//    func checkedItem(for indexPath : IndexPath)
+//    func uncheckedItem(for indexPath : IndexPath)
+//}
 
 class ProductUsedTableViewCell: UITableViewCell {
 
@@ -40,7 +40,7 @@ class ProductUsedTableViewCell: UITableViewCell {
     
     // MARK: Variable
     var delegate : deleteProductItemDelegate?
-    var delegateCheckUncheck : checkOrUncheckedDelegate?
+//    var delegateCheckUncheck : checkOrUncheckedDelegate?
     var selectedProduct : Product?
     var selectedIndexPath : IndexPath?
     
@@ -64,11 +64,11 @@ class ProductUsedTableViewCell: UITableViewCell {
         
         
         // 1. create a gesture recognizer (tap gesture)
-        let checkedGesture = UITapGestureRecognizer(target: self, action: #selector(checkedStatus(_:)))
-        checkedIconImage.addGestureRecognizer(checkedGesture)
-        
-        let uncheckedGesture = UITapGestureRecognizer(target: self, action: #selector(uncheckedStatus(_:)))
-        checkedIconImage.addGestureRecognizer(uncheckedGesture)
+//        let checkedGesture = UITapGestureRecognizer(target: self, action: #selector(checkedStatus(_:)))
+//        checkedIconImage.addGestureRecognizer(checkedGesture)
+//
+//        let uncheckedGesture = UITapGestureRecognizer(target: self, action: #selector(uncheckedStatus(_:)))
+//        checkedIconImage.addGestureRecognizer(uncheckedGesture)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -117,7 +117,6 @@ class ProductUsedTableViewCell: UITableViewCell {
             viewCheckBox.isHidden = true
             checkedIconImage.isHidden = true
             uncheckIconImage.isHidden = true
-        
     }
     
     func setStatusDone(){
@@ -130,14 +129,19 @@ class ProductUsedTableViewCell: UITableViewCell {
             uncheckIconImage.isHidden = true
     }
     
-    @objc func checkedStatus(_ sender: UITapGestureRecognizer) {
-//        delegateCheckUncheck?.checkedItem(for: selectedIndexPath)
-    }
-    
-    
-    @objc func uncheckedStatus(_ sender: UITapGestureRecognizer) {
-//        delegateCheckUncheck?.uncheckedItem(for: selectedIndexPath ?? <#default value#>)
-    }
+//    @objc func checkedStatus(_ sender: UITapGestureRecognizer) {
+//        if let indexPath = selectedIndexPath{
+//            delegateCheckUncheck?.checkedItem(for: indexPath)
+//        }
+//
+//    }
+//
+//
+//    @objc func uncheckedStatus(_ sender: UITapGestureRecognizer) {
+//        if let indexPath = selectedIndexPath{
+//            delegateCheckUncheck?.uncheckedItem(for: indexPath)
+//        }
+//    }
     
     func setStatusUndone(){
         
