@@ -178,20 +178,15 @@ class ActivityViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let nav = segue.destination as? UINavigationController else {
-            fatalError("NavigationController not found")
+            return
         }
         
-        guard let AddRoutineVC = nav.topViewController as? AddRoutineViewController else {
-            fatalError("AddRoutineViewController not found")
-            
-//            let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "addRoutineVC") as! AddRoutineViewController
-//            vc.selectedRoutine = skinCareRoutines[indexPath.row]
-//
-//            self.show(vc, sender: nil)
+        guard let addRoutineVC = nav.topViewController as? AddRoutineViewController else {
+            return
         }
         
-        AddRoutineVC.selectedRoutine = skinCareRoutines[selectedIndex]
+        addRoutineVC.selectedRoutine = self.skinCareRoutines[selectedIndex]
+        nav.modalPresentationStyle = .fullScreen
     }
 }
 
@@ -226,11 +221,10 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if(indexPath.item == 0){
-            performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
-            self.selectedIndex = indexPath.item
-        }
+            self.selectedIndex = indexPath.row
         
+        
+        performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?

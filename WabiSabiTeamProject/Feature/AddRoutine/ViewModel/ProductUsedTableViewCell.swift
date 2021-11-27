@@ -8,12 +8,8 @@
 import UIKit
 protocol deleteProductItemDelegate{
     func deleteProductItem(deletedProduct product : Product)
+    func editProductItem(editedProduct product: Product)
 }
-//
-//protocol checkOrUncheckedDelegate{
-//    func checkedItem(for indexPath : IndexPath)
-//    func uncheckedItem(for indexPath : IndexPath)
-//}
 
 class ProductUsedTableViewCell: UITableViewCell {
 
@@ -35,12 +31,19 @@ class ProductUsedTableViewCell: UITableViewCell {
         delegate?.deleteProductItem(deletedProduct: product)
     }
     @IBOutlet weak var trashButton: UIButton!
-    @IBOutlet weak var viewDragable: UIView!
-    @IBOutlet weak var dragableIconImage: UIImageView!
+    @IBOutlet weak var viewEdit: UIView!
+//    @IBOutlet weak var editIconImage: UIImageView!
+    @IBOutlet weak var buttonEdit: UIButton!
+    @IBAction func buttonEditPressed(_ sender: Any) {
+        guard let product = self.selectedProduct else{
+            return
+        }
+        
+        delegate?.editProductItem(editedProduct: product)
+    }
     
     // MARK: Variable
     var delegate : deleteProductItemDelegate?
-//    var delegateCheckUncheck : checkOrUncheckedDelegate?
     var selectedProduct : Product?
     var selectedIndexPath : IndexPath?
     
@@ -49,6 +52,8 @@ class ProductUsedTableViewCell: UITableViewCell {
         
         trashButton.setTitle("", for: .normal)
         trashButton.setImage(UIImage(named: "deleteIcon"), for: .normal)
+        buttonEdit.setTitle("", for: .normal)
+        buttonEdit.setImage(UIImage(named: "editIcon"), for: .normal)
         
         contentView.layer.borderWidth = 2
         contentView.layer.borderColor = UIColor.white.cgColor
@@ -56,16 +61,16 @@ class ProductUsedTableViewCell: UITableViewCell {
         
         imageCell.layer.cornerRadius = 15
         viewOuterAdd.layer.cornerRadius = 15
-        viewDragable.isHidden = true
-        dragableIconImage.isHidden = true
+        viewEdit.isHidden = true
+        buttonEdit.isHidden = true
         checkedIconImage.isHidden = true
         trashButton.isHidden = true
         // Initialization code
         
         
         // 1. create a gesture recognizer (tap gesture)
-//        let checkedGesture = UITapGestureRecognizer(target: self, action: #selector(checkedStatus(_:)))
-//        checkedIconImage.addGestureRecognizer(checkedGesture)
+        let editGesture = UITapGestureRecognizer(target: self, action: #selector(editProduct(_:)))
+        checkedIconImage.addGestureRecognizer(editGesture)
 //
 //        let uncheckedGesture = UITapGestureRecognizer(target: self, action: #selector(uncheckedStatus(_:)))
 //        checkedIconImage.addGestureRecognizer(uncheckedGesture)
@@ -95,23 +100,23 @@ class ProductUsedTableViewCell: UITableViewCell {
 //            viewCheckBox.isHidden = false
 //            checkedIconImage.isHidden = false
 //            uncheckIconImage.isHidden = true
-//            viewDragable.isHidden = true
-//            dragableIconImage.isHidden = true
+//            viewEdit.isHidden = true
+//            editIconImage.isHidden = true
 //            trashButton.isHidden = true
 //        }else{
 //            viewCheckBox.isHidden = false
 //            checkedIconImage.isHidden = true
 //            uncheckIconImage.isHidden = false
-//            viewDragable.isHidden = true
-//            dragableIconImage.isHidden = true
+//            viewEdit.isHidden = true
+//            editIconImage.isHidden = true
 //            trashButton.isHidden = true
 //        }
     }
     
     func setDragableandTrashIcon(){
         
-            viewDragable.isHidden = false
-            dragableIconImage.isHidden = false
+            viewEdit.isHidden = false
+            buttonEdit.isHidden = false
             trashButton.isHidden = false
             
             viewCheckBox.isHidden = true
@@ -120,8 +125,8 @@ class ProductUsedTableViewCell: UITableViewCell {
     }
     
     func setStatusDone(){
-            viewDragable.isHidden = true
-            dragableIconImage.isHidden = true
+            viewEdit.isHidden = true
+            buttonEdit.isHidden = true
             trashButton.isHidden = true
             
             viewCheckBox.isHidden = false
@@ -129,14 +134,14 @@ class ProductUsedTableViewCell: UITableViewCell {
             uncheckIconImage.isHidden = true
     }
     
-//    @objc func checkedStatus(_ sender: UITapGestureRecognizer) {
-//        if let indexPath = selectedIndexPath{
-//            delegateCheckUncheck?.checkedItem(for: indexPath)
-//        }
-//
-//    }
-//
-//
+    @objc func editProduct(_ sender: UITapGestureRecognizer) {
+        if let editProduct = selectedProduct{
+            delegate?.editProductItem(editedProduct: editProduct)
+        }
+
+    }
+
+
 //    @objc func uncheckedStatus(_ sender: UITapGestureRecognizer) {
 //        if let indexPath = selectedIndexPath{
 //            delegateCheckUncheck?.uncheckedItem(for: indexPath)
@@ -145,8 +150,8 @@ class ProductUsedTableViewCell: UITableViewCell {
     
     func setStatusUndone(){
         
-            viewDragable.isHidden = true
-            dragableIconImage.isHidden = true
+            viewEdit.isHidden = true
+            buttonEdit.isHidden = true
             trashButton.isHidden = true
             
             viewCheckBox.isHidden = false

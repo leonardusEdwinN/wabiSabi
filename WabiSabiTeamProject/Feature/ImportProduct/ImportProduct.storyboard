@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Selecting Product-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ImportProductViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCT-W1-JpK">
+                                <rect key="frame" x="20" y="138" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VX9-NA-qGw">
+                                <rect key="frame" x="15" y="173.5" width="384" height="673.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VX9-NA-qGw" firstAttribute="top" secondItem="PCT-W1-JpK" secondAttribute="bottom" constant="15" id="4VL-xX-Px2"/>
+                            <constraint firstItem="PCT-W1-JpK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="GYz-3C-7v1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PCT-W1-JpK" secondAttribute="trailing" constant="20" id="Gu4-5F-V02"/>
+                            <constraint firstItem="VX9-NA-qGw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="Xgb-zr-JSO"/>
+                            <constraint firstItem="PCT-W1-JpK" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="ajN-s2-JkG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VX9-NA-qGw" secondAttribute="bottom" constant="15" id="p52-u5-aGp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VX9-NA-qGw" secondAttribute="trailing" constant="15" id="qaI-BE-g3c"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Selecting Product" id="dfW-Jy-CTK">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="DG0-2r-w6D">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="57m-ni-sem">
+                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ZK4-0y-B5r"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="gaW-8H-nSs">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="k0t-zh-PPm">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G4V-c0-aC8"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="productListTableView" destination="VX9-NA-qGw" id="0ID-bX-T8g"/>
+                        <segue destination="SgC-mL-hDD" kind="show" identifier="moveToRoutinePage" id="jjJ-Q3-POj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1005.7971014492755" y="84.375"/>
+        </scene>
+        <!--addRoutineNVC-->
+        <scene sceneID="1dg-dA-oOl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddRoutine" referencedIdentifier="addRoutineNVC" id="SgC-mL-hDD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="OXg-Bl-QJL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LHb-DO-ihP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1702" y="-201"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YDs-e1-WkX">
+            <objects>
+                <navigationController storyboardIdentifier="ImportProductNVC" automaticallyAdjustsScrollViewInsets="NO" id="LAH-wM-eOl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qJS-nu-fJO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Dxo-am-OrU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZVx-f2-JCU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95.652173913043484" y="84.375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
