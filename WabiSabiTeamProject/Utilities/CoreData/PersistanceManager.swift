@@ -152,6 +152,8 @@ class PersistanceManager {
         }
     }
     
+    
+    
     func updateProduct(id: String, name: String, brand: String, periodAfterOpening: Date, picture: String, routine: Routines, expiredDate: Date, productType : String){
             // 1. fetch data
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
@@ -464,11 +466,11 @@ class PersistanceManager {
         
         var books: [Book] = []
         
-        do{
-            books = try persistentContainer.viewContext.fetch(request)
-        }
-        catch {
-            print("Error fetching books data")
+
+enum StatusRoutine {
+    case isCompleted
+    case isSkipped
+}
         }
         return books
     }
