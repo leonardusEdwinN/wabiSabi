@@ -181,7 +181,7 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
                 
                 if let image = products[indexPath.row].picture{
                         DispatchQueue.main.async {
-                            row.setUIImage(image: image, isDone: true)
+                            row.setUIImage(image: image)
                         }
                     
                 }
@@ -193,6 +193,8 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             print("SELECTED PRODUCT \(self.products[indexPath.row])")
             row.selectedProduct = self.products[indexPath.row]
             row.delegate = self
+            row.delegateCheckUncheck = self
+            row.selectedIndexPath = indexPath
             
             return row
         }else if(indexPath.row == products.count){
@@ -311,11 +313,8 @@ extension AddRoutineViewController : SaveProductDelegate{
     // MARK: Delegate from AddProductViewController class
     func saveProductAndReloadIt() {
         DispatchQueue.main.async {
-            print("checkProduct")
             self.checkProduct()
-            print("reload data")
             self.routineTableView.reloadData()
-            print("STOP INDICATOR")
             Loading.sharedInstance.hideIndicator()
         }
     }
@@ -323,13 +322,22 @@ extension AddRoutineViewController : SaveProductDelegate{
     
 }
 
-extension AddRoutineViewController : deleteProductItemDelegate{
+extension AddRoutineViewController : deleteProductItemDelegate, checkOrUncheckedDelegate{
+    func checkedItem(for indexPath: IndexPath) {
+        print("")
+    }
+    
+    func uncheckedItem(for indexPath: IndexPath) {
+        print("")
+    }
+    
     // MARK: Delegate from ProductUsedTableViewCell trash icon
     func deleteProductItem(deletedProduct product: Product) {
         print("DELETE PRODUCT \(product.name)")
-//        PersistanceManager.shared.deleteProduct(product: product)
-//        DispatchQueue.main.async {
-//            self.routineTableView.reloadData()
-//        }
+        PersistanceManager.shared.deleteProduct(product: product)
+        DispatchQueue.main.async {
+            self.routineTableView.reloadData()
+        }
     }
+    
 }
