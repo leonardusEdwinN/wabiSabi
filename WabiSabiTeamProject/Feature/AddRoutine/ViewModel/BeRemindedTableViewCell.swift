@@ -6,18 +6,8 @@
 //
 
 import UIKit
-protocol AddRoutineDelegate{
-    func addRoutineDidSave()
-}
+class BeRemindedTableViewCell: UITableViewCell {
 
-class SaveButtonTableViewCell: UITableViewCell {
-
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        delegate?.addRoutineDidSave()
-    }
-    
-    var delegate : AddRoutineDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
