@@ -8,11 +8,10 @@
 import UIKit
 
 class RoutinesTableViewCell: UITableViewCell {
-    @IBOutlet weak var routineImage: UIImageView!
     @IBOutlet weak var routineName: UILabel!
     @IBOutlet weak var routineContentView: UIView!
     @IBOutlet weak var routineProduct: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var routineColor: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,11 +24,10 @@ class RoutinesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(with routine: Routine) {
+    func setup(with routine: Routines) {
         let routineProductAmount : Float = 5
         let routineProgress : Float = 2
         
-        routineImage.image = routine.image
         routineName.text = routine.name
         routineProduct.text = "\(Int(routineProgress)) / \(Int(routineProductAmount))"
 
@@ -40,8 +38,8 @@ class RoutinesTableViewCell: UITableViewCell {
         routineContentView.layer.shadowRadius = 1
         routineContentView.layer.shadowOpacity = 5
         routineContentView.layer.masksToBounds = false
-        
-        progressView.progress = routineProgress / routineProductAmount
+
+        routineColor.layer.cornerRadius = routineColor.frame.width / 2
     }
     
 }

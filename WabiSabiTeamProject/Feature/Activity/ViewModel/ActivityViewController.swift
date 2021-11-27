@@ -10,44 +10,67 @@ import UIKit
 class ActivityViewController: UIViewController {
     @IBOutlet weak var routineTableView: UITableView!
     @IBOutlet weak var circularProgress: CircularProgressView!
-    @IBOutlet weak var todoButton: UIButton!
-    @IBOutlet weak var skippedButton: UIButton!
-    @IBOutlet weak var completedButton: UIButton!
+    @IBOutlet weak var circularProgressPercentageLabel : UILabel!
     @IBOutlet weak var backgoundWhite: UIView!
     @IBOutlet weak var backgroundPurple: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var tutorialBackground: UIView!
     @IBOutlet weak var tutorial1: UIImageView!
     @IBOutlet weak var tutorial2: UIImageView!
     @IBOutlet weak var tutorial3: UIImageView!
     @IBOutlet weak var tutorial4: UIImageView!
     @IBOutlet weak var tutorial5: UIImageView!
     @IBOutlet weak var tutorial6: UIImageView!
+    @IBOutlet weak var backgroundTutorial: UIView!
+    @IBOutlet weak var statusSegmentedControl: UISegmentedControl!
     
     var selectedDate: String = ""
     var skinCareRoutines: [Routines]!
     var selectedIndex : Int = 0
     var tutorialIndex : Int = 1
     
+    var currentTableView: [Routines] = []
+    var todoTableView: [Routines] = []
+    var completedTableView: [Routines] = []
+    var skippedTableView: [Routines] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        setUpcircularProgress()
         setUpTableView()
-        configureButton()
         configureBackground()
         configureTutorial()
-        
+        setUpcircularProgress()
+        configureTableViewDataByStatus()
+        configureSegmented()
+    }
+    
+    func configureTableViewDataByStatus() {
         skinCareRoutines = PersistanceManager.shared.fetchRoutines()
+        todoTableView = skinCareRoutines.filter({$0.isCompleted == false && $0.isSkipped == false})
+        completedTableView = skinCareRoutines.filter({$0.isCompleted == true})
+        skippedTableView = skinCareRoutines.filter({$0.isSkipped == true})
+        currentTableView = todoTableView
+    }
+    
+    func configureSegmented() {
+        statusSegmentedControl.setTitle("To Do (\(todoTableView.count))", forSegmentAt: 0)
+        statusSegmentedControl.setTitle("Completed (\(completedTableView.count))", forSegmentAt: 1)
+        statusSegmentedControl.setTitle("Skipped (\(skippedTableView.count))", forSegmentAt: 2)
     }
     
     private func configureTutorial() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTutorialTap(_:)))
-        tutorialBackground.addGestureRecognizer(tap)
         
         if UserDefaults.standard.bool(forKey: "isCompleteTutorial") == true {
-            tutorialBackground.removeFromSuperview()
+            backgroundTutorial.removeFromSuperview()
+            tutorial1.removeFromSuperview()
+            tutorial2.removeFromSuperview()
+            tutorial3.removeFromSuperview()
+            tutorial4.removeFromSuperview()
+            tutorial5.removeFromSuperview()
+            tutorial6.removeFromSuperview()
         } else {
+            backgroundTutorial.addGestureRecognizer(tap)
             tutorial1.isHidden = false
             tutorial2.isHidden = true
             tutorial3.isHidden = true
@@ -62,20 +85,6 @@ class ActivityViewController: UIViewController {
         backgoundWhite.layer.masksToBounds = true
     }
     
-    private func configureButton() {
-        todoButton.titleLabel?.numberOfLines = 1
-        todoButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        todoButton.titleLabel?.lineBreakMode = .byClipping
-        
-        completedButton.titleLabel?.numberOfLines = 1
-        completedButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        completedButton.titleLabel?.lineBreakMode = .byClipping
-        
-        skippedButton.titleLabel?.numberOfLines = 1
-        skippedButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        skippedButton.titleLabel?.lineBreakMode = .byClipping
-    }
-    
     private func configureNavigationBar() {
         title = "Today"
         let menuButton = UIBarButtonItem(image: UIImage(named: "Calender"), style: .plain, target: self, action: #selector(tapMenuButton))
@@ -84,9 +93,25 @@ class ActivityViewController: UIViewController {
     }
     
     private func setUpcircularProgress() {
+        let products = PersistanceManager.shared.fetchProduct()
+        var productDoneCount : Int = 0
+        
+        for product in products {
+            if product.isDone {
+                productDoneCount += 1
+            }
+        }
+        
+        let percentage : Float = Float(productDoneCount) / Float(products.count) * 100.0
+        
+        print("percentageeeee")
+        print(percentage)
+        print(productDoneCount)
+        print(products.count)
+        
         circularProgress.progressColor = UIColor.white
         circularProgress.trackColor = UIColor.systemGray4
-        circularProgress.percentageValue = 0.8
+        circularProgress.percentageValue = CGFloat(percentage)
     }
     
     private func setUpTableView() {
@@ -109,47 +134,50 @@ class ActivityViewController: UIViewController {
         return datePicker
     }()
     
+    @IBAction func changeTableView(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            currentTableView = todoTableView
+        } else if sender.selectedSegmentIndex == 1 {
+            currentTableView = completedTableView
+        } else {
+            currentTableView = skippedTableView
+        }
+        
+        routineTableView.reloadData()
+    }
+    
     @objc func handleTutorialTap(_ sender: Any) {
         tutorialIndex += 1
         print(tutorialIndex)
         if (tutorialIndex == 2) {
-            tutorial1.isHidden = true
+            tutorial1.removeFromSuperview()
             tutorial2.isHidden = false
             tutorial3.isHidden = true
             tutorial4.isHidden = true
             tutorial5.isHidden = true
             tutorial6.isHidden = true
         } else if (tutorialIndex == 3) {
-            tutorial1.isHidden = true
-            tutorial2.isHidden = true
+            tutorial2.removeFromSuperview()
             tutorial3.isHidden = false
             tutorial4.isHidden = true
             tutorial5.isHidden = true
             tutorial6.isHidden = true
         } else if (tutorialIndex == 4) {
-            tutorial1.isHidden = true
-            tutorial2.isHidden = true
-            tutorial3.isHidden = true
+            tutorial3.removeFromSuperview()
             tutorial4.isHidden = false
             tutorial5.isHidden = true
             tutorial6.isHidden = true
         } else if (tutorialIndex == 5) {
-            tutorial1.isHidden = true
-            tutorial2.isHidden = true
-            tutorial3.isHidden = true
-            tutorial4.isHidden = true
+            tutorial4.removeFromSuperview()
             tutorial5.isHidden = false
             tutorial6.isHidden = true
         } else if (tutorialIndex == 6) {
-            tutorial1.isHidden = true
-            tutorial2.isHidden = true
-            tutorial3.isHidden = true
-            tutorial4.isHidden = true
-            tutorial5.isHidden = true
+            tutorial5.removeFromSuperview()
             tutorial6.isHidden = false
         } else {
+            tutorial6.removeFromSuperview()
             UserDefaults.standard.set(true, forKey: "isCompleteTutorial")
-            tutorialBackground.removeFromSuperview()
+            backgroundTutorial.removeFromSuperview()
         }
     }
     
@@ -192,14 +220,25 @@ class ActivityViewController: UIViewController {
 
 extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routines.count
+        return currentTableView.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let productsByRoutine = PersistanceManager.shared.fetchProduct(routine: currentTableView[indexPath.row])
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesTableViewCell", for: indexPath) as! RoutinesTableViewCell
-        cell.setup(with: routines[indexPath.row])
+        cell.setup(with: currentTableView[indexPath.row])
+        var productDoneCount : Int = 0
         
-        cell.routineProduct.text = "0/\(PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row]).count)"
+        for product in productsByRoutine {
+            if product.isDone {
+                productDoneCount += 1
+            }
+        }
+        
+        PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isCompleted ,status: productDoneCount == productsByRoutine.count)
+         
+        cell.routineProduct.text = "\(productDoneCount)/\(productsByRoutine.count)"
+        
         return cell
     }
     
@@ -209,8 +248,26 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let closeAction = UIContextualAction(style: .normal, title:  "Finish", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let productsByRoutine = PersistanceManager.shared.fetchProduct(routine: currentTableView[indexPath.row])
+        var productDoneCount : Int = 0
+        
+        for product in productsByRoutine {
+            PersistanceManager.shared.changeProductStatus(id: product.id!, status: true)
+            if product.isDone {
+                productDoneCount += 1
+            }
+        }
+        let closeAction = UIContextualAction(style: .normal, title:  "Finish", handler: { [self] (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isCompleted ,status: true)
+            if (self.currentTableView[indexPath.row].isSkipped == true) {
+                PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isSkipped ,status: false)
+            }
             print("Finish")
+            self.configureTableViewDataByStatus()
+            self.configureSegmented()
+            self.setUpTableView()
+            self.setUpcircularProgress()
+            tableView.reloadData()
             success(true)
         })
         closeAction.image = UIImage(named: "tick")
@@ -230,13 +287,17 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let modifyAction = UIContextualAction(style: .normal, title:  "Skip", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            tableView.beginUpdates()
-            routines.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isSkipped, status: true)
             
-            PersistanceManager.shared.deleteRoutines(routines: self.skinCareRoutines[indexPath.row])
+            if (self.currentTableView[indexPath.row].isCompleted == true) {
+                PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isCompleted ,status: false)
+            }
             
-            tableView.endUpdates()
+            self.configureTableViewDataByStatus()
+            self.configureSegmented()
+            self.setUpTableView()
+            self.setUpcircularProgress()
+            tableView.reloadData()
             print("SKIP")
             success(true)
         })
