@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Skin Care-->
+        <!--Add Routine View Controller-->
         <scene sceneID="I66-BV-c49">
             <objects>
                 <viewController storyboardIdentifier="addRoutineVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YqF-f5-mFH" customClass="AddRoutineViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,53 +27,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ5-8U-4KC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ovalBackground" translatesAutoresizingMaskIntoConstraints="NO" id="APe-jt-Rn6">
+                                        <rect key="frame" x="189" y="50" width="250" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="ezN-6l-jmh"/>
+                                            <constraint firstAttribute="height" constant="250" id="nIb-EG-HXE"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" name="Secondary"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="ai6-yC-xYp"/>
+                                    <constraint firstItem="APe-jt-Rn6" firstAttribute="top" secondItem="hZ5-8U-4KC" secondAttribute="top" constant="50" id="TQd-zM-9dX"/>
+                                    <constraint firstAttribute="trailing" secondItem="APe-jt-Rn6" secondAttribute="trailing" constant="-25" id="r2n-Eq-hqE"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Routine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xa0-xU-v4F">
-                                <rect key="frame" x="20" y="98" width="374" height="41"/>
+                                <rect key="frame" x="14" y="93" width="380" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ivn-ce-mNL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore other routine that you can do for your skin!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gio-1M-xhj">
-                                <rect key="frame" x="20" y="144" width="374" height="20.5"/>
+                                <rect key="frame" x="14" y="148" width="380" height="20.5"/>
                                 <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEl-xM-61c">
-                                <rect key="frame" x="0.0" y="189.5" width="414" height="672.5"/>
+                                <rect key="frame" x="0.0" y="186.5" width="414" height="675.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product used" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFZ-md-aQc">
-                                        <rect key="frame" x="20" y="15" width="102" height="21"/>
+                                        <rect key="frame" x="20" y="20" width="102" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fS7-wp-5J2">
-                                        <rect key="frame" x="345" y="15" width="49" height="31"/>
+                                        <rect key="frame" x="349" y="20" width="45" height="30"/>
+                                        <color key="tintColor" name="ColorPrimary"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Edit"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Edit">
+                                            <fontDescription key="titleFontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="13"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="editButtonPressed:" destination="YqF-f5-mFH" eventType="touchUpInside" id="Hxf-dy-CLS"/>
+                                        </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Z3M-WS-p8T">
-                                        <rect key="frame" x="15" y="46" width="384" height="616.5"/>
+                                        <rect key="frame" x="15" y="62" width="384" height="603.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="SFZ-md-aQc" firstAttribute="top" secondItem="EEl-xM-61c" secondAttribute="top" constant="15" id="CFC-8l-3jn"/>
+                                    <constraint firstItem="Z3M-WS-p8T" firstAttribute="top" secondItem="fS7-wp-5J2" secondAttribute="bottom" constant="12" id="9Ji-ge-H3W"/>
+                                    <constraint firstItem="SFZ-md-aQc" firstAttribute="top" secondItem="EEl-xM-61c" secondAttribute="top" constant="20" id="CFC-8l-3jn"/>
                                     <constraint firstAttribute="trailing" secondItem="Z3M-WS-p8T" secondAttribute="trailing" constant="15" id="MmD-KZ-q9i"/>
                                     <constraint firstAttribute="bottom" secondItem="Z3M-WS-p8T" secondAttribute="bottom" constant="10" id="O98-yO-nK8"/>
                                     <constraint firstItem="Z3M-WS-p8T" firstAttribute="leading" secondItem="EEl-xM-61c" secondAttribute="leading" constant="15" id="Quj-yJ-Dnt"/>
-                                    <constraint firstItem="Z3M-WS-p8T" firstAttribute="top" secondItem="SFZ-md-aQc" secondAttribute="bottom" constant="10" id="cM9-BV-zC2"/>
+                                    <constraint firstItem="Z3M-WS-p8T" firstAttribute="top" secondItem="SFZ-md-aQc" secondAttribute="bottom" constant="12" id="cM9-BV-zC2"/>
                                     <constraint firstAttribute="trailing" secondItem="fS7-wp-5J2" secondAttribute="trailing" constant="20" id="fZ9-8G-jVT"/>
                                     <constraint firstItem="SFZ-md-aQc" firstAttribute="leading" secondItem="EEl-xM-61c" secondAttribute="leading" constant="20" id="q7j-Cp-Jph"/>
-                                    <constraint firstItem="fS7-wp-5J2" firstAttribute="top" secondItem="EEl-xM-61c" secondAttribute="top" constant="15" id="zcu-kv-0N5"/>
+                                    <constraint firstItem="fS7-wp-5J2" firstAttribute="top" secondItem="EEl-xM-61c" secondAttribute="top" constant="20" id="zcu-kv-0N5"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -81,11 +101,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="R2K-GK-Xl4" firstAttribute="trailing" secondItem="hZ5-8U-4KC" secondAttribute="trailing" id="42x-Lt-ZXm"/>
-                            <constraint firstItem="EEl-xM-61c" firstAttribute="top" secondItem="gio-1M-xhj" secondAttribute="bottom" constant="25" id="B21-ZM-vhy"/>
-                            <constraint firstItem="gio-1M-xhj" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" constant="20" id="BA5-f6-5Wp"/>
+                            <constraint firstItem="EEl-xM-61c" firstAttribute="top" secondItem="gio-1M-xhj" secondAttribute="bottom" constant="18" id="B21-ZM-vhy"/>
+                            <constraint firstItem="gio-1M-xhj" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" constant="14" id="BA5-f6-5Wp"/>
+                            <constraint firstItem="R2K-GK-Xl4" firstAttribute="bottom" secondItem="hZ5-8U-4KC" secondAttribute="bottom" id="GQI-dR-vOs"/>
                             <constraint firstItem="R2K-GK-Xl4" firstAttribute="bottom" secondItem="EEl-xM-61c" secondAttribute="bottom" id="JPk-We-F5G"/>
-                            <constraint firstItem="Xa0-xU-v4F" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" constant="20" id="LXj-uv-MO1"/>
-                            <constraint firstItem="Xa0-xU-v4F" firstAttribute="top" secondItem="R2K-GK-Xl4" secondAttribute="top" constant="10" id="M72-MD-IsT"/>
+                            <constraint firstItem="Xa0-xU-v4F" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" constant="14" id="LXj-uv-MO1"/>
+                            <constraint firstItem="Xa0-xU-v4F" firstAttribute="top" secondItem="R2K-GK-Xl4" secondAttribute="top" constant="5" id="M72-MD-IsT"/>
                             <constraint firstItem="hZ5-8U-4KC" firstAttribute="top" secondItem="lk5-Bz-Uhw" secondAttribute="top" id="QZ7-tJ-A55"/>
                             <constraint firstItem="hZ5-8U-4KC" firstAttribute="leading" secondItem="R2K-GK-Xl4" secondAttribute="leading" id="bbS-gt-G7G"/>
                             <constraint firstItem="R2K-GK-Xl4" firstAttribute="trailing" secondItem="gio-1M-xhj" secondAttribute="trailing" constant="20" id="exH-9p-agx"/>
@@ -95,40 +116,57 @@
                             <constraint firstItem="R2K-GK-Xl4" firstAttribute="trailing" secondItem="EEl-xM-61c" secondAttribute="trailing" id="zhg-P5-vhN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Skin Care" id="mqL-hh-54m">
+                    <navigationItem key="navigationItem" id="mqL-hh-54m">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="bnt-EX-7fw">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="etL-9O-a3n">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="etL-9O-a3n">
                                 <rect key="frame" x="20" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="ColorPrimary"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <buttonConfiguration key="configuration" style="plain" title="&lt; Back"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="YqF-f5-mFH" eventType="touchUpInside" id="6hF-nS-dbV"/>
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="GNa-T3-H50">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sbX-F3-wIn">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="GNa-T3-H50">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sbX-F3-wIn">
                                 <rect key="frame" x="302" y="5" width="92" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="ColorPrimary"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="info.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="detailButtonPressed:" destination="YqF-f5-mFH" eventType="touchUpInside" id="oUu-8O-eBP"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="etL-9O-a3n" id="DcG-0b-dkw"/>
+                        <outlet property="detailButton" destination="sbX-F3-wIn" id="ZmQ-gE-XLC"/>
+                        <outlet property="editButton" destination="fS7-wp-5J2" id="FMB-G0-MOI"/>
+                        <outlet property="outerView" destination="EEl-xM-61c" id="LFA-wZ-tih"/>
                         <outlet property="routineTableView" destination="Z3M-WS-p8T" id="fgK-7e-d5P"/>
                         <segue destination="ZpM-g2-4jm" kind="show" identifier="moveToAddProduct" id="xsd-M1-9K8"/>
                         <segue destination="Nx4-ue-bJP" kind="show" identifier="moveToLocationReminder" id="B5b-15-0Ju"/>
                         <segue destination="AWk-Ig-Ez4" kind="show" identifier="moveToTimeReminder" id="JB2-li-gqO"/>
+                        <segue destination="DNu-LR-a6T" kind="show" identifier="goToDetailSkinCareGuide" id="LQQ-MZ-9w1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvs-rK-S03" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2842.0289855072465" y="-523.66071428571422"/>
+            <point key="canvasLocation" x="3059" y="-560"/>
+        </scene>
+        <!--SkinCareGuide-->
+        <scene sceneID="QgK-nj-MNx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OnBoarding" referencedIdentifier="SkinCareGuide" id="DNu-LR-a6T" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="u7G-oA-SHg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="03G-fi-zII" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3950" y="-874"/>
         </scene>
         <!--AddProductNavigationViewController-->
         <scene sceneID="t7S-ri-DF1">
@@ -181,8 +219,12 @@
     </scenes>
     <resources>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="ovalBackground" width="182" height="227"/>
+        <namedColor name="ColorPrimary">
+            <color red="0.37599998712539673" green="0.27099999785423279" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Secondary">
-            <color red="0.90196078431372551" green="0.82352941176470584" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.9137254901960784" green="0.81960784313725488" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
