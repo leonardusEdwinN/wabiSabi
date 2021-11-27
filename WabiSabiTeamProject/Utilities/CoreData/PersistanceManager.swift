@@ -70,6 +70,31 @@ class PersistanceManager {
         print ("DATA SAVED")
     }
     
+    func changeProductStatus(id: String, status: Bool){
+        // 1. fetch data
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
+        
+        // 2. set predicate (condition)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", id)
+        
+        // 3. execute update
+        do {
+            let objects = try context.fetch(fetchRequest)
+            let objectToBeUpdated = objects[0] as!NSManagedObject
+            objectToBeUpdated.setValue(status, forKey: "isDone")
+        } catch {
+            // do something if error
+        }
+        
+        // 4. save
+        do {
+            try
+            context.save()
+        } catch let error as NSError {
+            // do something if error...
+        }
+    }
+    
     func updateProduct(id: String, name: String, brand: String, periodAfterOpening: Date, picture: String, routine: Routines, expiredDate: Date, productType : String){
             // 1. fetch data
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
