@@ -104,6 +104,8 @@
 		970E415E272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 970E415C272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib */; };
 		970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */; };
 		970E4163272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E4162272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift */; };
+		971434432750D6C00001AED7 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971434422750D6BF0001AED7 /* EditProfileViewController.swift */; };
+		971434472750D7270001AED7 /* EditProfileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 971434462750D7270001AED7 /* EditProfileView.storyboard */; };
 		97177DD82738CB8A007FF0E9 /* RoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97177DD72738CB8A007FF0E9 /* RoutineCollectionViewCell.swift */; };
 		97177DDA2738D5E3007FF0E9 /* RoutineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97177DD92738D5E3007FF0E9 /* RoutineModel.swift */; };
 		97177DE9273D0557007FF0E9 /* RoutinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97177DE7273D0557007FF0E9 /* RoutinesTableViewCell.swift */; };
@@ -217,6 +219,8 @@
 		970E415C272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressIndicatorHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndictorModel.swift; sourceTree = "<group>"; };
 		970E4162272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorHorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		971434422750D6BF0001AED7 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		971434462750D7270001AED7 /* EditProfileView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfileView.storyboard; sourceTree = "<group>"; };
 		97177DD72738CB8A007FF0E9 /* RoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		97177DD92738D5E3007FF0E9 /* RoutineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineModel.swift; sourceTree = "<group>"; };
 		97177DE7273D0557007FF0E9 /* RoutinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesTableViewCell.swift; sourceTree = "<group>"; };
@@ -442,6 +446,8 @@
 				139A6324273BCB4A008D54A8 /* ProductTableViewCell.xib */,
 				139A6327273BCB59008D54A8 /* RoutineTableViewCell.swift */,
 				139A6328273BCB59008D54A8 /* RoutineTableViewCell.xib */,
+				971434422750D6BF0001AED7 /* EditProfileViewController.swift */,
+				971434462750D7270001AED7 /* EditProfileView.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -751,6 +757,7 @@
 				139A631A273BC2D2008D54A8 /* SF-Pro-Rounded-Thin.otf in Resources */,
 				13B428AA274819A200DE2E6D /* SaveButtonTableViewCell.xib in Resources */,
 				130424EC2744F50300720D35 /* OverlayView.xib in Resources */,
+				971434472750D7270001AED7 /* EditProfileView.storyboard in Resources */,
 				139A631E273BC2D2008D54A8 /* SF-Pro-Rounded-Heavy.otf in Resources */,
 				13CD1F2A274258A200F537EB /* ButtonRoutinePageTableViewCell.xib in Resources */,
 				130A695F273D121C007E8E29 /* AddRoutine.storyboard in Resources */,
@@ -805,6 +812,7 @@
 				1371B4BE2743C49400A16A45 /* TimerReminderViewController.swift in Sources */,
 				139A3015273B78EE00104A92 /* SkinTypeRoutine.swift in Sources */,
 				1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */,
+				971434432750D6C00001AED7 /* EditProfileViewController.swift in Sources */,
 				13CD1F3127425D5100F537EB /* TimerReminderTableViewCell.swift in Sources */,
 				97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */,
 				3575BD292742184A00804502 /* SkinRoutineLevel.swift in Sources */,
