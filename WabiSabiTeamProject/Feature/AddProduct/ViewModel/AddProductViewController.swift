@@ -137,7 +137,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
                 guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return  }
                 let decodedimage: UIImage = UIImage(data: decodedData)!
                 
-                
+                imageViewProduct.contentMode = .scaleToFill
                 imageViewProduct.image = decodedimage
                 textfieldProductName.text = name
                 textfieldProductBrand.text = brand
@@ -290,6 +290,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
 
 //        if let image = info[.cropRect] as? UIImage {
             viewAddPhoto.backgroundColor = UIColor.clear
+            imageViewProduct.contentMode = .scaleToFill
             imageViewProduct.image = selectedImage
 //        }
     }
