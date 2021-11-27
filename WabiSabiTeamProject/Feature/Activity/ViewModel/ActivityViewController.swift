@@ -16,13 +16,13 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var backgoundWhite: UIView!
     @IBOutlet weak var backgroundPurple: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var tutorialBackground: UIView!
     @IBOutlet weak var tutorial1: UIImageView!
     @IBOutlet weak var tutorial2: UIImageView!
     @IBOutlet weak var tutorial3: UIImageView!
     @IBOutlet weak var tutorial4: UIImageView!
     @IBOutlet weak var tutorial5: UIImageView!
     @IBOutlet weak var tutorial6: UIImageView!
+    @IBOutlet weak var backgroundTutorial: UIView!
     
     var selectedDate: String = ""
     var skinCareRoutines: [Routines]!
@@ -43,11 +43,17 @@ class ActivityViewController: UIViewController {
     
     private func configureTutorial() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTutorialTap(_:)))
-        tutorialBackground.addGestureRecognizer(tap)
         
         if UserDefaults.standard.bool(forKey: "isCompleteTutorial") == true {
-            tutorialBackground.removeFromSuperview()
+            backgroundTutorial.removeFromSuperview()
+            tutorial1.removeFromSuperview()
+            tutorial2.removeFromSuperview()
+            tutorial3.removeFromSuperview()
+            tutorial4.removeFromSuperview()
+            tutorial5.removeFromSuperview()
+            tutorial6.removeFromSuperview()
         } else {
+            backgroundTutorial.addGestureRecognizer(tap)
             tutorial1.isHidden = false
             tutorial2.isHidden = true
             tutorial3.isHidden = true
@@ -113,43 +119,34 @@ class ActivityViewController: UIViewController {
         tutorialIndex += 1
         print(tutorialIndex)
         if (tutorialIndex == 2) {
-            tutorial1.isHidden = true
+            tutorial1.removeFromSuperview()
             tutorial2.isHidden = false
             tutorial3.isHidden = true
             tutorial4.isHidden = true
             tutorial5.isHidden = true
             tutorial6.isHidden = true
         } else if (tutorialIndex == 3) {
-            tutorial1.isHidden = true
-            tutorial2.isHidden = true
+            tutorial2.removeFromSuperview()
             tutorial3.isHidden = false
             tutorial4.isHidden = true
             tutorial5.isHidden = true
             tutorial6.isHidden = true
         } else if (tutorialIndex == 4) {
-            tutorial1.isHidden = true
-            tutorial2.isHidden = true
-            tutorial3.isHidden = true
+            tutorial3.removeFromSuperview()
             tutorial4.isHidden = false
             tutorial5.isHidden = true
             tutorial6.isHidden = true
         } else if (tutorialIndex == 5) {
-            tutorial1.isHidden = true
-            tutorial2.isHidden = true
-            tutorial3.isHidden = true
-            tutorial4.isHidden = true
+            tutorial4.removeFromSuperview()
             tutorial5.isHidden = false
             tutorial6.isHidden = true
         } else if (tutorialIndex == 6) {
-            tutorial1.isHidden = true
-            tutorial2.isHidden = true
-            tutorial3.isHidden = true
-            tutorial4.isHidden = true
-            tutorial5.isHidden = true
+            tutorial5.removeFromSuperview()
             tutorial6.isHidden = false
         } else {
+            tutorial6.removeFromSuperview()
             UserDefaults.standard.set(true, forKey: "isCompleteTutorial")
-            tutorialBackground.removeFromSuperview()
+            backgroundTutorial.removeFromSuperview()
         }
     }
     
@@ -197,12 +194,12 @@ class ActivityViewController: UIViewController {
 
 extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routines.count
+        return skinCareRoutines.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoutinesTableViewCell", for: indexPath) as! RoutinesTableViewCell
-        cell.setup(with: routines[indexPath.row])
+        cell.setup(with: skinCareRoutines[indexPath.row])
         
         cell.routineProduct.text = "0/\(PersistanceManager.shared.fetchProduct(routine: skinCareRoutines[indexPath.row]).count)"
         return cell
@@ -227,8 +224,11 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if(indexPath.item == 0){
+            print("TAP 1")
             performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
             self.selectedIndex = indexPath.item
+        } else {
+            print("TAP LAINNYA")
         }
         
     }
@@ -237,7 +237,6 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     {
         let modifyAction = UIContextualAction(style: .normal, title:  "Skip", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             tableView.beginUpdates()
-            routines.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             PersistanceManager.shared.deleteRoutines(routines: self.skinCareRoutines[indexPath.row])

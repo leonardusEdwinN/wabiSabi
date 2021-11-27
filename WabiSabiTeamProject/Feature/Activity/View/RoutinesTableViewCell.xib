@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,25 +20,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QT3-cH-sge">
                         <rect key="frame" x="16" y="5" width="313" height="68"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7IL-H8-hR8">
-                                <rect key="frame" x="7" y="63" width="299" height="5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="5" id="fC7-aG-YTe"/>
-                                </constraints>
-                            </progressView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZnR-hu-jkq">
-                                <rect key="frame" x="12" y="15" width="28" height="37.5"/>
-                                <color key="tintColor" name="ColorPrimary"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="28" id="RNw-1T-pFM"/>
-                                    <constraint firstAttribute="height" constant="37" id="hkv-FS-z0k"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fE9-BI-LEH">
-                                <rect key="frame" x="48" y="14" width="232" height="40"/>
+                                <rect key="frame" x="46" y="14" width="234" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xog-mS-Pbx">
-                                        <rect key="frame" x="173" y="0.0" width="59" height="40"/>
+                                        <rect key="frame" x="175" y="0.0" width="59" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMa-7B-iVF">
                                                 <rect key="frame" x="5" y="24" width="54" height="16"/>
@@ -63,7 +48,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Morning Skin Care Routine" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-SJ-wcL">
-                                        <rect key="frame" x="0.0" y="-0.5" width="163" height="41"/>
+                                        <rect key="frame" x="0.0" y="-0.5" width="165" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -87,18 +72,24 @@
                                     <constraint firstAttribute="height" constant="20" id="r4x-bw-IPJ"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="der-IZ-fAo">
+                                <rect key="frame" x="10" y="21" width="26" height="26"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.73333333333333328" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="26" id="Dmg-bX-vsD"/>
+                                    <constraint firstAttribute="height" constant="26" id="IVG-E9-nFa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="5nh-vL-UmX" firstAttribute="centerY" secondItem="QT3-cH-sge" secondAttribute="centerY" id="3ma-DE-PgJ"/>
-                            <constraint firstItem="fE9-BI-LEH" firstAttribute="leading" secondItem="ZnR-hu-jkq" secondAttribute="trailing" constant="8" symbolic="YES" id="ApM-Cv-7eA"/>
                             <constraint firstItem="5nh-vL-UmX" firstAttribute="leading" secondItem="fE9-BI-LEH" secondAttribute="trailing" constant="12" id="D0X-pF-gtN"/>
                             <constraint firstAttribute="trailing" secondItem="5nh-vL-UmX" secondAttribute="trailing" constant="10" id="F2A-pd-rqh"/>
-                            <constraint firstItem="7IL-H8-hR8" firstAttribute="leading" secondItem="QT3-cH-sge" secondAttribute="leading" constant="7" id="JhK-zo-sCa"/>
-                            <constraint firstAttribute="bottom" secondItem="7IL-H8-hR8" secondAttribute="bottom" id="ZVe-22-UDQ"/>
+                            <constraint firstItem="der-IZ-fAo" firstAttribute="centerY" secondItem="QT3-cH-sge" secondAttribute="centerY" id="Lyc-Gj-CjO"/>
+                            <constraint firstItem="fE9-BI-LEH" firstAttribute="leading" secondItem="der-IZ-fAo" secondAttribute="trailing" constant="10" id="YTC-d5-i8E"/>
+                            <constraint firstItem="der-IZ-fAo" firstAttribute="centerY" secondItem="QT3-cH-sge" secondAttribute="centerY" id="bJO-Qk-J7W"/>
+                            <constraint firstItem="der-IZ-fAo" firstAttribute="leading" secondItem="QT3-cH-sge" secondAttribute="leading" constant="10" id="d2l-en-Prn"/>
                             <constraint firstItem="fE9-BI-LEH" firstAttribute="centerY" secondItem="QT3-cH-sge" secondAttribute="centerY" id="kWv-vy-o57"/>
-                            <constraint firstAttribute="trailing" secondItem="7IL-H8-hR8" secondAttribute="trailing" constant="7" id="kns-tw-uSh"/>
-                            <constraint firstItem="ZnR-hu-jkq" firstAttribute="leading" secondItem="QT3-cH-sge" secondAttribute="leading" constant="12" id="liP-dM-Z3L"/>
-                            <constraint firstItem="ZnR-hu-jkq" firstAttribute="centerY" secondItem="QT3-cH-sge" secondAttribute="centerY" id="pe2-Sw-iJk"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -111,9 +102,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="progressView" destination="7IL-H8-hR8" id="o9n-zE-e9p"/>
+                <outlet property="routineColor" destination="der-IZ-fAo" id="Igf-1e-FhA"/>
                 <outlet property="routineContentView" destination="QT3-cH-sge" id="Wcr-eU-WIx"/>
-                <outlet property="routineImage" destination="ZnR-hu-jkq" id="2sa-j5-Sev"/>
                 <outlet property="routineName" destination="mCW-SJ-wcL" id="48L-7F-7I4"/>
                 <outlet property="routineProduct" destination="Owm-C3-DyU" id="ek0-r4-9aM"/>
             </connections>
@@ -122,9 +112,5 @@
     </objects>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="sun.max.fill" catalog="system" width="128" height="124"/>
-        <namedColor name="ColorPrimary">
-            <color red="0.37599998712539673" green="0.27099999785423279" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
