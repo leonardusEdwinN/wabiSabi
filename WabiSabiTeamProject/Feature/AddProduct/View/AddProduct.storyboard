@@ -19,9 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="TZ0-ik-tR1">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IO-yL-tnf">
                                 <rect key="frame" x="157" y="108" width="100" height="100"/>
                                 <subviews>
@@ -114,8 +111,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zzo-kP-9PO">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ4-Aa-L4t">
-                                                <rect key="frame" x="10" y="15" width="82" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opened" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZ4-Aa-L4t">
+                                                <rect key="frame" x="10" y="15" width="61" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -148,8 +145,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y88-gG-Kkp">
                                         <rect key="frame" x="0.0" y="51" width="374" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expired Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVh-7i-7AS">
-                                                <rect key="frame" x="10" y="15" width="97.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expired" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVh-7i-7AS">
+                                                <rect key="frame" x="10" y="15" width="57" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -205,8 +202,6 @@
                             <constraint firstItem="ac8-YM-wmd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="dvc-1J-Suh"/>
                             <constraint firstItem="6IO-yL-tnf" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="iQl-hO-rN7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ACu-hO-93Z" secondAttribute="trailing" constant="20" id="iZl-OV-8PW"/>
-                            <constraint firstItem="TZ0-ik-tR1" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="kkk-Qj-YsP"/>
-                            <constraint firstItem="TZ0-ik-tR1" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="s3D-FV-raS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ac8-YM-wmd" secondAttribute="trailing" constant="20" id="ws5-1y-LdM"/>
                             <constraint firstItem="ddk-Z0-Yoi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="yHw-Vj-t6l"/>
                         </constraints>
@@ -246,7 +241,6 @@
                         <outlet property="labelProductName" destination="ac8-YM-wmd" id="dRP-IE-BYy"/>
                         <outlet property="labelProductType" destination="ACu-hO-93Z" id="ZS7-es-MUW"/>
                         <outlet property="labelProductTypeValue" destination="o3l-eu-AMs" id="srG-n3-Tyr"/>
-                        <outlet property="loadingIndicator" destination="TZ0-ik-tR1" id="Rpc-zN-ISw"/>
                         <outlet property="paoDatePicker" destination="4NJ-Yf-qNa" id="xTx-NO-Kx9"/>
                         <outlet property="saveButton" destination="Zkn-Li-pxI" id="4RT-cl-S0r"/>
                         <outlet property="stackViewDateInformation" destination="SwH-Sn-wl6" id="EqK-w6-40W"/>
