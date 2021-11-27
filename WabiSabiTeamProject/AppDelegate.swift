@@ -49,8 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the container options on the cloud store
         cloudStoreDescription.cloudKitContainerOptions =
             NSPersistentCloudKitContainerOptions(
-                containerIdentifier: "iCloud.com.id.infinitelearning.wabisabi")
-//                containerIdentifier: "id.infinitelearning.wabisabiMacro")
+                                containerIdentifier: "iCloud.com.id.infinitelearning.wabisabi")
+                //Albert
+//                                containerIdentifier: "iCloud.iOSTest")
+                //Edwin
+                //                containerIdentifier: "id.infinitelearning.wabisabiMacro")
         
         // Update the container's list of store descriptions
         container.persistentStoreDescriptions = [
