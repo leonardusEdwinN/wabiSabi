@@ -28,7 +28,6 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBAction func saveButtonPressed(_ sender: Any) {
 //        DispatchQueue.main.async {
 //            print("SHOW INDICATOR LAODING")
@@ -37,7 +36,6 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
 //
 //        }
         
-        print("INDICATOR SHOW")
         Loading.sharedInstance.showIndicator()
         
         if let name = textfieldProductName.text,
@@ -125,7 +123,6 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadingIndicator.isHidden = true
         
         
         if self.isEdit{
@@ -140,7 +137,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
                 guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return  }
                 let decodedimage: UIImage = UIImage(data: decodedData)!
                 
-                
+                imageViewProduct.contentMode = .scaleToFill
                 imageViewProduct.image = decodedimage
                 textfieldProductName.text = name
                 textfieldProductBrand.text = brand
@@ -293,6 +290,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
 
 //        if let image = info[.cropRect] as? UIImage {
             viewAddPhoto.backgroundColor = UIColor.clear
+            imageViewProduct.contentMode = .scaleToFill
             imageViewProduct.image = selectedImage
 //        }
     }
