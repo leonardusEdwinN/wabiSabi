@@ -75,12 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  Check the error message to determine what the actual problem was.
                  */
 //                fatalError("Could not load persistent stores. \(error)")
-                print("Couldnot load persistent stores \(error)")
+                print("Could not load persistent stores \(error)")
             }
             
 //            guard error == nil else {
-//                print("Couldnot load persistent stores \(error)")
-////                fatalError("Could not load persistent stores. \(error)")
+////                print("Couldnot load persistent stores \(error)")
+//                fatalError("Could not load persistent stores. \(error)")
 //            }
         }
         
