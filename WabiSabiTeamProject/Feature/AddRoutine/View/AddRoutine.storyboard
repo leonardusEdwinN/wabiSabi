@@ -152,11 +152,22 @@
                         <segue destination="Nx4-ue-bJP" kind="show" identifier="moveToLocationReminder" id="B5b-15-0Ju"/>
                         <segue destination="AWk-Ig-Ez4" kind="show" identifier="moveToTimeReminder" id="JB2-li-gqO"/>
                         <segue destination="DNu-LR-a6T" kind="show" identifier="goToDetailSkinCareGuide" id="LQQ-MZ-9w1"/>
+                        <segue destination="ROi-6l-Jm3" kind="show" identifier="moveToImportRoutine" id="hk0-Sj-bZj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvs-rK-S03" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3059" y="-560"/>
+        </scene>
+        <!--importNVC-->
+        <scene sceneID="lTQ-BY-hOK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Import" referencedIdentifier="importNVC" id="ROi-6l-Jm3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="GJK-dh-dEL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SF3-nq-VM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3853" y="-1023"/>
         </scene>
         <!--SkinCareGuide-->
         <scene sceneID="QgK-nj-MNx">

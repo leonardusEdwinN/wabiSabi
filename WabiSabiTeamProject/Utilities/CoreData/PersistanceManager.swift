@@ -127,6 +127,32 @@ class PersistanceManager {
         }
     }
     
+    func changeIsSelectedProductToBeImported(id: String, isSelected: Bool){
+        // 1. fetch data
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
+        
+        // 2. set predicate (condition)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", id)
+        
+        // 3. execute update
+        do {
+            let objects = try context.fetch(fetchRequest)
+            let objectToBeUpdated = objects[0] as!NSManagedObject
+            objectToBeUpdated.setValue(isSelected, forKey: "isSelected")
+        } catch {
+            // do something if error
+        }
+        
+        // 4. save
+        do {
+            try
+            context.save()
+        } catch let error as NSError {
+            // do something if error...
+        }
+    }
+    
+    
     func updateProduct(id: String, name: String, brand: String, periodAfterOpening: Date, picture: String, routine: Routines, expiredDate: Date, productType : String){
             // 1. fetch data
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
@@ -439,11 +465,11 @@ class PersistanceManager {
         
         var books: [Book] = []
         
-        do{
-            books = try persistentContainer.viewContext.fetch(request)
-        }
-        catch {
-            print("Error fetching books data")
+
+enum StatusRoutine {
+    case isCompleted
+    case isSkipped
+}
         }
         return books
     }
