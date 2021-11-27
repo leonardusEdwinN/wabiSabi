@@ -21,6 +21,14 @@
 		130C926F275262A400A416F9 /* ImportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130C926D275262A400A416F9 /* ImportTableViewCell.xib */; };
 		130C927227526A0B00A416F9 /* ImportProduct.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130C927127526A0B00A416F9 /* ImportProduct.storyboard */; };
 		130C927427526F7500A416F9 /* ImportProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927327526F7500A416F9 /* ImportProductViewController.swift */; };
+		130C92782752B94500A416F9 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130C92772752B94500A416F9 /* Explore.storyboard */; };
+		130C927B2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927A2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift */; };
+		130C927D2752B9B700A416F9 /* StartHabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927C2752B9B700A416F9 /* StartHabitCollectionViewCell.swift */; };
+		130C927F2752B9D300A416F9 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927E2752B9D300A416F9 /* HabitViewController.swift */; };
+		130C92812752B9EB00A416F9 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C92802752B9EB00A416F9 /* ExploreViewController.swift */; };
+		130C92832752BA0100A416F9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C92822752BA0100A416F9 /* CategoryTableViewCell.swift */; };
+		130C92852752BA1C00A416F9 /* SubCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C92842752BA1C00A416F9 /* SubCategories.swift */; };
+		130C92882752BA4600A416F9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C92872752BA4600A416F9 /* Categories.swift */; };
 		13159C4F274F8EAC00EA5319 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13159C4E274F8EAC00EA5319 /* Loading.swift */; };
 		1316910D274E3D3800049D3D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910C274E3D3800049D3D /* Util.swift */; };
 		1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910E274E502800049D3D /* ProductTypeModel.swift */; };
@@ -137,6 +145,14 @@
 		130C926D275262A400A416F9 /* ImportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportTableViewCell.xib; sourceTree = "<group>"; };
 		130C927127526A0B00A416F9 /* ImportProduct.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImportProduct.storyboard; sourceTree = "<group>"; };
 		130C927327526F7500A416F9 /* ImportProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportProductViewController.swift; sourceTree = "<group>"; };
+		130C92772752B94500A416F9 /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
+		130C927A2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		130C927C2752B9B700A416F9 /* StartHabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartHabitCollectionViewCell.swift; sourceTree = "<group>"; };
+		130C927E2752B9D300A416F9 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
+		130C92802752B9EB00A416F9 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		130C92822752BA0100A416F9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		130C92842752BA1C00A416F9 /* SubCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategories.swift; sourceTree = "<group>"; };
+		130C92872752BA4600A416F9 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		13159C4E274F8EAC00EA5319 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		1316910C274E3D3800049D3D /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1316910E274E502800049D3D /* ProductTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTypeModel.swift; sourceTree = "<group>"; };
@@ -325,6 +341,45 @@
 				130C927327526F7500A416F9 /* ImportProductViewController.swift */,
 			);
 			path = ImportProduct;
+			sourceTree = "<group>";
+		};
+		130C92752752B92C00A416F9 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				130C92862752BA2A00A416F9 /* Model */,
+				130C92792752B96F00A416F9 /* View Model */,
+				130C92762752B93800A416F9 /* View */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		130C92762752B93800A416F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				130C92772752B94500A416F9 /* Explore.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		130C92792752B96F00A416F9 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				130C927A2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift */,
+				130C927C2752B9B700A416F9 /* StartHabitCollectionViewCell.swift */,
+				130C927E2752B9D300A416F9 /* HabitViewController.swift */,
+				130C92802752B9EB00A416F9 /* ExploreViewController.swift */,
+				130C92822752BA0100A416F9 /* CategoryTableViewCell.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		130C92862752BA2A00A416F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				130C92842752BA1C00A416F9 /* SubCategories.swift */,
+				130C92872752BA4600A416F9 /* Categories.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		13169110274E50E000049D3D /* Model */ = {
@@ -590,6 +645,7 @@
 		13ECEF8127294361006B5BFE /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				130C92752752B92C00A416F9 /* Explore */,
 				130C9270275269F800A416F9 /* ImportProduct */,
 				130C926327525E5500A416F9 /* Import */,
 				1371B4C62743E29D00A16A45 /* LocationReminder */,
@@ -804,6 +860,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1371B4C12743C4AD00A16A45 /* TimerReminder.storyboard in Resources */,
+				130C92782752B94500A416F9 /* Explore.storyboard in Resources */,
 				137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */,
 				1371B4D22743EDE000A16A45 /* LocationTableViewCell.xib in Resources */,
 				139A6319273BC2D2008D54A8 /* SF-Pro-Rounded-Light.otf in Resources */,
@@ -864,6 +921,7 @@
 				13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */,
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
+				130C92852752BA1C00A416F9 /* SubCategories.swift in Sources */,
 				130C926B2752625A00A416F9 /* ImportViewController.swift in Sources */,
 				970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */,
 				1308256C27464625005CB024 /* SearchResultTableViewCell.swift in Sources */,
@@ -892,11 +950,13 @@
 				3532C899272AACFE00745F73 /* QuestionNameViewController.swift in Sources */,
 				134394F1273A557A00641983 /* SummaryAwardsCollectionViewCell.swift in Sources */,
 				13AD9DA72739083F0083AE29 /* Extension.swift in Sources */,
+				130C927B2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift in Sources */,
 				139A6309273B84CB008D54A8 /* CircularProgressBar.swift in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
 				1371B4C82743E2BB00A16A45 /* LocationReminderViewController.swift in Sources */,
 				139A6325273BCB4A008D54A8 /* ProductTableViewCell.swift in Sources */,
 				131F76C72727E61300A7AB41 /* AppDelegate.swift in Sources */,
+				130C927D2752B9B700A416F9 /* StartHabitCollectionViewCell.swift in Sources */,
 				97177DDA2738D5E3007FF0E9 /* RoutineModel.swift in Sources */,
 				13AD9DA4273908080083AE29 /* CircularProgressBarCalendar.swift in Sources */,
 				1371B4B6274396E000A16A45 /* ProductTypeViewController.swift in Sources */,
@@ -910,10 +970,12 @@
 				130424EB2744F50300720D35 /* OverlayView.swift in Sources */,
 				973711EB27464DCB00F61D30 /* PresentationCalenderController.swift in Sources */,
 				35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */,
+				130C927F2752B9D300A416F9 /* HabitViewController.swift in Sources */,
 				139A630E273BC15D008D54A8 /* ProfileViewController.swift in Sources */,
 				3532C897272AACEB00745F73 /* QuestionExperienceViewController.swift in Sources */,
 				3532C89B272AAD0C00745F73 /* QuestionGenderViewController.swift in Sources */,
 				35904E7C272FBDF200C15202 /* OptionTableViewCell.swift in Sources */,
+				130C92812752B9EB00A416F9 /* ExploreViewController.swift in Sources */,
 				35D9D8DD272FFF5A00C255F1 /* SkinTypeViewController.swift in Sources */,
 				3532C88B272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift in Sources */,
 				35E47A092730C4C90033E5F4 /* SkinCareGuideViewController.swift in Sources */,
@@ -922,10 +984,12 @@
 				13B428A9274819A200DE2E6D /* BeRemindedTableViewCell.swift in Sources */,
 				35EFE8C72744EF4C00DAF42D /* ResultViewController.swift in Sources */,
 				35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */,
+				130C92832752BA0100A416F9 /* CategoryTableViewCell.swift in Sources */,
 				35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */,
 				3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */,
 				137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */,
 				130424ED2744F50300720D35 /* PresentationController.swift in Sources */,
+				130C92882752BA4600A416F9 /* Categories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
