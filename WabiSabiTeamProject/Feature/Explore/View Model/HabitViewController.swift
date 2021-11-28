@@ -14,6 +14,7 @@ class HabitViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var routineDetailsLabel: UILabel!
+    @IBOutlet weak var routineNameTextField: UITextField!
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var productContainer: UIView!
     @IBOutlet weak var beRemindedLabel: UILabel!
@@ -49,15 +50,17 @@ class HabitViewController: UIViewController {
         sectionSelected = UserDefaults.standard.integer(forKey: "sectionHabitSelected")
         indexSelected = UserDefaults.standard.integer(forKey: "habitSelected")
         
-        
         if sectionSelected > 0 {
             productContainer.isHidden = true
         }
-            
-        data = Utilities().category[sectionSelected].subcategories[indexSelected]
         
-        titleLabel.text = data.habitName
-        descriptionLabel.text = data.description
+        if indexSelected != nil && sectionSelected != nil {
+            data = Utilities().category[sectionSelected].subcategories[indexSelected]
+            
+            titleLabel.text = data.habitName
+            descriptionLabel.text = data.description
+            routineNameTextField.text = data.habitName
+        }
         
         setUI()
     }
@@ -71,8 +74,9 @@ class HabitViewController: UIViewController {
         beRemindedLabel.font = UIFont.boldSystemFont(ofSize: 22)
         productLabel.font = UIFont.boldSystemFont(ofSize: 22)
         
-        tintedConfiguration.title = "Today"
-        buttonToday.configuration = tintedConfiguration
+        buttonToday.configuration = UIButton.Configuration.filled()
+        buttonToday.setTitle("Today", for: .normal)
+        buttonToday.setTitleColor(UIColor.white, for: .normal)
         tintedConfiguration.title = "Tommorow"
         buttonTommorow.configuration = tintedConfiguration
         tintedConfiguration.title = "Custom"

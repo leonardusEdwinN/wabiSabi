@@ -184,6 +184,9 @@
                                                         <buttonConfiguration key="configuration" style="filled" title="Create Your Own" cornerStyle="capsule">
                                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <segue destination="3Kl-J5-9dJ" kind="modal" modalPresentationStyle="fullScreen" id="qFN-rx-Lsl"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -254,7 +257,6 @@
         <!--Habit View Controller-->
         <scene sceneID="Ihu-HC-3ad">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ra9-iR-qdC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="Detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Kl-J5-9dJ" customClass="HabitViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vpq-hk-0TB">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -290,7 +292,7 @@
                                                     <action selector="save:" destination="3Kl-J5-9dJ" eventType="touchUpInside" id="0NJ-cy-haa"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Habit Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpf-os-rbU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="New Habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpf-os-rbU">
                                                 <rect key="frame" x="15" y="65" width="360" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="eUe-E0-obv"/>
@@ -299,7 +301,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Habit Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntW-pt-RzW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Add your own customize new habit!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntW-pt-RzW">
                                                 <rect key="frame" x="15" y="109" width="275" height="14.333333333333329"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -883,13 +885,18 @@
                         <outlet property="productLabel" destination="h1W-63-5mC" id="Vgg-aM-p1R"/>
                         <outlet property="reminderContainer" destination="b5z-KQ-fvj" id="GnN-ZG-d2c"/>
                         <outlet property="routineDetailsLabel" destination="DYt-vb-jiO" id="GqX-eD-GXY"/>
+                        <outlet property="routineNameTextField" destination="XCa-2b-5mU" id="nat-dv-6k9"/>
                         <outlet property="titleLabel" destination="Jpf-os-rbU" id="vRh-TF-RJi"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ra9-iR-qdC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="153.84615384615384" y="190.521327014218"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qFN-rx-Lsl"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="alarm" catalog="system" width="124" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
