@@ -28,16 +28,16 @@ class PersistanceManager {
         // MARK: DEBUG
         // Only initialize the schema when building the app with the
         // Debug build configuration.
-//        #if DEBUG
-//        do {
-//            // Use the container to initialize the development schema.
-//            try container.initializeCloudKitSchema(options: [])
-//        } catch {
-//            // Handle any errors.
-//        }
-//        #endif
-        
-        
+        /*
+        #if DEBUG
+        do {
+            // Use the container to initialize the development schema.
+            try container.initializeCloudKitSchema(options: [])
+        } catch {
+            // Handle any errors.
+        }
+        #endif
+        */
         
         return container
     }()
@@ -196,6 +196,17 @@ class PersistanceManager {
             UserDefaults.standard.set(routineID, forKey: "routineID")
             print("Routine ID \(routineID) has been saved")
         }
+    }
+    
+    func setRoutine(isEveryday: Bool, startHabit: Date, name: String, schedules: [Schedule]) {
+        let routine = Routines(context: persistentContainer.viewContext)
+        routine.id = "\(UUID())"
+        routine.isEveryday = isEveryday
+        routine.name = name
+        routine.startHabit = startHabit
+        routine.schedules = schedules as? NSSet
+        routine.userroutine = fetchUser()
+        save()
     }
     
     func setSchedule(time: String) {

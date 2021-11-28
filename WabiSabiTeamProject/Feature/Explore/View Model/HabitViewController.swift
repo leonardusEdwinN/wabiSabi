@@ -38,7 +38,10 @@ class HabitViewController: UIViewController {
     
     var data: SubCategories!
     
+    var startHabit: Date = Date()
+    
     var dayToDoHabit: [Bool] = [false, false, false, false, false, false, false]
+    var isEveryday: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +118,21 @@ class HabitViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: Any) {
-        
+        var routineName: String = routineNameTextField.text ?? data.habitName
+        var schedules: [Schedule]!
+        for index in 0...6 {
+            if dayToDoHabit[index] {
+                var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
+                temp.schedule = "\(index)"
+                schedules.append(temp)
+            }
+        }
+        if schedules == nil {
+            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: routineName, startHabit: startHabit)
+        }
+        else {
+            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: startHabit, name: routineName, schedules: schedules)
+        }
     }
     
     @IBAction func startFromToday(_ sender: Any) {
@@ -128,10 +145,13 @@ class HabitViewController: UIViewController {
             
             tintedConfiguration.title = "Custom"
             buttonCustom.configuration = tintedConfiguration
+            
+            startHabit = Date()
         } else {
             // Fallback on earlier versions
         }
     }
+    
     @IBAction func startFromTommorow(_ sender: Any) {
         if #available(iOS 15.0, *) {
             tintedConfiguration.title = "Today"
@@ -142,10 +162,16 @@ class HabitViewController: UIViewController {
             
             tintedConfiguration.title = "Custom"
             buttonCustom.configuration = tintedConfiguration
+            
+            let today = Date()
+            let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+            startHabit = tomorrow ?? Date()
+            
         } else {
             // Fallback on earlier versions
         }
     }
+    
     @IBAction func startWithCustom(_ sender: Any) {
         if #available(iOS 15.0, *) {
             tintedConfiguration.title = "Today"
@@ -156,6 +182,8 @@ class HabitViewController: UIViewController {
             
             buttonCustom.configuration = UIButton.Configuration.filled()
             buttonCustom.setTitleColor(UIColor.white, for: .normal)
+            
+            startHabit = Date()
         } else {
             // Fallback on earlier versions
         }
@@ -182,12 +210,17 @@ class HabitViewController: UIViewController {
             for index in 0...6 {
                 if !dayToDoHabit[index] {
                     temp = false
+                    break
                 }
             }
+            isEveryday = false
+            
             if temp {
                 buttonEveryday.configuration = UIButton.Configuration.filled()
                 buttonEveryday.setTitle("Everyday", for: .normal)
                 buttonEveryday.setTitleColor(UIColor.white, for: .normal)
+                
+                isEveryday = true
             }
         }
     }
@@ -224,6 +257,8 @@ class HabitViewController: UIViewController {
         for index in 0...6 {
             dayToDoHabit[index] = true
         }
+        
+        isEveryday = true
         
         buttonEveryday.configuration = UIButton.Configuration.filled()
         buttonEveryday.setTitle("Everyday", for: .normal)
