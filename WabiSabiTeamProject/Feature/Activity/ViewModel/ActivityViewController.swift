@@ -43,6 +43,24 @@ class ActivityViewController: UIViewController {
         configureTutorial()
         configureSegmented()
         setUpcircularProgress()
+        setGradientBackground()
+        
+//        backgroundPurple.backgroundColor = UIColor.systemGreen
+    }
+    
+    func setGradientBackground() {
+        let colorTop =  getUIColor(hex: "#E6D2C6")?.cgColor
+        let colorBottom = getUIColor(hex: "#D4CFDE")?.cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.frame = self.view.bounds
+                
+        
+        backgroundPurple.layer.insertSublayer(gradientLayer, at:1)
     }
     
     func configureTableViewDataByStatus() {
@@ -284,7 +302,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
             success(true)
         })
         closeAction.image = UIImage(named: "tick")
-        closeAction.backgroundColor = .systemGreen
+        closeAction.backgroundColor = getUIColor(hex: "#CDCBDB")
         
         return UISwipeActionsConfiguration(actions: [closeAction])
     }
@@ -324,7 +342,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
             success(true)
             tableView.reloadData()
         })
-        modifyAction.backgroundColor = .red
+        modifyAction.backgroundColor = getUIColor(hex: "#CDCBDB")
         
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
@@ -335,3 +353,25 @@ extension ActivityViewController: UIViewControllerTransitioningDelegate {
         PresentationCalenderController(presentedViewController: presented, presenting: presenting)
     }
 }    
+
+func getUIColor(hex: String, alpha: Double = 1.0) -> UIColor? {
+    var cleanString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+    if (cleanString.hasPrefix("#")) {
+        cleanString.remove(at: cleanString.startIndex)
+    }
+
+    if ((cleanString.count) != 6) {
+        return nil
+    }
+
+    var rgbValue: UInt32 = 0
+    Scanner(string: cleanString).scanHexInt32(&rgbValue)
+
+    return UIColor(
+        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+        alpha: CGFloat(1.0)
+    )
+}

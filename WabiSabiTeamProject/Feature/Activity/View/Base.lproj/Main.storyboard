@@ -54,7 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="5ZX-v1-o3z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Explore" image="moon.stars" catalog="system" selectedImage="sparkles" id="3cM-2C-fZG">
+                    <tabBarItem key="tabBarItem" title="Explore" image="sparkles" catalog="system" selectedImage="sparkles" id="3cM-2C-fZG">
                         <color key="badgeColor" systemColor="systemIndigoColor"/>
                     </tabBarItem>
                 </viewController>
@@ -69,7 +69,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Uo-rT-qWD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="ColorSecondary"/>
                         <color key="selectedImageTintColor" name="ColorPrimary"/>
                     </tabBar>
@@ -104,7 +104,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffm-LO-AvL">
                                 <rect key="frame" x="0.0" y="363" width="414" height="493"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.7084026210355443" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dh-dK-NJC" customClass="CircularProgressView" customModule="WabiSabiTeamProject" customModuleProvider="target">
                                 <rect key="frame" x="134.66666666666666" y="178" width="144.99999999999997" height="145"/>
@@ -165,7 +165,8 @@
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T3c-gO-kzX">
                                 <rect key="frame" x="0.0" y="428" width="414" height="428"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="0.70840262099999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" id="bEX-J1-A2p">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -526,7 +527,6 @@
         <image name="folder" catalog="system" width="128" height="97"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="moon.stars" catalog="system" width="124" height="128"/>
         <image name="newspaper" catalog="system" width="128" height="111"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="sparkles" catalog="system" width="112" height="128"/>
