@@ -22,13 +22,9 @@
 		130C927227526A0B00A416F9 /* ImportProduct.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130C927127526A0B00A416F9 /* ImportProduct.storyboard */; };
 		130C927427526F7500A416F9 /* ImportProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927327526F7500A416F9 /* ImportProductViewController.swift */; };
 		130C92782752B94500A416F9 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130C92772752B94500A416F9 /* Explore.storyboard */; };
-		130C927B2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927A2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift */; };
 		130C927D2752B9B700A416F9 /* StartHabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927C2752B9B700A416F9 /* StartHabitCollectionViewCell.swift */; };
-		130C927F2752B9D300A416F9 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C927E2752B9D300A416F9 /* HabitViewController.swift */; };
 		130C92812752B9EB00A416F9 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C92802752B9EB00A416F9 /* ExploreViewController.swift */; };
-		130C92832752BA0100A416F9 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C92822752BA0100A416F9 /* CategoryTableViewCell.swift */; };
 		130C92852752BA1C00A416F9 /* SubCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C92842752BA1C00A416F9 /* SubCategories.swift */; };
-		130C92882752BA4600A416F9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C92872752BA4600A416F9 /* Categories.swift */; };
 		13159C4F274F8EAC00EA5319 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13159C4E274F8EAC00EA5319 /* Loading.swift */; };
 		1316910D274E3D3800049D3D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910C274E3D3800049D3D /* Util.swift */; };
 		1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1316910E274E502800049D3D /* ProductTypeModel.swift */; };
@@ -54,6 +50,7 @@
 		1371B4CE2743E64900A16A45 /* TimerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1371B4CC2743E64900A16A45 /* TimerTableViewCell.xib */; };
 		1371B4D12743EDE000A16A45 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1371B4CF2743EDE000A16A45 /* LocationTableViewCell.swift */; };
 		1371B4D22743EDE000A16A45 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1371B4D02743EDE000A16A45 /* LocationTableViewCell.xib */; };
+		1376BCC62754E6F9008DD101 /* SkinTypeProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCC52754E6F9008DD101 /* SkinTypeProduct.swift */; };
 		137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E32733D1D4008D1BCF /* SummaryViewController.swift */; };
 		137962E82733D4B3008D1BCF /* SummaryActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */; };
 		137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */; };
@@ -97,15 +94,10 @@
 		3518392F2753A4FC000DE1A8 /* SkinRoutineLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518392E2753A4FC000DE1A8 /* SkinRoutineLevel.swift */; };
 		351839312753A51C000DE1A8 /* SkinRoutineProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351839302753A51C000DE1A8 /* SkinRoutineProduct.swift */; };
 		351839332753A527000DE1A8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351839322753A527000DE1A8 /* Utilities.swift */; };
-		351839402753A5C0000DE1A8 /* SubCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351839362753A5C0000DE1A8 /* SubCategories.swift */; };
 		351839412753A5C0000DE1A8 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351839372753A5C0000DE1A8 /* Categories.swift */; };
-		351839422753A5C0000DE1A8 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351839392753A5C0000DE1A8 /* Explore.storyboard */; };
-		351839432753A5C0000DE1A8 /* StartHabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518393B2753A5C0000DE1A8 /* StartHabitCollectionViewCell.swift */; };
-		351839442753A5C0000DE1A8 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518393C2753A5C0000DE1A8 /* ExploreViewController.swift */; };
 		351839452753A5C0000DE1A8 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518393D2753A5C0000DE1A8 /* HabitViewController.swift */; };
 		351839462753A5C0000DE1A8 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518393E2753A5C0000DE1A8 /* CategoryTableViewCell.swift */; };
 		351839472753A5C0000DE1A8 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518393F2753A5C0000DE1A8 /* SubcategoryCollectionViewCell.swift */; };
-		351839492753A604000DE1A8 /* SkinTypeProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351839482753A604000DE1A8 /* SkinTypeProducts.swift */; };
 		3526FD9C273D1D0300C8F4DB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3526FD9B273D1D0300C8F4DB /* CloudKit.framework */; };
 		3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C888272A9F5900745F73 /* QuestionSkinTypeViewController.swift */; };
 		3532C88B272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3532C88A272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift */; };
@@ -188,6 +180,7 @@
 		1371B4CC2743E64900A16A45 /* TimerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerTableViewCell.xib; sourceTree = "<group>"; };
 		1371B4CF2743EDE000A16A45 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		1371B4D02743EDE000A16A45 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
+		1376BCC52754E6F9008DD101 /* SkinTypeProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTypeProduct.swift; sourceTree = "<group>"; };
 		137962E32733D1D4008D1BCF /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityTableViewCell.swift; sourceTree = "<group>"; };
 		137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -240,7 +233,6 @@
 		3518393D2753A5C0000DE1A8 /* HabitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		3518393E2753A5C0000DE1A8 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		3518393F2753A5C0000DE1A8 /* SubcategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubcategoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		351839482753A604000DE1A8 /* SkinTypeProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTypeProducts.swift; sourceTree = "<group>"; };
 		3526FD99273D1CF100C8F4DB /* WabiSabiTeamProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WabiSabiTeamProject.entitlements; sourceTree = "<group>"; };
 		3526FD9B273D1D0300C8F4DB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		3532C888272A9F5900745F73 /* QuestionSkinTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSkinTypeViewController.swift; sourceTree = "<group>"; };
@@ -756,10 +748,10 @@
 			children = (
 				351839262753A4A0000DE1A8 /* SkinCareProduct.swift */,
 				3518392A2753A4C5000DE1A8 /* SkinTypeRoutine.swift */,
+				1376BCC52754E6F9008DD101 /* SkinTypeProduct.swift */,
 				3518392E2753A4FC000DE1A8 /* SkinRoutineLevel.swift */,
 				351839302753A51C000DE1A8 /* SkinRoutineProduct.swift */,
 				351839322753A527000DE1A8 /* Utilities.swift */,
-				351839482753A604000DE1A8 /* SkinTypeProducts.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -917,7 +909,6 @@
 			files = (
 				1371B4C12743C4AD00A16A45 /* TimerReminder.storyboard in Resources */,
 				130C92782752B94500A416F9 /* Explore.storyboard in Resources */,
-				351839422753A5C0000DE1A8 /* Explore.storyboard in Resources */,
 				137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */,
 				1371B4D22743EDE000A16A45 /* LocationTableViewCell.xib in Resources */,
 				139A6319273BC2D2008D54A8 /* SF-Pro-Rounded-Light.otf in Resources */,
@@ -1007,7 +998,6 @@
 				3532C899272AACFE00745F73 /* QuestionNameViewController.swift in Sources */,
 				134394F1273A557A00641983 /* SummaryAwardsCollectionViewCell.swift in Sources */,
 				13AD9DA72739083F0083AE29 /* Extension.swift in Sources */,
-				130C927B2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift in Sources */,
 				139A6309273B84CB008D54A8 /* CircularProgressBar.swift in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
 				1371B4C82743E2BB00A16A45 /* LocationReminderViewController.swift in Sources */,
@@ -1028,7 +1018,6 @@
 				130424EB2744F50300720D35 /* OverlayView.swift in Sources */,
 				973711EB27464DCB00F61D30 /* PresentationCalenderController.swift in Sources */,
 				35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */,
-				130C927F2752B9D300A416F9 /* HabitViewController.swift in Sources */,
 				139A630E273BC15D008D54A8 /* ProfileViewController.swift in Sources */,
 				3532C897272AACEB00745F73 /* QuestionExperienceViewController.swift in Sources */,
 				3532C89B272AAD0C00745F73 /* QuestionGenderViewController.swift in Sources */,
@@ -1038,22 +1027,17 @@
 				3532C88B272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift in Sources */,
 				35E47A092730C4C90033E5F4 /* SkinCareGuideViewController.swift in Sources */,
 				1371B4B9274397BB00A16A45 /* ProductTypeTableViewCell.swift in Sources */,
-				351839442753A5C0000DE1A8 /* ExploreViewController.swift in Sources */,
 				130825672746409A005CB024 /* AddGeotificationViewController.swift in Sources */,
 				351839312753A51C000DE1A8 /* SkinRoutineProduct.swift in Sources */,
 				13B428A9274819A200DE2E6D /* BeRemindedTableViewCell.swift in Sources */,
 				351839272753A4A0000DE1A8 /* SkinCareProduct.swift in Sources */,
 				35EFE8C72744EF4C00DAF42D /* ResultViewController.swift in Sources */,
+				1376BCC62754E6F9008DD101 /* SkinTypeProduct.swift in Sources */,
 				35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */,
-				130C92832752BA0100A416F9 /* CategoryTableViewCell.swift in Sources */,
 				35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */,
 				3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */,
 				137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */,
-				351839492753A604000DE1A8 /* SkinTypeProducts.swift in Sources */,
-				351839402753A5C0000DE1A8 /* SubCategories.swift in Sources */,
-				351839432753A5C0000DE1A8 /* StartHabitCollectionViewCell.swift in Sources */,
 				130424ED2744F50300720D35 /* PresentationController.swift in Sources */,
-				130C92882752BA4600A416F9 /* Categories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,7 +1192,7 @@
 				DEVELOPMENT_TEAM = 9P49UTYHH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WabiSabiTeamProject/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Hara;
+				INFOPLIST_KEY_CFBundleDisplayName = Skinsight;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We Need Access Your Camera";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Wabi - Sabi requires constant access to your phone’s location to notify you when you enter or leave a geofence.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Wabi - Sabi requires constant access to your phone’s location to notify you when you enter or leave a geofence.";
@@ -1223,7 +1207,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabiMacro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1246,7 +1230,7 @@
 				DEVELOPMENT_TEAM = 9P49UTYHH6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WabiSabiTeamProject/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Hara;
+				INFOPLIST_KEY_CFBundleDisplayName = Skinsight;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We Need Access Your Camera";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Wabi - Sabi requires constant access to your phone’s location to notify you when you enter or leave a geofence.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Wabi - Sabi requires constant access to your phone’s location to notify you when you enter or leave a geofence.";
@@ -1261,7 +1245,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabiMacro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

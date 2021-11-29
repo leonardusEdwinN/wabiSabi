@@ -17,17 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
         }
-        
-        if UserDefaults.standard.bool(forKey: "isCompleteOnBoarding") == true {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            self.window?.rootViewController = storyBoard.instantiateViewController(identifier:"MainTabBarController")
-            window?.makeKeyAndVisible()
-        }
-        else {
-            let storyBoard = UIStoryboard(name: "OnBoarding", bundle: nil)
-            self.window?.rootViewController = storyBoard.instantiateInitialViewController()
-            window?.makeKeyAndVisible()
-        }
+//
+//        if UserDefaults.standard.bool(forKey: "isCompleteOnBoarding") == true {
+//            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//            self.window?.rootViewController = storyBoard.instantiateViewController(identifier:"MainTabBarController")
+//            window?.makeKeyAndVisible()
+//        }
+//        else {
+//            let storyBoard = UIStoryboard(name: "OnBoarding", bundle: nil)
+//            self.window?.rootViewController = storyBoard.instantiateInitialViewController()
+//            window?.makeKeyAndVisible()
+//        }
         return true
     }
 
