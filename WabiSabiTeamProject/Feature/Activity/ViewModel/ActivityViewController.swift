@@ -27,6 +27,7 @@ class ActivityViewController: UIViewController {
     var skinCareRoutines: [Routines]!
     var selectedIndex : Int = 0
     var tutorialIndex : Int = 1
+    var currentStatus : StatusRoutine = StatusRoutine.isToDo
     
     var currentTableView: [Routines] = []
     var todoTableView: [Routines] = []
@@ -35,13 +36,13 @@ class ActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableViewDataByStatus()
         configureNavigationBar()
         setUpTableView()
         configureBackground()
         configureTutorial()
-        setUpcircularProgress()
-        configureTableViewDataByStatus()
         configureSegmented()
+        setUpcircularProgress()
     }
     
     func configureTableViewDataByStatus() {
@@ -49,7 +50,14 @@ class ActivityViewController: UIViewController {
         todoTableView = skinCareRoutines.filter({$0.isCompleted == false && $0.isSkipped == false})
         completedTableView = skinCareRoutines.filter({$0.isCompleted == true})
         skippedTableView = skinCareRoutines.filter({$0.isSkipped == true})
-        currentTableView = todoTableView
+        
+        if currentStatus == StatusRoutine.isToDo {
+            currentTableView = todoTableView
+        } else if currentStatus == StatusRoutine.isSkipped {
+            currentTableView = skippedTableView
+        } else {
+            currentTableView = completedTableView
+        }
     }
     
     func configureSegmented() {
@@ -111,7 +119,8 @@ class ActivityViewController: UIViewController {
         
         circularProgress.progressColor = UIColor.white
         circularProgress.trackColor = UIColor.systemGray4
-        circularProgress.percentageValue = CGFloat(percentage)
+        circularProgress.percentageValue = CGFloat(percentage) / 100
+        circularProgressPercentageLabel.text = "\(Int(percentage))%"
     }
     
     private func setUpTableView() {
@@ -137,10 +146,13 @@ class ActivityViewController: UIViewController {
     @IBAction func changeTableView(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             currentTableView = todoTableView
+            currentStatus = StatusRoutine.isToDo
         } else if sender.selectedSegmentIndex == 1 {
             currentTableView = completedTableView
+            currentStatus = StatusRoutine.isCompleted
         } else {
             currentTableView = skippedTableView
+            currentStatus = StatusRoutine.isSkipped
         }
         
         routineTableView.reloadData()
@@ -257,6 +269,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
                 productDoneCount += 1
             }
         }
+        
         let closeAction = UIContextualAction(style: .normal, title:  "Finish", handler: { [self] (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isCompleted ,status: true)
             if (self.currentTableView[indexPath.row].isSkipped == true) {
@@ -286,6 +299,16 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
+        let productsByRoutine = PersistanceManager.shared.fetchProduct(routine: currentTableView[indexPath.row])
+        var productDoneCount : Int = 0
+        
+        for product in productsByRoutine {
+            PersistanceManager.shared.changeProductStatus(id: product.id!, status: false)
+            if product.isDone {
+                productDoneCount += 1
+            }
+        }
+        
         let modifyAction = UIContextualAction(style: .normal, title:  "Skip", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isSkipped, status: true)
             
@@ -295,11 +318,11 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
             
             self.configureTableViewDataByStatus()
             self.configureSegmented()
-            self.setUpTableView()
             self.setUpcircularProgress()
-            tableView.reloadData()
+            self.setUpTableView()
             print("SKIP")
             success(true)
+            tableView.reloadData()
         })
         modifyAction.backgroundColor = .red
         
@@ -311,4 +334,4 @@ extension ActivityViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         PresentationCalenderController(presentedViewController: presented, presenting: presenting)
     }
-}
+}    

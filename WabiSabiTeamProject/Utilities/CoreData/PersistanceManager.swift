@@ -495,4 +495,5 @@ enum StatusRoutine {
 enum StatusRoutine {
     case isCompleted
     case isSkipped
+    case isToDo
 }
