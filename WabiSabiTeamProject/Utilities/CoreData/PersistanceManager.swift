@@ -18,7 +18,9 @@ class PersistanceManager {
          
          // Load both stores
         description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.id.infinitelearning.wabisabi")
-
+// Albert
+//        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.iOSTest")
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -95,6 +97,36 @@ class PersistanceManager {
         }
     }
     
+    func changeRoutineStatus(id: String, statusType: StatusRoutine, status: Bool){
+        // 1. fetch data
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routines")
+        
+        // 2. set predicate (condition)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", id)
+        
+        // 3. execute update
+        do {
+            let objects = try context.fetch(fetchRequest)
+            let objectToBeUpdated = objects[0] as!NSManagedObject
+            
+            if statusType == StatusRoutine.isCompleted {
+                objectToBeUpdated.setValue(status, forKey: "isCompleted")
+            } else {
+                objectToBeUpdated.setValue(status, forKey: "isSkipped")
+            }
+        } catch {
+            // do something if error
+        }
+        
+        // 4. save
+        do {
+            try
+            context.save()
+        } catch let error as NSError {
+            // do something if error...
+        }
+    }
+    
     func changeIsSelectedProductToBeImported(id: String, isSelected: Bool){
         // 1. fetch data
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Product")
@@ -119,6 +151,8 @@ class PersistanceManager {
             // do something if error...
         }
     }
+    
+    
     
     func updateProduct(id: String, name: String, brand: String, periodAfterOpening: Date, picture: String, routine: Routines, expiredDate: Date, productType : String){
             // 1. fetch data
@@ -443,11 +477,11 @@ class PersistanceManager {
         
         var books: [Book] = []
         
-        do{
-            books = try persistentContainer.viewContext.fetch(request)
-        }
-        catch {
-            print("Error fetching books data")
+
+enum StatusRoutine {
+    case isCompleted
+    case isSkipped
+}
         }
         return books
     }
@@ -468,4 +502,9 @@ class PersistanceManager {
         }
     }
 
+}
+
+enum StatusRoutine {
+    case isCompleted
+    case isSkipped
 }
