@@ -11,68 +11,15 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var skinCareRoutineCollectionView: UICollectionView!
     
-    let levels: [String] = ["Beginner", "Intermediate", "Advance"]
-    
     var skinTypeIndex: Int = 0
-    var skinCareRoutineIndex: Int = 0
+    var levelIndex: Int = 0
     var skinExperienceIndex: Int = 0
     
-    let skinTypeRoutineProduct: [SkinTypeRoutine] = [
-        SkinTypeRoutine(icon: "🌞", name: "Morning Skin Care", skinType: [
-            SkinTypeProduct(name: "Oily", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser that contain salicylic/glycolic acid"),
-                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Serum", description: "Antioxidant Serum"),
-                SkinCareProduct(icon: "", name: "Sunscreen", description: "Zinc Oxide")
-            ]),
-            SkinTypeProduct(name: "Dry", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "Micellar water/cream Cleanser with humectants such as hyaluronic acid and glycerin"),
-                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Serum", description: "Antioxidant Serum"),
-                SkinCareProduct(icon: "", name: "Sunscreen", description: "Moisturizer with SPF")
-            ]),
-            SkinTypeProduct(name: "Combination", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser"),
-                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Moisturizer", description: "Lightweight"),
-                SkinCareProduct(icon: "", name: "Sunscreen", description: "Zinc Oxide")
-            ]),
-            SkinTypeProduct(name: "Normal", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "Micellar Water, Gel, Oil, or Cream Cleanser with Hyaluronic Acid to keep the complexion youthful and glowing"),
-                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Moisturizer", description: "Moisturizer with SPF")
-            ])
-        ]),
-        SkinTypeRoutine(icon: "🌓", name: "Night Skin Care", skinType: [
-            SkinTypeProduct(name: "Oily", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser that contain salicylic/glycolic acid"),
-                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Serum", description: "AHA/BHA, Retinol"),
-                SkinCareProduct(icon: "", name: "Moisturizer", description: "Oil-Free Water-Based"),
-                SkinCareProduct(icon: "", name: "Extras", description: "Clay Mask, Face Oil")
-            ]),
-            SkinTypeProduct(name: "Dry", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "Micellar water/cream Cleanser with humectants such as hyaluronic acid and glycerin"),
-                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Serum", description: "Retinol Serum"),
-                SkinCareProduct(icon: "", name: "Moisturizer", description: "Hydrating Moisturizer"),
-                SkinCareProduct(icon: "", name: "Extras", description: "At-Home Peel, Face Oil")
-            ]),
-            SkinTypeProduct(name: "Combination", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser"),
-                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Serum", description: "AHA/BHA, Retinol"),
-                SkinCareProduct(icon: "", name: "Moisturizer", description: "Lightweight"),
-                SkinCareProduct(icon: "", name: "Extras", description: "Clay Mask, Face Oil")
-            ]),
-            SkinTypeProduct(name: "Normal", products: [
-                SkinCareProduct(icon: "", name: "Cleanser", description: "Micellar Water, Gel, Oil, or Cream Cleanser with Hyaluronic Acid to keep the complexion youthful and glowing"),
-                SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
-                SkinCareProduct(icon: "", name: "Serum", description: "Antioxidant"),
-                SkinCareProduct(icon: "", name: "Moisturizer", description: "Moisturizer"),
-                SkinCareProduct(icon: "", name: "Extras", description: "Glycolic Acid Serum")
-            ])
-        ])
+    var user: User!
+    
+    var skinTypeRoutine: [SkinRoutineProduct] = [
+        SkinRoutineProduct(icon: "🌞", name: "Morning Skin Care", products: []),
+        SkinRoutineProduct(icon: "🌓", name: "Night Skin Care", products: [])
     ]
     
     override func viewDidLoad() {
@@ -82,33 +29,76 @@ class ResultViewController: UIViewController {
         skinCareRoutineCollectionView.dataSource = self
         
         skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")
-        skinCareRoutineIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
+        levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
         skinExperienceIndex = UserDefaults.standard.integer(forKey: "skinCareExperience")
         
+        calculateLevel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let birthdate = UserDefaults.standard.object(forKey: "birthdate") as! Date
+        let df = DateFormatter()
+        df.dateFormat = "dd/MM/yyyy HH:mm"
+        
+        PersistanceManager.shared.setUser(
+            dateOfBirth: birthdate,
+            gender: Utilities().genders[UserDefaults.standard.integer(forKey: "gender")],
+            isNotify: false,
+            level: Utilities().levels[levelIndex].level,
+            localization: "en",
+            name: UserDefaults.standard.string(forKey: "name") ?? "",
+            skinType: Utilities().skinTypeRoutineProduct[0].skinType[skinTypeIndex].name)
+        
+        checkProduct()
+    }
+    
+    func calculateLevel() {
         // check index bigger than first "Beginner"
-        if skinCareRoutineIndex > 0 {
-            skinCareRoutineIndex = skinCareRoutineIndex - 1
-            print(skinCareRoutineIndex)
+        if levelIndex > 0 {
+            levelIndex = levelIndex - 1
         }
         
         // user want to start from basic
         if skinExperienceIndex == 0 {
-            skinCareRoutineIndex = 0
+            levelIndex = 0
         }
         
         // user want to do current routine (do nothing...)
         
         // user want to step up
         else if skinExperienceIndex == 2 {
-            skinCareRoutineIndex = skinCareRoutineIndex + 1
+            levelIndex = levelIndex + 1
         }
-        if skinCareRoutineIndex > 2 {
-            skinCareRoutineIndex = 2
+        if levelIndex > 2 {
+            levelIndex = 2
         }
         
-        levelLabel.text = "Level:  \(levels[skinCareRoutineIndex])"
+        levelLabel.text = "Level:  \(Utilities().levels[levelIndex].level)"
         
+        
+        print("LEVEL INDEX : \(Utilities().levels[levelIndex].level)")
+        
+        UserDefaults.standard.set(levelIndex, forKey: "levelIndex")
     }
+    
+    func checkProduct(){
+        let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
+        print("PRODUCT INDEX : \(productIndex)")
+        for routineIndex in 0...1 {
+            PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name)
+            
+            for index in 0..<productIndex.count {
+                let product = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]
+                
+                if !(product.description == "") {
+                    skinTypeRoutine[routineIndex].products.append(product)
+                    
+                    PersistanceManager.shared.setProduct(name: product.name)
+                }
+            }
+        }
+    }
+    
     @IBAction func getStarted(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
@@ -119,17 +109,17 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return skinTypeRoutineProduct.count
+        return Utilities().skinTypeRoutineProduct.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = skinCareRoutineCollectionView.dequeueReusableCell(withReuseIdentifier: "skincareroutinecell", for: indexPath) as! SkinCareRoutineCollectionViewCell
         
-        let data = skinTypeRoutineProduct[indexPath.row]
+        let data = skinTypeRoutine[indexPath.row]
         cell.skinCareRoutineIconLabel.text = data.icon
         cell.skinCareRoutineNameLabel.text = data.name
-        cell.skinCareRoutineProductLabel.text = "\(data.skinType[skinTypeIndex].products.count) products"
+        cell.skinCareRoutineProductLabel.text = "\(data.products.count) products"
         
         return cell
     }
@@ -137,8 +127,10 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "OnBoarding", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SkinCareGuide") as! SkinCareGuideViewController
-        vc.indexSelected = indexPath.row
+        vc.skinTypeRoutine = skinTypeRoutine[indexPath.row]
         
         self.show(vc, sender: nil)
     }
+    
+    
 }

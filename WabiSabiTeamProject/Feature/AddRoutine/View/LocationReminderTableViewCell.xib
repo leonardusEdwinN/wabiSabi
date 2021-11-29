@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="locationReminderTableViewCell" rowHeight="163" id="KGk-i7-Jjw" customClass="LocationReminderTableViewCell" customModule="WabiSabiTeamProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyn-21-oXq">
+                        <rect key="frame" x="15" y="15" width="290" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ag-QN-FbB">
+                        <rect key="frame" x="15" y="46" width="290" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfG-c8-vBJ">
+                                <rect key="frame" x="55" y="14.5" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BVg-fG-yXx">
+                                <rect key="frame" x="10" y="9.5" width="30" height="30"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="JXQ-Z0-5aN"/>
+                                    <constraint firstAttribute="height" constant="30" id="cpv-3b-7Gh"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RfG-c8-vBJ" firstAttribute="centerY" secondItem="1ag-QN-FbB" secondAttribute="centerY" id="2si-Bw-ZpE"/>
+                            <constraint firstAttribute="height" constant="50" id="7BT-Ji-M0F"/>
+                            <constraint firstItem="BVg-fG-yXx" firstAttribute="top" secondItem="1ag-QN-FbB" secondAttribute="top" constant="10" id="ErP-Ko-dde"/>
+                            <constraint firstItem="RfG-c8-vBJ" firstAttribute="leading" secondItem="BVg-fG-yXx" secondAttribute="trailing" constant="15" id="Lxi-ve-Jvq"/>
+                            <constraint firstItem="BVg-fG-yXx" firstAttribute="leading" secondItem="1ag-QN-FbB" secondAttribute="leading" constant="10" id="TCe-FO-O2y"/>
+                            <constraint firstItem="BVg-fG-yXx" firstAttribute="centerY" secondItem="1ag-QN-FbB" secondAttribute="centerY" id="pbf-HD-V0L"/>
+                            <constraint firstAttribute="bottom" secondItem="BVg-fG-yXx" secondAttribute="bottom" constant="10" id="tsJ-lP-bkH"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You can add up to 3 location reminders" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaR-tk-WJP">
+                        <rect key="frame" x="15" y="106" width="290" height="47"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="kaR-tk-WJP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="CGP-RV-tcx"/>
+                    <constraint firstItem="kaR-tk-WJP" firstAttribute="top" secondItem="1ag-QN-FbB" secondAttribute="bottom" constant="10" id="G5A-tb-JBs"/>
+                    <constraint firstItem="1ag-QN-FbB" firstAttribute="top" secondItem="eyn-21-oXq" secondAttribute="bottom" constant="10" id="Gy0-nG-xxf"/>
+                    <constraint firstAttribute="bottom" secondItem="kaR-tk-WJP" secondAttribute="bottom" constant="10" id="OTd-1g-S5u"/>
+                    <constraint firstItem="1ag-QN-FbB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ZFf-wN-AAd"/>
+                    <constraint firstAttribute="trailing" secondItem="kaR-tk-WJP" secondAttribute="trailing" constant="15" id="c2U-N8-XGk"/>
+                    <constraint firstItem="eyn-21-oXq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="dqc-mr-kk1"/>
+                    <constraint firstAttribute="trailing" secondItem="1ag-QN-FbB" secondAttribute="trailing" constant="15" id="ujc-I4-51P"/>
+                    <constraint firstAttribute="trailing" secondItem="eyn-21-oXq" secondAttribute="trailing" constant="15" id="xOt-4Y-dYs"/>
+                    <constraint firstItem="eyn-21-oXq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="zLG-bZ-x7N"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="viewRounded" destination="1ag-QN-FbB" id="dbx-UO-gxR"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="170.42410714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="mappin" catalog="system" width="105" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
