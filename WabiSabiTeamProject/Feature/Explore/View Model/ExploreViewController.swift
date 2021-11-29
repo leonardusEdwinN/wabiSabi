@@ -12,6 +12,8 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var tableViewBackground: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var createYourOwnHabitLabel: UILabel!
+    @IBOutlet weak var buttonCreateYourOwn: UIButton!
     
     var sectionSelected: Int = 0
     
@@ -22,6 +24,9 @@ class ExploreViewController: UIViewController {
         tableView.dataSource = self
         
         titleLabel.font = UIFont.boldSystemFont(ofSize: 34)
+        createYourOwnHabitLabel.font = UIFont.boldSystemFont(ofSize: 22)
+        
+        buttonCreateYourOwn.tintColor = UIColor(named: "ColorPrimary")
         
         let whiteGradient = CAGradientLayer()
         whiteGradient.colors = [UIColor(red: 1, green: 1, blue: 1, alpha: 0.8).cgColor, UIColor(red: 1, green: 1, blue: 1, alpha: 0.4).cgColor]
@@ -29,7 +34,7 @@ class ExploreViewController: UIViewController {
         whiteGradient.borderColor = UIColor.white.cgColor
         whiteGradient.borderWidth = 2
         whiteGradient.cornerRadius = 30
-        whiteGradient.frame = CGRect(x: 2, y: 0, width: self.tableView.frame.width - 24, height: self.tableView.frame.height)
+        whiteGradient.frame = CGRect(x: 2, y: 0, width: self.tableView.frame.width - 4, height: 1000)
         tableViewBackground.layer.insertSublayer(whiteGradient, at:0)
     }
 }
