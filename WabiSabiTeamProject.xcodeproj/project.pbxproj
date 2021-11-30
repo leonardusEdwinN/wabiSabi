@@ -51,6 +51,16 @@
 		1371B4D12743EDE000A16A45 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1371B4CF2743EDE000A16A45 /* LocationTableViewCell.swift */; };
 		1371B4D22743EDE000A16A45 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1371B4D02743EDE000A16A45 /* LocationTableViewCell.xib */; };
 		1376BCC62754E6F9008DD101 /* SkinTypeProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCC52754E6F9008DD101 /* SkinTypeProduct.swift */; };
+		1376BCC82755F1F0008DD101 /* NewHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCC72755F1F0008DD101 /* NewHabitViewController.swift */; };
+		1376BCCB27560CFE008DD101 /* StartHabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCC927560CFE008DD101 /* StartHabitTableViewCell.swift */; };
+		1376BCCC27560CFE008DD101 /* StartHabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1376BCCA27560CFE008DD101 /* StartHabitTableViewCell.xib */; };
+		1376BCCF27560FCC008DD101 /* RoutineNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCCD27560FCC008DD101 /* RoutineNameTableViewCell.swift */; };
+		1376BCD027560FCC008DD101 /* RoutineNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1376BCCE27560FCC008DD101 /* RoutineNameTableViewCell.xib */; };
+		1376BCD327561042008DD101 /* SelectWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCD127561042008DD101 /* SelectWeekTableViewCell.swift */; };
+		1376BCD427561042008DD101 /* SelectWeekTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1376BCD227561042008DD101 /* SelectWeekTableViewCell.xib */; };
+		1376BCD72756170D008DD101 /* ProductHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCD52756170D008DD101 /* ProductHeaderTableViewCell.swift */; };
+		1376BCD82756170D008DD101 /* ProductHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1376BCD62756170D008DD101 /* ProductHeaderTableViewCell.xib */; };
+		1376BCDA27568EF6008DD101 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCD927568EF6008DD101 /* ProductModel.swift */; };
 		137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E32733D1D4008D1BCF /* SummaryViewController.swift */; };
 		137962E82733D4B3008D1BCF /* SummaryActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */; };
 		137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */; };
@@ -181,6 +191,16 @@
 		1371B4CF2743EDE000A16A45 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		1371B4D02743EDE000A16A45 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		1376BCC52754E6F9008DD101 /* SkinTypeProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTypeProduct.swift; sourceTree = "<group>"; };
+		1376BCC72755F1F0008DD101 /* NewHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitViewController.swift; sourceTree = "<group>"; };
+		1376BCC927560CFE008DD101 /* StartHabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartHabitTableViewCell.swift; sourceTree = "<group>"; };
+		1376BCCA27560CFE008DD101 /* StartHabitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartHabitTableViewCell.xib; sourceTree = "<group>"; };
+		1376BCCD27560FCC008DD101 /* RoutineNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineNameTableViewCell.swift; sourceTree = "<group>"; };
+		1376BCCE27560FCC008DD101 /* RoutineNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoutineNameTableViewCell.xib; sourceTree = "<group>"; };
+		1376BCD127561042008DD101 /* SelectWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWeekTableViewCell.swift; sourceTree = "<group>"; };
+		1376BCD227561042008DD101 /* SelectWeekTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWeekTableViewCell.xib; sourceTree = "<group>"; };
+		1376BCD52756170D008DD101 /* ProductHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		1376BCD62756170D008DD101 /* ProductHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		1376BCD927568EF6008DD101 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		137962E32733D1D4008D1BCF /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityTableViewCell.swift; sourceTree = "<group>"; };
 		137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -365,6 +385,14 @@
 			isa = PBXGroup;
 			children = (
 				130C92772752B94500A416F9 /* Explore.storyboard */,
+				1376BCC927560CFE008DD101 /* StartHabitTableViewCell.swift */,
+				1376BCCA27560CFE008DD101 /* StartHabitTableViewCell.xib */,
+				1376BCCD27560FCC008DD101 /* RoutineNameTableViewCell.swift */,
+				1376BCCE27560FCC008DD101 /* RoutineNameTableViewCell.xib */,
+				1376BCD127561042008DD101 /* SelectWeekTableViewCell.swift */,
+				1376BCD227561042008DD101 /* SelectWeekTableViewCell.xib */,
+				1376BCD52756170D008DD101 /* ProductHeaderTableViewCell.swift */,
+				1376BCD62756170D008DD101 /* ProductHeaderTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -377,6 +405,7 @@
 				130C927E2752B9D300A416F9 /* HabitViewController.swift */,
 				130C92802752B9EB00A416F9 /* ExploreViewController.swift */,
 				130C92822752BA0100A416F9 /* CategoryTableViewCell.swift */,
+				1376BCC72755F1F0008DD101 /* NewHabitViewController.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -574,6 +603,7 @@
 			children = (
 				13169112274E50EF00049D3D /* View */,
 				13169111274E50E700049D3D /* ViewModel */,
+				1376BCD927568EF6008DD101 /* ProductModel.swift */,
 			);
 			path = AddProduct;
 			sourceTree = "<group>";
@@ -926,8 +956,10 @@
 				137962EE2733D999008D1BCF /* SummaryCalendarTableViewCell.xib in Resources */,
 				13CD1F262742588700F537EB /* ProductUsedTableViewCell.xib in Resources */,
 				1371B4CE2743E64900A16A45 /* TimerTableViewCell.xib in Resources */,
+				1376BCD427561042008DD101 /* SelectWeekTableViewCell.xib in Resources */,
 				13AD9DA5273908080083AE29 /* DayCollectionViewCell.xib in Resources */,
 				973711E727463E3E00F61D30 /* OverlayCalenderView.xib in Resources */,
+				1376BCCC27560CFE008DD101 /* StartHabitTableViewCell.xib in Resources */,
 				139A631C273BC2D2008D54A8 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				13E1D91B2733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib in Resources */,
 				13CD1F3227425D5100F537EB /* TimerReminderTableViewCell.xib in Resources */,
@@ -941,8 +973,10 @@
 				134394F2273A557A00641983 /* SummaryAwardsCollectionViewCell.xib in Resources */,
 				139A6320273BC2D2008D54A8 /* SF-Pro-Rounded-Ultralight.otf in Resources */,
 				97177DEA273D0557007FF0E9 /* RoutinesTableViewCell.xib in Resources */,
+				1376BCD82756170D008DD101 /* ProductHeaderTableViewCell.xib in Resources */,
 				1371B4BA274397BB00A16A45 /* ProductTypeTableViewCell.xib in Resources */,
 				131F76D62727E61400A7AB41 /* LaunchScreen.storyboard in Resources */,
+				1376BCD027560FCC008DD101 /* RoutineNameTableViewCell.xib in Resources */,
 				139A631B273BC2D2008D54A8 /* SF-Pro-Rounded-Regular.otf in Resources */,
 				970E415E272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib in Resources */,
 				134394F6273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib in Resources */,
@@ -961,6 +995,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				137962ED2733D999008D1BCF /* SummaryCalendarTableViewCell.swift in Sources */,
+				1376BCD72756170D008DD101 /* ProductHeaderTableViewCell.swift in Sources */,
 				134394F5273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift in Sources */,
 				351839332753A527000DE1A8 /* Utilities.swift in Sources */,
 				1308256927464463005CB024 /* Geotification.swift in Sources */,
@@ -977,6 +1012,8 @@
 				351839472753A5C0000DE1A8 /* SubcategoryCollectionViewCell.swift in Sources */,
 				130C926E275262A400A416F9 /* ImportTableViewCell.swift in Sources */,
 				1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */,
+				1376BCCB27560CFE008DD101 /* StartHabitTableViewCell.swift in Sources */,
+				1376BCDA27568EF6008DD101 /* ProductModel.swift in Sources */,
 				971434432750D6C00001AED7 /* EditProfileViewController.swift in Sources */,
 				13CD1F3127425D5100F537EB /* TimerReminderTableViewCell.swift in Sources */,
 				97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */,
@@ -988,6 +1025,7 @@
 				351839452753A5C0000DE1A8 /* HabitViewController.swift in Sources */,
 				97177DD82738CB8A007FF0E9 /* RoutineCollectionViewCell.swift in Sources */,
 				3518392B2753A4C5000DE1A8 /* SkinTypeRoutine.swift in Sources */,
+				1376BCD327561042008DD101 /* SelectWeekTableViewCell.swift in Sources */,
 				35904E85272FDA5100C15202 /* LoadingViewController.swift in Sources */,
 				1316910D274E3D3800049D3D /* Util.swift in Sources */,
 				1371B4D12743EDE000A16A45 /* LocationTableViewCell.swift in Sources */,
@@ -1017,6 +1055,7 @@
 				3532C89D272AAD1A00745F73 /* QuestionBirthDateViewController.swift in Sources */,
 				130424EB2744F50300720D35 /* OverlayView.swift in Sources */,
 				973711EB27464DCB00F61D30 /* PresentationCalenderController.swift in Sources */,
+				1376BCC82755F1F0008DD101 /* NewHabitViewController.swift in Sources */,
 				35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */,
 				139A630E273BC15D008D54A8 /* ProfileViewController.swift in Sources */,
 				3532C897272AACEB00745F73 /* QuestionExperienceViewController.swift in Sources */,
@@ -1029,6 +1068,7 @@
 				1371B4B9274397BB00A16A45 /* ProductTypeTableViewCell.swift in Sources */,
 				130825672746409A005CB024 /* AddGeotificationViewController.swift in Sources */,
 				351839312753A51C000DE1A8 /* SkinRoutineProduct.swift in Sources */,
+				1376BCCF27560FCC008DD101 /* RoutineNameTableViewCell.swift in Sources */,
 				13B428A9274819A200DE2E6D /* BeRemindedTableViewCell.swift in Sources */,
 				351839272753A4A0000DE1A8 /* SkinCareProduct.swift in Sources */,
 				35EFE8C72744EF4C00DAF42D /* ResultViewController.swift in Sources */,

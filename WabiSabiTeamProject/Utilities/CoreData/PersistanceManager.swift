@@ -17,13 +17,13 @@ class PersistanceManager {
         let description = container.persistentStoreDescriptions.first
          
          // Load both stores
-        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.id.infinitelearning.wabisabi")
+        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.id.infinitelearning.wabisabiMacro")
 // Albert
 //        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.iOSTest")
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Unresolved error \(error), \(error.userInfo)")
             }
         })
 
@@ -58,7 +58,7 @@ class PersistanceManager {
         save()
     }
     
-    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines, productType: String) {
+    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines, productType: String, isDone : Bool) {
         let product = Product(context: persistentContainer.viewContext)
         product.id = "\(UUID())"
         product.brand = brand
@@ -68,6 +68,7 @@ class PersistanceManager {
         product.picture = picture
         product.routineproduct = routine
         product.productType = productType
+        product.isDone = isDone
         save()
         print ("DATA SAVED")
     }
@@ -198,9 +199,10 @@ class PersistanceManager {
         print("SET PRODUUUUUCT")
     }
     
-    func setReminder(reminderTime: String) {
+    func setReminder(reminderTime: String, routine: Routines) {
         let reminder = Reminder(context: persistentContainer.viewContext)
         reminder.reminderTime = reminderTime
+        reminder.routinereminder = routine
         save()
     }
     
@@ -210,6 +212,20 @@ class PersistanceManager {
         routine.isEveryday = isEveryday
         routine.name = name
         routine.startHabit = startHabit
+        routine.userroutine = fetchUser()
+        save()
+        
+        if let routineID = routine.id {
+            UserDefaults.standard.set(routineID, forKey: "routineID")
+            print("Routine ID \(routineID) has been saved")
+        }
+    }
+    
+    func setRoutine(isEveryday: Bool, name: String) {
+        let routine = Routines(context: persistentContainer.viewContext)
+        routine.id = "\(UUID())"
+        routine.isEveryday = isEveryday
+        routine.name = name
         routine.userroutine = fetchUser()
         save()
         
@@ -234,6 +250,22 @@ class PersistanceManager {
             print("Routine ID \(routineID) has been saved")
         }
     }
+    
+//    func setRoutineAndFetch(isEveryday: Bool, name: String) -> Routines{
+//        let routine = Routines(context: persistentContainer.viewContext)
+//        routine.id = "\(UUID())"
+//        routine.isEveryday = isEveryday
+//        routine.name = name
+//        routine.userroutine = fetchUser()
+//        save()
+//        
+//        if let routineID = routine.id {
+//            UserDefaults.standard.set(routineID, forKey: "routineID")
+//            print("Routine ID \(routineID) has been saved")
+//        }
+//        
+//        return routine
+//    }
     
     func setRoutine(isEveryday: Bool, startHabit: Date, name: String, schedules: [Schedule]) {
         let routine = Routines(context: persistentContainer.viewContext)
@@ -336,6 +368,22 @@ class PersistanceManager {
     
     func fetchReminder() -> [Reminder] {
         let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        
+        var reminder: [Reminder] = []
+        
+        do {
+            reminder = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error fetching authors")
+        }
+        
+        return reminder
+    }
+    
+    
+    func fetchReminder(routine: Routines) -> [Reminder] {
+        let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        request.predicate = NSPredicate(format: "routinereminder = %@", routine)
         
         var reminder: [Reminder] = []
         
