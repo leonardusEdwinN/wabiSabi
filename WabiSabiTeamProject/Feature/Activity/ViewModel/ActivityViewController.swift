@@ -27,29 +27,136 @@ class ActivityViewController: UIViewController {
     var skinCareRoutines: [Routines]!
     var selectedIndex : Int = 0
     var tutorialIndex : Int = 1
+    var currentStatus : StatusRoutine = StatusRoutine.isToDo
     
     var currentTableView: [Routines] = []
     var todoTableView: [Routines] = []
     var completedTableView: [Routines] = []
     var skippedTableView: [Routines] = []
     
+    let allRoutines = PersistanceManager.shared.fetchRoutines()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableViewDataByStatus()
         configureNavigationBar()
+        generateDailyRoutine()
         setUpTableView()
         configureBackground()
         configureTutorial()
-        setUpcircularProgress()
-        configureTableViewDataByStatus()
         configureSegmented()
+        setUpcircularProgress()
+        setGradientBackground()
+//        backgroundPurple.backgroundColor = UIColor.systemGreen
+    }
+    
+    func filterTodayRoutine(routines: [Routines]) -> [Routines] {
+        let calendar = Calendar.current
+        let todayRoutine = routines.filter({calendar.isDateInToday(($0.routineDate ?? Date.yesterday) as Date)})
+        return todayRoutine
+    }
+    
+    func generateDailyRoutine() {
+        // Logic nya itu, ketika masuk app apabila kita belom generate maka akan mengenerate routine untuk 'besok' yang mana kondisinya adalah isEveryday == true || routines yang memiliki schedules hari esok
+        let dayTommorow = Date.tomorrow
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let dayInWeek = dateFormatter.string(from: dayTommorow)
+        var dayIndex : Int = 0
+        
+        if dayInWeek == "Sunday" {
+            dayIndex = 0
+        } else if dayInWeek == "Monday" {
+            dayIndex = 1
+        } else if dayInWeek == "Tuesday" {
+            dayIndex = 2
+        } else if dayInWeek == "Wednesday" {
+            dayIndex = 3
+        } else if dayInWeek == "Thursday" {
+            dayIndex = 4
+        } else if dayInWeek == "Friday" {
+            dayIndex = 5
+        } else if dayInWeek == "Saturday" {
+            dayIndex = 6
+        }
+
+        // Filter schedules adalah besok atau isEveryday == true
+        let routinesWithScheduleOrEveryDay = allRoutines.filter({$0.schedules?.contains(dayIndex) ?? false || $0.isEveryday == true})
+    
+        print("CREATEEEEE")
+        print(dayInWeek)
+        print(dayIndex)
+        print(routinesWithScheduleOrEveryDay)
+        
+        // user default isGenerateToday == true -> tidak generate
+        // user default isGenerateToday == false -> generate
+        // user defailt lastGenerate == isToday -> tidak generate
+        // user defailt lastGenerate == isYesterday -> generate
+        // if lastGenerate == isYesterday || isGenerateToday == false -> generate / set isGenerateToday = true & lastGenerate = isToday
+        let lastGenerateTime = UserDefaults.standard.object(forKey: "lastGenerateTime") as? Date
+//        let isGeneratedToday = UserDefaults.standard.bool(forKey: "isGeneratedToday")
+        
+        if (lastGenerateTime?.weekday != Date().weekday || lastGenerateTime == nil) {
+            UserDefaults.standard.set(Date(), forKey: "lastGenerateTime")
+            UserDefaults.standard.set(true, forKey: "isGeneratedToday")
+            
+            for generateRoutine in routinesWithScheduleOrEveryDay {
+                print("GENERATEEE")
+                PersistanceManager.shared.setRoutine(isEveryday: generateRoutine.isEveryday, name: generateRoutine.name!, routineDate: Date.tomorrow)
+                print(generateRoutine.name)
+                print(generateRoutine.schedules?.allObjects)
+                let products = generateRoutine.routineproduct?.allObjects as! [Product]
+                for product in products {
+                    PersistanceManager.shared.setProduct(name: product.name!)
+                    
+                    print("routineproduct")
+                    print(product.routineproduct)
+                    print(product.name)
+                    
+                }
+                print(lastGenerateTime?.weekday)
+                print(Date().weekday)
+                print(lastGenerateTime?.weekday == Date().weekday)
+            }
+        } else {
+            print("GA USAH GENERATE LAGI")
+            print(lastGenerateTime?.weekday)
+            print(Date().weekday)
+            print(lastGenerateTime?.weekday == Date().weekday)
+        }
+        
+        
+       
+    }
+    
+    func setGradientBackground() {
+        let colorTop =  getUIColor(hex: "#E6D2C6")?.cgColor
+        let colorBottom = getUIColor(hex: "#D4CFDE")?.cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.frame = self.view.bounds
+        
+        
+        backgroundPurple.layer.insertSublayer(gradientLayer, at:1)
     }
     
     func configureTableViewDataByStatus() {
-        skinCareRoutines = PersistanceManager.shared.fetchRoutines()
+        skinCareRoutines = filterTodayRoutine(routines: allRoutines)
         todoTableView = skinCareRoutines.filter({$0.isCompleted == false && $0.isSkipped == false})
         completedTableView = skinCareRoutines.filter({$0.isCompleted == true})
         skippedTableView = skinCareRoutines.filter({$0.isSkipped == true})
-        currentTableView = todoTableView
+        
+        if currentStatus == StatusRoutine.isToDo {
+            currentTableView = todoTableView
+        } else if currentStatus == StatusRoutine.isSkipped {
+            currentTableView = skippedTableView
+        } else {
+            currentTableView = completedTableView
+        }
     }
     
     func configureSegmented() {
@@ -111,7 +218,8 @@ class ActivityViewController: UIViewController {
         
         circularProgress.progressColor = UIColor.white
         circularProgress.trackColor = UIColor.systemGray4
-        circularProgress.percentageValue = CGFloat(percentage)
+        circularProgress.percentageValue = CGFloat(percentage) / 100
+        circularProgressPercentageLabel.text = "\(Int(percentage))%"
     }
     
     private func setUpTableView() {
@@ -137,10 +245,13 @@ class ActivityViewController: UIViewController {
     @IBAction func changeTableView(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             currentTableView = todoTableView
+            currentStatus = StatusRoutine.isToDo
         } else if sender.selectedSegmentIndex == 1 {
             currentTableView = completedTableView
+            currentStatus = StatusRoutine.isCompleted
         } else {
             currentTableView = skippedTableView
+            currentStatus = StatusRoutine.isSkipped
         }
         
         routineTableView.reloadData()
@@ -257,6 +368,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
                 productDoneCount += 1
             }
         }
+        
         let closeAction = UIContextualAction(style: .normal, title:  "Finish", handler: { [self] (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isCompleted ,status: true)
             if (self.currentTableView[indexPath.row].isSkipped == true) {
@@ -271,7 +383,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
             success(true)
         })
         closeAction.image = UIImage(named: "tick")
-        closeAction.backgroundColor = .systemGreen
+        closeAction.backgroundColor = getUIColor(hex: "#CDCBDB")
         
         return UISwipeActionsConfiguration(actions: [closeAction])
     }
@@ -286,6 +398,16 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
+        let productsByRoutine = PersistanceManager.shared.fetchProduct(routine: currentTableView[indexPath.row])
+        var productDoneCount : Int = 0
+        
+        for product in productsByRoutine {
+            PersistanceManager.shared.changeProductStatus(id: product.id!, status: false)
+            if product.isDone {
+                productDoneCount += 1
+            }
+        }
+        
         let modifyAction = UIContextualAction(style: .normal, title:  "Skip", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isSkipped, status: true)
             
@@ -295,13 +417,13 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
             
             self.configureTableViewDataByStatus()
             self.configureSegmented()
-            self.setUpTableView()
             self.setUpcircularProgress()
-            tableView.reloadData()
+            self.setUpTableView()
             print("SKIP")
             success(true)
+            tableView.reloadData()
         })
-        modifyAction.backgroundColor = .red
+        modifyAction.backgroundColor = getUIColor(hex: "#CDCBDB")
         
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
@@ -310,5 +432,47 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
 extension ActivityViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         PresentationCalenderController(presentedViewController: presented, presenting: presenting)
+    }
+}    
+
+func getUIColor(hex: String, alpha: Double = 1.0) -> UIColor? {
+    var cleanString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+    if (cleanString.hasPrefix("#")) {
+        cleanString.remove(at: cleanString.startIndex)
+    }
+
+    if ((cleanString.count) != 6) {
+        return nil
+    }
+
+    var rgbValue: UInt32 = 0
+    Scanner(string: cleanString).scanHexInt32(&rgbValue)
+
+    return UIColor(
+        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+        alpha: CGFloat(1.0)
+    )
+}
+
+extension Date {
+    static var yesterday: Date { return Date().dayBefore }
+    static var tomorrow:  Date { return Date().dayAfter }
+    var dayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var dayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    var month: Int {
+        return Calendar.current.component(.month,  from: self)
+    }
+    var isLastDayOfMonth: Bool {
+        return dayAfter.month != month
     }
 }

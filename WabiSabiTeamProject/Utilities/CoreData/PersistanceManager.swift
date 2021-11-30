@@ -195,6 +195,7 @@ class PersistanceManager {
         product.routineproduct = fetchRoutine(id: UserDefaults.standard.string(forKey: "routineID")!)
         product.userproduct = fetchUser()
         save()
+        print("SET PRODUUUUUCT")
     }
     
     func setReminder(reminderTime: String) {
@@ -218,12 +219,14 @@ class PersistanceManager {
         }
     }
     
-    func setRoutine(isEveryday: Bool, name: String) {
+    func setRoutine(isEveryday: Bool, name: String, routineDate: Date) {
         let routine = Routines(context: persistentContainer.viewContext)
         routine.id = "\(UUID())"
         routine.isEveryday = isEveryday
         routine.name = name
         routine.userroutine = fetchUser()
+        
+        routine.routineDate = routineDate
         save()
         
         if let routineID = routine.id {
@@ -507,4 +510,5 @@ enum StatusRoutine {
 enum StatusRoutine {
     case isCompleted
     case isSkipped
+    case isToDo
 }
