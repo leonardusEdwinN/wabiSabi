@@ -609,8 +609,8 @@
                                     <constraint firstAttribute="height" constant="1" id="wfq-W1-8z1"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCq-AG-33l">
-                                <rect key="frame" x="50" y="226" width="290" height="61"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCq-AG-33l">
+                                <rect key="frame" x="30" y="226" width="330" height="61"/>
                                 <string key="text">Awesome! 
 Now, what’s your name?</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -650,7 +650,7 @@ Now, what’s your name?</string>
                             <constraint firstItem="Qwa-zJ-EA7" firstAttribute="bottom" secondItem="F3B-UF-sJ4" secondAttribute="bottom" constant="30" id="2rM-Ss-9A7"/>
                             <constraint firstItem="1Fd-hE-cbS" firstAttribute="leading" secondItem="Qwa-zJ-EA7" secondAttribute="leading" constant="50" id="3ji-Jp-P1e"/>
                             <constraint firstItem="Qwa-zJ-EA7" firstAttribute="trailing" secondItem="ioU-nI-fzm" secondAttribute="trailing" constant="30" id="4vV-8b-liV"/>
-                            <constraint firstItem="QCq-AG-33l" firstAttribute="leading" secondItem="Qwa-zJ-EA7" secondAttribute="leading" constant="50" id="6EH-1L-q4K"/>
+                            <constraint firstItem="QCq-AG-33l" firstAttribute="leading" secondItem="Qwa-zJ-EA7" secondAttribute="leading" constant="30" id="6EH-1L-q4K"/>
                             <constraint firstItem="1Fd-hE-cbS" firstAttribute="centerX" secondItem="gnE-6C-L5O" secondAttribute="centerX" id="7NF-cd-oZ0"/>
                             <constraint firstItem="IJ1-Hx-YYy" firstAttribute="leading" secondItem="gnE-6C-L5O" secondAttribute="leading" constant="80" id="FFX-6g-yUe"/>
                             <constraint firstItem="IJ1-Hx-YYy" firstAttribute="centerY" secondItem="gnE-6C-L5O" secondAttribute="centerY" id="Hf7-AB-Tkc"/>
@@ -667,7 +667,7 @@ Now, what’s your name?</string>
                             <constraint firstAttribute="trailing" secondItem="Sd9-lL-Zco" secondAttribute="trailing" constant="100" id="dFk-Mf-XsX"/>
                             <constraint firstItem="CDY-wN-vFQ" firstAttribute="top" secondItem="Qwa-zJ-EA7" secondAttribute="top" constant="30" id="pvh-Cr-VCj"/>
                             <constraint firstItem="Qwa-zJ-EA7" firstAttribute="bottom" secondItem="RgG-Fm-M96" secondAttribute="bottom" constant="30" id="rrm-Fg-hSO"/>
-                            <constraint firstItem="Qwa-zJ-EA7" firstAttribute="trailing" secondItem="QCq-AG-33l" secondAttribute="trailing" constant="50" id="tSv-PA-MiB"/>
+                            <constraint firstItem="Qwa-zJ-EA7" firstAttribute="trailing" secondItem="QCq-AG-33l" secondAttribute="trailing" constant="30" id="tSv-PA-MiB"/>
                             <constraint firstItem="Sd9-lL-Zco" firstAttribute="leading" secondItem="gnE-6C-L5O" secondAttribute="leading" constant="100" id="uNn-A6-YPV"/>
                             <constraint firstItem="ioU-nI-fzm" firstAttribute="leading" secondItem="Qwa-zJ-EA7" secondAttribute="leading" constant="30" id="wIF-eH-hlA"/>
                         </constraints>
