@@ -16,6 +16,8 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var buttonCreateYourOwn: UIButton!
     
     var sectionSelected: Int = 0
+    var selectedCategory: String = ""
+    var selectedSubCategory : SubCategories!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,8 @@ class ExploreViewController: UIViewController {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 34)
         createYourOwnHabitLabel.font = UIFont.boldSystemFont(ofSize: 22)
         
-        buttonCreateYourOwn.tintColor = UIColor(named: "ColorPrimary")
+//        buttonCreateYourOwn.tintColor = UIColor(named: "ColorPrimary")
+        buttonCreateYourOwn.backgroundColor = UIColor(named: "ColorPrimary")
         
         let whiteGradient = CAGradientLayer()
         whiteGradient.colors = [UIColor(red: 1, green: 1, blue: 1, alpha: 0.8).cgColor, UIColor(red: 1, green: 1, blue: 1, alpha: 0.4).cgColor]
@@ -54,10 +57,52 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryLabel.text = Utilities().category[indexPath.section].categoryName
         cell.data = Utilities().category[indexPath.section]
         cell.sectionSelected = indexPath.section
+        cell.cellDelegate = self
+        
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
+    
+}
+
+
+extension ExploreViewController : CollectionViewCellDelegate{
+    func didTapAtCell(section: Int, cellIndex: IndexPath, subcategoriesData: SubCategories) {
+        print("Data Categories : \(Utilities().category[section].categoryName)")
+        print("Data SubCategories : \(subcategoriesData.habitName)")
+        
+        self.selectedCategory = Utilities().category[section].categoryName
+        self.selectedSubCategory = subcategoriesData
+        
+        
+        self.performSegue(withIdentifier: "goToNewHabitVC", sender: self)
+//        goToNewHabitVC
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let newHabitVC = segue.destination as? NewHabitViewController else {
+            return
+        }
+        
+        
+        switch self.selectedCategory{
+        case "Face" :
+            newHabitVC.arrayRoutine = ["name","start", "schedule","headerp", "products", "reminder", "timer", "location"]
+            break
+        case "Body & Scalp" :
+            newHabitVC.arrayRoutine = ["name","start", "schedule","headerp", "products", "reminder", "timer", "location"]
+            break
+            
+        default:
+            //Tidak Mempunyai Product
+            newHabitVC.arrayRoutine = ["name","start", "schedule", "reminder", "timer", "location"]
+            break
+        }
+        
+    }
+    
 }

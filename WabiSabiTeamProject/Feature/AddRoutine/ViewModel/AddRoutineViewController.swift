@@ -123,9 +123,11 @@ class AddRoutineViewController : UIViewController{
                 return
             }
             
-            guard let TimerReminderVC = nav.topViewController as? TimerReminderViewController else {
+            guard let timerReminderVC = nav.topViewController as? TimerReminderViewController else {
                 return
             }
+            timerReminderVC.selectedRoutine = self.selectedRoutine
+            
         }else if segue.identifier == "moveToLocationReminder"{
             
             guard let nav = segue.destination as? UINavigationController else {
@@ -136,7 +138,7 @@ class AddRoutineViewController : UIViewController{
                 return
             }
         }else if segue.identifier == "goToDetailSkinCareGuide"{
-            print(selectedRoutine.name)
+//            print(selectedRoutine.name)
             guard let vc = segue.destination as? SkinCareGuideViewController else {
                 return
             }
@@ -268,7 +270,7 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             //button
             heightForRow = 110
         }else if(indexPath.row == products.count + 1){
-            //save button
+            //be reminded button
             heightForRow = 80
         }else if(indexPath.row == products.count + 2){
             //timer reminder

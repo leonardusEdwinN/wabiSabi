@@ -19,16 +19,26 @@ class OverlayView: UIViewController {
     @IBAction func saveButtonPressed(_ sender: Any) {
         
         let timeFormatter = DateFormatter()
-        timeFormatter.timeStyle = DateFormatter.Style.short
+        timeFormatter.dateFormat = "HH:mm"
+//        timeFormatter.timeStyle = DateFormatter.Style.short
+        timeFormatter.timeZone = TimeZone.current
         
         guard let time = self.timePickerAlarm else{
             fatalError("Fatal error: Unexpectedly found nil while implicitly unwrapping an Optional value ")
         }
 
         let strDate = timeFormatter.string(from: time.date)
-            // do what you want to do with the string.
+//        let timeFormated = timeFormatter.date(from: strDate)
+        print("waktu FORMAT STR : \(strDate)")
+//        print("waktu FORMAT DATE : \(timeFormated)")
         
-        delegate?.buttonSavePressed(time: "\(strDate)")
+//        if let reminder = timeFormated {
+            delegate?.buttonSavePressed(time: strDate)
+//        }
+        
+        
+//        timeFormatter.
+        
 //        print("time : \(strDate)")
     }
     @IBAction func closeButtonPressed(_ sender: Any) {

@@ -17,13 +17,13 @@ class PersistanceManager {
         let description = container.persistentStoreDescriptions.first
          
          // Load both stores
-        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.id.infinitelearning.wabisabi")
+        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.id.infinitelearning.wabisabiMacro")
 // Albert
 //        description?.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.iOSTest")
         
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Unresolved error \(error), \(error.userInfo)")
             }
         })
 
@@ -197,9 +197,10 @@ class PersistanceManager {
         save()
     }
     
-    func setReminder(reminderTime: String) {
+    func setReminder(reminderTime: String, routine: Routines) {
         let reminder = Reminder(context: persistentContainer.viewContext)
         reminder.reminderTime = reminderTime
+        reminder.routinereminder = routine
         save()
     }
     
@@ -333,6 +334,22 @@ class PersistanceManager {
     
     func fetchReminder() -> [Reminder] {
         let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        
+        var reminder: [Reminder] = []
+        
+        do {
+            reminder = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error fetching authors")
+        }
+        
+        return reminder
+    }
+    
+    
+    func fetchReminder(routine: Routines) -> [Reminder] {
+        let request: NSFetchRequest<Reminder> = Reminder.fetchRequest()
+        request.predicate = NSPredicate(format: "routinereminder = %@", routine)
         
         var reminder: [Reminder] = []
         
