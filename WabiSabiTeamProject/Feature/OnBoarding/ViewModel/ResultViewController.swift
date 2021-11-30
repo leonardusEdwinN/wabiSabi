@@ -28,7 +28,7 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // UserDefaults.standard.set(true, forKey: "isCompleteOnBoarding")
+        UserDefaults.standard.set(true, forKey: "isCompleteOnBoarding")
 
         setUI()
         
@@ -53,7 +53,6 @@ class ResultViewController: UIViewController {
         let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy HH:mm"
         
-        /*
         PersistanceManager.shared.setUser(
             dateOfBirth: birthdate,
             gender: Utilities().genders[UserDefaults.standard.integer(forKey: "gender")],
@@ -62,7 +61,7 @@ class ResultViewController: UIViewController {
             localization: "en",
             name: UserDefaults.standard.string(forKey: "name") ?? "",
             skinType: Utilities().skinTypeRoutineProduct[0].skinType[skinTypeIndex].name)
-        */
+        
         checkProduct()
         
     }
@@ -94,7 +93,7 @@ class ResultViewController: UIViewController {
     func checkProduct(){
         let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
         for routineIndex in 0...1 {
-            // PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name)
+            PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name)
             
             for index in 0..<productIndex.count {
                 let product = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]
@@ -102,7 +101,7 @@ class ResultViewController: UIViewController {
                 if !(product.description == "") {
                     skinTypeRoutine[routineIndex].products.append(product)
                     
-                    // PersistanceManager.shared.setProduct(name: product.name)
+                    PersistanceManager.shared.setProduct(name: product.name)
                 }
             }
         }
