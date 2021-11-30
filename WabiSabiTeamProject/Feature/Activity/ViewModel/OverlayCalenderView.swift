@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class OverlayCalenderView: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -30,6 +31,7 @@ class OverlayCalenderView: UIViewController {
             // do what you want to do with the string.
         
         delegate?.buttonSavePressed(time: "\(strDate)")
+        self.dismiss(animated: true, completion: nil)
         print("time : \(strDate)")
     }
     

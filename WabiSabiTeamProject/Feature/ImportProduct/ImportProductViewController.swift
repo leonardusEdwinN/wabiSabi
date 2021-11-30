@@ -36,7 +36,7 @@ class ImportProductViewController : UIViewController{
                let image = insertData.picture{
                 
                 print("name : \(name), brand : \(brand), product type:\(productType), expdate: \(expiredDate), pao: \(periodAfterOpen)")
-                PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate, name: name, periodAfterOpening: periodAfterOpen, picture: image, routine: selectedRoutineToImport, productType: productType)
+                PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate, name: name, periodAfterOpening: periodAfterOpen, picture: image, routine: selectedRoutineToImport, productType: productType, isDone: false)
             }
         }
         

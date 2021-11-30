@@ -9,7 +9,8 @@ import UIKit
 
 
 protocol CollectionViewCellDelegate: class {
-    func collectionView(collectionviewcell: SubcategoryCollectionViewCell?, index: Int, didTappedInTableViewCell: CategoryTableViewCell)
+//    func collectionView(collectionviewcell: SubcategoryCollectionViewCell?, index: Int, didTappedInTableViewCell: CategoryTableViewCell)
+    func didTapAtCell(section : Int, cellIndex : IndexPath, subcategoriesData : SubCategories)
     // other delegate methods that you can define to perform action in viewcontroller
 }
 
@@ -67,5 +68,8 @@ extension CategoryTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         UserDefaults.standard.set(sectionSelected, forKey: "sectionHabitSelected")
         UserDefaults.standard.set(indexPath.row, forKey: "habitSelected")
+        print(" sectionSelected  \(sectionSelected) : \(indexPath.row)")
+        
+        cellDelegate?.didTapAtCell(section: sectionSelected, cellIndex: indexPath, subcategoriesData: data.subcategories[indexPath.row])
     }
 }
