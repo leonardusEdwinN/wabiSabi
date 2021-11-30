@@ -81,20 +81,15 @@ class ActivityViewController: UIViewController {
         }
 
         // Filter schedules adalah besok atau isEveryday == true
-        let routinesWithScheduleOrEveryDay = allRoutines.filter({$0.schedules?.contains(dayIndex) ?? false || $0.isEveryday == true})
+        let routinesWithScheduleOrEveryDay = allRoutines.filter({$0.schedules?
+            .contains(dayIndex) ?? false || $0.isEveryday == true && $0.startHabit != nil})
     
         print("CREATEEEEE")
         print(dayInWeek)
         print(dayIndex)
         print(routinesWithScheduleOrEveryDay)
         
-        // user default isGenerateToday == true -> tidak generate
-        // user default isGenerateToday == false -> generate
-        // user defailt lastGenerate == isToday -> tidak generate
-        // user defailt lastGenerate == isYesterday -> generate
-        // if lastGenerate == isYesterday || isGenerateToday == false -> generate / set isGenerateToday = true & lastGenerate = isToday
         let lastGenerateTime = UserDefaults.standard.object(forKey: "lastGenerateTime") as? Date
-//        let isGeneratedToday = UserDefaults.standard.bool(forKey: "isGeneratedToday")
         
         if (lastGenerateTime?.weekday != Date().weekday || lastGenerateTime == nil) {
             UserDefaults.standard.set(Date(), forKey: "lastGenerateTime")
@@ -103,30 +98,23 @@ class ActivityViewController: UIViewController {
             for generateRoutine in routinesWithScheduleOrEveryDay {
                 print("GENERATEEE")
                 PersistanceManager.shared.setRoutine(isEveryday: generateRoutine.isEveryday, name: generateRoutine.name!, routineDate: Date.tomorrow)
-                print(generateRoutine.name)
-                print(generateRoutine.schedules?.allObjects)
                 let products = generateRoutine.routineproduct?.allObjects as! [Product]
                 for product in products {
                     PersistanceManager.shared.setProduct(name: product.name!)
                     
                     print("routineproduct")
-                    print(product.routineproduct)
-                    print(product.name)
                     
                 }
-                print(lastGenerateTime?.weekday)
                 print(Date().weekday)
                 print(lastGenerateTime?.weekday == Date().weekday)
             }
         } else {
             print("GA USAH GENERATE LAGI")
-            print(lastGenerateTime?.weekday)
             print(Date().weekday)
             print(lastGenerateTime?.weekday == Date().weekday)
         }
         
         
-       
     }
     
     func setGradientBackground() {
