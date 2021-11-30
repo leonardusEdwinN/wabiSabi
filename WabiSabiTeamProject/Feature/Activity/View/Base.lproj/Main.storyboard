@@ -102,7 +102,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffm-LO-AvL">
                                 <rect key="frame" x="0.0" y="363" width="414" height="493"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.70840262099999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dh-dK-NJC" customClass="CircularProgressView" customModule="WabiSabiTeamProject" customModuleProvider="target">
                                 <rect key="frame" x="134.66666666666666" y="178" width="144.99999999999997" height="145"/>
@@ -163,7 +163,7 @@
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T3c-gO-kzX">
                                 <rect key="frame" x="0.0" y="428" width="414" height="428"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" id="bEX-J1-A2p">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>

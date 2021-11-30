@@ -8,7 +8,10 @@
 import UIKit
 
 class RoutineTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var routineName: UILabel!
+    @IBOutlet weak var routineDate: UILabel!
+    @IBOutlet weak var routineImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,4 +23,9 @@ class RoutineTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setup(with routine: Routines) {
+        name.text = routine.name
+        brand.text = routine.brand
+        type.text = routine.type
+    }
 }
