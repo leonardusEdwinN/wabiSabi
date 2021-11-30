@@ -12,6 +12,7 @@ class RoutinesTableViewCell: UITableViewCell {
     @IBOutlet weak var routineContentView: UIView!
     @IBOutlet weak var routineProduct: UILabel!
     @IBOutlet weak var routineColor: UIView!
+    @IBOutlet weak var routineBackground: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +32,8 @@ class RoutinesTableViewCell: UITableViewCell {
         routineName.text = routine.name
         routineProduct.text = "\(Int(routineProgress)) / \(Int(routineProductAmount))"
 
+        routineBackground.backgroundColor = UIColor.clear
+        
         routineContentView.backgroundColor = UIColor.white
         routineContentView.layer.cornerRadius = 15.0
         routineContentView.layer.shadowColor = UIColor.gray.cgColor

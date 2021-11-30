@@ -81,6 +81,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5nh-vL-UmX" firstAttribute="centerY" secondItem="QT3-cH-sge" secondAttribute="centerY" id="3ma-DE-PgJ"/>
                             <constraint firstItem="5nh-vL-UmX" firstAttribute="leading" secondItem="fE9-BI-LEH" secondAttribute="trailing" constant="12" id="D0X-pF-gtN"/>
@@ -93,6 +94,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="QT3-cH-sge" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Zfz-MQ-sWV"/>
                     <constraint firstItem="QT3-cH-sge" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="okT-q6-MRA"/>
@@ -101,7 +103,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="routineBackground" destination="H2p-sc-9uM" id="qzN-Es-mM9"/>
                 <outlet property="routineColor" destination="der-IZ-fAo" id="Igf-1e-FhA"/>
                 <outlet property="routineContentView" destination="QT3-cH-sge" id="Wcr-eU-WIx"/>
                 <outlet property="routineName" destination="mCW-SJ-wcL" id="48L-7F-7I4"/>

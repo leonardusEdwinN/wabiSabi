@@ -33,6 +33,7 @@
         <attribute name="isEveryday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isSkipped" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="routineDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="startHabit" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Location" inverseName="routineslocation" inverseEntity="Location"/>
         <relationship name="routineproduct" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product" inverseName="routineproduct" inverseEntity="Product"/>
@@ -88,6 +89,8 @@
         <element name="Product" positionX="-178.7372436523438" positionY="139.6837768554688" width="128" height="194"/>
         <element name="Reminder" positionX="155.604248046875" positionY="-255.0059356689453" width="128" height="73"/>
         <element name="Routines" positionX="-6.75592041015625" positionY="-152.2463684082031" width="128" height="208"/>
+        <element name="Reminder" positionX="155.604248046875" positionY="-255.0059356689453" width="128" height="59"/>
+        <element name="Routines" positionX="-6.75592041015625" positionY="-152.2463684082031" width="128" height="209"/>
         <element name="Schedule" positionX="355.9967041015625" positionY="181.3804321289062" width="128" height="59"/>
         <element name="Subcategory" positionX="202.573486328125" positionY="47.44537353515625" width="128" height="89"/>
         <element name="User" positionX="-341.2313842773438" positionY="-143.2836303710938" width="128" height="179"/>
