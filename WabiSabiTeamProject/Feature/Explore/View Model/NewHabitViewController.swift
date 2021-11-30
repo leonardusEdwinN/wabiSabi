@@ -61,12 +61,11 @@ class NewHabitViewController : UIViewController{
         
         hideKeyboardWhenTappedAround()
         
-        
     }
     
     func fetchDataProduct(){
         self.products = PersistanceManager.shared.fetchProduct(routine: self.selectedRoutine)
-//        print("PRODUCT : \(products.count)")
+        print("PRODUCT : \(products.count)")
     }
     
     func hideKeyboardWhenTappedAround() {
@@ -310,7 +309,7 @@ extension NewHabitViewController {
             }
             
             addProductVC.selectedRoutine = self.selectedRoutine
-            addProductVC.delegate = self
+            addProductVC.delegateAddProduct = self
             addProductVC.selectedProduct = self.selectedProduct
             addProductVC.isEdit = (self.selectedProduct != nil) ? true : false
             addProductVC.modalPresentationStyle = .fullScreen
@@ -333,7 +332,9 @@ extension NewHabitViewController {
 }
 
 
-extension NewHabitViewController : DidSelectButtonAtStartHabitDelegate{
+extension NewHabitViewController : DidSelectButtonAtStartHabitDelegate, OverlayButtonProtocol {
+
+    
     func didtapTodayButton() {
         print("TODAY")
         startHabit = Date()
@@ -348,10 +349,36 @@ extension NewHabitViewController : DidSelectButtonAtStartHabitDelegate{
     
     func didtapCustomButton() {
         print("CUSTOM")
-        startHabit = Date()
+        let slideVC = OverlayCalenderView()
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        slideVC.delegate = self
+        self.present(slideVC, animated: true, completion: nil)
     }
     
+    func buttonSavePressed(time: String) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        
+        
+        if let date = dateFormatter.date(from: time){
+            
+            print("START HABIT CUSTOM : \(date)")
+            self.startHabit  = date
+        }
+        
+        
+    }
     
+}
+
+
+extension NewHabitViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationCalenderController(presentedViewController: presented, presenting: presenting)
+    }
 }
 
 
@@ -442,13 +469,35 @@ extension NewHabitViewController : AddProductDelegate{
     }
 }
 
-extension NewHabitViewController : SaveProductDelegate{
-    func saveProductAndReloadIt() {
-        print("Save")
+extension NewHabitViewController : SaveNewProductRoutineDelegate{
+    func saveNewProductRoutine(for product: ProductModel) {
+        var productTemp = Product(context: PersistanceManager.shared.persistentContainer.viewContext)
+        
+        productTemp.name = product.name
+        productTemp.picture = product.image
+        productTemp.brand = product.brand
+        productTemp.periodAfterOpening = product.openedDate
+        productTemp.productType = product.productType
+        productTemp.isDone = product.isDone
+        
+        products.append(productTemp)
+        
         DispatchQueue.main.async {
-            self.fetchDataProduct()
             self.habitTableView.reloadData()
             Loading.sharedInstance.hideIndicator()
         }
     }
+    
+    
 }
+
+//extension NewHabitViewController : SaveProductDelegate{
+//    func saveProductAndReloadIt() {
+//        print("Save")
+//        DispatchQueue.main.async {
+//            self.fetchDataProduct()
+//            self.habitTableView.reloadData()
+//            Loading.sharedInstance.hideIndicator()
+//        }
+//    }
+//}

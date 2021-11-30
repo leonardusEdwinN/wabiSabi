@@ -89,13 +89,18 @@ extension ExploreViewController : CollectionViewCellDelegate{
                 return
             }
             
-            PersistanceManager.shared.setRoutine(isEveryday: false, name: selectedSubCategory.habitName)
+//            PersistanceManager.shared.setRoutine(isEveryday: false, name: selectedSubCategory.habitName)
+//
+//            if let routineId = UserDefaults.standard.string(forKey: "routineID"){
+//                let newRoutine =  PersistanceManager.shared.fetchRoutine(id: routineId)
+//                newHabitVC.selectedRoutine = newRoutine
+//            }
             
-            if let routineId = UserDefaults.standard.string(forKey: "routineID"){
-                let newRoutine =  PersistanceManager.shared.fetchRoutine(id: routineId)
-                newHabitVC.selectedRoutine = newRoutine
-            }
             
+            var routineDummy = Routines(context: PersistanceManager.shared.persistentContainer.viewContext)
+            routineDummy.name = self.selectedSubCategory.habitName
+            
+            newHabitVC.selectedRoutine = routineDummy
             newHabitVC.subcategories = self.selectedSubCategory
             
             

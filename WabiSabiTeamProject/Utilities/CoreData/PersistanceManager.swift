@@ -221,6 +221,20 @@ class PersistanceManager {
         }
     }
     
+    func setRoutine(isEveryday: Bool, name: String) {
+        let routine = Routines(context: persistentContainer.viewContext)
+        routine.id = "\(UUID())"
+        routine.isEveryday = isEveryday
+        routine.name = name
+        routine.userroutine = fetchUser()
+        save()
+        
+        if let routineID = routine.id {
+            UserDefaults.standard.set(routineID, forKey: "routineID")
+            print("Routine ID \(routineID) has been saved")
+        }
+    }
+    
     func setRoutine(isEveryday: Bool, name: String, routineDate: Date) {
         let routine = Routines(context: persistentContainer.viewContext)
         routine.id = "\(UUID())"

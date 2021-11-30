@@ -60,6 +60,7 @@
 		1376BCD427561042008DD101 /* SelectWeekTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1376BCD227561042008DD101 /* SelectWeekTableViewCell.xib */; };
 		1376BCD72756170D008DD101 /* ProductHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCD52756170D008DD101 /* ProductHeaderTableViewCell.swift */; };
 		1376BCD82756170D008DD101 /* ProductHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1376BCD62756170D008DD101 /* ProductHeaderTableViewCell.xib */; };
+		1376BCDA27568EF6008DD101 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCD927568EF6008DD101 /* ProductModel.swift */; };
 		137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E32733D1D4008D1BCF /* SummaryViewController.swift */; };
 		137962E82733D4B3008D1BCF /* SummaryActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */; };
 		137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */; };
@@ -199,6 +200,7 @@
 		1376BCD227561042008DD101 /* SelectWeekTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWeekTableViewCell.xib; sourceTree = "<group>"; };
 		1376BCD52756170D008DD101 /* ProductHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		1376BCD62756170D008DD101 /* ProductHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		1376BCD927568EF6008DD101 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		137962E32733D1D4008D1BCF /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityTableViewCell.swift; sourceTree = "<group>"; };
 		137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -601,6 +603,7 @@
 			children = (
 				13169112274E50EF00049D3D /* View */,
 				13169111274E50E700049D3D /* ViewModel */,
+				1376BCD927568EF6008DD101 /* ProductModel.swift */,
 			);
 			path = AddProduct;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				130C926E275262A400A416F9 /* ImportTableViewCell.swift in Sources */,
 				1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */,
 				1376BCCB27560CFE008DD101 /* StartHabitTableViewCell.swift in Sources */,
+				1376BCDA27568EF6008DD101 /* ProductModel.swift in Sources */,
 				971434432750D6C00001AED7 /* EditProfileViewController.swift in Sources */,
 				13CD1F3127425D5100F537EB /* TimerReminderTableViewCell.swift in Sources */,
 				97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */,

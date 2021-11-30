@@ -12,6 +12,10 @@ protocol SaveProductDelegate{
     func saveProductAndReloadIt()
 }
 
+protocol SaveNewProductRoutineDelegate{
+    func saveNewProductRoutine(for product : ProductModel)
+}
+
 class AddProductViewController : UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     // MARK: variable
@@ -20,6 +24,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     var selectedRoutine: Routines!
     var productTypeArray: [ProductTypeModel] = []
     var delegate: SaveProductDelegate?
+    var delegateAddProduct: SaveNewProductRoutineDelegate?
     var selectedProduct: Product!
     var isEdit: Bool = false
     
@@ -36,6 +41,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
 //
 //        }
         
+        
         Loading.sharedInstance.showIndicator()
         
         if let name = textfieldProductName.text,
@@ -49,6 +55,8 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
             let imgStrBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
             
             print("name : \(name), brand : \(brand), product type:\(productType), expdate: \(expiredDate.date), pao: \(periodAfterOpen.date)")
+            
+            delegateAddProduct?.saveNewProductRoutine(for: ProductModel(image: imgStrBase64, name: name, brand: brand, productType: productType, openedDate: periodAfterOpen.date, expired: expiredDate.date, isDone: false))
             
             if selectedProduct != nil{
                 if let id = selectedProduct.id{
