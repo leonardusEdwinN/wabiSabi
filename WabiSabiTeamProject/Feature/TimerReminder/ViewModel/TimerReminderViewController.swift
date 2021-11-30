@@ -68,7 +68,6 @@ class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
     var selectedRoutine: Routines!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("SELECTED ROUTINE : \(selectedRoutine.name)")
         fetchDataReminder()
         
         viewCircle.layer.cornerRadius = viewCircle.frame.size.width / 2

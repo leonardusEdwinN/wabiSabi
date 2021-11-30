@@ -77,31 +77,48 @@ extension ExploreViewController : CollectionViewCellDelegate{
         self.selectedCategory = Utilities().category[section].categoryName
         self.selectedSubCategory = subcategoriesData
         
+            self.performSegue(withIdentifier: "goToNewHabitVC", sender: self)
         
-        self.performSegue(withIdentifier: "goToNewHabitVC", sender: self)
+        
 //        goToNewHabitVC
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        guard let newHabitVC = segue.destination as? NewHabitViewController else {
-            return
-        }
-        
-        
-        switch self.selectedCategory{
-        case "Face" :
-            newHabitVC.arrayRoutine = ["name","start", "schedule","headerp", "products", "reminder", "timer", "location"]
-            break
-        case "Body & Scalp" :
-            newHabitVC.arrayRoutine = ["name","start", "schedule","headerp", "products", "reminder", "timer", "location"]
-            break
+        if(segue.identifier == "goToNewHabitVC"){
+            guard let newHabitVC = segue.destination as? NewHabitViewController else {
+                return
+            }
             
-        default:
-            //Tidak Mempunyai Product
-            newHabitVC.arrayRoutine = ["name","start", "schedule", "reminder", "timer", "location"]
-            break
+            PersistanceManager.shared.setRoutine(isEveryday: false, name: selectedSubCategory.habitName)
+            
+            if let routineId = UserDefaults.standard.string(forKey: "routineID"){
+                let newRoutine =  PersistanceManager.shared.fetchRoutine(id: routineId)
+                newHabitVC.selectedRoutine = newRoutine
+            }
+            
+            newHabitVC.subcategories = self.selectedSubCategory
+            
+            
+            switch self.selectedCategory{
+            case "Face" :
+                newHabitVC.arrayRoutine = ["name","start", "schedule","headerp", "products","button", "reminder", "timer", "location"]
+                break
+            case "Body & Scalp" :
+                newHabitVC.arrayRoutine = ["name","start", "schedule","headerp", "products","button", "reminder", "timer", "location"]
+                break
+                
+            default:
+                //Tidak Mempunyai Product
+                newHabitVC.arrayRoutine = ["name","start", "schedule", "reminder", "timer", "location"]
+                break
+            }
+        }else{
+            
         }
+        
+        
+        
+        
         
     }
     

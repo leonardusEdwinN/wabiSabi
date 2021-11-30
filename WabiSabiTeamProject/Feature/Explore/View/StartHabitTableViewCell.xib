@@ -42,14 +42,17 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ilV-Te-Pw7">
                                 <rect key="frame" x="10" y="0.0" width="280" height="46"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qss-yd-3gM">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qss-yd-3gM">
                                         <rect key="frame" x="0.0" y="6" width="69.5" height="34.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="ColorPrimary"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Today" cornerStyle="large">
+                                        <buttonConfiguration key="configuration" style="tinted" title="Today" cornerStyle="large">
                                             <fontDescription key="titleFontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="buttonTodayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wSQ-iI-fXw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOZ-tG-8pC">
                                         <rect key="frame" x="79.5" y="6" width="107" height="34.5"/>
@@ -58,6 +61,9 @@
                                         <buttonConfiguration key="configuration" style="tinted" title="Tommorow">
                                             <fontDescription key="titleFontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="buttonTommorowPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mZ2-JO-HVz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4x-Sf-Pld">
                                         <rect key="frame" x="196.5" y="6" width="83.5" height="34.5"/>
@@ -66,6 +72,9 @@
                                         <buttonConfiguration key="configuration" style="tinted" title="Custom">
                                             <fontDescription key="titleFontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="buttonCustomPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="OtC-rb-8cx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -91,6 +100,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="buttonCustom" destination="V4x-Sf-Pld" id="zQ8-z3-CCy"/>
+                <outlet property="buttonToday" destination="Qss-yd-3gM" id="RBu-Ja-ReJ"/>
+                <outlet property="buttonTommorow" destination="bOZ-tG-8pC" id="cDt-Ik-T4b"/>
+            </connections>
             <point key="canvasLocation" x="794" y="41"/>
         </tableViewCell>
     </objects>

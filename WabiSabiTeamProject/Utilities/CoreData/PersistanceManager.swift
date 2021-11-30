@@ -58,7 +58,7 @@ class PersistanceManager {
         save()
     }
     
-    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines, productType: String) {
+    func setProduct(brand: String, expiredDate: Date, name: String, periodAfterOpening: Date, picture: String, routine: Routines, productType: String, isDone : Bool) {
         let product = Product(context: persistentContainer.viewContext)
         product.id = "\(UUID())"
         product.brand = brand
@@ -68,6 +68,7 @@ class PersistanceManager {
         product.picture = picture
         product.routineproduct = routine
         product.productType = productType
+        product.isDone = isDone
         save()
         print ("DATA SAVED")
     }
@@ -232,6 +233,22 @@ class PersistanceManager {
             print("Routine ID \(routineID) has been saved")
         }
     }
+    
+//    func setRoutineAndFetch(isEveryday: Bool, name: String) -> Routines{
+//        let routine = Routines(context: persistentContainer.viewContext)
+//        routine.id = "\(UUID())"
+//        routine.isEveryday = isEveryday
+//        routine.name = name
+//        routine.userroutine = fetchUser()
+//        save()
+//        
+//        if let routineID = routine.id {
+//            UserDefaults.standard.set(routineID, forKey: "routineID")
+//            print("Routine ID \(routineID) has been saved")
+//        }
+//        
+//        return routine
+//    }
     
     func setRoutine(isEveryday: Bool, startHabit: Date, name: String, schedules: [Schedule]) {
         let routine = Routines(context: persistentContainer.viewContext)

@@ -42,47 +42,68 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="znI-ur-Qcn">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="35"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGe-oR-dOo">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2A-UF-Vdg">
                                                 <rect key="frame" x="0.0" y="0.0" width="35.5" height="35"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="M"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="S"/>
+                                                <connections>
+                                                    <action selector="buttonSundayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YL4-n3-kgb"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRS-xU-eRl">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGe-oR-dOo">
                                                 <rect key="frame" x="40.5" y="0.0" width="36" height="35"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="T"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="M"/>
+                                                <connections>
+                                                    <action selector="buttonMondayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hbl-ps-N1u"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6N-Uh-3Mx">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRS-xU-eRl">
                                                 <rect key="frame" x="81.5" y="0.0" width="35.5" height="35"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="W"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="T"/>
+                                                <connections>
+                                                    <action selector="buttonTuesdayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ejK-9K-gRF"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hE-Fz-UIq">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6N-Uh-3Mx">
                                                 <rect key="frame" x="122" y="0.0" width="36" height="35"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="T"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="W"/>
+                                                <connections>
+                                                    <action selector="buttonWednesdayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="s0i-S9-N2G"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1N2-gt-Sm0">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hE-Fz-UIq">
                                                 <rect key="frame" x="163" y="0.0" width="35.5" height="35"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="F"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="T"/>
+                                                <connections>
+                                                    <action selector="buttonThursdayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1y0-a7-4bz"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtL-FN-eup">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1N2-gt-Sm0">
                                                 <rect key="frame" x="203.5" y="0.0" width="36" height="35"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="S"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="F"/>
+                                                <connections>
+                                                    <action selector="buttonFridayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lI3-AA-eMN"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2A-UF-Vdg">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UtL-FN-eup">
                                                 <rect key="frame" x="244.5" y="0.0" width="35.5" height="35"/>
                                                 <color key="tintColor" name="ColorPrimary"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" title="S"/>
+                                                <connections>
+                                                    <action selector="buttonSaturdayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4J9-YG-rKg"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -91,6 +112,9 @@
                                         <color key="tintColor" name="ColorPrimary"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Every Day"/>
+                                        <connections>
+                                            <action selector="buttonEverydayPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4lP-aT-XLx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -117,6 +141,16 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="buttonEveryday" destination="7e2-Aq-eST" id="2N5-dI-QBZ"/>
+                <outlet property="buttonFriday" destination="1N2-gt-Sm0" id="vWd-F6-5Gk"/>
+                <outlet property="buttonMonday" destination="yGe-oR-dOo" id="m9o-ne-Udd"/>
+                <outlet property="buttonSaturday" destination="UtL-FN-eup" id="We2-Nk-JxG"/>
+                <outlet property="buttonSunday" destination="j2A-UF-Vdg" id="0BD-Dk-mYu"/>
+                <outlet property="buttonThursday" destination="3hE-Fz-UIq" id="y0d-wz-sEu"/>
+                <outlet property="buttonTuesday" destination="IRS-xU-eRl" id="Tzi-9b-Enh"/>
+                <outlet property="buttonWednesday" destination="R6N-Uh-3Mx" id="4uE-g2-wwa"/>
+            </connections>
             <point key="canvasLocation" x="771.01449275362324" y="131.25"/>
         </tableViewCell>
     </objects>

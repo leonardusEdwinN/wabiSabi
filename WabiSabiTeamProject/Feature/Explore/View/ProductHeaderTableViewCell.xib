@@ -34,6 +34,9 @@
                         <color key="tintColor" name="ColorPrimary"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="Edit"/>
+                        <connections>
+                            <action selector="productHeaderPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="am4-bs-7fs"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -45,6 +48,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="editButton" destination="XVM-CZ-ANj" id="CeZ-DB-57q"/>
+            </connections>
             <point key="canvasLocation" x="139" y="100"/>
         </tableViewCell>
     </objects>
