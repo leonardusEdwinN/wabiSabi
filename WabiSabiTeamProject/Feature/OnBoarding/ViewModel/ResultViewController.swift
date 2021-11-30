@@ -8,7 +8,10 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet var background: UIView!
+    @IBOutlet weak var titleLabel1: UILabel!
+    @IBOutlet weak var titleLabel2: UILabel!
+    @IBOutlet weak var titleLabel3: UILabel!
     @IBOutlet weak var skinCareRoutineCollectionView: UICollectionView!
     
     var skinTypeIndex: Int = 0
@@ -24,7 +27,11 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // UserDefaults.standard.set(true, forKey: "isCompleteOnBoarding")
 
+        setUI()
+        
         skinCareRoutineCollectionView.delegate = self
         skinCareRoutineCollectionView.dataSource = self
         
@@ -35,11 +42,18 @@ class ResultViewController: UIViewController {
         calculateLevel()
     }
     
+    func setUI() {
+        titleLabel1.font = UIFont.boldSystemFont(ofSize: 28)
+        titleLabel2.font = UIFont.boldSystemFont(ofSize: 28)
+        titleLabel3.font = UIFont.boldSystemFont(ofSize: 28)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         let birthdate = UserDefaults.standard.object(forKey: "birthdate") as! Date
         let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy HH:mm"
         
+        /*
         PersistanceManager.shared.setUser(
             dateOfBirth: birthdate,
             gender: Utilities().genders[UserDefaults.standard.integer(forKey: "gender")],
@@ -48,8 +62,9 @@ class ResultViewController: UIViewController {
             localization: "en",
             name: UserDefaults.standard.string(forKey: "name") ?? "",
             skinType: Utilities().skinTypeRoutineProduct[0].skinType[skinTypeIndex].name)
-        
+        */
         checkProduct()
+        
     }
     
     func calculateLevel() {
@@ -73,19 +88,13 @@ class ResultViewController: UIViewController {
             levelIndex = 2
         }
         
-        levelLabel.text = "Level:  \(Utilities().levels[levelIndex].level)"
-        
-        
-        print("LEVEL INDEX : \(Utilities().levels[levelIndex].level)")
-        
         UserDefaults.standard.set(levelIndex, forKey: "levelIndex")
     }
     
     func checkProduct(){
         let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
-        print("PRODUCT INDEX : \(productIndex)")
         for routineIndex in 0...1 {
-            PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name)
+            // PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name)
             
             for index in 0..<productIndex.count {
                 let product = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]
@@ -93,7 +102,7 @@ class ResultViewController: UIViewController {
                 if !(product.description == "") {
                     skinTypeRoutine[routineIndex].products.append(product)
                     
-                    PersistanceManager.shared.setProduct(name: product.name)
+                    // PersistanceManager.shared.setProduct(name: product.name)
                 }
             }
         }
@@ -119,9 +128,13 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let data = skinTypeRoutine[indexPath.row]
         cell.skinCareRoutineIconLabel.text = data.icon
         cell.skinCareRoutineNameLabel.text = data.name
-        cell.skinCareRoutineProductLabel.text = "\(data.products.count) products"
+        cell.skinCareRoutineProductLabel.text = "\(data.products.count) Products"
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 140, height: 170)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

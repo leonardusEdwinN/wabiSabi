@@ -113,6 +113,7 @@
 		35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */; };
 		35D9D8DD272FFF5A00C255F1 /* SkinTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */; };
 		35E47A092730C4C90033E5F4 /* SkinCareGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E47A082730C4C90033E5F4 /* SkinCareGuideViewController.swift */; };
+		35E7B32E2755C23E001D21C9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E7B32D2755C23E001D21C9 /* WelcomeViewController.swift */; };
 		35EFE8C72744EF4C00DAF42D /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EFE8C62744EF4C00DAF42D /* ResultViewController.swift */; };
 		970E415E272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 970E415C272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib */; };
 		970E4161272FDDFB0030EFD1 /* ProgressIndictorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */; };
@@ -249,6 +250,7 @@
 		35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareGuideTableViewCell.swift; sourceTree = "<group>"; };
 		35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTypeViewController.swift; sourceTree = "<group>"; };
 		35E47A082730C4C90033E5F4 /* SkinCareGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareGuideViewController.swift; sourceTree = "<group>"; };
+		35E7B32D2755C23E001D21C9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		35EFE8C62744EF4C00DAF42D /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		970E415C272FDBEC0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressIndicatorHorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		970E4160272FDDFB0030EFD1 /* ProgressIndictorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndictorModel.swift; sourceTree = "<group>"; };
@@ -713,7 +715,7 @@
 		13ECEF9227294542006B5BFE /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				131F76D42727E61400A7AB41 /* LaunchScreen.storyboard */,
+				35E7B32C2755B03C001D21C9 /* View */,
 			);
 			path = LaunchScreen;
 			sourceTree = "<group>";
@@ -819,8 +821,8 @@
 				3532C888272A9F5900745F73 /* QuestionSkinTypeViewController.swift */,
 				3532C88A272A9F9000745F73 /* QuestionSkinCareRoutineViewController.swift */,
 				3532C896272AACEB00745F73 /* QuestionExperienceViewController.swift */,
-				3532C89A272AAD0C00745F73 /* QuestionGenderViewController.swift */,
 				3532C898272AACFE00745F73 /* QuestionNameViewController.swift */,
+				3532C89A272AAD0C00745F73 /* QuestionGenderViewController.swift */,
 				3532C89C272AAD1A00745F73 /* QuestionBirthDateViewController.swift */,
 				35904E7B272FBDF200C15202 /* OptionTableViewCell.swift */,
 				35904E84272FDA5100C15202 /* LoadingViewController.swift */,
@@ -828,8 +830,17 @@
 				35904E88272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift */,
 				35E47A082730C4C90033E5F4 /* SkinCareGuideViewController.swift */,
 				35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */,
+				35E7B32D2755C23E001D21C9 /* WelcomeViewController.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		35E7B32C2755B03C001D21C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				131F76D42727E61400A7AB41 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		970E415F272FDDE80030EFD1 /* Model */ = {
@@ -1036,6 +1047,7 @@
 				35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */,
 				35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */,
 				3532C889272A9F5900745F73 /* QuestionSkinTypeViewController.swift in Sources */,
+				35E7B32E2755C23E001D21C9 /* WelcomeViewController.swift in Sources */,
 				137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */,
 				130424ED2744F50300720D35 /* PresentationController.swift in Sources */,
 			);
