@@ -260,8 +260,13 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         
         circularProgress.progressColor = UIColor.white
         circularProgress.trackColor = UIColor.systemGray4
-        circularProgress.percentageValue = CGFloat(percentage) / 100
-        circularProgressPercentageLabel.text = "\(Int(percentage))%"
+        if percentage.isInfinite || percentage.isNaN {
+            circularProgress.percentageValue = 0
+            circularProgressPercentageLabel.text = "0%"
+        } else {
+            circularProgress.percentageValue = CGFloat(percentage) / 100
+            circularProgressPercentageLabel.text = "\(Int(percentage))%"
+        }
     }
     
     private func setUpTableView() {
