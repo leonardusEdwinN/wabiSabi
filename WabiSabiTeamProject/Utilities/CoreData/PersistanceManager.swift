@@ -252,21 +252,6 @@ class PersistanceManager {
         }
     }
     
-//    func setRoutineAndFetch(isEveryday: Bool, name: String) -> Routines{
-//        let routine = Routines(context: persistentContainer.viewContext)
-//        routine.id = "\(UUID())"
-//        routine.isEveryday = isEveryday
-//        routine.name = name
-//        routine.userroutine = fetchUser()
-//        save()
-//        
-//        if let routineID = routine.id {
-//            UserDefaults.standard.set(routineID, forKey: "routineID")
-//            print("Routine ID \(routineID) has been saved")
-//        }
-//        
-//        return routine
-//    }
     
     func setRoutine(isEveryday: Bool, startHabit: Date, name: String, schedules: [Schedule]) {
         let routine = Routines(context: persistentContainer.viewContext)
@@ -274,9 +259,15 @@ class PersistanceManager {
         routine.isEveryday = isEveryday
         routine.name = name
         routine.startHabit = startHabit
+        routine.routineDate = startHabit
         routine.schedules = schedules as? NSSet
         routine.userroutine = fetchUser()
         save()
+        
+        if let routineID = routine.id {
+            UserDefaults.standard.set(routineID, forKey: "routineID")
+            print("Routine ID \(routineID) has been saved")
+        }
     }
     
     func setSchedule(time: String) {

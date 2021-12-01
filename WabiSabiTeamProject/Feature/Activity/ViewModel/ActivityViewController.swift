@@ -36,7 +36,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     
     var selectedCalenderDate: Date = Date()
     
-    let allRoutines = PersistanceManager.shared.fetchRoutines()
+    var allRoutines = PersistanceManager.shared.fetchRoutines()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,24 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         configureSegmented()
         setUpcircularProgress()
         setGradientBackground()
+        
+        print("ROUTINE : \(allRoutines.count)")
     }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.allRoutines = PersistanceManager.shared.fetchRoutines()
+            self.configureTableViewDataByStatus()
+            self.configureSegmented()
+            self.setUpTableView()
+            self.setUpcircularProgress()
+            self.routineTableView.reloadData()
+        }
+    }
+
+    
 
     func buttonSavePressed(time: String) {
         let dateFormatter = DateFormatter()

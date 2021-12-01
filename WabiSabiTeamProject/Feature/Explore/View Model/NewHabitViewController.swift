@@ -43,10 +43,13 @@ class NewHabitViewController : UIViewController{
     @IBAction func buttonSavePressed(_ sender: Any) {
         
         //show indicator loading
-        Loading.sharedInstance.showIndicator()
+        DispatchQueue.main.async {
+            Loading.sharedInstance.showIndicator()
+        }
+        
         
         print("NAME : \(self.routineName)")
-        print("START HABIT : \(startHabit)")
+        print("START HABIT : \(self.startHabit)")
         
         
         var schedules: [Schedule] = []
@@ -62,33 +65,47 @@ class NewHabitViewController : UIViewController{
         print("SCHEDULE : \(schedules)")
         print("PRODUCTS : [\(products)]")
         
-        if schedules == nil {
+        if schedules.count == 0 {
             // Kalau Tidak Punya schedule
-            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: self.routineName, startHabit: startHabit)
+            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: self.routineName, startHabit: self.startHabit)
         }
         else {
             //kalau punya schedule
-            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: startHabit, name: self.routineName, schedules: schedules)
+            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: self.startHabit, name: self.routineName, schedules: schedules)
         }
         
         print("ROUTINE CREATED")
+        
+//        var selectedRoutineCreated = PersistanceManager.shared.fetchRoutine(id: routineCreatedId)
+        
         //Routine CREATED
-        if let routineCreatedId = UserDefaults.standard.string(forKey: "routineId"){
+        if let routineCreatedId = UserDefaults.standard.string(forKey: "routineID"){
             var selectedRoutineCreated = PersistanceManager.shared.fetchRoutine(id: routineCreatedId)
+            print("Routine id : \(routineCreatedId) :: \(selectedRoutineCreated.name)")
+            print("START HABIT ROUTINE : \(selectedRoutine.routineDate)")
             self.selectedRoutine = selectedRoutineCreated
         }
         
         print("FETCH PRODUCTS")
         // Add product to routine
         for product in products {
+            print("PRODUCT DATA : \(product.name)")
             PersistanceManager.shared.setProduct(brand: product.brand ?? "", expiredDate: product.expiredDate ?? Date(), name: product.name ?? self.subcategories.habitName, periodAfterOpening: product.periodAfterOpening ?? Date(), picture: product.picture ?? "", routine: selectedRoutine, productType: product.productType ?? "", isDone: product.isDone)
         }
         
-        self.dismiss(animated: false) {
-            Loading.sharedInstance.hideIndicator()
+        products = PersistanceManager.shared.fetchProduct(routine: selectedRoutine)
+        print("PRODUCTS ROUTINE \(products)")
+        
+        DispatchQueue.main.async {
+            self.dismiss(animated: false) {
+                Loading.sharedInstance.hideIndicator()
+            }
         }
         
+        
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -387,8 +404,6 @@ extension NewHabitViewController : DidSelectButtonAtStartHabitDelegate, OverlayB
     func didtapTodayButton() {
 //        print("TODAY")
         startHabit = Date()
-        
-        
             print("TODAY : \(startHabit)")
     }
     
