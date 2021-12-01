@@ -80,10 +80,36 @@ class SummaryCalendarTableViewCell: UITableViewCell {
     }
     
     func filterRoutine(date: Date, routines: [Routines]) -> [Routines] {
-        var filteredItems: [Routines] = routines
+        var filteredItems: [Routines] = []
         for i in 0..<routines.count {
-            if ("\(routines[i].routineDate)".prefix(10) == "\(date)".prefix(10)) {
-                filteredItems.remove(at: filteredItems.firstIndex(of: filteredItems[i])!)
+            /*
+             var dayToBeCompared = Calendar.current.component(.day, from: routines[i].routineDate ?? Date())
+             var monthToBeCompared = Calendar.current.component(.month, from: routines[i].routineDate ?? Date())
+             var yearToBeCompared = Calendar.current.component(.year, from: routines[i].routineDate ?? Date())
+             
+             var dayFilter = Calendar.current.component(.day, from: date ?? Date())
+             var monthFilter = Calendar.current.component(.month, from: date ?? Date())
+             var yearFilter = Calendar.current.component(.year, from: date ?? Date())
+             
+             print(dayToBeCompared, "-", dayFilter)
+             print(monthToBeCompared, "-", monthFilter)
+             print(yearToBeCompared, "-", yearFilter)
+             
+             if (dayToBeCompared == dayFilter && monthToBeCompared == monthFilter && yearToBeCompared == yearFilter) {
+                 
+                 filteredItems.append(routines[i])
+             }
+            */
+            
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd"
+            let routineDate: String = df.string(from: routines[i].routineDate ?? Date())
+            let filterDate: String = df.string(from: date)
+            
+            print(routineDate, "-", filterDate, "SCTV")
+            if (routineDate.elementsEqual(filterDate)) {
+                print(routineDate, "success")
+                filteredItems.append(routines[i])
             }
         }
         return filteredItems
@@ -140,7 +166,7 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
             
             cell.labelDate.textColor = UIColor.white
             
-            UserDefaults.standard.set("\(choosenYear)-\(choosenMonth)-\(cell.labelDate.text)", forKey: "selectedSummaryCalendar")
+            UserDefaults.standard.set("\(choosenYear)-\(choosenMonth + 1)-\(cell.labelDate.text)", forKey: "selectedSummaryCalendar")
         }
     }
     
@@ -164,42 +190,34 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
                 var month = Calendar.current.component(.month, from: Date()) - 1 //soalnya arraynya di mulai dari 0
                 var year = Calendar.current.component(.year, from: Date())
                 
+                var dateComponents = DateComponents()
+                dateComponents.year = choosenYear
+                dateComponents.month = choosenMonth + 1
+                dateComponents.day = calcDate
+                dateComponents.timeZone = TimeZone.current.localizedName(for: .shortStandard, locale: .current) as? TimeZone
+                dateComponents.hour = 0
+                dateComponents.minute = 0
+
+                var date: Date = Calendar.current.date(from: dateComponents) ?? Date()
+                
+                var temp: [Routines] = filterRoutine(date: date, routines: allRoutines)
+                
+                if !(temp.isEmpty) {
+                    cell.circularProgressView.isHidden = false
+                    calculateProgress = calculatePercentage(routines: allRoutines)
+                    cell.circularProgressView.progress = calculateProgress
+                }
+                
                 if (calcDate == day && choosenMonth == month && choosenYear == year) {
                     cell.labelDate.textColor = UIColor.systemIndigo
-                    
-                    var temp: [Routines] = filterRoutine(date: Date(), routines: allRoutines)
-                    calculateProgress = calculatePercentage(routines: temp)
-                    cell.circularProgressView.progress = calculateProgress
+                }
+                else if( (calcDate > day && choosenMonth == month && choosenYear == year) || (choosenMonth > month && choosenYear == year) || (choosenYear > year) || calculateProgress == 0)  {
+                    cell.circularProgressView.progress = 0
+                    calculateProgress = 0.0
+                    cell.labelDate.textColor = UIColor.black
                 }
                 else {
                     cell.labelDate.textColor = UIColor.black
-                }
-                
-                if( (calcDate > day && choosenMonth == month && choosenYear == year) || (choosenMonth > month && choosenYear == year) || (choosenYear > year) || calculateProgress == 0)  {
-                    // cell.circularProgressView.isHidden = true
-                }
-                else {
-                    var dateComponents = DateComponents()
-                    dateComponents.year = choosenYear
-                    dateComponents.month = choosenMonth
-                    dateComponents.day = calcDate
-                    dateComponents.timeZone = TimeZone.current.localizedName(for: .shortStandard, locale: .current) as? TimeZone
-                    dateComponents.hour = 0
-                    dateComponents.minute = 0
-
-                    var date: Date = Calendar.current.date(from: dateComponents) ?? Date()
-                    
-                    var temp: [Routines] = filterRoutine(date: date, routines: allRoutines)
-                    
-                    if (temp.isEmpty) {
-                        cell.circularProgressView.isHidden = true
-                    }
-                    else {
-                        calculateProgress = calculatePercentage(routines: temp)
-                        cell.circularProgressView.progress = calculateProgress
-                    }
-                    
-                    
                 }
                 
                 DispatchQueue.main.async {

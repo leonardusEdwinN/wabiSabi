@@ -23,6 +23,13 @@ class SummaryViewController: UIViewController{
         super.viewDidLoad()
         registerCell()
         
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        
+        var defaultDate: String = df.string(from: Date())
+        
+        UserDefaults.standard.set(defaultDate, forKey: "selectedSummaryCalendar")
+        
         selectedDateRoutines = filterRoutine(routines: allRoutines)
     }
     
@@ -51,22 +58,19 @@ class SummaryViewController: UIViewController{
         }
     }
     
-    func filterRoutine(date: Date, routines: [Routines]) -> [Routines] {
-        var filteredItems: [Routines] = routines
-        for i in 0..<routines.count {
-            if ("\(routines[i].routineDate)".prefix(10) == "\(date)".prefix(10)) {
-                filteredItems.remove(at: filteredItems.firstIndex(of: filteredItems[i])!)
-            }
-        }
-        return filteredItems
-    }
-    
     func filterRoutine(routines: [Routines]) -> [Routines] {
-        var date = UserDefaults.standard.string(forKey: "selectedSummaryCalendar") ?? "\(Date())"
-        var filteredItems: [Routines] = routines
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        
+        var defaultDate: String = df.string(from: Date())
+        
+        var date: String = UserDefaults.standard.string(forKey: "selectedSummaryCalendar") ?? defaultDate
+        
+        var filteredItems: [Routines] = []
         for i in 0..<routines.count {
-            if ("\(routines[i].routineDate)".prefix(10) == "\(date)".prefix(10)) {
-                filteredItems.remove(at: filteredItems.firstIndex(of: filteredItems[i])!)
+            let routineDate: String = df.string(from: routines[i].routineDate ?? Date())
+            if (routineDate.elementsEqual(date)) {
+                filteredItems.append(routines[i])
             }
         }
         return filteredItems
