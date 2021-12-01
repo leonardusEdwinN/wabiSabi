@@ -212,6 +212,7 @@ class PersistanceManager {
         routine.isEveryday = isEveryday
         routine.name = name
         routine.startHabit = startHabit
+        routine.routineDate = startHabit
         routine.userroutine = fetchUser()
         save()
         
