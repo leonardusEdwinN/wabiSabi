@@ -12,6 +12,10 @@ protocol SaveProductDelegate{
     func saveProductAndReloadIt()
 }
 
+protocol SaveNewProductRoutineDelegate{
+    func saveNewProductRoutine(for product : ProductModel)
+}
+
 class AddProductViewController : UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     // MARK: variable
@@ -20,6 +24,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     var selectedRoutine: Routines!
     var productTypeArray: [ProductTypeModel] = []
     var delegate: SaveProductDelegate?
+    var delegateAddProduct: SaveNewProductRoutineDelegate?
     var selectedProduct: Product!
     var isEdit: Bool = false
     
@@ -36,6 +41,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
 //
 //        }
         
+        
         Loading.sharedInstance.showIndicator()
         
         if let name = textfieldProductName.text,
@@ -50,6 +56,8 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
             
             print("name : \(name), brand : \(brand), product type:\(productType), expdate: \(expiredDate.date), pao: \(periodAfterOpen.date)")
             
+            delegateAddProduct?.saveNewProductRoutine(for: ProductModel(image: imgStrBase64, name: name, brand: brand, productType: productType, openedDate: periodAfterOpen.date, expired: expiredDate.date, isDone: false))
+            
             if selectedProduct != nil{
                 if let id = selectedProduct.id{
                     //update data
@@ -58,7 +66,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
                 }
             }else{
                 //create data
-                PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate.date, name: name, periodAfterOpening: periodAfterOpen.date, picture: imgStrBase64, routine: selectedRoutine, productType: productType)
+                PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate.date, name: name, periodAfterOpening: periodAfterOpen.date, picture: imgStrBase64, routine: selectedRoutine, productType: productType, isDone: false)
             }
             
             delegate?.saveProductAndReloadIt()
@@ -71,7 +79,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
 //            print("name : \(decodedData) DECODED IMAGE \(decodedimage)")
             
         }else {
-            Util.displayAlert(title: "Please fill the dara properly", message: "Something missing when you add product")
+            Util.displayAlert(title: "Please fill the data properly", message: "Something missing when you add product")
         }
         
 //        delegate?.saveProductAndReloadIt(completion: {
@@ -81,7 +89,6 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
 //            self.dismiss(animated: false, completion: nil)
 //        })
         
-        print("DISMISS PAGE")
         self.dismiss(animated: false, completion: nil)
         
         
@@ -126,28 +133,29 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
         
         
         if self.isEdit{
-            //true, melakukan update date
-            if let name = selectedProduct.name,
-               let brand = selectedProduct.brand,
-               let image = selectedProduct.picture,
-               let productType = selectedProduct.productType,
-               let pao = selectedProduct.periodAfterOpening,
-               let exp = selectedProduct.expiredDate{
-                
-                guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return  }
-                let decodedimage: UIImage = UIImage(data: decodedData)!
-                
-                imageViewProduct.contentMode = .scaleToFill
-                imageViewProduct.image = decodedimage
-                textfieldProductName.text = name
-                textfieldProductBrand.text = brand
-                labelProductTypeValue.text = productType
-                paoDatePicker.date = pao
-                expDatePicker.date = exp
+            
+            //true, melakukan update data
+            if let product = selectedProduct{
+                if let name = product.name,
+                   let brand = product.brand,
+                   let image = product.picture,
+                   let productType = product.productType,
+                   let pao = product.periodAfterOpening,
+                   let exp = product.expiredDate{
+                    
+                    guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return  }
+                    let decodedimage: UIImage = UIImage(data: decodedData)!
+                    
+                    imageViewProduct.contentMode = .scaleToFill
+                    imageViewProduct.image = decodedimage
+                    textfieldProductName.text = name
+                    textfieldProductBrand.text = brand
+                    labelProductTypeValue.text = productType
+                    paoDatePicker.date = pao
+                    expDatePicker.date = exp
+                }
             }
             
-            
-            print("selected product : \(selectedProduct.name) :: \(selectedProduct.brand)")
         }else{
             textfieldProductName.text = ""
             textfieldProductBrand.text = ""
@@ -175,7 +183,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
     
     func setDataProductType(){
         // MARK: ProductType
-        productTypeArray.append(ProductTypeModel(name: "Cleanser", isSelected: true))
+        productTypeArray.append(ProductTypeModel(name: "Cleanser", isSelected: false))
         productTypeArray.append(ProductTypeModel(name: "Chemical Peel", isSelected: false))
         productTypeArray.append(ProductTypeModel(name: "Exfoliator", isSelected: false))
         productTypeArray.append(ProductTypeModel(name: "Eye Cream", isSelected: false))
