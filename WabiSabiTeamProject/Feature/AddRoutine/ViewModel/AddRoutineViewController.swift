@@ -322,7 +322,7 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
 //            }else{
 //
 //            }
-            if((products[indexPath.row].brand) != nil && (products[indexPath.row].brand) != nil){
+            if((products[indexPath.row].brand) != nil){
                 //ada data
                 if(!isEdit)
                 {
@@ -442,7 +442,7 @@ extension AddRoutineViewController : SaveProductDelegate{
     
 }
 
-extension AddRoutineViewController : deleteProductItemDelegate{
+extension AddRoutineViewController : EditDeletProductItemDelegate{
     // MARK: Delegate from ProductUsedTableViewCell trash icon
     func deleteProductItem(deletedProduct product: Product) {
         print("DELETE PRODUCT \(product.name)")
