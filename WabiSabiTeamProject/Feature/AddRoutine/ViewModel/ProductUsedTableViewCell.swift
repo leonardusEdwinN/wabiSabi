@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol deleteProductItemDelegate{
+protocol EditDeletProductItemDelegate{
     func deleteProductItem(deletedProduct product : Product)
     func editProductItem(editedProduct product: Product)
 }
@@ -24,6 +24,7 @@ class ProductUsedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var productBrandLabel: UILabel!
     @IBAction func trashButtonPressed(_ sender: Any) {
+        print("DELETE")
         guard let product = self.selectedProduct else{
             return
         }
@@ -35,6 +36,7 @@ class ProductUsedTableViewCell: UITableViewCell {
 //    @IBOutlet weak var editIconImage: UIImageView!
     @IBOutlet weak var buttonEdit: UIButton!
     @IBAction func buttonEditPressed(_ sender: Any) {
+        print("EDIT")
         guard let product = self.selectedProduct else{
             return
         }
@@ -43,7 +45,7 @@ class ProductUsedTableViewCell: UITableViewCell {
     }
     
     // MARK: Variable
-    var delegate : deleteProductItemDelegate?
+    var delegate : EditDeletProductItemDelegate?
     var selectedProduct : Product?
     var selectedIndexPath : IndexPath?
     
