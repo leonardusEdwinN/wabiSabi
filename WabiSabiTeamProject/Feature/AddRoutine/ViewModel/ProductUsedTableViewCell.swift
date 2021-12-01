@@ -76,9 +76,9 @@ class ProductUsedTableViewCell: UITableViewCell {
 //        checkedIconImage.addGestureRecognizer(uncheckedGesture)
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
 
         // Configure the view for the selected state
     }
@@ -91,7 +91,7 @@ class ProductUsedTableViewCell: UITableViewCell {
     func setUIImage(image: String){
         
         guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return }
-        let decodedimage: UIImage = UIImage(data: decodedData)!
+        let decodedimage: UIImage = UIImage(data: decodedData) ?? UIImage(named: "Mascot")!
         
         imageCell.image = decodedimage
         imageCell.contentMode = .scaleToFill
@@ -132,6 +132,16 @@ class ProductUsedTableViewCell: UITableViewCell {
             viewCheckBox.isHidden = false
             checkedIconImage.isHidden = false
             uncheckIconImage.isHidden = true
+    }
+    
+    func hideAll(){
+        viewEdit.isHidden = true
+        buttonEdit.isHidden = true
+        trashButton.isHidden = true
+        
+        viewCheckBox.isHidden = true
+        checkedIconImage.isHidden = true
+        uncheckIconImage.isHidden = true
     }
     
     @objc func editProduct(_ sender: UITapGestureRecognizer) {

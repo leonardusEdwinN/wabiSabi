@@ -15,7 +15,10 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
     @IBOutlet weak var switchTableViewButton: UISegmentedControl!
     @IBOutlet weak var productTableView: UITableView!
     
-    var currentTableView: [RoutineAndProductList] = routinesProfile
+    var tableProductData: [Product] = PersistanceManager.shared.fetchProduct()
+    var tableRoutinetData: [Routines] = PersistanceManager.shared.fetchRoutines()
+    
+    var currentProfileList: currentTableList = currentTableList.productList
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +38,14 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
     private func setUpTableView() {
         productTableView.dataSource = self
         productTableView.delegate = self
-        let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
-        productTableView.register(nib, forCellReuseIdentifier: "ProductTableViewCell")
+        
+        if (currentProfileList == currentTableList.productList) {
+            let nib = UINib(nibName: "ProductTableViewCell", bundle: nil)
+            productTableView.register(nib, forCellReuseIdentifier: "ProductTableViewCell")
+        } else {
+            let nib = UINib(nibName: "RoutineTableViewCell", bundle: nil)
+            productTableView.register(nib, forCellReuseIdentifier: "RoutineTableViewCell")
+        }
     }
     
     private func configureNavigationBar() {
@@ -48,11 +57,12 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
     
     @IBAction func changeTableView(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            currentTableView = routinesProfile
+            currentProfileList = currentTableList.productList
         } else {
-            currentTableView = productsProfile
+            currentProfileList = currentTableList.routineList
         }
         
+        setUpTableView()
         productTableView.reloadData()
     }
     
@@ -72,14 +82,30 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currentTableView.count
+        if currentProfileList == currentTableList.productList {
+            return tableProductData.count
+        } else {
+            return tableRoutinetData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
-        cell.setup(with: currentTableView[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
         
-        return cell
+        if currentProfileList == currentTableList.productList {
+            let tableData = tableProductData[indexPath.row]
+            cell.setup(with: ProductAndRoutineList(
+                image: UIImage(systemName: "sun.max.fill")!, name: tableData.name!,brand: tableData.brand ?? "", type: tableData.productType ??  ""))
+            
+            return cell
+        } else {
+            let tableData = tableRoutinetData[indexPath.row]
+            cell.setup(with: ProductAndRoutineList(
+                image: UIImage(systemName: "sun.max.fill")!, name: tableData.name!,brand: "", type: ""))
+            
+            return cell
+        }
+            
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -96,4 +122,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
         cell.layer.mask = maskLayer
     }
+}
+
+enum currentTableList {
+    case productList
+    case routineList
 }
