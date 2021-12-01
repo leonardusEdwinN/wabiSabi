@@ -25,6 +25,8 @@ class SummaryCalendarTableViewCell: UITableViewCell {
     var choosenMonth = 0
     var choosenYear = 0
     
+    var indexSelected: Int = 0
+    
     @IBOutlet weak var buttonLeft: UIButton!
     @IBOutlet weak var buttonRight: UIButton!
     @IBOutlet weak var labelBulan: UILabel!
@@ -78,25 +80,21 @@ class SummaryCalendarTableViewCell: UITableViewCell {
     }
     
     func filterRoutine(date: Date, routines: [Routines]) -> [Routines] {
-        let filteredItems = routines.filter { $0.routineDate == date }
+        var filteredItems: [Routines] = routines
+        for i in 0..<routines.count {
+            if ("\(routines[i].routineDate)".prefix(10) == "\(date)".prefix(10)) {
+                filteredItems.remove(at: filteredItems.firstIndex(of: filteredItems[i])!)
+            }
+        }
         return filteredItems
-    }
-    
-    func filterTodayRoutine(routines: [Routines]) -> [Routines] {
-        let calendar = Calendar.current
-        let todayRoutine = routines.filter({calendar.isDateInToday(($0.routineDate ?? Date.yesterday) as Date)})
-        return todayRoutine
     }
     
     func calculatePercentage(routines: [Routines]) -> CGFloat{
         var completedRoutine: CGFloat = 0.0
-        
-        if(routines != nil){
-            for i in 0...1 {
-                if routines[i] != nil {
-                    if routines[i].isCompleted {
-                        completedRoutine = completedRoutine + 1.0
-                    }
+        if !routines.isEmpty {
+            for i in 0..<routines.count {
+                if routines[i].isCompleted {
+                    completedRoutine = completedRoutine + 1.0
                 }
             }
         }
@@ -114,31 +112,36 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        /*
-        if buttonNext.isHidden == true {
-            buttonNext.isHidden = false
-        }
-        
         indexSelected = indexPath.row + 1
-        
-        for index in 0...skinTypes.count {
-            if let imgView = collectionView.viewWithTag(index) as? UIImageView {
-                imgView.image = UIImage(systemName: "circle")
+        for index in 0...numOfDaysInMonth[currentMonthIndex] + firstWeekDayOfMonth - 1 {
+            if let cell = collectionView.viewWithTag(index) as? DayCollectionViewCell {
+                cell.circularProgressView.fillColor = UIColor.clear.cgColor
+                cell.circularProgressView.alpha = 1
+                
+                // check today
+                var day = Calendar.current.component(.day, from: Date())
+                var month = Calendar.current.component(.month, from: Date()) - 1 //soalnya arraynya di mulai dari 0
+                var year = Calendar.current.component(.year, from: Date())
+                
+                var today = Int(cell.labelDate.text ?? "0")
+                
+                if (today == day && choosenMonth == month && choosenYear == year) {
+                    cell.labelDate.textColor = UIColor.systemIndigo
+                }
+                else {
+                    cell.labelDate.textColor = UIColor.black
+                }
             }
-            if let backgroundView = collectionView.viewWithTag((index * 10) + index) as? UIImageView {
-                // backgroundView.backgroundColor = UIColor(named: "ColorSecondary")
-                backgroundView.alpha = 0.5
-            }
         }
         
-        if let imgView = collectionView.viewWithTag(indexSelected) as? UIImageView {
-            imgView.image = UIImage(systemName: "checkmark.circle.fill")
+        if let cell = collectionView.viewWithTag(indexSelected) as? DayCollectionViewCell {
+            cell.circularProgressView.fillColor = UIColor.systemIndigo.cgColor
+            cell.circularProgressView.alpha = 0.6
+            
+            cell.labelDate.textColor = UIColor.white
+            
+            UserDefaults.standard.set("\(choosenYear)-\(choosenMonth)-\(cell.labelDate.text)", forKey: "selectedSummaryCalendar")
         }
-        if let backgroundView = collectionView.viewWithTag((indexSelected * 10) + indexSelected) as? UIImageView {
-            // backgroundView.backgroundColor = UIColor(named: "ColorPrimary")
-            backgroundView.alpha = 1
-        }
-        */
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -154,34 +157,33 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
                 
                 //calculate Date
                 let calcDate = indexPath.row-firstWeekDayOfMonth+2
-                cell.isHidden=false
+                cell.isHidden = false
                 
                 // check today
                 var day = Calendar.current.component(.day, from: Date())
                 var month = Calendar.current.component(.month, from: Date()) - 1 //soalnya arraynya di mulai dari 0
                 var year = Calendar.current.component(.year, from: Date())
                 
-                if(calcDate == day && choosenMonth == month && choosenYear == year) {
+                if (calcDate == day && choosenMonth == month && choosenYear == year) {
                     cell.labelDate.textColor = UIColor.systemIndigo
                     
-                    var temp: [Routines] = filterTodayRoutine(routines: allRoutines)
+                    var temp: [Routines] = filterRoutine(date: Date(), routines: allRoutines)
                     calculateProgress = calculatePercentage(routines: temp)
+                    cell.circularProgressView.progress = calculateProgress
                 }
                 else {
                     cell.labelDate.textColor = UIColor.black
                 }
                 
                 if( (calcDate > day && choosenMonth == month && choosenYear == year) || (choosenMonth > month && choosenYear == year) || (choosenYear > year) || calculateProgress == 0)  {
-                    cell.circularProgressView.isHidden = true
+                    // cell.circularProgressView.isHidden = true
                 }
                 else {
-                    cell.circularProgressView.isHidden = false
-                    
                     var dateComponents = DateComponents()
                     dateComponents.year = choosenYear
                     dateComponents.month = choosenMonth
                     dateComponents.day = calcDate
-                    dateComponents.timeZone = TimeZone(abbreviation: "GMT") // Japan Standard Time
+                    dateComponents.timeZone = TimeZone.current.localizedName(for: .shortStandard, locale: .current) as? TimeZone
                     dateComponents.hour = 0
                     dateComponents.minute = 0
 
@@ -189,7 +191,15 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
                     
                     var temp: [Routines] = filterRoutine(date: date, routines: allRoutines)
                     
-                    calculateProgress = calculatePercentage(routines: temp)
+                    if (temp.isEmpty) {
+                        cell.circularProgressView.isHidden = true
+                    }
+                    else {
+                        calculateProgress = calculatePercentage(routines: temp)
+                        cell.circularProgressView.progress = calculateProgress
+                    }
+                    
+                    
                 }
                 
                 DispatchQueue.main.async {
@@ -218,7 +228,7 @@ extension SummaryCalendarTableViewCell: UICollectionViewDelegateFlowLayout {
             layout.minimumLineSpacing = 0
             layout.invalidateLayout()
             // Set your item size here
-            widthCell =  CGSize(width: (collectionView.frame.width) / 7 , height: collectionView.frame.width / 7 + 12) // Set your item size here
+            widthCell =  CGSize(width: (collectionView.frame.width) / 7 , height: collectionView.frame.width / 7 + 5) // Set your item size here
         }else{
             widthCell =  CGSize(width: 100, height:100)
         }

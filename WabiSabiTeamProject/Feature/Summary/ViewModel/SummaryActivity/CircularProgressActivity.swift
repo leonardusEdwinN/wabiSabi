@@ -14,7 +14,11 @@ class CircularProgressActivity: UIView {
     
     public var strokeColor: CGColor = UIColor(named: "ColorPrimary")?.cgColor ?? UIColor.systemIndigo.cgColor
     
-    public var fillColor: CGColor = UIColor.clear.cgColor
+    public var fillColor: CGColor = UIColor.clear.cgColor {
+        didSet {
+            
+        }
+    }
     
     public var progress: CGFloat = 0 {
         didSet {
@@ -56,6 +60,10 @@ class CircularProgressActivity: UIView {
     
     private func didProgressUpdated() {
         foregroundLayer?.strokeEnd = progress
+    }
+    
+    private func changeFillColor() {
+        backgroundLayer?.fillColor = fillColor
     }
 }
 

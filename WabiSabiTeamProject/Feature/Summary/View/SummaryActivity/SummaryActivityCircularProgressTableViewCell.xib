@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTIVITY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du9-nh-tFS">
-                        <rect key="frame" x="15" y="15" width="290" height="17"/>
+                        <rect key="frame" x="15" y="0.0" width="290" height="17"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sdb-jn-WM9">
-                        <rect key="frame" x="15" y="47" width="290" height="307"/>
+                        <rect key="frame" x="15" y="32" width="290" height="322"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4CV-aV-upO">
                             <size key="itemSize" width="128" height="128"/>
@@ -45,7 +45,7 @@
                     <constraint firstItem="Du9-nh-tFS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Awd-VO-Z6a"/>
                     <constraint firstItem="sdb-jn-WM9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="DFd-Fo-aXW"/>
                     <constraint firstAttribute="bottom" secondItem="sdb-jn-WM9" secondAttribute="bottom" constant="15" id="Fsi-0x-Ndv"/>
-                    <constraint firstItem="Du9-nh-tFS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="TAn-yh-ZRx"/>
+                    <constraint firstItem="Du9-nh-tFS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TAn-yh-ZRx"/>
                     <constraint firstAttribute="trailing" secondItem="sdb-jn-WM9" secondAttribute="trailing" constant="15" id="i7J-gc-K8J"/>
                     <constraint firstItem="sdb-jn-WM9" firstAttribute="top" secondItem="Du9-nh-tFS" secondAttribute="bottom" constant="15" id="nh8-gn-1ms"/>
                     <constraint firstAttribute="trailing" secondItem="Du9-nh-tFS" secondAttribute="trailing" constant="15" id="zTJ-1a-nvw"/>

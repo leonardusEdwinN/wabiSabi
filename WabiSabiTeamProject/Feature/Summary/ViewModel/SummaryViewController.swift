@@ -22,6 +22,8 @@ class SummaryViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
+        
+        selectedDateRoutines = filterRoutine(routines: allRoutines)
     }
     
     func registerCell(){
@@ -50,14 +52,24 @@ class SummaryViewController: UIViewController{
     }
     
     func filterRoutine(date: Date, routines: [Routines]) -> [Routines] {
-        let filteredItems = routines.filter { $0.routineDate == date }
+        var filteredItems: [Routines] = routines
+        for i in 0..<routines.count {
+            if ("\(routines[i].routineDate)".prefix(10) == "\(date)".prefix(10)) {
+                filteredItems.remove(at: filteredItems.firstIndex(of: filteredItems[i])!)
+            }
+        }
         return filteredItems
     }
     
-    func filterTodayRoutine(routines: [Routines]) -> [Routines] {
-        let calendar = Calendar.current
-        let todayRoutine = routines.filter({calendar.isDateInToday(($0.routineDate ?? Date.yesterday) as Date)})
-        return todayRoutine
+    func filterRoutine(routines: [Routines]) -> [Routines] {
+        var date = UserDefaults.standard.string(forKey: "selectedSummaryCalendar") ?? "\(Date())"
+        var filteredItems: [Routines] = routines
+        for i in 0..<routines.count {
+            if ("\(routines[i].routineDate)".prefix(10) == "\(date)".prefix(10)) {
+                filteredItems.remove(at: filteredItems.firstIndex(of: filteredItems[i])!)
+            }
+        }
+        return filteredItems
     }
     
     func calculatePercentage(routines: [Routines]) -> CGFloat{
@@ -96,10 +108,10 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             
             //no state
             let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryActivityCircularProgressTableViewCell",for: indexPath) as! SummaryActivityCircularProgressTableViewCell
+            cell.data = selectedDateRoutines
             if selectedDateRoutines != nil {
                 cell.frame.size = CGSize(width: summaryTableView.frame.width, height: CGFloat(Int(selectedDateRoutines.count / 3) * 220))
             }
-            cell.data = allRoutines
             return cell
         }
         /*
@@ -119,7 +131,7 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             return 450
         }else if (indexPath.item == 1){
             if selectedDateRoutines != nil {
-                return CGFloat(Int(selectedDateRoutines.count/3) * 220)
+                return CGFloat(((1 + Int(selectedDateRoutines.count/3)) * 170) + 50)
             }
             return 220
         }
@@ -134,7 +146,8 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.item == 0) {
-            
+            selectedDateRoutines = filterRoutine(routines: allRoutines)
+            tableView.reloadData()
         }
     }
     

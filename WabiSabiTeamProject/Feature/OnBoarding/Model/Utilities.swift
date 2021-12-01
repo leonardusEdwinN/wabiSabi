@@ -133,9 +133,9 @@ struct Utilities {
     ]
     
     let routineCategory: [RoutineCategory] = [
-        RoutineCategory(icon: "🌞", name: "Morning Routine", color: UIColor.systemOrange),
-        RoutineCategory(icon: "🌓", name: "Night Routine", color: UIColor.systemIndigo),
-        RoutineCategory(icon: "💆🏻‍♀️", name: "Face", color: UIColor(named: "ColorCream") ?? UIColor.systemYellow),
+        RoutineCategory(icon: "🌞", name: "Morning Skin Care", color: UIColor.systemOrange),
+        RoutineCategory(icon: "🌓", name: "Night Skin Care", color: UIColor.systemIndigo),
+        RoutineCategory(icon: "💆🏻‍♀️", name: "Face", color: UIColor.systemBrown),
         RoutineCategory(icon: "🏃🏻‍♀️", name: "Body & Scalp", color: UIColor.systemGreen),
         RoutineCategory(icon: "❤️‍🩹", name: "Health", color: UIColor.systemRed),
         RoutineCategory(icon: "⭐️", name: "Other", color: UIColor.systemGreen)

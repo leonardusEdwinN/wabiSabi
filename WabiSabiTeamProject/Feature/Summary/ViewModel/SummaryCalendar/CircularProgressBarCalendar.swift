@@ -12,7 +12,11 @@ class CircularProgressBarCalendar: UIView {
         }
     }
     
-    public var fillColor: CGColor = UIColor.clear.cgColor
+    public var fillColor: CGColor = UIColor.clear.cgColor {
+        didSet {
+            changeFillColor()
+        }
+    }
     
     public var textLabel = "" {
         didSet {
@@ -87,10 +91,16 @@ class CircularProgressBarCalendar: UIView {
     
     private func didProgressUpdated() {
         foregroundLayer?.strokeEnd = progress
+        if progress == 0 {
+            backgroundLayer?.strokeColor = UIColor.clear.cgColor
+        }
+        else {
+            backgroundLayer?.strokeColor = UIColor.lightGray.cgColor
+        }
     }
     
-    public func changeFillColorc() {
-        backgroundLayer?.fillColor = UIColor.systemIndigo.cgColor
+    public func changeFillColor() {
+        backgroundLayer?.fillColor = fillColor
     }
     
     private func didLabelUpdated(){

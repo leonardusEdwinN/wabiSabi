@@ -34,33 +34,35 @@ class SummaryActivityCircularProgressTableViewCell: UITableViewCell {
 
 extension SummaryActivityCircularProgressTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // return data.count
-        
-        return 2
+        return data.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCircularProgressCollectionViewCell", for: indexPath) as! ActivityCircularProgressCollectionViewCell
         
-        // DATABASE
-        if data != nil {
-            if(data[indexPath.row] != nil){
-                if data[indexPath.row].isCompleted {
-                    cell.circularProgressActivity.progress = 1.0
+        if !data.isEmpty {
+            cell.routineNameLabel.text = data[indexPath.row].name
+            
+            // get Asset
+            for i in 0..<Utilities().routineCategory.count {
+                var libraryData = Utilities().routineCategory[i].name
+                var dataToSearch = data[indexPath.row].name
+                if dataToSearch == libraryData {
+                    cell.iconLabel.text = Utilities().routineCategory[i].icon
+                    cell.routineNameLabel.textColor = Utilities().routineCategory[i].color
+                    cell.circularProgressActivity.strokeColor = Utilities().routineCategory[i].color.cgColor
+                    break;
                 }
-                else {
-                    cell.circularProgressActivity.progress = 0.0
-                }
-                cell.routineNameLabel.text = data[indexPath.row].name
-                
-                // get Asset
-                for i in 0...Utilities().routineCategory.count {
-                    if data[indexPath.row].name == Utilities().routineCategory[i].name {
-                        cell.iconLabel.text = Utilities().routineCategory[i].icon
-                        cell.routineNameLabel.textColor = Utilities().routineCategory[i].color
-                        cell.circularProgressActivity.strokeColor = Utilities().routineCategory[indexPath.row].color.cgColor
-                    }
-                }
+            }
+            
+            if data[indexPath.row].isCompleted {
+                cell.circularProgressActivity.progress = 1.0
+            }
+            else {
+                cell.circularProgressActivity.progress = 0.0
+                cell.circularProgressActivity.fillColor = UIColor.lightGray.cgColor
+                cell.circularProgressActivity.strokeColor = UIColor.clear.cgColor
+                cell.routineNameLabel.textColor = UIColor.lightGray
             }
         }
         
@@ -81,12 +83,6 @@ extension SummaryActivityCircularProgressTableViewCell: UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        UserDefaults.standard.set(sectionSelected, forKey: "monthSelected")
-        UserDefaults.standard.set(indexPath.row, forKey: "dateSelected")
-    }
-    
 }

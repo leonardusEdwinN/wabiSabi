@@ -355,42 +355,39 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XH1-ta-RK9">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                         <subviews>
                                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8G-CB-Ybo">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                <rect key="frame" x="0.0" y="30" width="414" height="44"/>
                                                 <color key="barTintColor" name="ColorCream"/>
                                                 <items>
                                                     <navigationItem title="Summary" id="qlg-8C-edI"/>
                                                 </items>
                                             </navigationBar>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="G6T-HH-Fmv">
-                                                <rect key="frame" x="0.0" y="44" width="414" height="656"/>
+                                                <rect key="frame" x="0.0" y="74" width="414" height="739"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="G6T-HH-Fmv" firstAttribute="top" secondItem="w8G-CB-Ybo" secondAttribute="bottom" id="2Nv-pO-GVh"/>
                                             <constraint firstItem="w8G-CB-Ybo" firstAttribute="leading" secondItem="XH1-ta-RK9" secondAttribute="leading" id="Cdu-ht-GMt"/>
-                                            <constraint firstAttribute="height" constant="700" id="RHp-fh-Es7"/>
                                             <constraint firstAttribute="trailing" secondItem="w8G-CB-Ybo" secondAttribute="trailing" id="SMX-hq-adu"/>
-                                            <constraint firstItem="w8G-CB-Ybo" firstAttribute="top" secondItem="XH1-ta-RK9" secondAttribute="top" id="YRX-BL-DoV"/>
+                                            <constraint firstItem="w8G-CB-Ybo" firstAttribute="top" secondItem="XH1-ta-RK9" secondAttribute="top" constant="30" id="YRX-BL-DoV"/>
                                             <constraint firstItem="G6T-HH-Fmv" firstAttribute="leading" secondItem="XH1-ta-RK9" secondAttribute="leading" id="cqB-VQ-K3P"/>
                                             <constraint firstAttribute="trailing" secondItem="G6T-HH-Fmv" secondAttribute="trailing" id="hyX-yH-22d"/>
-                                            <constraint firstAttribute="bottom" secondItem="G6T-HH-Fmv" secondAttribute="bottom" id="l1X-vS-rqD"/>
                                             <constraint firstItem="G6T-HH-Fmv" firstAttribute="top" secondItem="w8G-CB-Ybo" secondAttribute="bottom" id="t6d-B9-GcZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="G6T-HH-Fmv" secondAttribute="bottom" id="yJd-m1-8io"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="XH1-ta-RK9" secondAttribute="trailing" id="4x5-uh-CHL"/>
-                                    <constraint firstItem="XH1-ta-RK9" firstAttribute="top" secondItem="ZXx-jc-WZd" secondAttribute="top" id="N73-Yd-OKH"/>
                                     <constraint firstItem="XH1-ta-RK9" firstAttribute="leading" secondItem="ZXx-jc-WZd" secondAttribute="leading" id="Oeb-Ap-k8l"/>
                                     <constraint firstItem="XH1-ta-RK9" firstAttribute="top" secondItem="ZXx-jc-WZd" secondAttribute="top" id="X7j-0j-SdH"/>
-                                    <constraint firstAttribute="bottom" secondItem="XH1-ta-RK9" secondAttribute="bottom" id="XP5-Ct-XOO"/>
                                     <constraint firstItem="XH1-ta-RK9" firstAttribute="centerX" secondItem="ZXx-jc-WZd" secondAttribute="centerX" id="aDw-Sp-WLQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="XH1-ta-RK9" secondAttribute="bottom" id="nCf-CZ-U4X"/>
+                                    <constraint firstAttribute="bottom" secondItem="XH1-ta-RK9" secondAttribute="bottom" id="dsE-jr-bKG"/>
+                                    <constraint firstItem="XH1-ta-RK9" firstAttribute="centerY" secondItem="ZXx-jc-WZd" secondAttribute="centerY" id="qb7-0x-oYK"/>
                                     <constraint firstItem="XH1-ta-RK9" firstAttribute="leading" secondItem="ZXx-jc-WZd" secondAttribute="leading" id="rvE-Lm-ABT"/>
                                     <constraint firstAttribute="trailing" secondItem="XH1-ta-RK9" secondAttribute="trailing" id="t7C-XD-QGJ"/>
                                 </constraints>
