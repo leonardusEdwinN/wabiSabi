@@ -8,6 +8,8 @@
 import UIKit
 
 class QuestionSkinTypeViewController: UIViewController {
+    @IBOutlet var background: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var skinTypeTableView: UITableView!
     @IBOutlet weak var buttonNext: UIButton!
@@ -23,6 +25,18 @@ class QuestionSkinTypeViewController: UIViewController {
         skinTypeTableView.dataSource = self
         
         buttonNext.isEnabled = false
+        
+        setUI()
+    }
+    
+    func setUI() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor(red: 181.0/255.0, green: 171.0/255.0, blue: 223.0/255.0, alpha: 1).cgColor, UIColor(red: 227.0/255.0, green: 208.0/255.0, blue: 197.0/255.0, alpha: 1).cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradientLayer, at:0)
+        
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 28)
     }
     
     @IBAction func next(_ sender: Any) {
@@ -40,12 +54,13 @@ extension QuestionSkinTypeViewController : UITableViewDataSource, UITableViewDel
         let cell = skinTypeTableView.dequeueReusableCell(withIdentifier: "skintypecell") as! OptionTableViewCell
         
         cell.optionTitle.text = skinTypes[indexPath.row]
+        cell.whiteGradientBackground.frame.size = CGSize(width: cell.layer.frame.width, height: 60)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

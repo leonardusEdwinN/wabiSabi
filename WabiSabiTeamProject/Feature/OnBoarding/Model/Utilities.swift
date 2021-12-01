@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Utilities {
     let genders: [String] = ["Female", "Male", "Non-Binary", "Prefer not to disclose"]
@@ -17,7 +18,7 @@ struct Utilities {
     ]
     
     let skinTypeRoutineProduct: [SkinTypeRoutine] = [
-        SkinTypeRoutine(icon: "🌞", name: "Morning Skin Care", skinType: [
+        SkinTypeRoutine(icon: "🌞", name: "Morning Routine", skinType: [
             SkinTypeProduct(name: "Oily", products: [
                 SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser that contain salicylic/glycolic acid"),
                 SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
@@ -55,7 +56,7 @@ struct Utilities {
                 SkinCareProduct(icon: "", name: "Extras", description: "")
             ])
         ]),
-        SkinTypeRoutine(icon: "🌓", name: "Night Skin Care", skinType: [
+        SkinTypeRoutine(icon: "🌓", name: "Night Routine", skinType: [
             SkinTypeProduct(name: "Oily", products: [
                 SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser that contain salicylic/glycolic acid"),
                 SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
