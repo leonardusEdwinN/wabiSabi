@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActivityViewController: UIViewController {
+class ActivityViewController: UIViewController, OverlayButtonProtocol {
     @IBOutlet weak var routineTableView: UITableView!
     @IBOutlet weak var circularProgress: CircularProgressView!
     @IBOutlet weak var circularProgressPercentageLabel : UILabel!
@@ -34,6 +34,8 @@ class ActivityViewController: UIViewController {
     var completedTableView: [Routines] = []
     var skippedTableView: [Routines] = []
     
+    var selectedCalenderDate: Date = Date()
+    
     let allRoutines = PersistanceManager.shared.fetchRoutines()
     
     override func viewDidLoad() {
@@ -47,13 +49,42 @@ class ActivityViewController: UIViewController {
         configureSegmented()
         setUpcircularProgress()
         setGradientBackground()
-//        backgroundPurple.backgroundColor = UIColor.systemGreen
+    }
+
+    func buttonSavePressed(time: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy"
+        
+        if let date = dateFormatter.date(from: time){
+            
+            print("START HABIT CUSTOM : \(date)")
+            self.selectedCalenderDate = date
+            
+            print(selectedCalenderDate)
+            
+            configureTableViewDataByStatus(isFilterByDate: true)
+            configureSegmented()
+            setUpTableView()
+            setUpcircularProgress(isFilterByDate: true)
+            routineTableView.reloadData()
+        }
     }
     
     func filterTodayRoutine(routines: [Routines]) -> [Routines] {
         let calendar = Calendar.current
         let todayRoutine = routines.filter({calendar.isDateInToday(($0.routineDate ?? Date.yesterday) as Date)})
         return todayRoutine
+    }
+        
+    func filterRoutineByDate(routines: [Routines]) -> [Routines] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY/MM/dd"
+        let filteredRoutine = routines.filter({dateFormatter.string(from: $0.routineDate ?? Date.yesterday) == dateFormatter.string(from: selectedCalenderDate)})
+        print("FILTEREEEED")
+        print(selectedCalenderDate)
+        print(dateFormatter.string(from: routines[0].routineDate!))
+        print(filteredRoutine)
+        return filteredRoutine
     }
     
     func generateDailyRoutine() {
@@ -81,20 +112,15 @@ class ActivityViewController: UIViewController {
         }
 
         // Filter schedules adalah besok atau isEveryday == true
-        let routinesWithScheduleOrEveryDay = allRoutines.filter({$0.schedules?.contains(dayIndex) ?? false || $0.isEveryday == true})
+        let routinesWithScheduleOrEveryDay = allRoutines.filter({$0.schedules?
+            .contains(dayIndex) ?? false || $0.isEveryday == true && $0.startHabit != nil})
     
         print("CREATEEEEE")
         print(dayInWeek)
         print(dayIndex)
         print(routinesWithScheduleOrEveryDay)
         
-        // user default isGenerateToday == true -> tidak generate
-        // user default isGenerateToday == false -> generate
-        // user defailt lastGenerate == isToday -> tidak generate
-        // user defailt lastGenerate == isYesterday -> generate
-        // if lastGenerate == isYesterday || isGenerateToday == false -> generate / set isGenerateToday = true & lastGenerate = isToday
         let lastGenerateTime = UserDefaults.standard.object(forKey: "lastGenerateTime") as? Date
-//        let isGeneratedToday = UserDefaults.standard.bool(forKey: "isGeneratedToday")
         
         if (lastGenerateTime?.weekday != Date().weekday || lastGenerateTime == nil) {
             UserDefaults.standard.set(Date(), forKey: "lastGenerateTime")
@@ -103,30 +129,23 @@ class ActivityViewController: UIViewController {
             for generateRoutine in routinesWithScheduleOrEveryDay {
                 print("GENERATEEE")
                 PersistanceManager.shared.setRoutine(isEveryday: generateRoutine.isEveryday, name: generateRoutine.name!, routineDate: Date.tomorrow)
-                print(generateRoutine.name)
-                print(generateRoutine.schedules?.allObjects)
                 let products = generateRoutine.routineproduct?.allObjects as! [Product]
                 for product in products {
                     PersistanceManager.shared.setProduct(name: product.name!)
                     
                     print("routineproduct")
-                    print(product.routineproduct)
-                    print(product.name)
                     
                 }
-                print(lastGenerateTime?.weekday)
                 print(Date().weekday)
                 print(lastGenerateTime?.weekday == Date().weekday)
             }
         } else {
             print("GA USAH GENERATE LAGI")
-            print(lastGenerateTime?.weekday)
             print(Date().weekday)
             print(lastGenerateTime?.weekday == Date().weekday)
         }
         
         
-       
     }
     
     func setGradientBackground() {
@@ -144,8 +163,13 @@ class ActivityViewController: UIViewController {
         backgroundPurple.layer.insertSublayer(gradientLayer, at:1)
     }
     
-    func configureTableViewDataByStatus() {
-        skinCareRoutines = filterTodayRoutine(routines: allRoutines)
+    func configureTableViewDataByStatus(isFilterByDate: Bool = false) {
+        if isFilterByDate {
+            skinCareRoutines = filterRoutineByDate(routines: allRoutines)
+        } else {
+            skinCareRoutines = filterTodayRoutine(routines: allRoutines)
+        }
+        
         todoTableView = skinCareRoutines.filter({$0.isCompleted == false && $0.isSkipped == false})
         completedTableView = skinCareRoutines.filter({$0.isCompleted == true})
         skippedTableView = skinCareRoutines.filter({$0.isSkipped == true})
@@ -199,27 +223,50 @@ class ActivityViewController: UIViewController {
         navigationItem.rightBarButtonItems = [menuButton]
     }
     
-    private func setUpcircularProgress() {
-        let products = PersistanceManager.shared.fetchProduct()
+    func setUpcircularProgress(isFilterByDate: Bool = false) {
+        var todayProducts : [Product] = []
+        var filteredRoutine : [Routines] = []
+        if isFilterByDate {
+            filteredRoutine = filterRoutineByDate(routines: allRoutines)
+        } else {
+            filteredRoutine = filterTodayRoutine(routines: allRoutines)
+        }
+        for routine in filteredRoutine {
+            let productByRoutine = PersistanceManager.shared.fetchProduct(routine: routine)
+            print("productByRoutine")
+            print(productByRoutine.count)
+            for product in productByRoutine {
+                print("productssss")
+                print(product)
+                print(product.name)
+                todayProducts.append(product)
+            }
+        }
+    
         var productDoneCount : Int = 0
         
-        for product in products {
+        for product in todayProducts {
             if product.isDone {
                 productDoneCount += 1
             }
         }
         
-        let percentage : Float = Float(productDoneCount) / Float(products.count) * 100.0
+        let percentage : Float = Float(productDoneCount) / Float(todayProducts.count) * 100.0
         
         print("percentageeeee")
         print(percentage)
         print(productDoneCount)
-        print(products.count)
+        print(todayProducts.count)
         
         circularProgress.progressColor = UIColor.white
         circularProgress.trackColor = UIColor.systemGray4
-        circularProgress.percentageValue = CGFloat(percentage) / 100
-        circularProgressPercentageLabel.text = "\(Int(percentage))%"
+        if percentage.isInfinite || percentage.isNaN {
+            circularProgress.percentageValue = 0
+            circularProgressPercentageLabel.text = "0%"
+        } else {
+            circularProgress.percentageValue = CGFloat(percentage) / 100
+            circularProgressPercentageLabel.text = "\(Int(percentage))%"
+        }
     }
     
     private func setUpTableView() {
@@ -296,6 +343,7 @@ class ActivityViewController: UIViewController {
         let slideVC = OverlayCalenderView()
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
+        slideVC.delegate = self
         self.present(slideVC, animated: true, completion: nil)
     }
     
