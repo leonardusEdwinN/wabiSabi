@@ -47,11 +47,6 @@ class NewHabitViewController : UIViewController{
             Loading.sharedInstance.showIndicator()
         }
         
-        
-        print("NAME : \(self.routineName)")
-        print("START HABIT : \(self.startHabit)")
-        
-        
         var schedules: [Schedule] = []
         for index in 0...6 {
             if dayToDoHabit[index] {
@@ -60,10 +55,6 @@ class NewHabitViewController : UIViewController{
                 schedules.append(temp)
             }
         }
-        
-        
-        print("SCHEDULE : \(schedules)")
-        print("PRODUCTS : [\(products)]")
         
         if schedules.count == 0 {
             // Kalau Tidak Punya schedule
@@ -74,27 +65,19 @@ class NewHabitViewController : UIViewController{
             PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: self.startHabit, name: self.routineName, schedules: schedules)
         }
         
-        print("ROUTINE CREATED")
-        
-//        var selectedRoutineCreated = PersistanceManager.shared.fetchRoutine(id: routineCreatedId)
-        
         //Routine CREATED
         if let routineCreatedId = UserDefaults.standard.string(forKey: "routineID"){
             var selectedRoutineCreated = PersistanceManager.shared.fetchRoutine(id: routineCreatedId)
-            print("Routine id : \(routineCreatedId) :: \(selectedRoutineCreated.name)")
-            print("START HABIT ROUTINE : \(selectedRoutine.routineDate)")
             self.selectedRoutine = selectedRoutineCreated
         }
         
         print("FETCH PRODUCTS")
         // Add product to routine
         for product in products {
-            print("PRODUCT DATA : \(product.name)")
             PersistanceManager.shared.setProduct(brand: product.brand ?? "", expiredDate: product.expiredDate ?? Date(), name: product.name ?? self.subcategories.habitName, periodAfterOpening: product.periodAfterOpening ?? Date(), picture: product.picture ?? "", routine: selectedRoutine, productType: product.productType ?? "", isDone: product.isDone)
         }
         
         products = PersistanceManager.shared.fetchProduct(routine: selectedRoutine)
-        print("PRODUCTS ROUTINE \(products)")
         
         DispatchQueue.main.async {
             self.dismiss(animated: false) {
@@ -109,8 +92,6 @@ class NewHabitViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("ROUTINE : \(selectedRoutine.name)")
-//        fetchDataProduct()
         setupTableView()
         setupUI()
     }
@@ -130,7 +111,7 @@ class NewHabitViewController : UIViewController{
     
     func fetchDataProduct(){
         self.products = PersistanceManager.shared.fetchProduct(routine: self.selectedRoutine)
-        print("PRODUCT : \(products.count)")
+        
     }
     
     func hideKeyboardWhenTappedAround() {
@@ -242,7 +223,6 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
 
                 }
             
-            print("SELECTED PRODUCT \(self.products[indexPath.row].name)")
             row.selectedProduct = self.products[indexPath.row]
             row.delegate = self
             row.selectedIndexPath = indexPath
@@ -274,17 +254,7 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
         
         switch arrayRoutine[indexPath.section] {
         case "products":
-//            if(row.productNameLabel.text == "Product Type" && row.productBrandLabel.text == "Product Brand"){
-//                //kondisi di mana belum ada data
-//                print("INDEXPath : \(indexPath.row)")
-////                self.selectedProduct = products[indexPath.row]
-////                performSegue(withIdentifier: "moveToAddProduct", sender: self)
-//            }else{
-//
-//            }
             
-//            if(products.count > 0)
-//            {
             if((products[indexPath.row].name) != nil && (products[indexPath.row].brand) != nil){
                 //ada data
                 if(!isEdit)
@@ -370,7 +340,6 @@ extension NewHabitViewController {
                return
             }
             
-            print("selected product : \(selectedProduct.id)")
             
             addProductVC.selectedRoutine = self.selectedRoutine
             addProductVC.delegateAddProduct = self
@@ -468,9 +437,7 @@ extension NewHabitViewController : EditDeletProductItemDelegate{
     func deleteProductItem(deletedProduct product: Product) {
         print("DELET PRODUCT")
         self.products = products.filter({ $0.id != product.id})
-//        PersistanceManager.shared.deleteProduct(product: product)
         DispatchQueue.main.async {
-//            self.fetchDataProduct()
             self.habitTableView.reloadData()
         }
     }
@@ -486,30 +453,20 @@ extension NewHabitViewController : EditDeletProductItemDelegate{
 extension NewHabitViewController : SelectDayOfTheWeekDelegate{
     func didTapSelectWeek(dayOfTheWeek: String, isSelected : Bool) {
         
-//        var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
-        
-        
         switch dayOfTheWeek {
         case "Sunday":
-//            temp.schedule = "0"
             self.dayToDoHabit[0] = isSelected
         case "Monday":
-//            temp.schedule = "1"
             self.dayToDoHabit[1] = isSelected
         case "Tuesday":
-//            temp.schedule = "2"
             self.dayToDoHabit[2] = isSelected
         case "Wednesday":
-//            temp.schedule = "3"
             self.dayToDoHabit[3] = isSelected
         case "Thursday":
-//            temp.schedule = "4"
             self.dayToDoHabit[4] = isSelected
         case "Friday":
-//            temp.schedule = "5"
             self.dayToDoHabit[5] = isSelected
         case "Saturday":
-//            temp.schedule = "6"
             self.dayToDoHabit[6] = isSelected
         case "All":
             self.isEveryday = isSelected
@@ -525,7 +482,6 @@ extension NewHabitViewController : SelectDayOfTheWeekDelegate{
             }
             
         default:
-//            temp.schedule=""
             print("DATA NOT FOUND")
         }
       
@@ -570,7 +526,6 @@ extension NewHabitViewController : SaveNewProductRoutineDelegate{
         productTemp.isDone = product.isDone
         productTemp.id = product.id
         
-//        var isUpdate = false
         for (index, product) in products.enumerated(){
             print("Selected Product : \(selectedProduct.id) :: \(product.id)")
             if(selectedProduct.id == product.id){
@@ -599,9 +554,7 @@ extension NewHabitViewController : SaveNewProductRoutineDelegate{
         productTemp.id = product.id
         
         self.selectedProduct = productTemp
-        print("Selected Product Temp :: \(productTemp.id)")
-//        products.append(productTemp)
-//
+        
         if(products.count == 0){
             products.append(productTemp)
         }else{

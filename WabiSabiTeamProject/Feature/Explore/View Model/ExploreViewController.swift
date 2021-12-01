@@ -71,9 +71,6 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ExploreViewController : CollectionViewCellDelegate{
     func didTapAtCell(section: Int, cellIndex: IndexPath, subcategoriesData: SubCategories) {
-        print("Data Categories : \(Utilities().category[section].categoryName)")
-        print("Data SubCategories : \(subcategoriesData.habitName)")
-        
         self.selectedCategory = Utilities().category[section].categoryName
         self.selectedSubCategory = subcategoriesData
         
