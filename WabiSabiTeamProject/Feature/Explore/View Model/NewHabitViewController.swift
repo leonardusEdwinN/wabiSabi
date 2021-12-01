@@ -25,6 +25,7 @@ class NewHabitViewController : UIViewController{
     var schedule : [Schedule] = []
     var subcategories : SubCategories!
     var startHabit: Date = Date()
+    var routineName: String = ""
     
     var dayToDoHabit: [Bool] = [false, false, false, false, false, false, false]
     var isEveryday: Bool = false
@@ -40,6 +41,53 @@ class NewHabitViewController : UIViewController{
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func buttonSavePressed(_ sender: Any) {
+        
+        //show indicator loading
+        Loading.sharedInstance.showIndicator()
+        
+        print("NAME : \(self.routineName)")
+        print("START HABIT : \(startHabit)")
+        
+        
+        var schedules: [Schedule] = []
+        for index in 0...6 {
+            if dayToDoHabit[index] {
+                var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
+                temp.schedule = "\(index)"
+                schedules.append(temp)
+            }
+        }
+        
+        
+        print("SCHEDULE : \(schedules)")
+        print("PRODUCTS : [\(products)]")
+        
+        if schedules == nil {
+            // Kalau Tidak Punya schedule
+            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: self.routineName, startHabit: startHabit)
+        }
+        else {
+            //kalau punya schedule
+            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: startHabit, name: self.routineName, schedules: schedules)
+        }
+        
+        print("ROUTINE CREATED")
+        //Routine CREATED
+        if let routineCreatedId = UserDefaults.standard.string(forKey: "routineId"){
+            var selectedRoutineCreated = PersistanceManager.shared.fetchRoutine(id: routineCreatedId)
+            self.selectedRoutine = selectedRoutineCreated
+        }
+        
+        print("FETCH PRODUCTS")
+        // Add product to routine
+        for product in products {
+            PersistanceManager.shared.setProduct(brand: product.brand ?? "", expiredDate: product.expiredDate ?? Date(), name: product.name ?? self.subcategories.habitName, periodAfterOpening: product.periodAfterOpening ?? Date(), picture: product.picture ?? "", routine: selectedRoutine, productType: product.productType ?? "", isDone: product.isDone)
+        }
+        
+        self.dismiss(animated: false) {
+            Loading.sharedInstance.hideIndicator()
+        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +117,7 @@ class NewHabitViewController : UIViewController{
     }
     
     func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(QuestionNameViewController.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(NewHabitViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
@@ -121,6 +169,7 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
         case "name":
             let row = tableView.dequeueReusableCell(withIdentifier: "routineNameTableViewCell") as! RoutineNameTableViewCell
             
+            row.delegate = self
             row.setUI(placeholder: self.subcategories.habitName)
             //set namenya
             return row
@@ -336,15 +385,19 @@ extension NewHabitViewController : DidSelectButtonAtStartHabitDelegate, OverlayB
 
     
     func didtapTodayButton() {
-        print("TODAY")
+//        print("TODAY")
         startHabit = Date()
+        
+        
+            print("TODAY : \(startHabit)")
     }
     
     func didtapTommorowButton() {
-        print("TOMO")
         let today = Date()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
         startHabit = tomorrow ?? Date()
+        
+            print("TOMO : \(startHabit)")
     }
     
     func didtapCustomButton() {
@@ -359,8 +412,8 @@ extension NewHabitViewController : DidSelectButtonAtStartHabitDelegate, OverlayB
     func buttonSavePressed(time: String) {
         print("TIME \(time)")
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "MMM dd yyyy"
+        dateFormatter.timeZone = TimeZone.current
         
         
         if let date = dateFormatter.date(from: time){
@@ -416,46 +469,52 @@ extension NewHabitViewController : EditDeletProductItemDelegate{
 
 
 extension NewHabitViewController : SelectDayOfTheWeekDelegate{
-    func didTapSelectWeek(dayOfTheWeek: String) {
+    func didTapSelectWeek(dayOfTheWeek: String, isSelected : Bool) {
         
-        var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
+//        var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
         
         
         switch dayOfTheWeek {
-        case "Monday":
-            temp.schedule = "0"
-            self.schedule.append(temp)
-        case "Tuesday":
-            temp.schedule = "1"
-            self.schedule.append(temp)
-        case "Wednesday":
-            temp.schedule = "2"
-            self.schedule.append(temp)
-        case "Thursday":
-            temp.schedule = "3"
-            self.schedule.append(temp)
-        case "Friday":
-            temp.schedule = "4"
-            self.schedule.append(temp)
-        case "Saturday":
-            temp.schedule = "5"
-            self.schedule.append(temp)
         case "Sunday":
-            temp.schedule = "6"
-            self.schedule.append(temp)
+//            temp.schedule = "0"
+            self.dayToDoHabit[0] = isSelected
+        case "Monday":
+//            temp.schedule = "1"
+            self.dayToDoHabit[1] = isSelected
+        case "Tuesday":
+//            temp.schedule = "2"
+            self.dayToDoHabit[2] = isSelected
+        case "Wednesday":
+//            temp.schedule = "3"
+            self.dayToDoHabit[3] = isSelected
+        case "Thursday":
+//            temp.schedule = "4"
+            self.dayToDoHabit[4] = isSelected
+        case "Friday":
+//            temp.schedule = "5"
+            self.dayToDoHabit[5] = isSelected
+        case "Saturday":
+//            temp.schedule = "6"
+            self.dayToDoHabit[6] = isSelected
         case "All":
-            var habits : [Schedule] = []
-            
-            for index in 0...6 {
-                temp.schedule = "\(index)"
-                habits.append(temp)
+            self.isEveryday = isSelected
+            if(isSelected){
+                //everyday
+                for index in 0...6 {
+                    self.dayToDoHabit[index] = true
+                }
+            }else{
+                for index in 0...6 {
+                    self.dayToDoHabit[index] = false
+                }
             }
-            self.schedule = habits
+            
         default:
-            temp.schedule=""
+//            temp.schedule=""
+            print("DATA NOT FOUND")
         }
+      
         
-        print("SCHEDULE : \(schedule.count)")
        
     }
 }
@@ -552,6 +611,15 @@ extension NewHabitViewController : SaveNewProductRoutineDelegate{
             self.habitTableView.reloadData()
             Loading.sharedInstance.hideIndicator()
         }
+    }
+    
+    
+}
+
+extension NewHabitViewController : TextfieldCellGetName{
+    func getValueInsideTextfield(for textfield: String) {
+        print("DELEGATE SUCCESS : \(textfield)")
+        self.routineName = textfield
     }
     
     
