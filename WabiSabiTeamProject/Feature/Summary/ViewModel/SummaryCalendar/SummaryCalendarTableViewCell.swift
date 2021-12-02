@@ -84,35 +84,16 @@ class SummaryCalendarTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func filterRoutine(date: Date, routines: [Routines]) -> [Routines] {
+    func filterRoutine(filterDate: Date, routines: [Routines]) -> [Routines] {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        
+        var date: String = df.string(from: filterDate)
+        
         var filteredItems: [Routines] = []
         for i in 0..<routines.count {
-            /*
-             var dayToBeCompared = Calendar.current.component(.day, from: routines[i].routineDate ?? Date())
-             var monthToBeCompared = Calendar.current.component(.month, from: routines[i].routineDate ?? Date())
-             var yearToBeCompared = Calendar.current.component(.year, from: routines[i].routineDate ?? Date())
-             
-             var dayFilter = Calendar.current.component(.day, from: date ?? Date())
-             var monthFilter = Calendar.current.component(.month, from: date ?? Date())
-             var yearFilter = Calendar.current.component(.year, from: date ?? Date())
-             
-             print(dayToBeCompared, "-", dayFilter)
-             print(monthToBeCompared, "-", monthFilter)
-             print(yearToBeCompared, "-", yearFilter)
-             
-             if (dayToBeCompared == dayFilter && monthToBeCompared == monthFilter && yearToBeCompared == yearFilter) {
-                 
-                 filteredItems.append(routines[i])
-             }
-            */
-            
-            let df = DateFormatter()
-            df.dateFormat = "yyyy-MM-dd"
             let routineDate: String = df.string(from: routines[i].routineDate ?? Date())
-            let filterDate: String = df.string(from: date)
-            
-            if (routineDate.elementsEqual(filterDate)) {
-                print(routines[i].isCompleted, "on", routineDate)
+            if (routineDate.elementsEqual(date)) {
                 filteredItems.append(routines[i])
             }
         }
@@ -229,7 +210,7 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
 
                 var date: Date = Calendar.current.date(from: dateComponents) ?? Date()
                 
-                var temp: [Routines] = filterRoutine(date: date, routines: allRoutines)
+                var temp: [Routines] = filterRoutine(filterDate: date, routines: allRoutines)
                 
                 if !(temp.isEmpty) {
                     cell.circularProgressView.isHidden = false
@@ -256,14 +237,9 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
                 DispatchQueue.main.async {
                     cell.setUI(labelTanggal: "\(calcDate)", progress: calculateProgress)
                 }
-                
             }
-            
-            
             return cell
-            
         }
-        
         return UICollectionViewCell()
     }
 }

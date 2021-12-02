@@ -23,12 +23,6 @@ class SummaryViewController: UIViewController{
         super.viewDidLoad()
         registerCell()
         
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        
-        var defaultDate: String = df.string(from: Date())
-        UserDefaults.standard.set(defaultDate, forKey: "selectedSummaryCalendar")
-        
         selectedDateRoutines = filterRoutine(filterDate: Date(), routines: allRoutines)
     }
     
@@ -55,24 +49,6 @@ class SummaryViewController: UIViewController{
                 destVC.modalPresentationStyle = .fullScreen
             }
         }
-    }
-    
-    func filterRoutine(routines: [Routines]) -> [Routines] {
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd"
-        
-        var defaultDate: String = df.string(from: Date())
-        
-        var date: String = UserDefaults.standard.string(forKey: "selectedSummaryCalendar") ?? defaultDate
-        
-        var filteredItems: [Routines] = []
-        for i in 0..<routines.count {
-            let routineDate: String = df.string(from: routines[i].routineDate ?? Date())
-            if (routineDate.elementsEqual(date)) {
-                filteredItems.append(routines[i])
-            }
-        }
-        return filteredItems
     }
     
     func filterRoutine(filterDate: Date, routines: [Routines]) -> [Routines] {
@@ -128,10 +104,10 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             
             //no state
             let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryActivityCircularProgressTableViewCell",for: indexPath) as! SummaryActivityCircularProgressTableViewCell
+            cell.setData(newData: selectedDateRoutines)
             cell.tag = 1
-            cell.data = selectedDateRoutines
             if selectedDateRoutines != nil {
-                cell.frame.size = CGSize(width: summaryTableView.frame.width, height: CGFloat(Int(selectedDateRoutines.count / 3) * 220))
+                cell.frame.size = CGSize(width: summaryTableView.frame.width, height: CGFloat(Int(selectedDateRoutines.count / 3) * 230))
             }
             return cell
         }
@@ -152,9 +128,9 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             return 450
         }else if (indexPath.item == 1){
             if selectedDateRoutines != nil {
-                return CGFloat(((1 + Int(selectedDateRoutines.count/3)) * 170) + 50)
+                return CGFloat(((1 + Int(selectedDateRoutines.count/3)) * 170) + 60)
             }
-            return 220
+            return 230
         }
         /*
         else if (indexPath.item == 2){
@@ -170,14 +146,12 @@ extension SummaryViewController : SummaryCollectionViewCellDelegate {
     func didTapAtCell(date: Date) {
         if let cell = summaryTableView.viewWithTag(1) as? SummaryActivityCircularProgressTableViewCell {
             if date <= Date() {
-                cell.noDataLabel.isHidden = true
                 cell.setData(newData: filterRoutine(filterDate: date, routines: allRoutines))
-                cell.frame.size = CGSize(width: summaryTableView.frame.width, height: CGFloat(((1 + Int(selectedDateRoutines.count/3)) * 170) + 50))
+                cell.frame.size = CGSize(width: summaryTableView.frame.width, height: CGFloat(((1 + Int(selectedDateRoutines.count/3)) * 170) + 60))
             }
             else {
                 cell.setData(newData: [])
-                cell.noDataLabel.isHidden = false
-                cell.frame.size = CGSize(width: summaryTableView.frame.width, height: 220)
+                cell.frame.size = CGSize(width: summaryTableView.frame.width, height: 230)
             }
         }
     }

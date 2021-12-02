@@ -12,26 +12,56 @@ class SummaryActivityCircularProgressTableViewCell: UITableViewCell {
     @IBOutlet weak var noDataLabel: UILabel!
     
     var data: [Routines]!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
         collectionView.register(UINib.init(nibName: "ActivityCircularProgressCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCircularProgressCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        collectionView.reloadData()
+        
+        if !(data == [] || data == nil || data.isEmpty) {
+            noDataLabel.isHidden = true
+        }
+        else{
+            noDataLabel.isHidden = false
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-        
     }
     
     func setData(newData: [Routines]){
         data = newData
         collectionView.reloadData()
+        
+        if !(data == []) {
+            noDataLabel.isHidden = true
+        }
+        else{
+            noDataLabel.isHidden = false
+        }
+    }
+    
+    func filterRoutine(filterDate: Date, routines: [Routines]) -> [Routines] {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        
+        var date: String = df.string(from: filterDate)
+        
+        var filteredItems: [Routines] = []
+        for i in 0..<routines.count {
+            let routineDate: String = df.string(from: routines[i].routineDate ?? Date())
+            if (routineDate.elementsEqual(date)) {
+                filteredItems.append(routines[i])
+            }
+        }
+        return filteredItems
     }
 
     func calculateProgress(routine: Routines) -> CGFloat{
@@ -62,17 +92,11 @@ extension SummaryActivityCircularProgressTableViewCell: UICollectionViewDataSour
         
         cell.routineNameLabel.text = data[indexPath.row].name
         
-        // get Asset
-        for i in 0..<Utilities().routineCategory.count {
-            var libraryData = Utilities().routineCategory[i].name
-            var dataToSearch = data[indexPath.row].name
-            if dataToSearch == libraryData {
-                cell.iconLabel.text = Utilities().routineCategory[i].icon
-                cell.routineNameLabel.textColor = Utilities().routineCategory[i].color
-                cell.circularProgressActivity.strokeColor = Utilities().routineCategory[i].color.cgColor
-                break;
-            }
-        }
+        var circularProgressValue = calculateProgress(routine: data[indexPath.row])
+        cell.circularProgressActivity.progress = circularProgressValue
+        
+        print(indexPath.row, "-", circularProgressValue)
+        
         if data[indexPath.row].isSkipped {
             cell.circularProgressActivity.progress = 0.0
             cell.circularProgressActivity.fillColor = UIColor.lightGray.cgColor
@@ -80,13 +104,22 @@ extension SummaryActivityCircularProgressTableViewCell: UICollectionViewDataSour
             cell.routineNameLabel.textColor = UIColor.lightGray
         }
         else {
-            var circularProgressValue = calculateProgress(routine: data[indexPath.row])
-            cell.circularProgressActivity.progress = circularProgressValue
-            if circularProgressValue == 0.0 {
-                cell.circularProgressActivity.progress = 0.001
+            // get Asset
+            for i in 0..<Utilities().routineCategory.count {
+                var libraryData = Utilities().routineCategory[i].name
+                var dataToSearch = data[indexPath.row].name
+                if dataToSearch == libraryData {
+                    cell.iconLabel.text = Utilities().routineCategory[i].icon
+                    cell.routineNameLabel.textColor = Utilities().routineCategory[i].color
+                    cell.circularProgressActivity.strokeColor = Utilities().routineCategory[i].color.cgColor
+                    break;
+                }
             }
         }
         
+        if circularProgressValue == 0.0 {
+            cell.circularProgressActivity.progress = 0.01
+        }
         
         /*
         if data[indexPath.row].isCompleted {
