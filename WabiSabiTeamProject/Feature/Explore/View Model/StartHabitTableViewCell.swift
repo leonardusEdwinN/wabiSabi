@@ -46,6 +46,8 @@ class StartHabitTableViewCell: UITableViewCell {
         buttonToday.isSelected = true
         buttonCustom.isSelected = false
         buttonTommorow.isSelected = false
+        
+        
         // Initialization code
     }
 
@@ -54,5 +56,6 @@ class StartHabitTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     
 }

@@ -11,9 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SF-Pro-Rounded-Bold.otf">
-            <string>SFProRounded-Bold</string>
-        </array>
         <array key="SF-Pro-Rounded-Regular.otf">
             <string>SFProRounded-Regular</string>
         </array>
@@ -270,6 +267,7 @@
                         <outlet property="tutorial5" destination="W90-gq-45X" id="g7A-On-73B"/>
                         <outlet property="tutorial6" destination="aXV-5E-cSA" id="o2U-B7-Ofk"/>
                         <segue destination="HUT-Du-YTH" kind="show" identifier="moveToAddRoutinePage" id="wEe-gW-wo1"/>
+                        <segue destination="vWN-Rb-BzI" kind="show" identifier="goToNewHabitVC" id="jph-xO-bLd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pc-s2-CYL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -354,41 +352,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWE-6P-4SW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXx-jc-WZd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under Maintenance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-lI-OKs">
-                                        <rect key="frame" x="20" y="100" width="303.33333333333331" height="40"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XH1-ta-RK9">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                        <subviews>
+                                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8G-CB-Ybo">
+                                                <rect key="frame" x="0.0" y="30" width="414" height="44"/>
+                                                <color key="barTintColor" name="ColorCream"/>
+                                                <items>
+                                                    <navigationItem title="Summary" id="qlg-8C-edI"/>
+                                                </items>
+                                            </navigationBar>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="G6T-HH-Fmv">
+                                                <rect key="frame" x="0.0" y="74" width="414" height="739"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="pcV-Un-dd2"/>
+                                            <constraint firstItem="w8G-CB-Ybo" firstAttribute="leading" secondItem="XH1-ta-RK9" secondAttribute="leading" id="Cdu-ht-GMt"/>
+                                            <constraint firstAttribute="trailing" secondItem="w8G-CB-Ybo" secondAttribute="trailing" id="SMX-hq-adu"/>
+                                            <constraint firstItem="w8G-CB-Ybo" firstAttribute="top" secondItem="XH1-ta-RK9" secondAttribute="top" constant="30" id="YRX-BL-DoV"/>
+                                            <constraint firstItem="G6T-HH-Fmv" firstAttribute="leading" secondItem="XH1-ta-RK9" secondAttribute="leading" id="cqB-VQ-K3P"/>
+                                            <constraint firstAttribute="trailing" secondItem="G6T-HH-Fmv" secondAttribute="trailing" id="hyX-yH-22d"/>
+                                            <constraint firstItem="G6T-HH-Fmv" firstAttribute="top" secondItem="w8G-CB-Ybo" secondAttribute="bottom" id="t6d-B9-GcZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="G6T-HH-Fmv" secondAttribute="bottom" id="yJd-m1-8io"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="34"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" name="ColorPrimary"/>
                                 <constraints>
-                                    <constraint firstItem="MQu-lI-OKs" firstAttribute="top" secondItem="LWE-6P-4SW" secondAttribute="top" constant="100" id="8q7-Hm-l0j"/>
-                                    <constraint firstItem="MQu-lI-OKs" firstAttribute="leading" secondItem="LWE-6P-4SW" secondAttribute="leading" constant="20" id="Du7-fM-NGr"/>
-                                    <constraint firstAttribute="height" constant="300" id="si3-4d-xN9"/>
+                                    <constraint firstAttribute="trailing" secondItem="XH1-ta-RK9" secondAttribute="trailing" id="4x5-uh-CHL"/>
+                                    <constraint firstItem="XH1-ta-RK9" firstAttribute="leading" secondItem="ZXx-jc-WZd" secondAttribute="leading" id="Oeb-Ap-k8l"/>
+                                    <constraint firstItem="XH1-ta-RK9" firstAttribute="top" secondItem="ZXx-jc-WZd" secondAttribute="top" id="X7j-0j-SdH"/>
+                                    <constraint firstItem="XH1-ta-RK9" firstAttribute="centerX" secondItem="ZXx-jc-WZd" secondAttribute="centerX" id="aDw-Sp-WLQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="XH1-ta-RK9" secondAttribute="bottom" id="dsE-jr-bKG"/>
+                                    <constraint firstItem="XH1-ta-RK9" firstAttribute="centerY" secondItem="ZXx-jc-WZd" secondAttribute="centerY" id="qb7-0x-oYK"/>
+                                    <constraint firstItem="XH1-ta-RK9" firstAttribute="leading" secondItem="ZXx-jc-WZd" secondAttribute="leading" id="rvE-Lm-ABT"/>
+                                    <constraint firstAttribute="trailing" secondItem="XH1-ta-RK9" secondAttribute="trailing" id="t7C-XD-QGJ"/>
                                 </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="G6T-HH-Fmv">
-                                <rect key="frame" x="0.0" y="200" width="414" height="613"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O5B-49-pMM"/>
-                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="ColorCream"/>
                         <constraints>
-                            <constraint firstItem="O5B-49-pMM" firstAttribute="trailing" secondItem="G6T-HH-Fmv" secondAttribute="trailing" id="4sM-J2-WO4"/>
-                            <constraint firstItem="G6T-HH-Fmv" firstAttribute="leading" secondItem="O5B-49-pMM" secondAttribute="leading" id="D5u-Fh-eov"/>
-                            <constraint firstItem="LWE-6P-4SW" firstAttribute="leading" secondItem="O5B-49-pMM" secondAttribute="leading" id="LAo-ix-MDo"/>
-                            <constraint firstItem="O5B-49-pMM" firstAttribute="bottom" secondItem="G6T-HH-Fmv" secondAttribute="bottom" id="N9S-2y-YFZ"/>
-                            <constraint firstItem="G6T-HH-Fmv" firstAttribute="top" secondItem="0FY-7o-Nn5" secondAttribute="top" constant="200" id="fJS-6d-9Xa"/>
-                            <constraint firstItem="O5B-49-pMM" firstAttribute="trailing" secondItem="LWE-6P-4SW" secondAttribute="trailing" id="o6v-2j-Sm6"/>
-                            <constraint firstItem="LWE-6P-4SW" firstAttribute="top" secondItem="0FY-7o-Nn5" secondAttribute="top" id="yiy-4I-i9J"/>
+                            <constraint firstItem="ZXx-jc-WZd" firstAttribute="top" secondItem="0FY-7o-Nn5" secondAttribute="top" id="JI0-hC-eao"/>
+                            <constraint firstItem="ZXx-jc-WZd" firstAttribute="bottom" secondItem="O5B-49-pMM" secondAttribute="bottom" id="OdE-5j-tWx"/>
+                            <constraint firstItem="ZXx-jc-WZd" firstAttribute="leading" secondItem="O5B-49-pMM" secondAttribute="leading" id="a8H-nS-y4S"/>
+                            <constraint firstItem="ZXx-jc-WZd" firstAttribute="trailing" secondItem="O5B-49-pMM" secondAttribute="trailing" id="zOO-Lr-BaP"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Summary" image="newspaper" catalog="system" selectedImage="newspaper" id="m3Q-Qx-Bk8"/>
@@ -408,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPw-Ne-gln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1565" y="948"/>
+            <point key="canvasLocation" x="-1565.217391304348" y="947.54464285714278"/>
         </scene>
         <!--Profile-->
         <scene sceneID="6UQ-Qx-TS2">
@@ -441,7 +453,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nadia (25 y.o)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX8-Rw-pfw">
-                                <rect key="frame" x="113.66666666666669" y="150.66666666666666" width="128" height="26"/>
+                                <rect key="frame" x="113.66666666666667" y="150.66666666666666" width="133.66666666666663" height="26"/>
                                 <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="22"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -453,7 +465,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1Y-qH-YWX">
-                                <rect key="frame" x="112" y="204.66666666666666" width="100" height="34"/>
+                                <rect key="frame" x="112" y="204.66666666666666" width="106.33333333333331" height="34"/>
                                 <color key="backgroundColor" white="0.67119655479999996" alpha="0.54042053219999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -515,10 +527,10 @@
             </objects>
             <point key="canvasLocation" x="-1566.1538461538462" y="1677.7251184834122"/>
         </scene>
-        <!--NewHabitVC-->
+        <!--newHabitNVC-->
         <scene sceneID="thC-Cr-Hxv">
             <objects>
-                <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="NewHabitVC" id="3oK-BK-NRN" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="newHabitNVC" id="3oK-BK-NRN" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="eHA-cT-MxH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Anl-FC-gzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -547,19 +559,19 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byR-dt-zlU">
-                                                <rect key="frame" x="15" y="50" width="384" height="37"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <rect key="frame" x="15" y="50" width="384" height="40.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="34"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore other routine that you can do for your skin!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crN-qJ-TS7">
-                                                <rect key="frame" x="15" y="95" width="299" height="14.333333333333329"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <rect key="frame" x="15" y="98.666666666666657" width="299" height="40.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sC5-Kd-Frb">
-                                                <rect key="frame" x="0.0" y="129.33333333333326" width="414" height="1999.9999999999998"/>
+                                                <rect key="frame" x="0.0" y="159.33333333333326" width="414" height="1999.9999999999998"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qo6-Bl-pPd">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
@@ -578,14 +590,14 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBW-HW-o0X">
-                                                                            <rect key="frame" x="20" y="21" width="374" height="23"/>
+                                                                            <rect key="frame" x="20" y="21" width="374" height="25.666666666666671"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                            <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="22"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-TW-vwU">
-                                                                            <rect key="frame" x="0.0" y="54" width="414" height="86"/>
+                                                                            <rect key="frame" x="0.0" y="56.666666666666664" width="414" height="83.333333333333343"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RAq-iO-Mel">
                                                                                 <size key="itemSize" width="180" height="120"/>
@@ -595,7 +607,7 @@
                                                                             </collectionViewFlowLayout>
                                                                             <cells>
                                                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SubCategoryCell" id="5ki-NS-0Dr" customClass="SubcategoryCollectionViewCell" customModule="WabiSabiTeamProject" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="-17" width="180" height="120"/>
+                                                                                    <rect key="frame" x="0.0" y="-18.333333333333332" width="180" height="120"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W7z-Rn-h9x">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="180" height="120"/>
@@ -611,13 +623,13 @@
                                                                                             </view>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habit Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7x-h6-mnS">
                                                                                                 <rect key="frame" x="8" y="8" width="160" height="21"/>
-                                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                                                                <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEk-SX-eeU">
                                                                                                 <rect key="frame" x="8" y="37" width="160" height="21"/>
-                                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                                                <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="13"/>
                                                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
@@ -630,7 +642,7 @@
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~ 10 mins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rc-BQ-Xze">
                                                                                                 <rect key="frame" x="30" y="52.5" width="120" height="14"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                                                <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="13"/>
                                                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
@@ -773,6 +785,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ls-G8-0Pl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1565" y="220"/>
+        </scene>
+        <!--newHabitNVC-->
+        <scene sceneID="paE-DH-gtb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="newHabitNVC" id="vWN-Rb-BzI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sTE-Qp-Q7k"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wKh-L0-RHP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="369" y="-751"/>
         </scene>
     </scenes>
     <resources>

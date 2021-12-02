@@ -16,5 +16,6 @@ struct ProductModel{
     var openedDate : Date
     var expired: Date
     var isDone : Bool
+    var id: String
     
 }

@@ -143,11 +143,20 @@ class AddRoutineViewController : UIViewController{
                 return
             }
             
+            
+//            vc.modalPresentationStyle = .pageSheet
+//            vc.modalPresentationStyle = .formSheet
+//            vc.preferredContentSize = .init(width: self.view.frame.width, height: self.view.frame.height / 1.5)
+            
             if let routineName = selectedRoutine.name{
                 
                 let skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")
-                let levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
-                let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
+                var levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
+                var productIndex: [Int] = []
+                if(levelIndex > 2){
+                    levelIndex = 2
+                    productIndex =  Utilities().levels[levelIndex].productIndex
+                }
                 
                 if(routineName == "Morning Skin Care"){
                     //Go to morning skin care
@@ -322,7 +331,7 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
 //            }else{
 //
 //            }
-            if((products[indexPath.row].brand) != nil && (products[indexPath.row].brand) != nil){
+            if((products[indexPath.row].brand) != nil){
                 //ada data
                 if(!isEdit)
                 {
@@ -442,7 +451,7 @@ extension AddRoutineViewController : SaveProductDelegate{
     
 }
 
-extension AddRoutineViewController : deleteProductItemDelegate{
+extension AddRoutineViewController : EditDeletProductItemDelegate{
     // MARK: Delegate from ProductUsedTableViewCell trash icon
     func deleteProductItem(deletedProduct product: Product) {
         print("DELETE PRODUCT \(product.name)")

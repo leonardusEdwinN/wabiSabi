@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SelectDayOfTheWeekDelegate{
-    func didTapSelectWeek(dayOfTheWeek : String)
+    func didTapSelectWeek(dayOfTheWeek : String, isSelected: Bool)
 }
 
 class SelectWeekTableViewCell: UITableViewCell {
@@ -19,12 +19,13 @@ class SelectWeekTableViewCell: UITableViewCell {
     @IBAction func buttonMondayPressed(_ sender: Any) {
         buttonMonday.isSelected = !buttonMonday.isSelected
 //        if(buttonMonday.isSelected){
-//            delegate?.didTapSelectWeek(dayOfTheWeek: "Monday")
+        delegate?.didTapSelectWeek(dayOfTheWeek: "Monday", isSelected: buttonMonday.isSelected)
 //        }
     }
     @IBOutlet weak var buttonTuesday: UIButton!
     @IBAction func buttonTuesdayPressed(_ sender: Any) {
         buttonTuesday.isSelected = !buttonTuesday.isSelected
+        delegate?.didTapSelectWeek(dayOfTheWeek: "Tuesday", isSelected: buttonTuesday.isSelected)
 //        if(buttonTuesday.isSelected){
 //            delegate?.didTapSelectWeek(dayOfTheWeek: "Tuesday")
 //        }
@@ -32,6 +33,7 @@ class SelectWeekTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonWednesday: UIButton!
     @IBAction func buttonWednesdayPressed(_ sender: Any) {
         buttonWednesday.isSelected = !buttonWednesday.isSelected
+        delegate?.didTapSelectWeek(dayOfTheWeek: "Wednesday", isSelected: buttonWednesday.isSelected)
 //        if(buttonWednesday.isSelected){
 //            delegate?.didTapSelectWeek(dayOfTheWeek: "Wednesday")
 //        }
@@ -39,6 +41,7 @@ class SelectWeekTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonThursday: UIButton!
     @IBAction func buttonThursdayPressed(_ sender: Any) {
         buttonThursday.isSelected = !buttonThursday.isSelected
+        delegate?.didTapSelectWeek(dayOfTheWeek: "Thursday", isSelected: buttonThursday.isSelected)
 //        if(buttonThursday.isSelected){
 //            delegate?.didTapSelectWeek(dayOfTheWeek: "Thursday")
 //        }
@@ -46,6 +49,7 @@ class SelectWeekTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonFriday: UIButton!
     @IBAction func buttonFridayPressed(_ sender: Any) {
         buttonFriday.isSelected = !buttonFriday.isSelected
+        delegate?.didTapSelectWeek(dayOfTheWeek: "Friday", isSelected: buttonFriday.isSelected)
 //        if(buttonFriday.isSelected){
 //            delegate?.didTapSelectWeek(dayOfTheWeek: "Friday")
 //        }
@@ -53,6 +57,7 @@ class SelectWeekTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonSaturday: UIButton!
     @IBAction func buttonSaturdayPressed(_ sender: Any) {
         buttonSaturday.isSelected = !buttonSaturday.isSelected
+        delegate?.didTapSelectWeek(dayOfTheWeek: "Saturday", isSelected: buttonSaturday.isSelected)
 //        if(buttonSaturday.isSelected){
 //            delegate?.didTapSelectWeek(dayOfTheWeek: "Saturday")
 //        }
@@ -60,6 +65,7 @@ class SelectWeekTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonSunday: UIButton!
     @IBAction func buttonSundayPressed(_ sender: Any) {
         buttonSunday.isSelected = !buttonSunday.isSelected
+        delegate?.didTapSelectWeek(dayOfTheWeek: "Sunday", isSelected: buttonSunday.isSelected)
 //        if(buttonSunday.isSelected){
 //            delegate?.didTapSelectWeek(dayOfTheWeek: "Sunday")
 //        }
@@ -68,6 +74,7 @@ class SelectWeekTableViewCell: UITableViewCell {
     @IBAction func buttonEverydayPressed(_ sender: Any) {
         
         buttonEveryday.isSelected = !buttonEveryday.isSelected
+        delegate?.didTapSelectWeek(dayOfTheWeek: "All", isSelected: buttonEveryday.isSelected)
 //        if(buttonEveryday.isSelected){
 //            delegate?.didTapSelectWeek(dayOfTheWeek: "All")
 //        }
@@ -93,6 +100,14 @@ class SelectWeekTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        buttonMonday.isSelected = false
+        buttonTuesday.isSelected = false
+        buttonWednesday.isSelected = false
+        buttonThursday.isSelected = false
+        buttonFriday.isSelected = false
+        buttonSaturday.isSelected = false
+        buttonSunday.isSelected = false
+        buttonEveryday.isSelected = false
         // Initialization code
     }
     
@@ -100,6 +115,45 @@ class SelectWeekTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    func setData(buttonOn : String){
+        
+        switch buttonOn{
+        case "0":
+            buttonSunday.isSelected = true
+        case "1":
+            buttonMonday.isSelected = true
+        case "2":
+            buttonTuesday.isSelected = true
+        case "3":
+            buttonWednesday.isSelected = true
+        case "4":
+            buttonThursday.isSelected = true
+        case "5":
+            buttonFriday.isSelected = true
+        case "6":
+            buttonSaturday.isSelected = true
+        default:
+            print("Cannot set item")
+        }
+        
+        
+        
+    }
+    
+    func isEverydaySelected(isSelected : Bool){
+        
+        if(isSelected){
+            buttonMonday.isSelected = true
+            buttonTuesday.isSelected = true
+            buttonWednesday.isSelected = true
+            buttonThursday.isSelected = true
+            buttonFriday.isSelected = true
+            buttonSaturday.isSelected = true
+            buttonSunday.isSelected = true
+            buttonEveryday.isSelected = true
+        }
     }
     
 }
