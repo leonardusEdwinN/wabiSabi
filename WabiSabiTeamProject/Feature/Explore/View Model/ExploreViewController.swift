@@ -22,6 +22,8 @@ class ExploreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buttonCreateYourOwn.layer.cornerRadius = 30
+        
         tableView.delegate = self
         tableView.dataSource = self
         
