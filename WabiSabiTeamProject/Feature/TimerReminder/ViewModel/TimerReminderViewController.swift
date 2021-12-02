@@ -147,12 +147,12 @@ extension TimerReminderViewController : UITableViewDelegate, UITableViewDataSour
         let row = tableView.dequeueReusableCell(withIdentifier: "timerTableViewCell") as! TimerTableViewCell
         
         if let time = reminders[indexPath.item].reminderTime{
-            let timeFormatter = DateFormatter()
-            timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
             
+            let splitTime = "\(time)".split(separator: ":")
+            let hour = splitTime[0].suffix(2)
+            let minute = splitTime[1]
             
-            print("DUMMY TIME : \(timeFormatter.string(from: time)) :: \(time)")
-            row.labelAlarm.text = "\(time)"
+            row.labelAlarm.text = "\(hour) : \(minute)"
         }
 //        row.setUI(
 //            title: ,
