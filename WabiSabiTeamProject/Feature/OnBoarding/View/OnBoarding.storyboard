@@ -19,6 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onBoard" translatesAutoresizingMaskIntoConstraints="NO" id="bOH-5s-TcC">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your skin care journey with us! Plan and record your routine based on your own preference and skin. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvK-IK-jHp">
                                 <rect key="frame" x="50" y="467" width="290" height="55"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -57,14 +60,18 @@
                         <color key="backgroundColor" name="ColorCream"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="nIV-3Z-Vae" secondAttribute="bottom" constant="30" id="0ew-2r-F4S"/>
+                            <constraint firstItem="bOH-5s-TcC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4Rx-DE-L45"/>
+                            <constraint firstAttribute="bottom" secondItem="bOH-5s-TcC" secondAttribute="bottom" id="JLx-Tx-uzc"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="AK4-ah-v5h" secondAttribute="trailing" constant="80" id="Mf6-zD-yhI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GvK-IK-jHp" secondAttribute="trailing" constant="50" id="RLC-A5-aGR"/>
                             <constraint firstItem="GrV-Z8-Ylt" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-100" id="UAI-DL-bG0"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bOH-5s-TcC" secondAttribute="trailing" id="Uba-dY-t1J"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GrV-Z8-Ylt" secondAttribute="trailing" constant="80" id="VQr-YN-YwL"/>
                             <constraint firstItem="AK4-ah-v5h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="80" id="bjs-r1-BRR"/>
                             <constraint firstItem="AK4-ah-v5h" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-100" id="cJk-td-w7A"/>
                             <constraint firstItem="AK4-ah-v5h" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="f3z-r5-ESL"/>
                             <constraint firstItem="GvK-IK-jHp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="iRO-kv-jsn"/>
+                            <constraint firstItem="bOH-5s-TcC" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="iTT-Ht-Taz"/>
                             <constraint firstItem="GrV-Z8-Ylt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="80" id="tCk-GE-fcs"/>
                             <constraint firstItem="nIV-3Z-Vae" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="vNl-1N-bkM"/>
                             <constraint firstItem="GvK-IK-jHp" firstAttribute="top" secondItem="AK4-ah-v5h" secondAttribute="bottom" constant="30" id="vbP-Zh-wex"/>
@@ -79,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="101.78571428571428"/>
+            <point key="canvasLocation" x="130.76923076923077" y="101.65876777251184"/>
         </scene>
         <!--Question Skin Type View Controller-->
         <scene sceneID="Psx-hM-CWT">
@@ -1618,6 +1625,7 @@ products that you usually use later.</string>
     <resources>
         <image name="Oval" width="489" height="489"/>
         <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="onBoard" width="375" height="812"/>
         <image name="staroflife.fill" catalog="system" width="124" height="128"/>
         <image name="sun.min" catalog="system" width="128" height="121"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
