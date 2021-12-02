@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-class ProfileViewController : UIViewController, UIViewControllerTransitioningDelegate{
+class ProfileViewController : UIViewController, UIViewControllerTransitioningDelegate, SaveProductDelegate{
+    func saveProductAndReloadIt() {
+        print("test")
+    }
+    
     @IBOutlet weak var profileImage: UIView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var switchTableViewButton: UISegmentedControl!
@@ -78,19 +82,19 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
             addRoutineVC.selectedRoutine = self.tableRoutinetData[selectedRoutineIndex]
             nav.modalPresentationStyle = .fullScreen
         } else if segue.identifier == "moveToAddProduct"{
-//            guard let nav = segue.destination as? UINavigationController else {
-//                return
-//            }
-//
-//            guard let addProductVC = nav.topViewController as? AddProductViewController else {
-//               return
-//            }
-//
-//            addProductVC.selectedRoutine = self.selectedRoutine
-//            addProductVC.delegate = self
-//            addProductVC.selectedProduct = self.selectedProduct
-//            addProductVC.isEdit = (self.selectedProduct != nil) ? true : false
-//            addProductVC.modalPresentationStyle = .fullScreen
+            guard let nav = segue.destination as? UINavigationController else {
+                return
+            }
+
+            guard let addProductVC = nav.topViewController as? AddProductViewController else {
+               return
+            }
+
+            addProductVC.selectedRoutine = self.selectedRoutine
+            addProductVC.delegate = self
+            addProductVC.selectedProduct = self.selectedProduct
+            addProductVC.isEdit = (self.selectedProduct != nil) ? true : false
+            addProductVC.modalPresentationStyle = .fullScreen
             
         } else if segue.identifier == "goToNewHabitVC"{
             
@@ -182,7 +186,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if currentProfileList == currentTableList.productList  {
-//            performSegue(withIdentifier: "moveToAddProduct", sender: self)
+            self.selectedProductIndex = indexPath.row
+            performSegue(withIdentifier: "moveToAddProduct", sender: self)
         } else {
             print("ROUTINE CLICK : \(tableRoutinetData[indexPath.row].name)")
             var selectedRoutineName = tableRoutinetData[indexPath.row].name
