@@ -21,18 +21,17 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWv-PI-SL1">
                         <rect key="frame" x="10" y="10" width="75" height="80"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j71-h2-5mT">
-                                <rect key="frame" x="23.5" y="13" width="28" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IOq-dz-7RO">
+                                <rect key="frame" x="0.0" y="0.0" width="75" height="80"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="j71-h2-5mT" firstAttribute="centerY" secondItem="NWv-PI-SL1" secondAttribute="centerY" id="Fuk-VG-lG2"/>
-                            <constraint firstItem="j71-h2-5mT" firstAttribute="centerX" secondItem="NWv-PI-SL1" secondAttribute="centerX" id="Qdc-nB-T0T"/>
+                            <constraint firstAttribute="trailing" secondItem="IOq-dz-7RO" secondAttribute="trailing" id="OBu-K2-Evf"/>
+                            <constraint firstAttribute="bottom" secondItem="IOq-dz-7RO" secondAttribute="bottom" id="Pfk-s2-Q9F"/>
                             <constraint firstAttribute="width" constant="75" id="QtI-n6-NgV"/>
+                            <constraint firstItem="IOq-dz-7RO" firstAttribute="top" secondItem="NWv-PI-SL1" secondAttribute="top" id="Rkz-pL-goU"/>
+                            <constraint firstItem="IOq-dz-7RO" firstAttribute="leading" secondItem="NWv-PI-SL1" secondAttribute="leading" id="i7O-nG-GVA"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="u2n-NO-fJ2">
@@ -81,6 +80,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backgroundImage" destination="NWv-PI-SL1" id="bEU-cD-hmg"/>
                 <outlet property="brand" destination="EMN-lO-Rj2" id="vxo-0t-aje"/>
                 <outlet property="name" destination="RaR-Jh-vMm" id="yls-Sk-xdG"/>
                 <outlet property="type" destination="cUp-58-ted" id="sog-hY-UoO"/>

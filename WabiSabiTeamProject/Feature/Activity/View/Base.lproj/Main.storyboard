@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Bold.otf">
+            <string>SFProRounded-Bold</string>
+        </array>
         <array key="SF-Pro-Rounded-Regular.otf">
             <string>SFProRounded-Regular</string>
         </array>
@@ -282,7 +285,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pba-CJ-tV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="396" y="-577"/>
+            <point key="canvasLocation" x="-3" y="13"/>
         </scene>
         <!--Today-->
         <scene sceneID="MPh-tE-yyR">
@@ -453,7 +456,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nadia (25 y.o)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX8-Rw-pfw">
-                                <rect key="frame" x="113.66666666666667" y="150.66666666666666" width="133.66666666666663" height="26"/>
+                                <rect key="frame" x="113.66666666666667" y="150.66666666666666" width="128.33333333333331" height="26"/>
                                 <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="22"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -464,15 +467,6 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1Y-qH-YWX">
-                                <rect key="frame" x="112" y="204.66666666666666" width="106.33333333333331" height="34"/>
-                                <color key="backgroundColor" white="0.67119655479999996" alpha="0.54042053219999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Edit Profile">
-                                    <fontDescription key="titleFontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="17"/>
-                                </buttonConfiguration>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WK1-a4-mtp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -481,10 +475,8 @@
                             <constraint firstItem="eCE-dj-mCB" firstAttribute="top" secondItem="HX8-Rw-pfw" secondAttribute="bottom" constant="-26.666666666666657" id="0th-dk-wpZ"/>
                             <constraint firstItem="HX8-Rw-pfw" firstAttribute="leading" secondItem="eCE-dj-mCB" secondAttribute="trailing" constant="9.5" id="8jz-gj-SBi"/>
                             <constraint firstItem="sLh-mo-3fH" firstAttribute="leading" secondItem="eCE-dj-mCB" secondAttribute="trailing" constant="9" id="BJL-sF-WwW"/>
-                            <constraint firstItem="L1Y-qH-YWX" firstAttribute="top" secondItem="sLh-mo-3fH" secondAttribute="bottom" constant="5" id="E1c-Z4-bBC"/>
                             <constraint firstItem="WK1-a4-mtp" firstAttribute="bottom" secondItem="Dd6-RB-6xS" secondAttribute="bottom" constant="20" id="Qid-t0-r8I"/>
                             <constraint firstItem="eCE-dj-mCB" firstAttribute="top" secondItem="WK1-a4-mtp" secondAttribute="top" constant="10" id="Rc4-Ol-9LG"/>
-                            <constraint firstItem="L1Y-qH-YWX" firstAttribute="leading" secondItem="eCE-dj-mCB" secondAttribute="trailing" constant="8" symbolic="YES" id="Rpt-Zz-GJO"/>
                             <constraint firstItem="WK1-a4-mtp" firstAttribute="trailing" secondItem="Dd6-RB-6xS" secondAttribute="trailing" constant="20" id="V4O-Mq-Rca"/>
                             <constraint firstItem="Dd6-RB-6xS" firstAttribute="top" secondItem="3TS-xc-4MV" secondAttribute="bottom" constant="20" id="XH4-cs-XLg"/>
                             <constraint firstItem="3TS-xc-4MV" firstAttribute="leading" secondItem="WK1-a4-mtp" secondAttribute="leading" constant="20" id="Y4F-pU-T8o"/>
@@ -496,16 +488,29 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="b3y-5o-ib0"/>
                     <connections>
-                        <outlet property="btnEditProfile" destination="L1Y-qH-YWX" id="hEK-96-jsv"/>
                         <outlet property="productTableView" destination="Dd6-RB-6xS" id="dak-cH-IGe"/>
                         <outlet property="profileImage" destination="eCE-dj-mCB" id="DCF-gH-GeF"/>
+                        <outlet property="profileLevel" destination="sLh-mo-3fH" id="UWd-SA-RUy"/>
                         <outlet property="profileName" destination="HX8-Rw-pfw" id="1Uh-Fq-qrN"/>
                         <outlet property="switchTableViewButton" destination="3TS-xc-4MV" id="dhX-cE-bLB"/>
+                        <segue destination="HUT-Du-YTH" kind="show" identifier="moveToAddRoutinePage" id="a5f-ho-4TD"/>
+                        <segue destination="vWN-Rb-BzI" kind="show" identifier="goToNewHabitVC" id="SKy-Xd-fSO"/>
+                        <segue destination="6X1-tq-5vV" kind="show" identifier="moveToAddProduct" id="gli-x2-IlH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hwa-ak-t1Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-636.92307692307691" y="1677.7251184834122"/>
+            <point key="canvasLocation" x="-637.68115942028987" y="1677.4553571428571"/>
+        </scene>
+        <!--AddProductNavigationViewController-->
+        <scene sceneID="b5v-wG-qga">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddProduct" referencedIdentifier="AddProductNavigationViewController" id="6X1-tq-5vV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="pvz-3P-zl1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zac-Wc-Xmr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="195" y="1659"/>
         </scene>
         <!--Profile-->
         <scene sceneID="SbT-kW-42m">
@@ -793,9 +798,13 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKh-L0-RHP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="369" y="-751"/>
+            <point key="canvasLocation" x="-359" y="14"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SKy-Xd-fSO"/>
+        <segue reference="a5f-ho-4TD"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Tutorial1" width="187" height="53"/>
         <image name="Tutorial2" width="228" height="73"/>

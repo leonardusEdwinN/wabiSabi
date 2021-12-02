@@ -32,6 +32,12 @@ class EditPersonalProfileViewController: UIViewController {
         skinTypeButton.setTitle(user.skinType, for: .normal)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Something Else"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+    }
+    
     @IBAction func seeSkinTypeModal(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "OnBoarding", bundle: nil)
