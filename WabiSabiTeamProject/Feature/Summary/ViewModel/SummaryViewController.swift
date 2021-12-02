@@ -22,9 +22,18 @@ class SummaryViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        
+        let user = PersistanceManager.shared.fetchUser()
         selectedDateRoutines = filterRoutine(filterDate: Date(), routines: allRoutines)
+        selectedDateRoutines = selectedDateRoutines.filter({$0.userroutine?.id == user.id})
+        selectedDateRoutines = selectedDateRoutines.filter({$0.startHabit != nil })
     }
+    
+//    func refetchAllRoutine() {
+//        routines = []
+//            let user = PersistanceManager.shared.fetchUser()
+//            routines = PersistanceManager.shared.fetchRoutines().filter({$0.userroutine?.id == user.id})
+//            routines = routines.filter({ $0.startHabit != nil })
+//        }
     
     func registerCell(){
         
