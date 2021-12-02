@@ -151,8 +151,12 @@ class AddRoutineViewController : UIViewController{
             if let routineName = selectedRoutine.name{
                 
                 let skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")
-                let levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
-                let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
+                var levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
+                var productIndex: [Int] = []
+                if(levelIndex > 2){
+                    levelIndex = 2
+                    productIndex =  Utilities().levels[levelIndex].productIndex
+                }
                 
                 if(routineName == "Morning Skin Care"){
                     //Go to morning skin care
