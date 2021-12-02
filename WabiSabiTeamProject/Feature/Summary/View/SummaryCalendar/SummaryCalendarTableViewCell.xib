@@ -54,7 +54,7 @@
                                         </buttonConfiguration>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yB-uH-edh">
-                                        <rect key="frame" x="60" y="15" width="220" height="20.5"/>
+                                        <rect key="frame" x="60" y="15" width="220" height="20"/>
                                         <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -74,13 +74,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4FV-CW-iod">
-                                <rect key="frame" x="0.0" y="50" width="340" height="35"/>
+                                <rect key="frame" x="5" y="50" width="330" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="exh-aW-LvH"/>
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4MW-aW-e7t">
-                                <rect key="frame" x="0.0" y="85" width="340" height="307"/>
+                                <rect key="frame" x="8" y="85" width="324" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RdU-dq-xcH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -93,16 +93,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4MW-aW-e7t" secondAttribute="trailing" id="14Z-Ct-TDg"/>
+                            <constraint firstAttribute="trailing" secondItem="4MW-aW-e7t" secondAttribute="trailing" constant="8" id="14Z-Ct-TDg"/>
                             <constraint firstAttribute="bottom" secondItem="4MW-aW-e7t" secondAttribute="bottom" id="2vI-mF-cCD"/>
-                            <constraint firstAttribute="trailing" secondItem="4FV-CW-iod" secondAttribute="trailing" id="356-VI-t6M"/>
+                            <constraint firstAttribute="trailing" secondItem="4FV-CW-iod" secondAttribute="trailing" constant="5" id="356-VI-t6M"/>
                             <constraint firstAttribute="trailing" secondItem="Lgx-0w-Ykm" secondAttribute="trailing" id="6H6-Dn-RSU"/>
                             <constraint firstItem="4MW-aW-e7t" firstAttribute="top" secondItem="4FV-CW-iod" secondAttribute="bottom" id="9Qm-LZ-ZD8"/>
                             <constraint firstItem="Lgx-0w-Ykm" firstAttribute="top" secondItem="weT-Vi-Mdb" secondAttribute="top" id="BPN-yI-Xu1"/>
                             <constraint firstItem="Lgx-0w-Ykm" firstAttribute="leading" secondItem="weT-Vi-Mdb" secondAttribute="leading" id="Pym-Tq-pb3"/>
                             <constraint firstItem="4FV-CW-iod" firstAttribute="top" secondItem="Lgx-0w-Ykm" secondAttribute="bottom" id="ZBK-Y8-i4H"/>
-                            <constraint firstItem="4MW-aW-e7t" firstAttribute="leading" secondItem="weT-Vi-Mdb" secondAttribute="leading" id="cSt-O3-G0l"/>
-                            <constraint firstItem="4FV-CW-iod" firstAttribute="leading" secondItem="weT-Vi-Mdb" secondAttribute="leading" id="qx6-QM-5rW"/>
+                            <constraint firstItem="4MW-aW-e7t" firstAttribute="leading" secondItem="weT-Vi-Mdb" secondAttribute="leading" constant="8" id="cSt-O3-G0l"/>
+                            <constraint firstItem="4FV-CW-iod" firstAttribute="leading" secondItem="weT-Vi-Mdb" secondAttribute="leading" constant="5" id="qx6-QM-5rW"/>
                         </constraints>
                     </view>
                 </subviews>

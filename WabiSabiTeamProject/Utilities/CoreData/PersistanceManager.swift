@@ -75,6 +75,8 @@ class PersistanceManager {
         routine.id = "\(UUID())"
         routine.isEveryday = isEveryday
         routine.name = name
+        routine.isCompleted = false
+        routine.isSkipped = false
         routine.startHabit = startHabit
         routine.routineDate = startHabit
         routine.categoryDetail = detail

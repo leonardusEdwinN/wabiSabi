@@ -121,6 +121,12 @@
 		35904E7C272FBDF200C15202 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E7B272FBDF200C15202 /* OptionTableViewCell.swift */; };
 		35904E85272FDA5100C15202 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E84272FDA5100C15202 /* LoadingViewController.swift */; };
 		35904E89272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35904E88272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift */; };
+		35915E182756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35915E162756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.swift */; };
+		35915E192756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35915E172756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.xib */; };
+		35915E1C2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35915E1A2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.swift */; };
+		35915E1D2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35915E1B2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.xib */; };
+		35915E1F275706F5000A5E58 /* CircularProgressActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35915E1E275706F5000A5E58 /* CircularProgressActivity.swift */; };
+		35915E2327570BC6000A5E58 /* RoutineCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35915E2227570BC6000A5E58 /* RoutineCategory.swift */; };
 		35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950D4F273E129000CBF2E1 /* PersistanceManager.swift */; };
 		35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */; };
 		35D9D8DD272FFF5A00C255F1 /* SkinTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */; };
@@ -270,6 +276,12 @@
 		35904E7B272FBDF200C15202 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		35904E84272FDA5100C15202 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		35904E88272FF8DD00C15202 /* SkinCareRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		35915E162756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityCircularProgressTableViewCell.swift; sourceTree = "<group>"; };
+		35915E172756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryActivityCircularProgressTableViewCell.xib; sourceTree = "<group>"; };
+		35915E1A2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCircularProgressCollectionViewCell.swift; sourceTree = "<group>"; };
+		35915E1B2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCircularProgressCollectionViewCell.xib; sourceTree = "<group>"; };
+		35915E1E275706F5000A5E58 /* CircularProgressActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressActivity.swift; sourceTree = "<group>"; };
+		35915E2227570BC6000A5E58 /* RoutineCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutineCategory.swift; path = WabiSabiTeamProject/Feature/Summary/ViewModel/SummaryActivity/RoutineCategory.swift; sourceTree = SOURCE_ROOT; };
 		35950D4F273E129000CBF2E1 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareGuideTableViewCell.swift; sourceTree = "<group>"; };
 		35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTypeViewController.swift; sourceTree = "<group>"; };
@@ -494,8 +506,8 @@
 		134394ED273A4B8300641983 /* SummaryCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				13AD9D9F273908080083AE29 /* CircularProgressBarCalendar.swift */,
 				13AD9D9C273908080083AE29 /* DayCollectionViewCell.swift */,
+				13AD9D9F273908080083AE29 /* CircularProgressBarCalendar.swift */,
 				137962EB2733D999008D1BCF /* SummaryCalendarTableViewCell.swift */,
 			);
 			path = SummaryCalendar;
@@ -506,6 +518,9 @@
 			children = (
 				137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */,
 				134394F3273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift */,
+				35915E162756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.swift */,
+				35915E1A2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.swift */,
+				35915E1E275706F5000A5E58 /* CircularProgressActivity.swift */,
 			);
 			path = SummaryActivity;
 			sourceTree = "<group>";
@@ -540,6 +555,7 @@
 		137962DE2733D189008D1BCF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				35915E2227570BC6000A5E58 /* RoutineCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,9 +574,9 @@
 		137962E02733D1A8008D1BCF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				137962E52733D477008D1BCF /* SummaryActivity */,
 				13E1D9172733EC2A00FF90A9 /* SummaryAwards */,
 				137962EA2733D981008D1BCF /* SummaryCalendar */,
-				137962E52733D477008D1BCF /* SummaryActivity */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -570,6 +586,8 @@
 			children = (
 				137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */,
 				134394F4273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.xib */,
+				35915E172756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.xib */,
+				35915E1B2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.xib */,
 			);
 			path = SummaryActivity;
 			sourceTree = "<group>";
@@ -967,6 +985,7 @@
 				137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */,
 				1371B4D22743EDE000A16A45 /* LocationTableViewCell.xib in Resources */,
 				139A6319273BC2D2008D54A8 /* SF-Pro-Rounded-Light.otf in Resources */,
+				35915E1D2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.xib in Resources */,
 				139A6318273BC2D2008D54A8 /* SF-Pro-Rounded-Medium.otf in Resources */,
 				130C927227526A0B00A416F9 /* ImportProduct.storyboard in Resources */,
 				139A631D273BC2D2008D54A8 /* SF-Pro-Rounded-Black.otf in Resources */,
@@ -987,6 +1006,7 @@
 				1376BCCC27560CFE008DD101 /* StartHabitTableViewCell.xib in Resources */,
 				139A631C273BC2D2008D54A8 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				13E1D91B2733EFB500FF90A9 /* SummaryAwardsTableViewCell.xib in Resources */,
+				35915E192756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.xib in Resources */,
 				13CD1F3227425D5100F537EB /* TimerReminderTableViewCell.xib in Resources */,
 				1308256D27464625005CB024 /* SearchResultTableViewCell.xib in Resources */,
 				139A632A273BCB59008D54A8 /* RoutineTableViewCell.xib in Resources */,
@@ -1022,6 +1042,7 @@
 				137962ED2733D999008D1BCF /* SummaryCalendarTableViewCell.swift in Sources */,
 				1376BCD72756170D008DD101 /* ProductHeaderTableViewCell.swift in Sources */,
 				134394F5273A636F00641983 /* SummaryActivityEmptyStateTableViewCell.swift in Sources */,
+				35915E182756FF04000A5E58 /* SummaryActivityCircularProgressTableViewCell.swift in Sources */,
 				351839332753A527000DE1A8 /* Utilities.swift in Sources */,
 				1308256927464463005CB024 /* Geotification.swift in Sources */,
 				97177DE9273D0557007FF0E9 /* RoutinesTableViewCell.swift in Sources */,
@@ -1037,6 +1058,7 @@
 				351839472753A5C0000DE1A8 /* SubcategoryCollectionViewCell.swift in Sources */,
 				130C926E275262A400A416F9 /* ImportTableViewCell.swift in Sources */,
 				1316910F274E502800049D3D /* ProductTypeModel.swift in Sources */,
+				35915E1C2757065E000A5E58 /* ActivityCircularProgressCollectionViewCell.swift in Sources */,
 				1376BCCB27560CFE008DD101 /* StartHabitTableViewCell.swift in Sources */,
 				1376BCDA27568EF6008DD101 /* ProductModel.swift in Sources */,
 				971434432750D6C00001AED7 /* EditProfileViewController.swift in Sources */,
@@ -1050,8 +1072,10 @@
 				351839412753A5C0000DE1A8 /* Categories.swift in Sources */,
 				351839452753A5C0000DE1A8 /* HabitViewController.swift in Sources */,
 				97177DD82738CB8A007FF0E9 /* RoutineCollectionViewCell.swift in Sources */,
+				35915E1F275706F5000A5E58 /* CircularProgressActivity.swift in Sources */,
 				3518392B2753A4C5000DE1A8 /* SkinTypeRoutine.swift in Sources */,
 				1376BCD327561042008DD101 /* SelectWeekTableViewCell.swift in Sources */,
+				35915E2327570BC6000A5E58 /* RoutineCategory.swift in Sources */,
 				35904E85272FDA5100C15202 /* LoadingViewController.swift in Sources */,
 				1316910D274E3D3800049D3D /* Util.swift in Sources */,
 				1371B4D12743EDE000A16A45 /* LocationTableViewCell.swift in Sources */,
