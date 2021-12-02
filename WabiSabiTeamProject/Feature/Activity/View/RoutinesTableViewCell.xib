@@ -82,10 +82,19 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="der-IZ-fAo">
                                 <rect key="frame" x="10" y="21" width="26" height="26"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C5f-wk-aSF">
+                                        <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.8901960784313725" green="0.73333333333333328" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="C5f-wk-aSF" secondAttribute="bottom" id="2l4-W7-fee"/>
+                                    <constraint firstAttribute="trailing" secondItem="C5f-wk-aSF" secondAttribute="trailing" id="DF5-wB-jNJ"/>
                                     <constraint firstAttribute="width" constant="26" id="Dmg-bX-vsD"/>
                                     <constraint firstAttribute="height" constant="26" id="IVG-E9-nFa"/>
+                                    <constraint firstItem="C5f-wk-aSF" firstAttribute="leading" secondItem="der-IZ-fAo" secondAttribute="leading" id="QNf-0E-myr"/>
+                                    <constraint firstItem="C5f-wk-aSF" firstAttribute="top" secondItem="der-IZ-fAo" secondAttribute="top" id="bVG-h3-Lmf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -116,8 +125,10 @@
                 <outlet property="routineBackground" destination="H2p-sc-9uM" id="qzN-Es-mM9"/>
                 <outlet property="routineColor" destination="der-IZ-fAo" id="Igf-1e-FhA"/>
                 <outlet property="routineContentView" destination="QT3-cH-sge" id="Wcr-eU-WIx"/>
+                <outlet property="routineImageCategory" destination="C5f-wk-aSF" id="xoF-nc-Fwm"/>
                 <outlet property="routineName" destination="mCW-SJ-wcL" id="48L-7F-7I4"/>
                 <outlet property="routineProduct" destination="Owm-C3-DyU" id="ek0-r4-9aM"/>
+                <outlet property="routineViewMini" destination="der-IZ-fAo" id="e1S-xY-vB4"/>
             </connections>
             <point key="canvasLocation" x="155.79710144927537" y="120.53571428571428"/>
         </tableViewCell>

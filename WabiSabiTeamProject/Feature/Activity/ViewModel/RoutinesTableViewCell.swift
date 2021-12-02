@@ -14,8 +14,11 @@ class RoutinesTableViewCell: UITableViewCell {
     @IBOutlet weak var routineColor: UIView!
     @IBOutlet weak var routineBackground: UIView!
     
+    @IBOutlet weak var routineImageCategory: UIImageView!
+    @IBOutlet weak var routineViewMini: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        routineImageCategory.isHidden = true
         // Initialization code
     }
 
@@ -43,6 +46,46 @@ class RoutinesTableViewCell: UITableViewCell {
         routineContentView.layer.masksToBounds = false
 
         routineColor.layer.cornerRadius = routineColor.frame.width / 2
+        
+        if let name = routine.name{
+            switch name {
+            case "Morning Skin Care":
+                routineViewMini.backgroundColor = UIColor.clear
+                routineImageCategory.isHidden = false
+                routineImageCategory.image = UIImage(named: "morning")
+            case "Night Skin Care":
+                routineViewMini.backgroundColor = UIColor.clear
+                routineImageCategory.isHidden = false
+                routineImageCategory.image = UIImage(named: "night")
+            default:
+                routineViewMini.backgroundColor = UIColor(named: "ColorCream")
+                routineImageCategory.isHidden = true
+            }
+        }
+        
+        if let category = routine.category{
+            switch category {
+            case "Face":
+                routineViewMini.backgroundColor = UIColor.clear
+                routineImageCategory.isHidden = false
+                routineImageCategory.image = UIImage(named: "face")
+            case "Body & Scalp":
+                routineViewMini.backgroundColor = UIColor.clear
+                routineImageCategory.isHidden = false
+                routineImageCategory.image = UIImage(named: "body")
+            case "Health":
+                routineViewMini.backgroundColor = UIColor.clear
+                routineImageCategory.isHidden = false
+                routineImageCategory.image = UIImage(named: "health")
+            case "Other":
+                routineViewMini.backgroundColor = UIColor.clear
+                routineImageCategory.isHidden = false
+                routineImageCategory.image = UIImage(named: "other")
+            default:
+                routineViewMini.backgroundColor = UIColor(named: "ColorCream")
+                routineImageCategory.isHidden = true
+            }
+        }
     }
     
 }
