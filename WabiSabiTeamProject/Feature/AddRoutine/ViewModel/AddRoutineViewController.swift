@@ -48,7 +48,9 @@ class AddRoutineViewController : UIViewController{
     }
     var products: [Product] = []
     var indexSelected: Int = 0
+    var selectedRoutineString = ""
     
+    @IBOutlet weak var routineLabel: UILabel!
     var selectedRoutine: Routines!
     var selectedProduct: Product!
     var isEdit: Bool = false
@@ -60,6 +62,34 @@ class AddRoutineViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        // create an NSMutableAttributedString that we'll append everything to
+//        let fullString = NSMutableAttributedString(string: "")
+//
+//        // create our NSTextAttachment
+//        let image1Attachment = NSTextAttachment()
+//        image1Attachment.image = UIImage(systemName: selectedRoutineString == "morning" ? "sun.max" : "moon.stars")
+//
+//        // wrap the attachment in its own attributed string so we can append it
+//        let image1String = NSAttributedString(attachment: image1Attachment)
+//
+//        // add the NSTextAttachment wrapper to our full string, then add some more text.
+//        fullString.append(image1String)
+//        fullString.append(NSAttributedString(string: "Routine"))
+//
+//        // draw the result in a label
+//        routineLabel.attributedText = fullString
+//
+        let attachment = NSTextAttachment()
+        let config = UIImage.SymbolConfiguration(textStyle: .largeTitle)
+        attachment.image = UIImage(systemName: selectedRoutineString == "morning" ? "sun.max" : "moon.stars", withConfiguration: config)
+
+        let imageString = NSMutableAttributedString(attachment: attachment)
+        let textString = NSAttributedString(string: "  Routine")
+        imageString.append(textString)
+        
+        routineLabel.attributedText = imageString
+        
         
         print("ROUTINE : \(selectedRoutine.name)")
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -123,9 +153,11 @@ class AddRoutineViewController : UIViewController{
                 return
             }
             
-            guard let TimerReminderVC = nav.topViewController as? TimerReminderViewController else {
+            guard let timerReminderVC = nav.topViewController as? TimerReminderViewController else {
                 return
             }
+            timerReminderVC.selectedRoutine = self.selectedRoutine
+            
         }else if segue.identifier == "moveToLocationReminder"{
             
             guard let nav = segue.destination as? UINavigationController else {
@@ -136,16 +168,25 @@ class AddRoutineViewController : UIViewController{
                 return
             }
         }else if segue.identifier == "goToDetailSkinCareGuide"{
-            print(selectedRoutine.name)
+//            print(selectedRoutine.name)
             guard let vc = segue.destination as? SkinCareGuideViewController else {
                 return
             }
             
+            
+//            vc.modalPresentationStyle = .pageSheet
+//            vc.modalPresentationStyle = .formSheet
+//            vc.preferredContentSize = .init(width: self.view.frame.width, height: self.view.frame.height / 1.5)
+            
             if let routineName = selectedRoutine.name{
                 
                 let skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")
-                let levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
-                let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
+                var levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
+                var productIndex: [Int] = []
+                if(levelIndex > 2){
+                    levelIndex = 2
+                    productIndex =  Utilities().levels[levelIndex].productIndex
+                }
                 
                 if(routineName == "Morning Skin Care"){
                     //Go to morning skin care
@@ -208,25 +249,26 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             }
             
             
-                if((products[indexPath.row].brand) != nil){
-                    if let name = self.products[indexPath.row].name, let brand = self.products[indexPath.row].brand{
-                        DispatchQueue.main.async {
-                            row.setUIText(title: self.products[indexPath.row].productType ?? "", brand: "\(brand)", desc: "\(name)")
-                        }
-                    }
-                }else{
+            if((products[indexPath.row].brand) != nil){
+                if let name = self.products[indexPath.row].name, let brand = self.products[indexPath.row].brand{
                     DispatchQueue.main.async {
-                        row.setUIText(title: self.products[indexPath.row].name ?? "", brand: "Product Brand", desc: "Add your Product")
+                        row.setUIText(title: self.products[indexPath.row].productType ?? "", brand: "\(brand)", desc: "\(name)")
                     }
                 }
+            }else{
+                DispatchQueue.main.async {
+                    row.setUIText(title: self.products[indexPath.row].name ?? "", brand: "Product Brand", desc: "Add your Product")
+                    row.hideAll()
+                }
+            }
                
                 
-                if let image = products[indexPath.row].picture{
-                        DispatchQueue.main.async {
-                            row.setUIImage(image: image)
-                        }
-                    
-                }
+            if let image = products[indexPath.row].picture{
+                    DispatchQueue.main.async {
+                        row.setUIImage(image: image)
+                    }
+                
+            }
             print("SELECTED PRODUCT \(self.products[indexPath.row])")
             row.selectedProduct = self.products[indexPath.row]
             row.delegate = self
@@ -268,7 +310,7 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             //button
             heightForRow = 110
         }else if(indexPath.row == products.count + 1){
-            //save button
+            //be reminded button
             heightForRow = 80
         }else if(indexPath.row == products.count + 2){
             //timer reminder
@@ -319,33 +361,39 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
 //            }else{
 //
 //            }
-            
-            if(!isEdit)
-            {
-                let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
-                if(products[indexPath.row].isDone){
-                    //di uncheck
-                    row.setStatusUndone()
-                    if let id = self.products[indexPath.row].id{
-                        //update data status
-                        PersistanceManager.shared.changeProductStatus(id: id, status: false)
+            if((products[indexPath.row].brand) != nil){
+                //ada data
+                if(!isEdit)
+                {
+                    let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
+                    if(products[indexPath.row].isDone){
+                        //di uncheck
+                        row.setStatusUndone()
+                        if let id = self.products[indexPath.row].id{
+                            //update data status
+                            PersistanceManager.shared.changeProductStatus(id: id, status: false)
+                        }
+                        
+                        tableView.reloadRows(at: [indexPath], with: .automatic)
+                    }else{
+                        // di check
+                        
+                        row.setStatusDone()
+                        if let id = self.products[indexPath.row].id{
+                            //update data status
+                            PersistanceManager.shared.changeProductStatus(id: id, status: true)
+                        }
+                        
+                        tableView.reloadRows(at: [indexPath], with: .automatic)
                     }
-                    
-                    tableView.reloadRows(at: [indexPath], with: .automatic)
-                }else{
-                    // di check
-                    
-                    row.setStatusDone()
-                    if let id = self.products[indexPath.row].id{
-                        //update data status
-                        PersistanceManager.shared.changeProductStatus(id: id, status: true)
-                    }
-                    
-                    tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             }else{
-                
+                //ga ada data
+                self.selectedProduct = products[indexPath.row]
+                performSegue(withIdentifier: "moveToAddProduct", sender: self)
             }
+            
+            
             
             
 //            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
@@ -363,48 +411,48 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
         
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    {
-        // Checked action
-        let check = UIContextualAction(style: .normal,
-                                         title: "Checked") { [weak self] (action, view, completionHandler) in
-            
-            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
-            
-            row.setStatusDone()
-            if let id = self?.products[indexPath.row].id{
-                //update data status
-                PersistanceManager.shared.changeProductStatus(id: id, status: true)
-            }
-            
-            print("UPDATE DATA CHECKED")
-            
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            completionHandler(true)
-        }
-        check.backgroundColor = .systemGreen
-        
-        // uncheck action
-        let uncheck = UIContextualAction(style: .normal,
-                                       title: "Unchecked") { [weak self] (action, view, completionHandler) in
-            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
-            
-            row.setStatusUndone()
-            if let id = self?.products[indexPath.row].id{
-                //update data status
-                PersistanceManager.shared.changeProductStatus(id: id, status: false)
-            }
-            print("UPDATE DATA UNCHECKED")
-            
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            completionHandler(true)
-        }
-        uncheck.backgroundColor = .systemOrange
-        
-        let configuration = UISwipeActionsConfiguration(actions: [uncheck, check])
-
-        return configuration
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+//    {
+//        // Checked action
+//        let check = UIContextualAction(style: .normal,
+//                                         title: "Checked") { [weak self] (action, view, completionHandler) in
+//
+//            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
+//
+//            row.setStatusDone()
+//            if let id = self?.products[indexPath.row].id{
+//                //update data status
+//                PersistanceManager.shared.changeProductStatus(id: id, status: true)
+//            }
+//
+//            print("UPDATE DATA CHECKED")
+//
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
+//            completionHandler(true)
+//        }
+//        check.backgroundColor = .systemGreen
+//
+//        // uncheck action
+//        let uncheck = UIContextualAction(style: .normal,
+//                                       title: "Unchecked") { [weak self] (action, view, completionHandler) in
+//            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
+//
+//            row.setStatusUndone()
+//            if let id = self?.products[indexPath.row].id{
+//                //update data status
+//                PersistanceManager.shared.changeProductStatus(id: id, status: false)
+//            }
+//            print("UPDATE DATA UNCHECKED")
+//
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
+//            completionHandler(true)
+//        }
+//        uncheck.backgroundColor = .systemOrange
+//
+//        let configuration = UISwipeActionsConfiguration(actions: [uncheck, check])
+//
+//        return configuration
+//    }
     
     
 }
@@ -433,7 +481,7 @@ extension AddRoutineViewController : SaveProductDelegate{
     
 }
 
-extension AddRoutineViewController : deleteProductItemDelegate{
+extension AddRoutineViewController : EditDeletProductItemDelegate{
     // MARK: Delegate from ProductUsedTableViewCell trash icon
     func deleteProductItem(deletedProduct product: Product) {
         print("DELETE PRODUCT \(product.name)")

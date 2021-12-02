@@ -15,7 +15,9 @@ class ImportProductViewController : UIViewController{
         self.dismiss(animated: false, completion: nil)
     }
     @IBAction func saveButtonPressed(_ sender: Any) {
-        Loading.sharedInstance.showIndicator()
+        DispatchQueue.main.async {
+            Loading.sharedInstance.showIndicator()
+        }
         
         print("STATUS : \(selectedRoutineToImport.name)")
         for product in products{
@@ -36,13 +38,15 @@ class ImportProductViewController : UIViewController{
                let image = insertData.picture{
                 
                 print("name : \(name), brand : \(brand), product type:\(productType), expdate: \(expiredDate), pao: \(periodAfterOpen)")
-                PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate, name: name, periodAfterOpening: periodAfterOpen, picture: image, routine: selectedRoutineToImport, productType: productType)
+                PersistanceManager.shared.setProduct(brand: brand, expiredDate: expiredDate, name: name, periodAfterOpening: periodAfterOpen, picture: image, routine: selectedRoutineToImport, productType: productType, isDone: false)
             }
         }
         
         self.view.window!.rootViewController?.dismiss(animated: false,completion: {
             
-            Loading.sharedInstance.hideIndicator()
+            DispatchQueue.main.async {
+                Loading.sharedInstance.hideIndicator()
+            }
             self.performSegue(withIdentifier: "moveToRoutinePage", sender: self)
         })
         

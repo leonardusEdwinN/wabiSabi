@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Utilities {
     let genders: [String] = ["Female", "Male", "Non-Binary", "Prefer not to disclose"]
@@ -17,7 +18,7 @@ struct Utilities {
     ]
     
     let skinTypeRoutineProduct: [SkinTypeRoutine] = [
-        SkinTypeRoutine(icon: "🌞", name: "Morning Skin Care", skinType: [
+        SkinTypeRoutine(icon: "🌞", name: "Morning Routine", skinType: [
             SkinTypeProduct(name: "Oily", products: [
                 SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser that contain salicylic/glycolic acid"),
                 SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
@@ -55,7 +56,7 @@ struct Utilities {
                 SkinCareProduct(icon: "", name: "Extras", description: "")
             ])
         ]),
-        SkinTypeRoutine(icon: "🌓", name: "Night Skin Care", skinType: [
+        SkinTypeRoutine(icon: "🌓", name: "Night Routine", skinType: [
             SkinTypeProduct(name: "Oily", products: [
                 SkinCareProduct(icon: "", name: "Cleanser", description: "Gel/Foam Cleanser that contain salicylic/glycolic acid"),
                 SkinCareProduct(icon: "", name: "Toner", description: "Avoid alcohol based toner"),
@@ -129,5 +130,14 @@ struct Utilities {
             SubCategories(habitName: "Don't Sleep with Your Make Up On", description: "Not removing your make up before sleep will effect badly to your skin.", period: "Daily", timeInMinutes: 15, notes: ""),
             SubCategories(habitName: "Don't Forget to Use Hat", description: "Excessive exposure from sun can damage your skin cells and can lead your skin to sunburns, wrinkles, and dehydration. Using hat can help to prevent it. Don't got expose between 10am - 4pm!", period: "Daily", timeInMinutes: 2, notes: "")
         ])
+    ]
+    
+    let routineCategory: [RoutineCategory] = [
+        RoutineCategory(icon: "🌞", name: "Morning Skin Care", color: UIColor.systemOrange),
+        RoutineCategory(icon: "🌓", name: "Night Skin Care", color: UIColor.systemIndigo),
+        RoutineCategory(icon: "💆🏻‍♀️", name: "Face", color: UIColor.systemBrown),
+        RoutineCategory(icon: "🏃🏻‍♀️", name: "Body & Scalp", color: UIColor.systemGreen),
+        RoutineCategory(icon: "❤️‍🩹", name: "Health", color: UIColor.systemRed),
+        RoutineCategory(icon: "⭐️", name: "Other", color: UIColor.systemGreen)
     ]
 }

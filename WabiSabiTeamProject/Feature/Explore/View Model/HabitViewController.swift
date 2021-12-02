@@ -127,12 +127,12 @@ class HabitViewController: UIViewController {
                 schedules.append(temp)
             }
         }
-        if schedules == nil {
-            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: routineName, startHabit: startHabit)
-        }
-        else {
-            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: startHabit, name: routineName, schedules: schedules)
-        }
+//        if schedules == nil {
+//            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: routineName, startHabit: startHabit)
+//        }
+//        else {
+//            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: startHabit, name: routineName, schedules: schedules, )
+//        }
     }
     
     @IBAction func startFromToday(_ sender: Any) {

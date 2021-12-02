@@ -8,11 +8,11 @@
 import UIKit
 
 class QuestionGenderViewController: UIViewController {
+    @IBOutlet var background: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var genderTableView: UITableView!
     @IBOutlet weak var buttonNext: UIButton!
-    
-    
     
     var indexSelected: Int = 0;
     
@@ -23,6 +23,35 @@ class QuestionGenderViewController: UIViewController {
         genderTableView.dataSource = self
     
         buttonNext.isEnabled = false
+        
+        setUI()
+    }
+    
+    func setUI() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor(red: 227.0/255.0, green: 208.0/255.0, blue: 197.0/255.0, alpha: 1).cgColor, UIColor(red: 181.0/255.0, green: 171.0/255.0, blue: 223.0/255.0, alpha: 1).cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+        self.view.layer.insertSublayer(gradientLayer, at:0)
+        
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 28)
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+            DispatchQueue.main.async { [self] in
+                var counter = progressView.progress - 0.01
+                if counter >= 0.67 {
+                    progressView.progress = counter
+                }
+                else {
+                    timer.invalidate()
+                    
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+            }
+        }
     }
     
     @IBAction func next(_ sender: Any) {
@@ -40,6 +69,7 @@ extension QuestionGenderViewController : UITableViewDataSource, UITableViewDeleg
         let cell = genderTableView.dequeueReusableCell(withIdentifier: "gendercell") as! OptionTableViewCell
         
         cell.optionTitle.text = Utilities().genders[indexPath.row]
+        cell.whiteGradientBackground.frame.size = CGSize(width: cell.layer.frame.width, height: 60)
         
         return cell
     }

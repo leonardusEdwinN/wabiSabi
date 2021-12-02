@@ -9,10 +9,14 @@ import UIKit
 
 class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var brand: UILabel!
+    @IBOutlet weak var type: UILabel!
+    @IBOutlet weak var backgroundImage: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backgroundImage.layer.cornerRadius = backgroundImage.frame.size.width / 2.0
+        backgroundImage.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -21,7 +25,9 @@ class ProductTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(with routineAndProduct: RoutineAndProductList) {
-        name.text = routineAndProduct.name
+    func setup(with product: ProductAndRoutineList) {
+        name.text = product.name
+        brand.text = product.brand
+        type.text = product.type
     }
 }

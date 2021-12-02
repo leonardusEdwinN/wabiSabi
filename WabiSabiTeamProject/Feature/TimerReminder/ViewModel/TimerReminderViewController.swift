@@ -16,16 +16,51 @@ struct TimerModel {
 
 class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
     func buttonSavePressed(time: String) {
-        print("WAKTU PROTOCOL : \(time)")
-        tableAlarmArray.append(TimerModel(timerName: time, timerImage: "alarm"))
+//        tableAlarmArray.append(TimerModel(timerName: time, timerImage: "alarm"))
         
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+//        var date = dateFormatter.date(from: time)
+        
+        guard let timezone =  TimeZone.current.localizedName(for: .shortStandard, locale: .current) else {
+            return
+        }
+        
+        print("DUMMY REMINDER : \(time)")
+        print("DUMMY DATEFORMATER : \(timezone)")
+//        dateFormatter.timeZone = TimeZone(abbreviation: "WIT")
+        
+        let localISOFormatter = ISO8601DateFormatter()
+        localISOFormatter.timeZone = TimeZone.current
+        
+//        print("DUMMY \(localISOFormatter.date(from: time))")
+        if let date = localISOFormatter.date(from: time){
+            print("DUMMY \(date)")
+            var title: String = ""
+            var body: String = ""
+            switch selectedRoutine.name {
+            case "Morning Skin Care":
+                title = "Good Morning!"
+                body = "Don't forget to do your Morning Skin Care Routine!"
+                
+            case "Night Skin Care":
+                title = "Almost bed time!"
+                body = "It's time to do your Evening Skin Care Routine"
+                
+            default:
+                title = selectedRoutine.name ?? ""
+                body = "Let's go, make it happen!"
+            }
+            PersistanceManager.shared.setReminder(reminderTime: date, routine: self.selectedRoutine,title: title, body: body)
+        }
         
         self.dismiss(animated: false) {
+            
+            self.fetchDataReminder()
             DispatchQueue.main.async {
-                
-                
                 // MARK: checki data
-                if self.tableAlarmArray.count == 0 {
+                if self.reminders.count == 0 {
                     self.timerReminderTableView.isHidden = true
                     self.viewEmptyState.isHidden = false
                 }else{
@@ -33,7 +68,6 @@ class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
                     self.timerReminderTableView.isHidden = false
                     self.viewEmptyState.isHidden = true
                 }
-                
                 self.timerReminderTableView.reloadData()
             }
         }
@@ -64,13 +98,16 @@ class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
     // MARK: EmptyState
     @IBOutlet weak var viewEmptyState: UIView!
     @IBOutlet weak var viewCircle: UIView!
-    var tableAlarmArray : [TimerModel] = []
+//    var tableAlarmArray : [TimerModel] = []
+    var reminders : [Reminder] = []
+    var selectedRoutine: Routines!
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchDataReminder()
         
         viewCircle.layer.cornerRadius = viewCircle.frame.size.width / 2
         
-        if tableAlarmArray.count == 0 {
+        if reminders.count == 0 {
             timerReminderTableView.isHidden = true
             viewEmptyState.isHidden = false
         }else{
@@ -80,6 +117,11 @@ class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
         }
         
         registerCell()
+    }
+    
+    func fetchDataReminder(){
+        self.reminders = PersistanceManager.shared.fetchReminder(routine: selectedRoutine)
+        print("SELF REMINDER TIME : \(self.reminders)")
     }
     
     
@@ -97,21 +139,55 @@ class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
 
 extension TimerReminderViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableAlarmArray.count
+        return reminders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let row = tableView.dequeueReusableCell(withIdentifier: "timerTableViewCell") as! TimerTableViewCell
         
-        
-        row.setUI(
-            title: tableAlarmArray[indexPath.item].timerName,
-            image: tableAlarmArray[indexPath.item].timerImage
-        )
+        if let time = reminders[indexPath.item].reminderTime{
+            
+            let splitTime = "\(time)".split(separator: ":")
+            let hour = splitTime[0].suffix(2)
+            let minute = splitTime[1]
+            
+            row.labelAlarm.text = "\(hour) . \(minute)"
+        }
+//        row.setUI(
+//            title: ,
+//            image: reminders[indexPath.item].timerImage
+//        )
         
         return row
         
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        // Delete Action action
+        let delete = UIContextualAction(style: .normal,
+                                         title: " ") { [weak self] (action, view, completionHandler) in
+        
+            if let deletedRemindner = self?.reminders[indexPath.row]{
+                //update data status
+                PersistanceManager.shared.deleteReminder(reminder: deletedRemindner)
+            }
+            
+            print("DELETE DATA UHUY")
+            self?.fetchDataReminder()
+            
+            self?.timerReminderTableView.reloadData()
+            completionHandler(true)
+        }
+        
+        delete.image = UIImage(named: "deleteIcon")?.withTintColor(.white)
+        delete.backgroundColor = .red
+        
+        
+        let configuration = UISwipeActionsConfiguration(actions: [delete])
+
+        return configuration
     }
     
     
