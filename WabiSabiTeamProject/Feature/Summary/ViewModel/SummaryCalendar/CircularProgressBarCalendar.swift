@@ -12,6 +12,12 @@ class CircularProgressBarCalendar: UIView {
         }
     }
     
+    public var fillColor: CGColor = UIColor.clear.cgColor {
+        didSet {
+            changeFillColor()
+        }
+    }
+    
     public var textLabel = "" {
         didSet {
             didLabelUpdated()
@@ -20,9 +26,9 @@ class CircularProgressBarCalendar: UIView {
 
     override func draw(_ rect: CGRect) {
         // Background Layer
-        backgroundLayer = createCircularLayer(rect: rect, strokeColor: UIColor.systemIndigo.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: 2)
+        backgroundLayer = createCircularLayer(rect: rect, strokeColor: UIColor.lightGray.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: 0.5)
         // Foreground Layer
-        foregroundLayer = createCircularLayer(rect: rect, strokeColor: UIColor.white.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: 5)
+        foregroundLayer = createCircularLayer(rect: rect, strokeColor: UIColor(named: "ColorPrimary")?.cgColor ?? UIColor.systemIndigo.cgColor, fillColor: UIColor.clear.cgColor, lineWidth: 2)
         // Text Layer
         textLayer = createTextLayer(rect: rect, textColor: UIColor.white.cgColor)
         
@@ -85,6 +91,16 @@ class CircularProgressBarCalendar: UIView {
     
     private func didProgressUpdated() {
         foregroundLayer?.strokeEnd = progress
+        if progress == 0 {
+            backgroundLayer?.strokeColor = UIColor.clear.cgColor
+        }
+        else {
+            backgroundLayer?.strokeColor = UIColor.lightGray.cgColor
+        }
+    }
+    
+    public func changeFillColor() {
+        backgroundLayer?.fillColor = fillColor
     }
     
     private func didLabelUpdated(){

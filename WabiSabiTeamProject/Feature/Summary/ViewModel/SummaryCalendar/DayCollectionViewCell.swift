@@ -22,8 +22,6 @@ class DayCollectionViewCell: UICollectionViewCell {
         //dayString untuk hari, dateText untuk tanggal
         self.labelDate.text = labelTanggal
         circularProgressView.progress = progress
-       
-        
     }
 
 }
