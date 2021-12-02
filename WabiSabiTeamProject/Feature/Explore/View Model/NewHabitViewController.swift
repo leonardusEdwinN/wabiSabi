@@ -25,6 +25,7 @@ class NewHabitViewController : UIViewController{
     var schedule : [Schedule] = []
     var subcategories : SubCategories!
     var startHabit: Date = Date()
+    var routineName: String = ""
     
     var dayToDoHabit: [Bool] = [false, false, false, false, false, false, false]
     var isEveryday: Bool = false
@@ -40,12 +41,59 @@ class NewHabitViewController : UIViewController{
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func buttonSavePressed(_ sender: Any) {
+        
+        //show indicator loading
+        Loading.sharedInstance.showIndicator()
+        
+        print("NAME : \(self.routineName)")
+        print("START HABIT : \(startHabit)")
+        
+        
+        var schedules: [Schedule] = []
+        for index in 0...6 {
+            if dayToDoHabit[index] {
+                var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
+                temp.schedule = "\(index)"
+                schedules.append(temp)
+            }
+        }
+        
+        
+        print("SCHEDULE : \(schedules)")
+        print("PRODUCTS : [\(products)]")
+        
+        if schedules == nil {
+            // Kalau Tidak Punya schedule
+            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: self.routineName, startHabit: startHabit)
+        }
+        else {
+            //kalau punya schedule
+            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: startHabit, name: self.routineName, schedules: schedules)
+        }
+        
+        print("ROUTINE CREATED")
+        //Routine CREATED
+        if let routineCreatedId = UserDefaults.standard.string(forKey: "routineId"){
+            var selectedRoutineCreated = PersistanceManager.shared.fetchRoutine(id: routineCreatedId)
+            self.selectedRoutine = selectedRoutineCreated
+        }
+        
+        print("FETCH PRODUCTS")
+        // Add product to routine
+        for product in products {
+            PersistanceManager.shared.setProduct(brand: product.brand ?? "", expiredDate: product.expiredDate ?? Date(), name: product.name ?? self.subcategories.habitName, periodAfterOpening: product.periodAfterOpening ?? Date(), picture: product.picture ?? "", routine: selectedRoutine, productType: product.productType ?? "", isDone: product.isDone)
+        }
+        
+        self.dismiss(animated: false) {
+            Loading.sharedInstance.hideIndicator()
+        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("ROUTINE : \(selectedRoutine.name)")
-        fetchDataProduct()
+//        fetchDataProduct()
         setupTableView()
         setupUI()
     }
@@ -69,7 +117,7 @@ class NewHabitViewController : UIViewController{
     }
     
     func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(QuestionNameViewController.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(NewHabitViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
@@ -121,6 +169,7 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
         case "name":
             let row = tableView.dequeueReusableCell(withIdentifier: "routineNameTableViewCell") as! RoutineNameTableViewCell
             
+            row.delegate = self
             row.setUI(placeholder: self.subcategories.habitName)
             //set namenya
             return row
@@ -144,20 +193,19 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
         case "products":
             let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
             
-            
             row.productNameLabel.text = arrayRoutine[indexPath.section]
             
                 //ada data
                 if(isEdit){
-                    print("IS EDIT TRUE")
                     row.setDragableandTrashIcon()
-                    tableView.reloadRows(at: [indexPath], with: .automatic)
+//                    tableView.reloadRows(at: [indexPath], with: .automatic)
                 }
                 else{
                     self.products[indexPath.row].isDone ? row.setStatusDone() : row.setStatusUndone()
                 }
                 
                 if((products[indexPath.row]) != nil){
+                    print("MASUK KE SINI")
                     if let name = self.products[indexPath.row].name, let brand = self.products[indexPath.row].brand{
                         DispatchQueue.main.async {
                             row.setUIText(title: self.products[indexPath.row].productType ?? "", brand: "\(brand)", desc: "\(name)")
@@ -177,7 +225,7 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
 
                 }
             
-            print("SELECTED PRODUCT \(self.products[indexPath.row])")
+            print("SELECTED PRODUCT \(self.products[indexPath.row].name)")
             row.selectedProduct = self.products[indexPath.row]
             row.delegate = self
             row.selectedIndexPath = indexPath
@@ -218,38 +266,35 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
 //
 //            }
             
-            if(products.count > 0)
-            {
-                if((products[indexPath.row].brand) != nil && (products[indexPath.row].brand) != nil){
-                    //ada data
-                    if(!isEdit)
-                    {
-                        
-                        let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
-                        if(products[indexPath.row].isDone){
-                            //di uncheck
-                            row.setStatusUndone()
-                            if let id = self.products[indexPath.row].id{
-                                //update data status
-                                PersistanceManager.shared.changeProductStatus(id: id, status: false)
-                            }
-                            
-                            tableView.reloadRows(at: [indexPath], with: .automatic)
-                        }else{
-                            // di check
-                            
-                            row.setStatusDone()
-                            if let id = self.products[indexPath.row].id{
-                                //update data status
-                                PersistanceManager.shared.changeProductStatus(id: id, status: true)
-                            }
-                            
-                            tableView.reloadRows(at: [indexPath], with: .automatic)
+//            if(products.count > 0)
+//            {
+            if((products[indexPath.row].name) != nil && (products[indexPath.row].brand) != nil){
+                //ada data
+                if(!isEdit)
+                {
+                    let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
+                    if(products[indexPath.row].isDone){
+                        //di uncheck
+                        row.setStatusUndone()
+                        if let id = self.products[indexPath.row].id{
+                            //update data status
+                            PersistanceManager.shared.changeProductStatus(id: id, status: false)
                         }
+                        
+                        tableView.reloadRows(at: [indexPath], with: .automatic)
+                    }else{
+                        // di check
+                        
+                        row.setStatusDone()
+                        if let id = self.products[indexPath.row].id{
+                            //update data status
+                            PersistanceManager.shared.changeProductStatus(id: id, status: true)
+                        }
+                        
+                        tableView.reloadRows(at: [indexPath], with: .automatic)
                     }
                 }
-            }
-            else{
+            }else{
                 //ga ada data
                 self.selectedProduct = products[indexPath.row]
                 performSegue(withIdentifier: "moveToAddProduct", sender: self)
@@ -308,11 +353,15 @@ extension NewHabitViewController {
                return
             }
             
+            print("selected product : \(selectedProduct.id)")
+            
             addProductVC.selectedRoutine = self.selectedRoutine
             addProductVC.delegateAddProduct = self
             addProductVC.selectedProduct = self.selectedProduct
+            addProductVC.isNotConnectToDB = true // data offline
             addProductVC.isEdit = (self.selectedProduct != nil) ? true : false
             addProductVC.modalPresentationStyle = .fullScreen
+            
             
         }else if segue.identifier == "moveToTimeReminder"{
             
@@ -333,18 +382,22 @@ extension NewHabitViewController {
 
 
 extension NewHabitViewController : DidSelectButtonAtStartHabitDelegate, OverlayButtonProtocol {
-
+    
     
     func didtapTodayButton() {
-        print("TODAY")
+//        print("TODAY")
         startHabit = Date()
+        
+        
+            print("TODAY : \(startHabit)")
     }
     
     func didtapTommorowButton() {
-        print("TOMO")
         let today = Date()
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
         startHabit = tomorrow ?? Date()
+        
+            print("TOMO : \(startHabit)")
     }
     
     func didtapCustomButton() {
@@ -357,10 +410,10 @@ extension NewHabitViewController : DidSelectButtonAtStartHabitDelegate, OverlayB
     }
     
     func buttonSavePressed(time: String) {
-        
+        print("TIME \(time)")
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "MMM dd yyyy"
+        dateFormatter.timeZone = TimeZone.current
         
         
         if let date = dateFormatter.date(from: time){
@@ -396,18 +449,19 @@ extension NewHabitViewController : DidEditButtonPressed{
     }
 }
 
-extension NewHabitViewController : deleteProductItemDelegate{
+extension NewHabitViewController : EditDeletProductItemDelegate{
     func deleteProductItem(deletedProduct product: Product) {
         print("DELET PRODUCT")
-        PersistanceManager.shared.deleteProduct(product: product)
+        self.products = products.filter({ $0.id != product.id})
+//        PersistanceManager.shared.deleteProduct(product: product)
         DispatchQueue.main.async {
-            self.fetchDataProduct()
+//            self.fetchDataProduct()
             self.habitTableView.reloadData()
         }
     }
     
     func editProductItem(editedProduct product: Product) {
-        print("ADD PRODUCT ROW CLICKED")
+        print("ADD PRODUCT ROW CLICKED \(product.name)")
         self.selectedProduct = product
         performSegue(withIdentifier: "moveToAddProduct", sender: self)
     }
@@ -415,52 +469,71 @@ extension NewHabitViewController : deleteProductItemDelegate{
 
 
 extension NewHabitViewController : SelectDayOfTheWeekDelegate{
-    func didTapSelectWeek(dayOfTheWeek: String) {
+    func didTapSelectWeek(dayOfTheWeek: String, isSelected : Bool) {
         
-        var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
+//        var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
         
         
         switch dayOfTheWeek {
-        case "Monday":
-            temp.schedule = "0"
-            self.schedule.append(temp)
-        case "Tuesday":
-            temp.schedule = "1"
-            self.schedule.append(temp)
-        case "Wednesday":
-            temp.schedule = "2"
-            self.schedule.append(temp)
-        case "Thursday":
-            temp.schedule = "3"
-            self.schedule.append(temp)
-        case "Friday":
-            temp.schedule = "4"
-            self.schedule.append(temp)
-        case "Saturday":
-            temp.schedule = "5"
-            self.schedule.append(temp)
         case "Sunday":
-            temp.schedule = "6"
-            self.schedule.append(temp)
+//            temp.schedule = "0"
+            self.dayToDoHabit[0] = isSelected
+        case "Monday":
+//            temp.schedule = "1"
+            self.dayToDoHabit[1] = isSelected
+        case "Tuesday":
+//            temp.schedule = "2"
+            self.dayToDoHabit[2] = isSelected
+        case "Wednesday":
+//            temp.schedule = "3"
+            self.dayToDoHabit[3] = isSelected
+        case "Thursday":
+//            temp.schedule = "4"
+            self.dayToDoHabit[4] = isSelected
+        case "Friday":
+//            temp.schedule = "5"
+            self.dayToDoHabit[5] = isSelected
+        case "Saturday":
+//            temp.schedule = "6"
+            self.dayToDoHabit[6] = isSelected
         case "All":
-            var habits : [Schedule] = []
-            
-            for index in 0...6 {
-                temp.schedule = "\(index)"
-                habits.append(temp)
+            self.isEveryday = isSelected
+            if(isSelected){
+                //everyday
+                for index in 0...6 {
+                    self.dayToDoHabit[index] = true
+                }
+            }else{
+                for index in 0...6 {
+                    self.dayToDoHabit[index] = false
+                }
             }
-            self.schedule = habits
+            
         default:
-            temp.schedule=""
+//            temp.schedule=""
+            print("DATA NOT FOUND")
         }
+      
         
-        print("SCHEDULE : \(schedule.count)")
        
     }
 }
 
 extension NewHabitViewController : AddProductDelegate{
     func addNewProduct() {
+        var productTemp = Product(context: PersistanceManager.shared.persistentContainer.viewContext)
+        
+        productTemp.name = ""
+        productTemp.picture = ""
+        productTemp.brand = ""
+        productTemp.periodAfterOpening = Date()
+        productTemp.expiredDate = Date()
+        productTemp.productType = ""
+        productTemp.isDone = false
+        productTemp.id = ""
+        
+        self.selectedProduct = productTemp
+        
         self.performSegue(withIdentifier: "moveToAddProduct", sender: self)
     }
     
@@ -470,6 +543,34 @@ extension NewHabitViewController : AddProductDelegate{
 }
 
 extension NewHabitViewController : SaveNewProductRoutineDelegate{
+    func updateNewProductRoutine(for product: ProductModel) {
+        var productTemp = Product(context: PersistanceManager.shared.persistentContainer.viewContext)
+        
+        productTemp.name = product.name
+        productTemp.picture = product.image
+        productTemp.brand = product.brand
+        productTemp.periodAfterOpening = product.openedDate
+        productTemp.expiredDate = product.expired
+        productTemp.productType = product.productType
+        productTemp.isDone = product.isDone
+        productTemp.id = product.id
+        
+//        var isUpdate = false
+        for (index, product) in products.enumerated(){
+            print("Selected Product : \(selectedProduct.id) :: \(product.id)")
+            if(selectedProduct.id == product.id){
+//                isUpdate = true
+                products[index] = productTemp //update productnya langunsg terus break
+                break;
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.habitTableView.reloadData()
+            Loading.sharedInstance.hideIndicator()
+        }
+    }
+    
     func saveNewProductRoutine(for product: ProductModel) {
         var productTemp = Product(context: PersistanceManager.shared.persistentContainer.viewContext)
         
@@ -477,15 +578,48 @@ extension NewHabitViewController : SaveNewProductRoutineDelegate{
         productTemp.picture = product.image
         productTemp.brand = product.brand
         productTemp.periodAfterOpening = product.openedDate
+        productTemp.expiredDate = product.expired
         productTemp.productType = product.productType
         productTemp.isDone = product.isDone
+        productTemp.id = product.id
         
-        products.append(productTemp)
+        self.selectedProduct = productTemp
+        print("Selected Product Temp :: \(productTemp.id)")
+//        products.append(productTemp)
+//
+        if(products.count == 0){
+            products.append(productTemp)
+        }else{
+            print("CEK DATA")
+            var isCanAppend = true
+            for product in products{
+                print("Selected Product : \(selectedProduct.id) :: \(product.id)")
+                if(selectedProduct.id == product.id){
+                    isCanAppend = false
+                }
+            }
+            
+            print("iscanAppend : \(isCanAppend)")
+            if isCanAppend{
+                products.append(productTemp)
+            }
+        }
+        
+        print("product : \(products.count)")
         
         DispatchQueue.main.async {
             self.habitTableView.reloadData()
             Loading.sharedInstance.hideIndicator()
         }
+    }
+    
+    
+}
+
+extension NewHabitViewController : TextfieldCellGetName{
+    func getValueInsideTextfield(for textfield: String) {
+        print("DELEGATE SUCCESS : \(textfield)")
+        self.routineName = textfield
     }
     
     
