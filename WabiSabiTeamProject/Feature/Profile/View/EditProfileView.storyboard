@@ -212,6 +212,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="TItle" leftItemsSupplementBackButton="YES" id="NQg-jN-A5i">
                         <barButtonItem key="backBarButtonItem" title="Profile" id="wMQ-Xs-TR3"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="JsJ-Ha-4cJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="xAo-Ih-s4s">
+                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="  Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ken-ow-z3I"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="notificationSwitch" destination="RPY-Vq-xTL" id="zBU-n2-DFD"/>
@@ -402,9 +413,9 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwg-r7-WoT">
-                                        <rect key="frame" x="15" y="9.5" width="56" height="31"/>
+                                        <rect key="frame" x="15" y="9.5" width="75.5" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title="  Back"/>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="Ok7-Qk-jOE" eventType="touchUpInside" id="Tsr-1z-9wV"/>
                                         </connections>
