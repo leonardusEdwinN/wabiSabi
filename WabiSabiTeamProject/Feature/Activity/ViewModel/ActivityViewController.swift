@@ -130,12 +130,12 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
             self.allRoutines = PersistanceManager.shared.fetchRoutines()
+            self.refetchAllRoutine()
             self.configureTableViewDataByStatus()
             self.configureSegmented()
             self.setUpTableView()
             self.setUpcircularProgress()
             self.setScheduleReminder()
-            self.refetchAllRoutine()
             self.routineTableView.reloadData()
         }
     }
