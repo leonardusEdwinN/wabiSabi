@@ -48,7 +48,9 @@ class AddRoutineViewController : UIViewController{
     }
     var products: [Product] = []
     var indexSelected: Int = 0
+    var selectedRoutineString = ""
     
+    @IBOutlet weak var routineLabel: UILabel!
     var selectedRoutine: Routines!
     var selectedProduct: Product!
     var isEdit: Bool = false
@@ -60,6 +62,34 @@ class AddRoutineViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        // create an NSMutableAttributedString that we'll append everything to
+//        let fullString = NSMutableAttributedString(string: "")
+//
+//        // create our NSTextAttachment
+//        let image1Attachment = NSTextAttachment()
+//        image1Attachment.image = UIImage(systemName: selectedRoutineString == "morning" ? "sun.max" : "moon.stars")
+//
+//        // wrap the attachment in its own attributed string so we can append it
+//        let image1String = NSAttributedString(attachment: image1Attachment)
+//
+//        // add the NSTextAttachment wrapper to our full string, then add some more text.
+//        fullString.append(image1String)
+//        fullString.append(NSAttributedString(string: "Routine"))
+//
+//        // draw the result in a label
+//        routineLabel.attributedText = fullString
+//
+        let attachment = NSTextAttachment()
+        let config = UIImage.SymbolConfiguration(textStyle: .largeTitle)
+        attachment.image = UIImage(systemName: selectedRoutineString == "morning" ? "sun.max" : "moon.stars", withConfiguration: config)
+
+        let imageString = NSMutableAttributedString(attachment: attachment)
+        let textString = NSAttributedString(string: "  Routine")
+        imageString.append(textString)
+        
+        routineLabel.attributedText = imageString
+        
         
         print("ROUTINE : \(selectedRoutine.name)")
         self.navigationController?.navigationBar.prefersLargeTitles = true

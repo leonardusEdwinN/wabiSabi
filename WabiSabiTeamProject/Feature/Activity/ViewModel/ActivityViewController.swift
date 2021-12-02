@@ -29,6 +29,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     var tutorialIndex : Int = 1
     var currentStatus : StatusRoutine = StatusRoutine.isToDo
     var selectedRoutine : Routines!
+    var selectedText = ""
     
     var currentTableView: [Routines] = []
     var todoTableView: [Routines] = []
@@ -456,6 +457,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
             }
             
             addRoutineVC.selectedRoutine = self.skinCareRoutines[selectedIndex]
+            addRoutineVC.selectedRoutineString = selectedText
             nav.modalPresentationStyle = .fullScreen
         }else if segue.identifier == "goToNewHabitVC"{
             
@@ -562,9 +564,11 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         switch selectedRoutineName {
         case "Morning Skin Care":
             self.selectedIndex = indexPath.row
+            self.selectedText = "morning"
             performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
         case "Night Skin Care" :
             self.selectedIndex = indexPath.row
+            self.selectedText = "night"
             performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
         default:
             print("ROUTINE CLICK DEFAULT")

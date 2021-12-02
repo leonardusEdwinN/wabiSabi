@@ -146,6 +146,7 @@
                         <outlet property="detailButton" destination="sbX-F3-wIn" id="ZmQ-gE-XLC"/>
                         <outlet property="editButton" destination="fS7-wp-5J2" id="FMB-G0-MOI"/>
                         <outlet property="outerView" destination="EEl-xM-61c" id="LFA-wZ-tih"/>
+                        <outlet property="routineLabel" destination="Xa0-xU-v4F" id="bK3-Wu-VVR"/>
                         <outlet property="routineTableView" destination="Z3M-WS-p8T" id="fgK-7e-d5P"/>
                         <segue destination="ZpM-g2-4jm" kind="show" identifier="moveToAddProduct" id="xsd-M1-9K8"/>
                         <segue destination="Nx4-ue-bJP" kind="show" identifier="moveToLocationReminder" id="B5b-15-0Ju"/>
