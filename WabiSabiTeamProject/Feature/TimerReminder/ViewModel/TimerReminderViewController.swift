@@ -17,9 +17,44 @@ struct TimerModel {
 class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
     func buttonSavePressed(time: String) {
 //        tableAlarmArray.append(TimerModel(timerName: time, timerImage: "alarm"))
-        PersistanceManager.shared.setReminder(reminderTime: time, routine: self.selectedRoutine)
         
-            print("WAKTU PROTOCOL : \(time)")
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+//        var date = dateFormatter.date(from: time)
+        
+        guard let timezone =  TimeZone.current.localizedName(for: .shortStandard, locale: .current) else {
+            return
+        }
+        
+        print("DUMMY REMINDER : \(time)")
+        print("DUMMY DATEFORMATER : \(timezone)")
+//        dateFormatter.timeZone = TimeZone(abbreviation: "WIT")
+        
+        let localISOFormatter = ISO8601DateFormatter()
+        localISOFormatter.timeZone = TimeZone.current
+        
+//        print("DUMMY \(localISOFormatter.date(from: time))")
+        if let date = localISOFormatter.date(from: time){
+            print("DUMMY \(date)")
+            var title: String = ""
+            var body: String = ""
+            switch selectedRoutine.name {
+            case "Morning Skin Care":
+                title = "Good Morning!"
+                body = "Don't forget to do your Morning Skin Care Routine!"
+                
+            case "Night Skin Care":
+                title = "Almost bed time!"
+                body = "It's time to do your Evening Skin Care Routine"
+                
+            default:
+                title = selectedRoutine.name ?? ""
+                body = "Let's go, make it happen!"
+            }
+            PersistanceManager.shared.setReminder(reminderTime: date, routine: self.selectedRoutine,title: title, body: body)
+        }
+        
         self.dismiss(animated: false) {
             
             self.fetchDataReminder()
@@ -112,6 +147,11 @@ extension TimerReminderViewController : UITableViewDelegate, UITableViewDataSour
         let row = tableView.dequeueReusableCell(withIdentifier: "timerTableViewCell") as! TimerTableViewCell
         
         if let time = reminders[indexPath.item].reminderTime{
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+            
+            
+            print("DUMMY TIME : \(timeFormatter.string(from: time)) :: \(time)")
             row.labelAlarm.text = "\(time)"
         }
 //        row.setUI(

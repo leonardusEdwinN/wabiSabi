@@ -15,7 +15,9 @@ class ImportProductViewController : UIViewController{
         self.dismiss(animated: false, completion: nil)
     }
     @IBAction func saveButtonPressed(_ sender: Any) {
-        Loading.sharedInstance.showIndicator()
+        DispatchQueue.main.async {
+            Loading.sharedInstance.showIndicator()
+        }
         
         print("STATUS : \(selectedRoutineToImport.name)")
         for product in products{
@@ -42,7 +44,9 @@ class ImportProductViewController : UIViewController{
         
         self.view.window!.rootViewController?.dismiss(animated: false,completion: {
             
-            Loading.sharedInstance.hideIndicator()
+            DispatchQueue.main.async {
+                Loading.sharedInstance.hideIndicator()
+            }
             self.performSegue(withIdentifier: "moveToRoutinePage", sender: self)
         })
         

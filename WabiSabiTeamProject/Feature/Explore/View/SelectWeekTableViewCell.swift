@@ -109,4 +109,43 @@ class SelectWeekTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setData(buttonOn : String){
+        
+        switch buttonOn{
+        case "0":
+            buttonSunday.isSelected = true
+        case "1":
+            buttonMonday.isSelected = true
+        case "2":
+            buttonTuesday.isSelected = true
+        case "3":
+            buttonWednesday.isSelected = true
+        case "4":
+            buttonThursday.isSelected = true
+        case "5":
+            buttonFriday.isSelected = true
+        case "6":
+            buttonSaturday.isSelected = true
+        default:
+            print("Cannot set item")
+        }
+        
+        
+        
+    }
+    
+    func isEverydaySelected(isSelected : Bool){
+        
+        if(isSelected){
+            buttonMonday.isSelected = true
+            buttonTuesday.isSelected = true
+            buttonWednesday.isSelected = true
+            buttonThursday.isSelected = true
+            buttonFriday.isSelected = true
+            buttonSaturday.isSelected = true
+            buttonSunday.isSelected = true
+            buttonEveryday.isSelected = true
+        }
+    }
+    
 }

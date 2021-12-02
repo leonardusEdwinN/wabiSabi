@@ -44,8 +44,9 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
 //
 //        }
         
-        
-        Loading.sharedInstance.showIndicator()
+        DispatchQueue.main.async {
+            Loading.sharedInstance.showIndicator()
+        }
         
 //        if let name = textfieldProductName.text,
 //           let brand = textfieldProductBrand.text,

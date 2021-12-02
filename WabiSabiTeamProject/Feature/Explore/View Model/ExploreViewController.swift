@@ -71,13 +71,9 @@ extension ExploreViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ExploreViewController : CollectionViewCellDelegate{
     func didTapAtCell(section: Int, cellIndex: IndexPath, subcategoriesData: SubCategories) {
-        print("Data Categories : \(Utilities().category[section].categoryName)")
-        print("Data SubCategories : \(subcategoriesData.habitName)")
-        
         self.selectedCategory = Utilities().category[section].categoryName
         self.selectedSubCategory = subcategoriesData
-        
-            self.performSegue(withIdentifier: "goToNewHabitVC", sender: self)
+        self.performSegue(withIdentifier: "goToNewHabitVC", sender: self)
         
         
 //        goToNewHabitVC
@@ -85,8 +81,12 @@ extension ExploreViewController : CollectionViewCellDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "goToNewHabitVC"){
-            guard let newHabitVC = segue.destination as? NewHabitViewController else {
+            guard let nav = segue.destination as? UINavigationController else {
                 return
+            }
+            
+            guard let newHabitVC = nav.topViewController as? NewHabitViewController else {
+               return
             }
             
 //            PersistanceManager.shared.setRoutine(isEveryday: false, name: selectedSubCategory.habitName)
@@ -96,12 +96,15 @@ extension ExploreViewController : CollectionViewCellDelegate{
 //                newHabitVC.selectedRoutine = newRoutine
 //            }
             
+            nav.modalPresentationStyle = .fullScreen
             
             var routineDummy = Routines(context: PersistanceManager.shared.persistentContainer.viewContext)
             routineDummy.name = self.selectedSubCategory.habitName
             
             newHabitVC.selectedRoutine = routineDummy
-            newHabitVC.subcategories = self.selectedSubCategory
+            newHabitVC.subcategoriesName = self.selectedSubCategory.habitName
+            newHabitVC.subcategoriesDescription = self.selectedSubCategory.description
+            newHabitVC.selectedCategory = self.selectedCategory
             
             
             switch self.selectedCategory{

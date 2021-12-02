@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -98,7 +97,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R2K-GK-Xl4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="ColorCream"/>
                         <constraints>
                             <constraint firstItem="R2K-GK-Xl4" firstAttribute="trailing" secondItem="hZ5-8U-4KC" secondAttribute="trailing" id="42x-Lt-ZXm"/>
                             <constraint firstItem="EEl-xM-61c" firstAttribute="top" secondItem="gio-1M-xhj" secondAttribute="bottom" constant="18" id="B21-ZM-vhy"/>
@@ -151,7 +150,7 @@
                         <segue destination="ZpM-g2-4jm" kind="show" identifier="moveToAddProduct" id="xsd-M1-9K8"/>
                         <segue destination="Nx4-ue-bJP" kind="show" identifier="moveToLocationReminder" id="B5b-15-0Ju"/>
                         <segue destination="AWk-Ig-Ez4" kind="show" identifier="moveToTimeReminder" id="JB2-li-gqO"/>
-                        <segue destination="DNu-LR-a6T" kind="show" identifier="goToDetailSkinCareGuide" id="LQQ-MZ-9w1"/>
+                        <segue destination="DNu-LR-a6T" kind="presentation" identifier="goToDetailSkinCareGuide" id="LQQ-MZ-9w1"/>
                         <segue destination="ROi-6l-Jm3" kind="show" identifier="moveToImportRoutine" id="hk0-Sj-bZj"/>
                     </connections>
                 </viewController>
@@ -231,14 +230,14 @@
     <resources>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="ovalBackground" width="182" height="227"/>
+        <namedColor name="ColorCream">
+            <color red="0.88999998569488525" green="0.80800002813339233" blue="0.77300000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="ColorPrimary">
             <color red="0.37599998712539673" green="0.27099999785423279" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Secondary">
             <color red="0.9137254901960784" green="0.81960784313725488" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

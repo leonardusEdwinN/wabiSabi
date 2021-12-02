@@ -267,6 +267,7 @@
                         <outlet property="tutorial5" destination="W90-gq-45X" id="g7A-On-73B"/>
                         <outlet property="tutorial6" destination="aXV-5E-cSA" id="o2U-B7-Ofk"/>
                         <segue destination="HUT-Du-YTH" kind="show" identifier="moveToAddRoutinePage" id="wEe-gW-wo1"/>
+                        <segue destination="vWN-Rb-BzI" kind="show" identifier="goToNewHabitVC" id="jph-xO-bLd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pc-s2-CYL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -525,10 +526,10 @@
             </objects>
             <point key="canvasLocation" x="-1566.1538461538462" y="1677.7251184834122"/>
         </scene>
-        <!--NewHabitVC-->
+        <!--newHabitNVC-->
         <scene sceneID="thC-Cr-Hxv">
             <objects>
-                <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="NewHabitVC" id="3oK-BK-NRN" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="newHabitNVC" id="3oK-BK-NRN" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="eHA-cT-MxH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Anl-FC-gzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -783,6 +784,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ls-G8-0Pl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1565" y="220"/>
+        </scene>
+        <!--newHabitNVC-->
+        <scene sceneID="paE-DH-gtb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Explore" referencedIdentifier="newHabitNVC" id="vWN-Rb-BzI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="sTE-Qp-Q7k"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wKh-L0-RHP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="369" y="-751"/>
         </scene>
     </scenes>
     <resources>
