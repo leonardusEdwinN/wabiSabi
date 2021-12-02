@@ -121,14 +121,23 @@ class SummaryCalendarTableViewCell: UITableViewCell {
     
     func calculatePercentage(routines: [Routines]) -> CGFloat{
         var completedRoutine: CGFloat = 0.0
+        var totalRoutine: CGFloat = 0.0
         if !routines.isEmpty {
             for i in 0..<routines.count {
-                if routines[i].isCompleted {
-                    completedRoutine = completedRoutine + 1.0
+                if routines[i].routineproduct != nil {
+                    var products: [Product] = PersistanceManager.shared.fetchProduct(routine: routines[i])
+                    if !products.isEmpty{
+                        for productIndex in 0..<products.count {
+                            totalRoutine += 1.0
+                            if (products[productIndex].isDone) {
+                                completedRoutine += 1.0
+                            }
+                        }
+                    }
                 }
             }
         }
-        return CGFloat(completedRoutine) / CGFloat(routines.count)
+        return CGFloat(completedRoutine) / CGFloat(totalRoutine)
     }
 }
 

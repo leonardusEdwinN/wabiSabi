@@ -34,6 +34,22 @@ class SummaryActivityCircularProgressTableViewCell: UITableViewCell {
         collectionView.reloadData()
     }
 
+    func calculateProgress(routine: Routines) -> CGFloat{
+        var completedRoutine: CGFloat = 0.0
+        var totalRoutine: CGFloat = 0.0
+        if routine.routineproduct != nil {
+            var products: [Product] = PersistanceManager.shared.fetchProduct(routine: routine)
+            if !products.isEmpty{
+                for productIndex in 0..<products.count {
+                    totalRoutine += 1.0
+                    if (products[productIndex].isDone) {
+                        completedRoutine += 1.0
+                    }
+                }
+            }
+        }
+        return CGFloat(completedRoutine) / CGFloat(totalRoutine)
+    }
 }
 
 extension SummaryActivityCircularProgressTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -57,7 +73,22 @@ extension SummaryActivityCircularProgressTableViewCell: UICollectionViewDataSour
                 break;
             }
         }
+        if data[indexPath.row].isSkipped {
+            cell.circularProgressActivity.progress = 0.0
+            cell.circularProgressActivity.fillColor = UIColor.lightGray.cgColor
+            cell.circularProgressActivity.strokeColor = UIColor.clear.cgColor
+            cell.routineNameLabel.textColor = UIColor.lightGray
+        }
+        else {
+            var circularProgressValue = calculateProgress(routine: data[indexPath.row])
+            cell.circularProgressActivity.progress = circularProgressValue
+            if circularProgressValue == 0.0 {
+                cell.circularProgressActivity.progress = 0.001
+            }
+        }
         
+        
+        /*
         if data[indexPath.row].isCompleted {
             cell.circularProgressActivity.progress = 1.0
         }
@@ -70,6 +101,7 @@ extension SummaryActivityCircularProgressTableViewCell: UICollectionViewDataSour
         else {
             cell.circularProgressActivity.progress = 0.001
         }
+        */
         
         /*
         // DUMMY
