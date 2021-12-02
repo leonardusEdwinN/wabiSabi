@@ -549,6 +549,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
         })
         closeAction.image = UIImage(named: "tick")
         closeAction.backgroundColor = getUIColor(hex: "#CDCBDB")
+        closeAction.image = UIImage(named: "done")
         
         return UISwipeActionsConfiguration(actions: [closeAction])
     }
@@ -603,6 +604,7 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
             tableView.reloadData()
         })
         modifyAction.backgroundColor = getUIColor(hex: "#CDCBDB")
+        modifyAction.image = UIImage(named: "skip")
         
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
