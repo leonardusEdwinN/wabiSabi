@@ -8,7 +8,8 @@
 import UIKit
 
 class EditProfileViewController: UIViewController {
-
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let backButton = UIBarButtonItem()
@@ -17,7 +18,13 @@ class EditProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    // MARK: CHANGE USER NOTIFICATION STATUS
+    @IBAction func switchNotificationValueChange(_ sender: Any) {
+        if let userID: String = UserDefaults.standard.string(forKey: "userID") {
+            PersistanceManager.shared.changeUserNotification(id: userID, status: notificationSwitch.isOn)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

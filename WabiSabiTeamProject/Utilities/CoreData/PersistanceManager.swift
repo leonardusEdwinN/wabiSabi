@@ -230,6 +230,32 @@ class PersistanceManager {
         }
     }
     
+    func changeUserNotification(id: String, status: Bool){
+        // 1. fetch data
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        // 2. set predicate (condition)
+        fetchRequest.predicate = NSPredicate(format: "id = %@", id)
+        
+        // 3. execute update
+        do {
+            let objects = try context.fetch(fetchRequest)
+            let objectToBeUpdated = objects[0] as!NSManagedObject
+            
+            objectToBeUpdated.setValue(status, forKey: "isNotify")
+        } catch {
+            // do something if error
+        }
+        
+        // 4. save
+        do {
+            try
+            context.save()
+        } catch let error as NSError {
+            // do something if error...
+        }
+    }
+    
     
     // MARK: DELETE ROUTINE
     func deleteRoutines(routines : Routines) {
