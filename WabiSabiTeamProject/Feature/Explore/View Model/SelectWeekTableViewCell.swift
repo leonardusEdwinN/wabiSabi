@@ -100,6 +100,14 @@ class SelectWeekTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        buttonMonday.isSelected = false
+        buttonTuesday.isSelected = false
+        buttonWednesday.isSelected = false
+        buttonThursday.isSelected = false
+        buttonFriday.isSelected = false
+        buttonSaturday.isSelected = false
+        buttonSunday.isSelected = false
+        buttonEveryday.isSelected = false
         // Initialization code
     }
     
