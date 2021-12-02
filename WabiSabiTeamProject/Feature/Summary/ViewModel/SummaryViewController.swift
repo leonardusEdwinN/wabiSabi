@@ -13,9 +13,9 @@ class SummaryViewController: UIViewController{
     
     @IBOutlet weak var dummyButton: UIButton!
     
-    let allRoutines = Array(PersistanceManager.shared.fetchRoutines())
-    
+    let allRoutines: [Routines] = Array(PersistanceManager.shared.fetchRoutines())
     var selectedDateRoutines: [Routines]!
+    
 //    @IBAction func dummyButtonPressed(_ sender: Any) {
 //        performSegue(withIdentifier: "moveToAddRoutinePage", sender: self)
 //    }
@@ -27,10 +27,9 @@ class SummaryViewController: UIViewController{
         df.dateFormat = "yyyy-MM-dd"
         
         var defaultDate: String = df.string(from: Date())
-        
         UserDefaults.standard.set(defaultDate, forKey: "selectedSummaryCalendar")
         
-        selectedDateRoutines = filterRoutine(routines: allRoutines)
+        selectedDateRoutines = filterRoutine(filterDate: Date(), routines: allRoutines)
     }
     
     func registerCell(){
@@ -76,6 +75,22 @@ class SummaryViewController: UIViewController{
         return filteredItems
     }
     
+    func filterRoutine(filterDate: Date, routines: [Routines]) -> [Routines] {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        
+        var date: String = df.string(from: filterDate)
+        
+        var filteredItems: [Routines] = []
+        for i in 0..<routines.count {
+            let routineDate: String = df.string(from: routines[i].routineDate ?? Date())
+            if (routineDate.elementsEqual(date)) {
+                filteredItems.append(routines[i])
+            }
+        }
+        return filteredItems
+    }
+    
     func calculatePercentage(routines: [Routines]) -> CGFloat{
         var completedRoutine: CGFloat = 0.0
         
@@ -103,6 +118,7 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             //calendar
             let cell = tableView.dequeueReusableCell(withIdentifier: "summaryCalendarTableViewCell",for: indexPath) as! SummaryCalendarTableViewCell
             cell.allRoutines = allRoutines
+            cell.cellDelegate = self
             return cell
         }else if(indexPath.item == 1){
             //summary activity
@@ -112,6 +128,7 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
             
             //no state
             let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryActivityCircularProgressTableViewCell",for: indexPath) as! SummaryActivityCircularProgressTableViewCell
+            cell.tag = 1
             cell.data = selectedDateRoutines
             if selectedDateRoutines != nil {
                 cell.frame.size = CGSize(width: summaryTableView.frame.width, height: CGFloat(Int(selectedDateRoutines.count / 3) * 220))
@@ -147,12 +164,22 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
         
         return 100
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.item == 0) {
-            selectedDateRoutines = filterRoutine(routines: allRoutines)
-            tableView.reloadData()
+}
+
+extension SummaryViewController : SummaryCollectionViewCellDelegate {
+    func didTapAtCell(date: Date) {
+        if let cell = summaryTableView.viewWithTag(1) as? SummaryActivityCircularProgressTableViewCell {
+            if date <= Date() {
+                cell.noDataLabel.isHidden = true
+                cell.setData(newData: filterRoutine(filterDate: date, routines: allRoutines))
+                cell.frame.size = CGSize(width: summaryTableView.frame.width, height: CGFloat(((1 + Int(selectedDateRoutines.count/3)) * 170) + 50))
+            }
+            else {
+                cell.setData(newData: [])
+                cell.noDataLabel.isHidden = false
+                cell.frame.size = CGSize(width: summaryTableView.frame.width, height: 220)
+            }
         }
     }
-    
 }
+

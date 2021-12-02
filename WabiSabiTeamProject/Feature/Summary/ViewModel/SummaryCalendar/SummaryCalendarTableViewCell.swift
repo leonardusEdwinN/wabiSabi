@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol SummaryCollectionViewCellDelegate: class {
+    func didTapAtCell(date : Date)
+}
+
 class SummaryCalendarTableViewCell: UITableViewCell {
+    weak var cellDelegate: SummaryCollectionViewCellDelegate?
     
     @IBOutlet weak var calendarDayCollectionView: UICollectionView!
     
@@ -106,9 +111,8 @@ class SummaryCalendarTableViewCell: UITableViewCell {
             let routineDate: String = df.string(from: routines[i].routineDate ?? Date())
             let filterDate: String = df.string(from: date)
             
-            print(routineDate, "-", filterDate, "SCTV")
             if (routineDate.elementsEqual(filterDate)) {
-                print(routineDate, "success")
+                print(routines[i].isCompleted, "on", routineDate)
                 filteredItems.append(routines[i])
             }
         }
@@ -138,6 +142,7 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         indexSelected = indexPath.row + 1
         for index in 0...numOfDaysInMonth[currentMonthIndex] + firstWeekDayOfMonth - 1 {
             if let cell = collectionView.viewWithTag(index) as? DayCollectionViewCell {
@@ -166,7 +171,19 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
             
             cell.labelDate.textColor = UIColor.white
             
-            UserDefaults.standard.set("\(choosenYear)-\(choosenMonth + 1)-\(cell.labelDate.text)", forKey: "selectedSummaryCalendar")
+            var day: Int? = Int(cell.labelDate.text ?? "0")
+            
+            var dateComponents = DateComponents()
+            dateComponents.year = choosenYear
+            dateComponents.month = choosenMonth + 1
+            dateComponents.day = Int(day!)
+            dateComponents.timeZone = TimeZone.current.localizedName(for: .shortStandard, locale: .current) as? TimeZone
+            dateComponents.hour = 0
+            dateComponents.minute = 0
+
+            var date: Date = Calendar.current.date(from: dateComponents) ?? Date()
+            
+            cellDelegate?.didTapAtCell(date: date)
         }
     }
     
@@ -175,6 +192,9 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
         if collectionView == self.calendarDayCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarDayCollectionViewCell", for: indexPath) as! DayCollectionViewCell
             cell.tag = (indexPath.row + 1)
+            cell.circularProgressView.fillColor = UIColor.clear.cgColor
+            cell.circularProgressView.alpha = 1
+            
             if indexPath.item <= firstWeekDayOfMonth - 2 {
                 cell.isHidden = true
             } else {
@@ -204,12 +224,16 @@ extension SummaryCalendarTableViewCell : UICollectionViewDelegate, UICollectionV
                 
                 if !(temp.isEmpty) {
                     cell.circularProgressView.isHidden = false
-                    calculateProgress = calculatePercentage(routines: allRoutines)
+                    calculateProgress = calculatePercentage(routines: temp)
                     cell.circularProgressView.progress = calculateProgress
                 }
                 
                 if (calcDate == day && choosenMonth == month && choosenYear == year) {
                     cell.labelDate.textColor = UIColor.systemIndigo
+                    if (calculateProgress == 0){
+                        calculateProgress = 0.001
+                        cell.circularProgressView.progress = calculateProgress
+                    }
                 }
                 else if( (calcDate > day && choosenMonth == month && choosenYear == year) || (choosenMonth > month && choosenYear == year) || (choosenYear > year) || calculateProgress == 0)  {
                     cell.circularProgressView.progress = 0

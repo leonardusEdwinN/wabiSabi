@@ -9,10 +9,9 @@ import UIKit
 
 class SummaryActivityCircularProgressTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noDataLabel: UILabel!
     
     var data: [Routines]!
-    var indexSelected: Int = 0
-    var sectionSelected: Int = 0
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +28,11 @@ class SummaryActivityCircularProgressTableViewCell: UITableViewCell {
         // Configure the view for the selected state
         
     }
+    
+    func setData(newData: [Routines]){
+        data = newData
+        collectionView.reloadData()
+    }
 
 }
 
@@ -40,40 +44,41 @@ extension SummaryActivityCircularProgressTableViewCell: UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCircularProgressCollectionViewCell", for: indexPath) as! ActivityCircularProgressCollectionViewCell
         
-        if !data.isEmpty {
-            cell.routineNameLabel.text = data[indexPath.row].name
-            
-            // get Asset
-            for i in 0..<Utilities().routineCategory.count {
-                var libraryData = Utilities().routineCategory[i].name
-                var dataToSearch = data[indexPath.row].name
-                if dataToSearch == libraryData {
-                    cell.iconLabel.text = Utilities().routineCategory[i].icon
-                    cell.routineNameLabel.textColor = Utilities().routineCategory[i].color
-                    cell.circularProgressActivity.strokeColor = Utilities().routineCategory[i].color.cgColor
-                    break;
-                }
-            }
-            
-            if data[indexPath.row].isCompleted {
-                cell.circularProgressActivity.progress = 1.0
-            }
-            else {
-                cell.circularProgressActivity.progress = 0.0
-                cell.circularProgressActivity.fillColor = UIColor.lightGray.cgColor
-                cell.circularProgressActivity.strokeColor = UIColor.clear.cgColor
-                cell.routineNameLabel.textColor = UIColor.lightGray
+        cell.routineNameLabel.text = data[indexPath.row].name
+        
+        // get Asset
+        for i in 0..<Utilities().routineCategory.count {
+            var libraryData = Utilities().routineCategory[i].name
+            var dataToSearch = data[indexPath.row].name
+            if dataToSearch == libraryData {
+                cell.iconLabel.text = Utilities().routineCategory[i].icon
+                cell.routineNameLabel.textColor = Utilities().routineCategory[i].color
+                cell.circularProgressActivity.strokeColor = Utilities().routineCategory[i].color.cgColor
+                break;
             }
         }
         
-        else {
-            // DUMMY
-            cell.circularProgressActivity.progress = CGFloat.random(in: 0.00...1.00)
-            cell.circularProgressActivity.strokeColor = Utilities().routineCategory[indexPath.row].color.cgColor
-            cell.iconLabel.text = Utilities().routineCategory[indexPath.row].icon
-            cell.routineNameLabel.text = Utilities().routineCategory[indexPath.row].name
-            cell.routineNameLabel.textColor = Utilities().routineCategory[indexPath.row].color
+        if data[indexPath.row].isCompleted {
+            cell.circularProgressActivity.progress = 1.0
         }
+        else if data[indexPath.row].isSkipped {
+            cell.circularProgressActivity.progress = 0.0
+            cell.circularProgressActivity.fillColor = UIColor.lightGray.cgColor
+            cell.circularProgressActivity.strokeColor = UIColor.clear.cgColor
+            cell.routineNameLabel.textColor = UIColor.lightGray
+        }
+        else {
+            cell.circularProgressActivity.progress = 0.001
+        }
+        
+        /*
+        // DUMMY
+        cell.circularProgressActivity.progress = 0.0
+        cell.circularProgressActivity.strokeColor = Utilities().routineCategory[indexPath.row].color.cgColor
+        cell.iconLabel.text = Utilities().routineCategory[indexPath.row].icon
+        cell.routineNameLabel.text = Utilities().routineCategory[indexPath.row].name
+        cell.routineNameLabel.textColor = Utilities().routineCategory[indexPath.row].color
+         */
         
         return cell
     }
