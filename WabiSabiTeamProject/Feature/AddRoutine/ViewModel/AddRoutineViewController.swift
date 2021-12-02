@@ -91,7 +91,6 @@ class AddRoutineViewController : UIViewController{
         routineLabel.attributedText = imageString
         
         
-        print("ROUTINE : \(selectedRoutine.name)")
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
