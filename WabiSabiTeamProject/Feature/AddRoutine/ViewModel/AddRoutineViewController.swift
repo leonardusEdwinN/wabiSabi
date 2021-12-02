@@ -143,6 +143,11 @@ class AddRoutineViewController : UIViewController{
                 return
             }
             
+            
+//            vc.modalPresentationStyle = .pageSheet
+//            vc.modalPresentationStyle = .formSheet
+//            vc.preferredContentSize = .init(width: self.view.frame.width, height: self.view.frame.height / 1.5)
+            
             if let routineName = selectedRoutine.name{
                 
                 let skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")

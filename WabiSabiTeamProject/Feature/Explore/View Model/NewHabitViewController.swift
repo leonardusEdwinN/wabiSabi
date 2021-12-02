@@ -23,12 +23,15 @@ class NewHabitViewController : UIViewController{
     var selectedProduct: Product!
     var selectedRoutine : Routines!
     var schedule : [Schedule] = []
-    var subcategories : SubCategories!
+    var subcategoriesName : String = ""
+    var subcategoriesDescription : String = ""
     var startHabit: Date = Date()
-    var routineName: String = ""
+    var routineName: String?
     
     var dayToDoHabit: [Bool] = [false, false, false, false, false, false, false]
     var isEveryday: Bool = false
+    var selectedCategory : String = ""
+    var isEditRoutine : Bool = false
     
     // MARK: UI Component
     @IBOutlet var outerView: UIView!
@@ -47,37 +50,86 @@ class NewHabitViewController : UIViewController{
             Loading.sharedInstance.showIndicator()
         }
         
-        var schedules: [Schedule] = []
-        for index in 0...6 {
-            if dayToDoHabit[index] {
-                var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
-                temp.schedule = "\(index)"
-                schedules.append(temp)
+        
+        if(selectedRoutine != nil && selectedRoutine.id != "" && isEditRoutine){
+            // MARK: UPDATE DATA
+            print("EDIT DATA \(self.routineName)")
+            
+            //update routine
+            if let id = selectedRoutine.id{
+                PersistanceManager.shared.updateRoutine(id: id, name: (self.routineName ?? selectedRoutine.category) ?? "", isEveryDay: isEveryday, startHabit: self.startHabit, category: selectedCategory, detail: self.subcategoriesDescription)
             }
+            //update product
+            print("UPDATE SCHEDULE")
+            for schedule in schedule {
+                PersistanceManager.shared.deleteSchedule(schedule: schedule)
+            }
+            
+            print("FETCH SCHEDULE")
+            for index in 0...6 {
+                if dayToDoHabit[index] {
+                    PersistanceManager.shared.setSchedule(time: "\(index)", routine: selectedRoutine)
+                }
+            }
+            
+
+            
+            print("FETCH PRODUCTS")
+            // Add product to routine
+            for product in products {
+                if let productId = product.id{
+                    PersistanceManager.shared.updateProduct(id: productId, name: product.name ?? self.subcategoriesName, brand: product.brand ?? "", periodAfterOpening: product.periodAfterOpening ?? Date(), picture: product.picture ?? "", routine: selectedRoutine, expiredDate: product.expiredDate ?? Date(), productType: product.productType ?? "")
+                }
+                
+            }
+            print("EDIT DATA SUCCESS \(selectedRoutine.name)")
+//            products = PersistanceManager.shared.fetchProduct(routine: selectedRoutine)
+        }else{
+            // MARK: CREATE DATA
+            print("CREATE DATA")
+            var schedules: [Schedule] = []
+            for index in 0...6 {
+                if dayToDoHabit[index] {
+                    var temp = Schedule(context: PersistanceManager.shared.persistentContainer.viewContext)
+                    temp.schedule = "\(index)"
+                    schedules.append(temp)
+                }
+            }
+            
+            if schedules.count == 0 {
+                // Kalau Tidak Punya schedule
+                PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: self.routineName ?? self.subcategoriesName, startHabit: self.startHabit,category: selectedCategory, detail: self.subcategoriesDescription)
+            }
+            else {
+                //kalau punya schedule
+                PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: self.startHabit, name: self.routineName ?? self.subcategoriesName, schedules: schedules, category: selectedCategory, detail: self.subcategoriesDescription)
+            }
+            
+            //Routine CREATED
+            if let routineCreatedId = UserDefaults.standard.string(forKey: "routineID"){
+                var selectedRoutineCreated = PersistanceManager.shared.fetchRoutine(id: routineCreatedId)
+                self.selectedRoutine = selectedRoutineCreated
+            }
+            
+            
+            print("FETCH SCHEDULE")
+            for index in 0...6 {
+                if dayToDoHabit[index] {
+                    PersistanceManager.shared.setSchedule(time: "\(index)", routine: selectedRoutine)
+                }
+            }
+            
+            print("FETCH PRODUCTS")
+            // Add product to routine
+            for product in products {
+                PersistanceManager.shared.setProduct(brand: product.brand ?? "", expiredDate: product.expiredDate ?? Date(), name: product.name ?? self.subcategoriesName, periodAfterOpening: product.periodAfterOpening ?? Date(), picture: product.picture ?? "", routine: selectedRoutine, productType: product.productType ?? "", isDone: product.isDone)
+            }
+            
+//            products = PersistanceManager.shared.fetchProduct(routine: selectedRoutine)
+            
+            print("CREATE DATA SUCCESS \(selectedRoutine.name)")
         }
         
-        if schedules.count == 0 {
-            // Kalau Tidak Punya schedule
-            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, name: self.routineName, startHabit: self.startHabit)
-        }
-        else {
-            //kalau punya schedule
-            PersistanceManager.shared.setRoutine(isEveryday: isEveryday, startHabit: self.startHabit, name: self.routineName, schedules: schedules)
-        }
-        
-        //Routine CREATED
-        if let routineCreatedId = UserDefaults.standard.string(forKey: "routineID"){
-            var selectedRoutineCreated = PersistanceManager.shared.fetchRoutine(id: routineCreatedId)
-            self.selectedRoutine = selectedRoutineCreated
-        }
-        
-        print("FETCH PRODUCTS")
-        // Add product to routine
-        for product in products {
-            PersistanceManager.shared.setProduct(brand: product.brand ?? "", expiredDate: product.expiredDate ?? Date(), name: product.name ?? self.subcategories.habitName, periodAfterOpening: product.periodAfterOpening ?? Date(), picture: product.picture ?? "", routine: selectedRoutine, productType: product.productType ?? "", isDone: product.isDone)
-        }
-        
-        products = PersistanceManager.shared.fetchProduct(routine: selectedRoutine)
         
         DispatchQueue.main.async {
             self.dismiss(animated: false) {
@@ -94,11 +146,73 @@ class NewHabitViewController : UIViewController{
         
         setupTableView()
         setupUI()
+        
+        if self.isEditRoutine{
+            
+            setEditData()
+        }
+    }
+    
+    func setEditData(){
+            //true, melakukan update data
+            print("ROUTINE")
+            print("ROUTINE CATEGORY : \(selectedRoutine.category)")
+            if let routine = selectedRoutine{
+                print("ROUTINE MASHOOK")
+                print("ROUTINE \(selectedRoutine.category) :: \(routine.name)")
+                self.routineName = routine.name ?? routine.category as! String
+                labelTitle.text = routine.category
+                labelDetail.text = routine.categoryDetail
+                
+                schedule = PersistanceManager.shared.fetchScheduleWithRoutine(routine: selectedRoutine)
+                
+                for schedule in schedule {
+                    switch schedule.schedule {
+                    case "0":
+                        dayToDoHabit[0] = true
+                    case "1":
+                        dayToDoHabit[2] = true
+                    case "2":
+                        dayToDoHabit[2] = true
+                    case "3":
+                        dayToDoHabit[3] = true
+                    case "4":
+                        dayToDoHabit[4] = true
+                    case "5":
+                        dayToDoHabit[5] = true
+                    case "6":
+                        dayToDoHabit[6] = true
+                    default:
+                        print("CANNOT DETECT")
+                    }
+                }
+                
+                print("DAY DO HABIT : \(dayToDoHabit)")
+                
+                
+                switch selectedRoutine.category{
+                case "Face" :
+                    products = PersistanceManager.shared.fetchProduct(routine: selectedRoutine)
+                    break
+                case "Body & Scalp" :
+                    products = PersistanceManager.shared.fetchProduct(routine: selectedRoutine)
+                    break
+                    
+                default:
+                    //Tidak Mempunyai Product
+                    products = []
+                    print("Dont have any product")
+                    break
+                }
+                
+                
+                
+            }
     }
     
     func setupUI(){
-        labelTitle.text = subcategories.habitName
-        labelDetail.text = subcategories.description
+        labelTitle.text = subcategoriesName
+        labelDetail.text = subcategoriesDescription
         
         outerView.layer.cornerRadius = 29
         outerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -168,7 +282,18 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
             let row = tableView.dequeueReusableCell(withIdentifier: "routineNameTableViewCell") as! RoutineNameTableViewCell
             
             row.delegate = self
-            row.setUI(placeholder: self.subcategories.habitName)
+            
+            
+            
+            if isEditRoutine{
+                print("IS EDIT : \(isEdit) :: \(selectedRoutine.name)")
+//                if(selectedRoutine.name != ""){
+                    row.setUI(textFieldValue: selectedRoutine.name ?? "")
+//                }
+            }else{
+                row.setUI(placeholder: self.subcategoriesName)
+            }
+            
             //set namenya
             return row
         case "start":
@@ -180,6 +305,24 @@ extension NewHabitViewController : UITableViewDelegate, UITableViewDataSource{
         case "schedule":
             
             let row = tableView.dequeueReusableCell(withIdentifier: "selectWeekTableViewCell") as! SelectWeekTableViewCell
+            
+            var schedules = PersistanceManager.shared.fetchScheduleWithRoutine(routine: selectedRoutine)
+            print("ROUTINE : \(schedules)")
+            
+            DispatchQueue.main.async {
+                row.isEverydaySelected(isSelected: self.selectedRoutine.isEveryday)
+            }
+            
+            for schedule in schedules{
+                guard let onDay = schedule.schedule else { return  UITableViewCell()}
+                DispatchQueue.main.async {
+                    row.setData(buttonOn: onDay)
+                }
+                
+//                row.setData(buttonOn: schedule.schedule ?? <#default value#>)
+            }
+            
+            
             
             row.delegate = self
             return row

@@ -62,6 +62,7 @@
 		1376BCD82756170D008DD101 /* ProductHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1376BCD62756170D008DD101 /* ProductHeaderTableViewCell.xib */; };
 		1376BCDA27568EF6008DD101 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCD927568EF6008DD101 /* ProductModel.swift */; };
 		1376BCDD27578734008DD101 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCDC27578734008DD101 /* NotificationManager.swift */; };
+		1376BCDF2757BB60008DD101 /* TimerReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1376BCDE2757BB60008DD101 /* TimerReminderModel.swift */; };
 		137962E42733D1D4008D1BCF /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E32733D1D4008D1BCF /* SummaryViewController.swift */; };
 		137962E82733D4B3008D1BCF /* SummaryActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */; };
 		137962E92733D4B3008D1BCF /* SummaryActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */; };
@@ -204,6 +205,7 @@
 		1376BCD62756170D008DD101 /* ProductHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		1376BCD927568EF6008DD101 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		1376BCDC27578734008DD101 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		1376BCDE2757BB60008DD101 /* TimerReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerReminderModel.swift; sourceTree = "<group>"; };
 		137962E32733D1D4008D1BCF /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		137962E62733D4B3008D1BCF /* SummaryActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryActivityTableViewCell.swift; sourceTree = "<group>"; };
 		137962E72733D4B3008D1BCF /* SummaryActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryActivityTableViewCell.xib; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 			children = (
 				130C926527525EA500A416F9 /* View */,
 				130C926427525E9B00A416F9 /* ViewModel */,
+				1376BCDE2757BB60008DD101 /* TimerReminderModel.swift */,
 			);
 			path = TimerReminder;
 			sourceTree = "<group>";
@@ -1039,6 +1042,7 @@
 				971434432750D6C00001AED7 /* EditProfileViewController.swift in Sources */,
 				13CD1F3127425D5100F537EB /* TimerReminderTableViewCell.swift in Sources */,
 				97FB8A36273531B200F7A341 /* ActivityViewController.swift in Sources */,
+				1376BCDF2757BB60008DD101 /* TimerReminderModel.swift in Sources */,
 				13159C4F274F8EAC00EA5319 /* Loading.swift in Sources */,
 				1371B4CD2743E64900A16A45 /* TimerTableViewCell.swift in Sources */,
 				979889C9273282A20052B862 /* CircularProgressView.swift in Sources */,
