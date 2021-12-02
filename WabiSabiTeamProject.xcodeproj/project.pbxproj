@@ -127,6 +127,7 @@
 		35915E1F275706F5000A5E58 /* CircularProgressActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35915E1E275706F5000A5E58 /* CircularProgressActivity.swift */; };
 		35915E2327570BC6000A5E58 /* RoutineCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35915E2227570BC6000A5E58 /* RoutineCategory.swift */; };
 		35950D50273E129000CBF2E1 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950D4F273E129000CBF2E1 /* PersistanceManager.swift */; };
+		35A73584275929F200398C84 /* EditPersonalProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A73583275929F200398C84 /* EditPersonalProfileViewController.swift */; };
 		35D9D8DB272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */; };
 		35D9D8DD272FFF5A00C255F1 /* SkinTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */; };
 		35E47A092730C4C90033E5F4 /* SkinCareGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E47A082730C4C90033E5F4 /* SkinCareGuideViewController.swift */; };
@@ -281,6 +282,7 @@
 		35915E1E275706F5000A5E58 /* CircularProgressActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressActivity.swift; sourceTree = "<group>"; };
 		35915E2227570BC6000A5E58 /* RoutineCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RoutineCategory.swift; path = WabiSabiTeamProject/Feature/Summary/ViewModel/SummaryActivity/RoutineCategory.swift; sourceTree = SOURCE_ROOT; };
 		35950D4F273E129000CBF2E1 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		35A73583275929F200398C84 /* EditPersonalProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonalProfileViewController.swift; sourceTree = "<group>"; };
 		35D9D8DA272FFE7A00C255F1 /* SkinCareGuideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareGuideTableViewCell.swift; sourceTree = "<group>"; };
 		35D9D8DC272FFF5900C255F1 /* SkinTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTypeViewController.swift; sourceTree = "<group>"; };
 		35E47A082730C4C90033E5F4 /* SkinCareGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareGuideViewController.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				139A630D273BC15D008D54A8 /* ProfileViewController.swift */,
+				35A73583275929F200398C84 /* EditPersonalProfileViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1068,6 +1071,7 @@
 				1308256927464463005CB024 /* Geotification.swift in Sources */,
 				97177DE9273D0557007FF0E9 /* RoutinesTableViewCell.swift in Sources */,
 				13CD1F2D27425D1900F537EB /* LocationReminderTableViewCell.swift in Sources */,
+				35A73584275929F200398C84 /* EditPersonalProfileViewController.swift in Sources */,
 				13AD9DA1273908080083AE29 /* DayCollectionViewCell.swift in Sources */,
 				131F76D12727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld in Sources */,
 				131F76CB2727E61300A7AB41 /* ArchieveActivityViewController.swift in Sources */,
