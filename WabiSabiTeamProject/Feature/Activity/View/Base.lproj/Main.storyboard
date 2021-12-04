@@ -487,6 +487,7 @@
                         <outlet property="btnEditProfile" destination="L1Y-qH-YWX" id="hEK-96-jsv"/>
                         <outlet property="productTableView" destination="Dd6-RB-6xS" id="dak-cH-IGe"/>
                         <outlet property="profileImage" destination="eCE-dj-mCB" id="DCF-gH-GeF"/>
+                        <outlet property="profileLevel" destination="sLh-mo-3fH" id="M4N-eC-74T"/>
                         <outlet property="profileName" destination="HX8-Rw-pfw" id="1Uh-Fq-qrN"/>
                         <outlet property="switchTableViewButton" destination="3TS-xc-4MV" id="dhX-cE-bLB"/>
                     </connections>

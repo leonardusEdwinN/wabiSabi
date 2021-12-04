@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController : UIViewController, UIViewControllerTransitioningDelegate{
     @IBOutlet weak var profileImage: UIView!
+    @IBOutlet weak var profileLevel: UILabel!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var btnEditProfile: UIButton!
     @IBOutlet weak var switchTableViewButton: UISegmentedControl!
@@ -22,9 +23,17 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUserData()
         setupView()
         setUpTableView()
         configureNavigationBar()
+    }
+    
+    func configureUserData() {
+        let user = PersistanceManager.shared.fetchUser()
+        
+        profileName.text = user.name
+        profileLevel.text = user.level
     }
     
     func setupView(){
