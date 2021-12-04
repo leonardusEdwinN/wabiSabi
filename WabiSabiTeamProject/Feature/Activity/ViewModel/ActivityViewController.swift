@@ -52,7 +52,8 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     }
     
     func refetchAllRoutine() {
-        allRoutines = PersistanceManager.shared.fetchRoutines()
+        let user = PersistanceManager.shared.fetchUser()
+        allRoutines = PersistanceManager.shared.fetchRoutines().filter({$0.userroutine?.id == user.id})
     }
 
     func buttonSavePressed(time: String) {
