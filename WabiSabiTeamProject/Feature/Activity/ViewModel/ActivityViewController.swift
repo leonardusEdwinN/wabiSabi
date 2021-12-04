@@ -36,7 +36,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     
     var selectedCalenderDate: Date = Date()
     
-    let allRoutines = PersistanceManager.shared.fetchRoutines()
+    var allRoutines = PersistanceManager.shared.fetchRoutines()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,10 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         setUpcircularProgress()
         setGradientBackground()
     }
+    
+    func refetchAllRoutine() {
+        allRoutines = PersistanceManager.shared.fetchRoutines()
+    }
 
     func buttonSavePressed(time: String) {
         let dateFormatter = DateFormatter()
@@ -62,6 +66,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
             
             print(selectedCalenderDate)
             
+            refetchAllRoutine()
             configureTableViewDataByStatus(isFilterByDate: true)
             configureSegmented()
             setUpTableView()
@@ -423,10 +428,16 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
                 PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isSkipped ,status: false)
             }
             print("Finish")
-            self.configureTableViewDataByStatus()
+            if selectedCalenderDate != Date() {
+                self.configureTableViewDataByStatus(isFilterByDate: true)
+                self.setUpcircularProgress(isFilterByDate: true)
+            } else {
+                self.configureTableViewDataByStatus()
+                self.setUpcircularProgress()
+            }
+            
             self.configureSegmented()
             self.setUpTableView()
-            self.setUpcircularProgress()
             tableView.reloadData()
             success(true)
         })
@@ -463,9 +474,15 @@ extension ActivityViewController: UITableViewDataSource, UITableViewDelegate{
                 PersistanceManager.shared.changeRoutineStatus(id: self.currentTableView[indexPath.row].id!,statusType: StatusRoutine.isCompleted ,status: false)
             }
             
-            self.configureTableViewDataByStatus()
+            if self.selectedCalenderDate != Date() {
+                self.configureTableViewDataByStatus(isFilterByDate: true)
+                self.setUpcircularProgress(isFilterByDate: true)
+            } else {
+                self.configureTableViewDataByStatus()
+                self.setUpcircularProgress()
+            }
+            
             self.configureSegmented()
-            self.setUpcircularProgress()
             self.setUpTableView()
             print("SKIP")
             success(true)
