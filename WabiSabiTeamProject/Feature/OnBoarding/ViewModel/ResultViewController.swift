@@ -29,7 +29,7 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         
         UserDefaults.standard.set(true, forKey: "isCompleteOnBoarding")
-
+        print("DEFAULT : \(UserDefaults.standard.bool(forKey: "isCompleteOnBoarding"))")
         setUI()
         
         skinCareRoutineCollectionView.delegate = self
@@ -111,6 +111,10 @@ class ResultViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController")
         vc.modalPresentationStyle = .fullScreen
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
+        
         self.present(vc, animated: true, completion: nil)
     }
 }

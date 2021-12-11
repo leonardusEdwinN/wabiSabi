@@ -27,11 +27,13 @@ class ImportViewController : UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchRoutine()
+//        fetchRoutine()
+//        refetchAllRoutine()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
+        refetchAllRoutine()
     }
     
     func registerCell(){
@@ -40,11 +42,19 @@ class ImportViewController : UIViewController{
         importTableView.delegate = self
         importTableView.dataSource = self
     }
+//
+//    func fetchRoutine(){
+//        print("FETCH ROUTINE")
+//        self.routines = PersistanceManager.shared.fetchRoutines()
+////        routines = routines.filter({$0.userroutine. })
+//    }
     
-    func fetchRoutine(){
-        print("FETCH ROUTINE")
-        self.routines = PersistanceManager.shared.fetchRoutines()
-    }
+    func refetchAllRoutine() {
+        routines = []
+            let user = PersistanceManager.shared.fetchUser()
+            routines = PersistanceManager.shared.fetchRoutines().filter({$0.userroutine?.id == user.id})
+            routines = routines.filter({ $0.startHabit != nil })
+        }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "moveToImportProduct"{

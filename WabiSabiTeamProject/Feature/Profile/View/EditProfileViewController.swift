@@ -10,6 +10,9 @@ import UIKit
 class EditProfileViewController: UIViewController {
     @IBOutlet weak var notificationSwitch: UISwitch!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let backButton = UIBarButtonItem()

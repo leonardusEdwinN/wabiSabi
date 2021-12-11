@@ -46,6 +46,8 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refetchAllRoutine()
         configureTableViewDataByStatus()
         configureNavigationBar()
         generateDailyRoutine()
@@ -59,6 +61,10 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         notificationCenter.delegate = self
     }
     
+    func refetchAllRoutine() {
+            let user = PersistanceManager.shared.fetchUser()
+            allRoutines = PersistanceManager.shared.fetchRoutines().filter({$0.userroutine?.id == user.id})
+        }
     
     func setScheduleReminder(){
         reminders.removeAll()
@@ -124,6 +130,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
             self.allRoutines = PersistanceManager.shared.fetchRoutines()
+            self.refetchAllRoutine()
             self.configureTableViewDataByStatus()
             self.configureSegmented()
             self.setUpTableView()
