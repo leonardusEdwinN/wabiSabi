@@ -34,18 +34,99 @@ class ActivityViewController: UIViewController {
     var completedTableView: [Routines] = []
     var skippedTableView: [Routines] = []
     
+    let allRoutines = PersistanceManager.shared.fetchRoutines()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableViewDataByStatus()
         configureNavigationBar()
+        generateDailyRoutine()
         setUpTableView()
         configureBackground()
         configureTutorial()
         configureSegmented()
         setUpcircularProgress()
         setGradientBackground()
-        
 //        backgroundPurple.backgroundColor = UIColor.systemGreen
+    }
+    
+    func filterTodayRoutine(routines: [Routines]) -> [Routines] {
+        let calendar = Calendar.current
+        let todayRoutine = routines.filter({calendar.isDateInToday(($0.routineDate ?? Date.yesterday) as Date)})
+        return todayRoutine
+    }
+    
+    func generateDailyRoutine() {
+        // Logic nya itu, ketika masuk app apabila kita belom generate maka akan mengenerate routine untuk 'besok' yang mana kondisinya adalah isEveryday == true || routines yang memiliki schedules hari esok
+        let dayTommorow = Date.tomorrow
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let dayInWeek = dateFormatter.string(from: dayTommorow)
+        var dayIndex : Int = 0
+        
+        if dayInWeek == "Sunday" {
+            dayIndex = 0
+        } else if dayInWeek == "Monday" {
+            dayIndex = 1
+        } else if dayInWeek == "Tuesday" {
+            dayIndex = 2
+        } else if dayInWeek == "Wednesday" {
+            dayIndex = 3
+        } else if dayInWeek == "Thursday" {
+            dayIndex = 4
+        } else if dayInWeek == "Friday" {
+            dayIndex = 5
+        } else if dayInWeek == "Saturday" {
+            dayIndex = 6
+        }
+
+        // Filter schedules adalah besok atau isEveryday == true
+        let routinesWithScheduleOrEveryDay = allRoutines.filter({$0.schedules?.contains(dayIndex) ?? false || $0.isEveryday == true})
+    
+        print("CREATEEEEE")
+        print(dayInWeek)
+        print(dayIndex)
+        print(routinesWithScheduleOrEveryDay)
+        
+        // user default isGenerateToday == true -> tidak generate
+        // user default isGenerateToday == false -> generate
+        // user defailt lastGenerate == isToday -> tidak generate
+        // user defailt lastGenerate == isYesterday -> generate
+        // if lastGenerate == isYesterday || isGenerateToday == false -> generate / set isGenerateToday = true & lastGenerate = isToday
+        let lastGenerateTime = UserDefaults.standard.object(forKey: "lastGenerateTime") as? Date
+//        let isGeneratedToday = UserDefaults.standard.bool(forKey: "isGeneratedToday")
+        
+        if (lastGenerateTime?.weekday != Date().weekday || lastGenerateTime == nil) {
+            UserDefaults.standard.set(Date(), forKey: "lastGenerateTime")
+            UserDefaults.standard.set(true, forKey: "isGeneratedToday")
+            
+            for generateRoutine in routinesWithScheduleOrEveryDay {
+                print("GENERATEEE")
+                PersistanceManager.shared.setRoutine(isEveryday: generateRoutine.isEveryday, name: generateRoutine.name!, routineDate: Date.tomorrow)
+                print(generateRoutine.name)
+                print(generateRoutine.schedules?.allObjects)
+                let products = generateRoutine.routineproduct?.allObjects as! [Product]
+                for product in products {
+                    PersistanceManager.shared.setProduct(name: product.name!)
+                    
+                    print("routineproduct")
+                    print(product.routineproduct)
+                    print(product.name)
+                    
+                }
+                print(lastGenerateTime?.weekday)
+                print(Date().weekday)
+                print(lastGenerateTime?.weekday == Date().weekday)
+            }
+        } else {
+            print("GA USAH GENERATE LAGI")
+            print(lastGenerateTime?.weekday)
+            print(Date().weekday)
+            print(lastGenerateTime?.weekday == Date().weekday)
+        }
+        
+        
+       
     }
     
     func setGradientBackground() {
@@ -58,13 +139,13 @@ class ActivityViewController: UIViewController {
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradientLayer.frame = self.view.bounds
-                
+        
         
         backgroundPurple.layer.insertSublayer(gradientLayer, at:1)
     }
     
     func configureTableViewDataByStatus() {
-        skinCareRoutines = PersistanceManager.shared.fetchRoutines()
+        skinCareRoutines = filterTodayRoutine(routines: allRoutines)
         todoTableView = skinCareRoutines.filter({$0.isCompleted == false && $0.isSkipped == false})
         completedTableView = skinCareRoutines.filter({$0.isCompleted == true})
         skippedTableView = skinCareRoutines.filter({$0.isSkipped == true})
@@ -374,4 +455,24 @@ func getUIColor(hex: String, alpha: Double = 1.0) -> UIColor? {
         blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
         alpha: CGFloat(1.0)
     )
+}
+
+extension Date {
+    static var yesterday: Date { return Date().dayBefore }
+    static var tomorrow:  Date { return Date().dayAfter }
+    var dayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var dayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    var month: Int {
+        return Calendar.current.component(.month,  from: self)
+    }
+    var isLastDayOfMonth: Bool {
+        return dayAfter.month != month
+    }
 }

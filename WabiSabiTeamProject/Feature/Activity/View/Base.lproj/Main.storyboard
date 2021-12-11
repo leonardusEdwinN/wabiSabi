@@ -70,6 +70,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="ColorSecondary"/>
+                        <color key="selectedImageTintColor" name="ColorSecondary"/>
                     </tabBar>
                     <connections>
                         <segue destination="orE-BM-W85" kind="relationship" relationship="viewControllers" id="s8R-of-bzj"/>

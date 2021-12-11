@@ -91,7 +91,7 @@ class ProductUsedTableViewCell: UITableViewCell {
     func setUIImage(image: String){
         
         guard let decodedData = Data(base64Encoded: image, options: .ignoreUnknownCharacters) else { return }
-        let decodedimage: UIImage = UIImage(data: decodedData)!
+        let decodedimage: UIImage = UIImage(data: decodedData) ?? UIImage(named: "Mascot")!
         
         imageCell.image = decodedimage
         imageCell.contentMode = .scaleToFill
