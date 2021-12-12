@@ -167,11 +167,20 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         
     func filterRoutineByDate(routines: [Routines]) -> [Routines] {
         let dateFormatter = DateFormatter()
+        let dateTitleFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY/MM/dd"
+        dateTitleFormatter.dateFormat = "MMM d"
         let filteredRoutine = routines.filter({dateFormatter.string(from: $0.routineDate ?? Date.yesterday) == dateFormatter.string(from: selectedCalenderDate)})
+        if dateTitleFormatter.string(from: selectedCalenderDate) == dateTitleFormatter.string(from: Date()) {
+            title = "Today"
+        } else {
+            title = dateTitleFormatter.string(from: selectedCalenderDate)
+        }
+        
         print("FILTEREEEED")
         print(selectedCalenderDate)
         print(dateFormatter.string(from: routines[0].routineDate!))
+        print(dateTitleFormatter.string(from: routines[0].routineDate!))
         print(filteredRoutine)
         return filteredRoutine
     }
