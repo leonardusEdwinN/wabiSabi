@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ND-eR-MXF">
-                        <rect key="frame" x="10" y="115" width="102" height="30"/>
+                        <rect key="frame" x="5" y="115" width="112" height="40"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                         <color key="textColor" systemColor="systemOrangeColor"/>
                         <nil key="highlightedColor"/>
@@ -45,14 +45,14 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="DkV-dB-YyP" secondAttribute="trailing" constant="15" id="51G-aL-lhh"/>
-                <constraint firstAttribute="trailing" secondItem="9ND-eR-MXF" secondAttribute="trailing" constant="10" id="5o4-wv-uGd"/>
+                <constraint firstAttribute="trailing" secondItem="9ND-eR-MXF" secondAttribute="trailing" constant="5" id="5o4-wv-uGd"/>
                 <constraint firstItem="0Zm-pC-ID8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="H4C-CH-h3w"/>
                 <constraint firstItem="DkV-dB-YyP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="KWL-1O-Kuv"/>
                 <constraint firstAttribute="trailing" secondItem="0Zm-pC-ID8" secondAttribute="trailing" constant="20" id="lN9-mh-L8T"/>
-                <constraint firstItem="9ND-eR-MXF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="o7L-NE-RQ1"/>
+                <constraint firstItem="9ND-eR-MXF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="o7L-NE-RQ1"/>
                 <constraint firstItem="0Zm-pC-ID8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="qib-aM-DbM"/>
                 <constraint firstItem="DkV-dB-YyP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="rlD-Ei-3UC"/>
-                <constraint firstAttribute="bottom" secondItem="9ND-eR-MXF" secondAttribute="bottom" constant="15" id="uPu-TH-MaS"/>
+                <constraint firstAttribute="bottom" secondItem="9ND-eR-MXF" secondAttribute="bottom" constant="5" id="uPu-TH-MaS"/>
                 <constraint firstItem="9ND-eR-MXF" firstAttribute="top" secondItem="DkV-dB-YyP" secondAttribute="bottom" constant="8" symbolic="YES" id="zXJ-8w-IX2"/>
             </constraints>
             <size key="customSize" width="192" height="305"/>
