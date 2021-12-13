@@ -28,12 +28,25 @@ class AddRoutineViewController : UIViewController{
         if(editButton.titleLabel?.text == "Save"){
             //kembalikan ke state edit
             self.isEdit = false
-            self.routineTableView.reloadData()
+            DispatchQueue.main.async {
+            
+                UIView.setAnimationsEnabled(true)
+                self.routineTableView.beginUpdates()
+                self.routineTableView.reloadData()
+                self.routineTableView.endUpdates()
+                UIView.setAnimationsEnabled(true)
+            }
             self.editButton.setTitle("Edit", for: .normal)
         }else if(editButton.titleLabel?.text == "Edit"){
             //kembalikan ke state save
             self.isEdit = true
-            self.routineTableView.reloadData()
+            DispatchQueue.main.async {
+                UIView.setAnimationsEnabled(true)
+                self.routineTableView.beginUpdates()
+                self.routineTableView.reloadData()
+                self.routineTableView.endUpdates()
+                UIView.setAnimationsEnabled(true)
+            }
             self.editButton.setTitle("Save", for: .normal)
         }
         
@@ -54,6 +67,7 @@ class AddRoutineViewController : UIViewController{
     var selectedRoutine: Routines!
     var selectedProduct: Product!
     var isEdit: Bool = false
+    var countTimer : Int = 0
     
     var skinTypeRoutine: [SkinRoutineProduct] = [
         SkinRoutineProduct(icon: "🌞", name: "Morning Skin Care", products: []),
@@ -106,10 +120,15 @@ class AddRoutineViewController : UIViewController{
         
         registerCell()
         checkProduct()
+        getCountReminder()
     }
     
     func checkProduct() {
         products = PersistanceManager.shared.fetchProduct(routine: selectedRoutine)
+    }
+    
+    func getCountReminder() {
+        countTimer = PersistanceManager.shared.fetchReminder(routine: selectedRoutine).count
     }
     
     func registerCell(){
@@ -139,7 +158,7 @@ class AddRoutineViewController : UIViewController{
             guard let addProductVC = nav.topViewController as? AddProductViewController else {
                return
             }
-            
+            print("\(selectedProduct.name) + \(selectedProduct.productType) ")
             addProductVC.selectedRoutine = self.selectedRoutine
             addProductVC.delegate = self
             addProductVC.selectedProduct = self.selectedProduct
@@ -155,6 +174,8 @@ class AddRoutineViewController : UIViewController{
             guard let timerReminderVC = nav.topViewController as? TimerReminderViewController else {
                 return
             }
+            
+            timerReminderVC.delegate = self
             timerReminderVC.selectedRoutine = self.selectedRoutine
             
         }else if segue.identifier == "moveToLocationReminder"{
@@ -230,7 +251,7 @@ class AddRoutineViewController : UIViewController{
     
 }
 
-extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
+extension AddRoutineViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count + 4
     }
@@ -264,10 +285,16 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
                
                 
             if let image = products[indexPath.row].picture{
+                print("Has image")
                     DispatchQueue.main.async {
                         row.setUIImage(image: image)
                     }
                 
+            }else{
+                print("NO IMAGE")
+                DispatchQueue.main.async {
+                    row.setBlankImage(imageSystem: "plus")
+                }
             }
             print("SELECTED PRODUCT \(self.products[indexPath.row])")
             row.selectedProduct = self.products[indexPath.row]
@@ -291,6 +318,13 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             //timer reminder
             let row = tableView.dequeueReusableCell(withIdentifier: "timerReminderTableViewCell") as! TimerReminderTableViewCell
             
+            if(countTimer == 0){
+                //set jadi tetep non
+                row.setUI(counTimerText: "None")
+            }else{
+                row.setUI(counTimerText: "\(self.countTimer) Reminder")
+            }
+            
             return row
         }else if(indexPath.row == products.count + 3){
             //location reminder
@@ -302,6 +336,9 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
         
         return UITableViewCell()
     }
+}
+
+extension AddRoutineViewController : UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var heightForRow : CGFloat = 0
@@ -394,65 +431,10 @@ extension AddRoutineViewController : UITableViewDelegate, UITableViewDataSource{
             }
             
             
-            
-            
-//            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
-//            
-//            row.setStatusUndone()
-//            if let id = self?.products[indexPath.row].id{
-//                //update data status
-//                PersistanceManager.shared.changeProductStatus(id: id, status: false)
-//            }
-//            print("UPDATE DATA UNCHECKED")
-//            
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
         
     }
-    
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-//    {
-//        // Checked action
-//        let check = UIContextualAction(style: .normal,
-//                                         title: "Checked") { [weak self] (action, view, completionHandler) in
-//
-//            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
-//
-//            row.setStatusDone()
-//            if let id = self?.products[indexPath.row].id{
-//                //update data status
-//                PersistanceManager.shared.changeProductStatus(id: id, status: true)
-//            }
-//
-//            print("UPDATE DATA CHECKED")
-//
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
-//            completionHandler(true)
-//        }
-//        check.backgroundColor = .systemGreen
-//
-//        // uncheck action
-//        let uncheck = UIContextualAction(style: .normal,
-//                                       title: "Unchecked") { [weak self] (action, view, completionHandler) in
-//            let row = tableView.dequeueReusableCell(withIdentifier: "productUsedTableViewCell") as! ProductUsedTableViewCell
-//
-//            row.setStatusUndone()
-//            if let id = self?.products[indexPath.row].id{
-//                //update data status
-//                PersistanceManager.shared.changeProductStatus(id: id, status: false)
-//            }
-//            print("UPDATE DATA UNCHECKED")
-//
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
-//            completionHandler(true)
-//        }
-//        uncheck.backgroundColor = .systemOrange
-//
-//        let configuration = UISwipeActionsConfiguration(actions: [uncheck, check])
-//
-//        return configuration
-//    }
     
     
 }
@@ -498,4 +480,19 @@ extension AddRoutineViewController : EditDeletProductItemDelegate{
         performSegue(withIdentifier: "moveToAddProduct", sender: self)
     }
     
+}
+
+
+extension AddRoutineViewController : GetDataAndReloadDelegate{
+    func getDataAndReload(countTimer: Int) {
+        print("counter timer : \(countTimer)")
+        self.countTimer = countTimer
+        DispatchQueue.main.async {
+            UIView.setAnimationsEnabled(true)
+            self.routineTableView.beginUpdates()
+            self.routineTableView.reloadData()
+            self.routineTableView.endUpdates()
+            UIView.setAnimationsEnabled(true)
+        }
+    }
 }

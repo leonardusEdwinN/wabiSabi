@@ -92,6 +92,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="labelTimer" destination="vlX-GL-lNa" id="EW8-ih-2SK"/>
                 <outlet property="viewRounded" destination="Afs-8W-EE7" id="Cho-uH-R0d"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="199.21875"/>

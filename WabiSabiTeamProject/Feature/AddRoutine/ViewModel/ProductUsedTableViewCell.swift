@@ -62,11 +62,13 @@ class ProductUsedTableViewCell: UITableViewCell {
         contentView.layer.shadowColor = UIColor(red: 0.91, green: 0.85, blue: 0.82, alpha: 1.00).cgColor
         
         imageCell.layer.cornerRadius = 15
+        imageCell.image = UIImage(systemName: "plus")
         viewOuterAdd.layer.cornerRadius = 15
         viewEdit.isHidden = true
         buttonEdit.isHidden = true
         checkedIconImage.isHidden = true
         trashButton.isHidden = true
+        
         // Initialization code
         
         
@@ -121,6 +123,11 @@ class ProductUsedTableViewCell: UITableViewCell {
 //            editIconImage.isHidden = true
 //            trashButton.isHidden = true
 //        }
+    }
+    
+    func setBlankImage(imageSystem: String){
+        imageCell.image = UIImage(systemName: imageSystem)
+        imageCell.contentMode = .center
     }
     
     func setDragableandTrashIcon(){
