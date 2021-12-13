@@ -91,8 +91,8 @@ class AddRoutineViewController : UIViewController{
         routineLabel.attributedText = imageString
         
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         detailButton.setTitle("", for: .normal)
         detailButton.setImage(UIImage(systemName: "info.circle"), for: .normal)
@@ -180,13 +180,13 @@ class AddRoutineViewController : UIViewController{
             if let routineName = selectedRoutine.name{
                 
                 let skinTypeIndex = UserDefaults.standard.integer(forKey: "skinTypes")
-                var levelIndex = UserDefaults.standard.integer(forKey: "skinCareRoutines")
+                var levelIndex = UserDefaults.standard.integer(forKey: "levelIndex")
+                print("LEVEL INDEX : \(levelIndex) :: Routine Name : \(routineName)")
                 var productIndex: [Int] = []
-                if(levelIndex > 2){
-                    levelIndex = 2
-                    productIndex =  Utilities().levels[levelIndex].productIndex
-                }
+                productIndex =  Utilities().levels[levelIndex].productIndex
                 
+                
+                print("PRODUCT INDEX : \(productIndex)")
                 if(routineName == "Morning Skin Care"){
                     //Go to morning skin care
                     
@@ -225,6 +225,7 @@ class AddRoutineViewController : UIViewController{
             importVC.selectedRoutineToImport = selectedRoutine
         }
     }
+    
     
     
 }

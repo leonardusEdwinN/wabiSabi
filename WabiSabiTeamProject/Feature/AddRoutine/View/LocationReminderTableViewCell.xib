@@ -46,6 +46,14 @@
                                     <constraint firstAttribute="height" constant="30" id="cpv-3b-7Gh"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pse-o9-QM2">
+                                <rect key="frame" x="260" y="17" width="20" height="16.5"/>
+                                <color key="tintColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="eBP-j1-oME"/>
+                                    <constraint firstAttribute="height" constant="20" id="jG7-VM-Tna"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -54,8 +62,10 @@
                             <constraint firstItem="BVg-fG-yXx" firstAttribute="top" secondItem="1ag-QN-FbB" secondAttribute="top" constant="10" id="ErP-Ko-dde"/>
                             <constraint firstItem="RfG-c8-vBJ" firstAttribute="leading" secondItem="BVg-fG-yXx" secondAttribute="trailing" constant="15" id="Lxi-ve-Jvq"/>
                             <constraint firstItem="BVg-fG-yXx" firstAttribute="leading" secondItem="1ag-QN-FbB" secondAttribute="leading" constant="10" id="TCe-FO-O2y"/>
+                            <constraint firstAttribute="trailing" secondItem="pse-o9-QM2" secondAttribute="trailing" constant="10" id="ZuM-sw-6fy"/>
                             <constraint firstItem="BVg-fG-yXx" firstAttribute="centerY" secondItem="1ag-QN-FbB" secondAttribute="centerY" id="pbf-HD-V0L"/>
                             <constraint firstAttribute="bottom" secondItem="BVg-fG-yXx" secondAttribute="bottom" constant="10" id="tsJ-lP-bkH"/>
+                            <constraint firstItem="pse-o9-QM2" firstAttribute="centerY" secondItem="1ag-QN-FbB" secondAttribute="centerY" id="zAA-yw-XL2"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="You can add up to 3 location reminders" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaR-tk-WJP">
@@ -88,6 +98,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="mappin" catalog="system" width="105" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

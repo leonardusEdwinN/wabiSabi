@@ -65,6 +65,7 @@ class QuestionBirthDateViewController: UIViewController {
         }
     }
     
+    
     @IBAction func next(_ sender: Any) {
         Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
             DispatchQueue.main.async { [self] in

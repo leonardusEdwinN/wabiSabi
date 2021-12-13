@@ -106,7 +106,6 @@
 		351839312753A51C000DE1A8 /* SkinRoutineProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351839302753A51C000DE1A8 /* SkinRoutineProduct.swift */; };
 		351839332753A527000DE1A8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351839322753A527000DE1A8 /* Utilities.swift */; };
 		351839412753A5C0000DE1A8 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351839372753A5C0000DE1A8 /* Categories.swift */; };
-		351839452753A5C0000DE1A8 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518393D2753A5C0000DE1A8 /* HabitViewController.swift */; };
 		351839462753A5C0000DE1A8 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518393E2753A5C0000DE1A8 /* CategoryTableViewCell.swift */; };
 		351839472753A5C0000DE1A8 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3518393F2753A5C0000DE1A8 /* SubcategoryCollectionViewCell.swift */; };
 		3526FD9C273D1D0300C8F4DB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3526FD9B273D1D0300C8F4DB /* CloudKit.framework */; };
@@ -167,7 +166,6 @@
 		130C92772752B94500A416F9 /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		130C927A2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		130C927C2752B9B700A416F9 /* StartHabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartHabitCollectionViewCell.swift; sourceTree = "<group>"; };
-		130C927E2752B9D300A416F9 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		130C92802752B9EB00A416F9 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		130C92822752BA0100A416F9 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		130C92842752BA1C00A416F9 /* SubCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategories.swift; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 			children = (
 				130C927A2752B99D00A416F9 /* SubcategoryCollectionViewCell.swift */,
 				130C927C2752B9B700A416F9 /* StartHabitCollectionViewCell.swift */,
-				130C927E2752B9D300A416F9 /* HabitViewController.swift */,
 				130C92802752B9EB00A416F9 /* ExploreViewController.swift */,
 				130C92822752BA0100A416F9 /* CategoryTableViewCell.swift */,
 				1376BCC72755F1F0008DD101 /* NewHabitViewController.swift */,
@@ -1095,7 +1092,6 @@
 				979889C9273282A20052B862 /* CircularProgressView.swift in Sources */,
 				970E4163272FE72B0030EFD1 /* ProgressIndicatorHorizontalCollectionViewCell.swift in Sources */,
 				351839412753A5C0000DE1A8 /* Categories.swift in Sources */,
-				351839452753A5C0000DE1A8 /* HabitViewController.swift in Sources */,
 				97177DD82738CB8A007FF0E9 /* RoutineCollectionViewCell.swift in Sources */,
 				35915E1F275706F5000A5E58 /* CircularProgressActivity.swift in Sources */,
 				3518392B2753A4C5000DE1A8 /* SkinTypeRoutine.swift in Sources */,

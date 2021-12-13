@@ -152,7 +152,7 @@ extension TimerReminderViewController : UITableViewDelegate, UITableViewDataSour
             let hour = splitTime[0].suffix(2)
             let minute = splitTime[1]
             
-            row.labelAlarm.text = "\(hour) . \(minute)"
+            row.labelAlarm.text = "\(hour).\(minute)"
         }
 //        row.setUI(
 //            title: ,

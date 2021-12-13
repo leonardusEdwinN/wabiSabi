@@ -22,8 +22,8 @@ class ButtonRoutinePageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        buttonAddOtherProduct.layer.cornerRadius = 15
-        buttonImport.layer.cornerRadius = 15
+        buttonAddOtherProduct.layer.cornerRadius = self.buttonAddOtherProduct.frame.size.height / 2
+        buttonImport.layer.cornerRadius = self.buttonImport.frame.size.height / 2
         buttonImport.layer.borderWidth = 2
         buttonImport.layer.borderColor = UIColor(named: "ColorPrimary")?.cgColor
         // Initialization code

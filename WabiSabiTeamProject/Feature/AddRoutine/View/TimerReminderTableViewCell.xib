@@ -46,13 +46,23 @@
                                     <constraint firstAttribute="width" constant="30" id="yKA-Gu-Igk"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gNL-ag-uhl">
+                                <rect key="frame" x="260" y="17" width="20" height="16.5"/>
+                                <color key="tintColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="3ID-aV-OWO"/>
+                                    <constraint firstAttribute="width" constant="20" id="i9P-gB-fDe"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="z4x-eO-asM" firstAttribute="centerY" secondItem="Afs-8W-EE7" secondAttribute="centerY" id="56T-pO-r8n"/>
+                            <constraint firstItem="gNL-ag-uhl" firstAttribute="centerY" secondItem="Afs-8W-EE7" secondAttribute="centerY" id="B1h-Qy-qaO"/>
                             <constraint firstAttribute="bottom" secondItem="z4x-eO-asM" secondAttribute="bottom" constant="10" id="Ewk-gI-pQp"/>
                             <constraint firstAttribute="height" constant="50" id="O8b-Xd-GWY"/>
                             <constraint firstItem="z4x-eO-asM" firstAttribute="leading" secondItem="Afs-8W-EE7" secondAttribute="leading" constant="10" id="Zhr-v8-Tkx"/>
+                            <constraint firstAttribute="trailing" secondItem="gNL-ag-uhl" secondAttribute="trailing" constant="10" id="kXT-OC-WTi"/>
                             <constraint firstItem="vlX-GL-lNa" firstAttribute="centerY" secondItem="Afs-8W-EE7" secondAttribute="centerY" id="nfS-0l-IIh"/>
                             <constraint firstItem="z4x-eO-asM" firstAttribute="top" secondItem="Afs-8W-EE7" secondAttribute="top" constant="10" id="ro4-nW-478"/>
                             <constraint firstItem="vlX-GL-lNa" firstAttribute="leading" secondItem="z4x-eO-asM" secondAttribute="trailing" constant="15" id="wWo-4k-Vrq"/>
@@ -89,6 +99,7 @@
     </objects>
     <resources>
         <image name="alarm" catalog="system" width="124" height="128"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
