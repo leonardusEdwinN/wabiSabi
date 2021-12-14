@@ -1302,7 +1302,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9P49UTYHH6;
+				DEVELOPMENT_TEAM = TK9Q85JSJZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WabiSabiTeamProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skinsight;
@@ -1321,7 +1321,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.2;
-				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabiMacro;
+				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1341,7 +1341,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9P49UTYHH6;
+				DEVELOPMENT_TEAM = TK9Q85JSJZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WabiSabiTeamProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skinsight;
@@ -1360,7 +1360,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.2;
-				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabiMacro;
+				PRODUCT_BUNDLE_IDENTIFIER = id.infinitelearning.wabisabi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -29,7 +29,6 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         
         UserDefaults.standard.set(true, forKey: "isCompleteOnBoarding")
-        print("DEFAULT : \(UserDefaults.standard.bool(forKey: "isCompleteOnBoarding"))")
         setUI()
         
         skinCareRoutineCollectionView.delegate = self
@@ -93,7 +92,7 @@ class ResultViewController: UIViewController {
     func checkProduct(){
         let productIndex: [Int] = Utilities().levels[levelIndex].productIndex
         for routineIndex in 0...1 {
-            PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name,startHabit: Date())
+            // PersistanceManager.shared.setRoutine(isEveryday: true, name: skinTypeRoutine[routineIndex].name,startHabit: Date())
             
             for index in 0..<productIndex.count {
                 let product = Utilities().skinTypeRoutineProduct[routineIndex].skinType[skinTypeIndex].products[productIndex[index]]
@@ -101,7 +100,7 @@ class ResultViewController: UIViewController {
                 if !(product.description == "") {
                     skinTypeRoutine[routineIndex].products.append(product)
                     
-                    PersistanceManager.shared.setProduct(name: product.name)
+                    // PersistanceManager.shared.setProduct(name: product.name)
                 }
             }
         }
@@ -137,7 +136,7 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 140, height: 170)
+        CGSize(width: 150, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -147,6 +146,4 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         self.show(vc, sender: nil)
     }
-    
-    
 }
