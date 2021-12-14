@@ -22,6 +22,8 @@ class SummaryActivityCircularProgressTableViewCell: UITableViewCell {
         
         collectionView.reloadData()
         
+        noDataLabel.text = "Choose date to see your Summary of The Day"
+        
         if !(data == [] || data == nil || data.isEmpty) {
             noDataLabel.isHidden = true
         }
@@ -42,9 +44,11 @@ class SummaryActivityCircularProgressTableViewCell: UITableViewCell {
         
         if !(data == []) {
             noDataLabel.isHidden = true
+            noDataLabel.text = "There is no data available on this date. Please choose another date"
         }
         else{
             noDataLabel.isHidden = false
+            noDataLabel.text = "There is no data available on this date. Please choose another date"
         }
     }
     
