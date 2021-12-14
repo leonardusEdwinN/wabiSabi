@@ -1432,7 +1432,7 @@ products that you usually use later.</string>
         <!--View Controller-->
         <scene sceneID="qfI-nc-iKU">
             <objects>
-                <viewController id="KZD-TS-ezw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SkinTypeDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KZD-TS-ezw" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Py-xn-oFT">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

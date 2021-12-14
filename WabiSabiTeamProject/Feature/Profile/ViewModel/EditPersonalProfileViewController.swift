@@ -19,6 +19,8 @@ class EditPersonalProfileViewController: UIViewController {
     }
     var user: User = PersistanceManager.shared.fetchUser()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,14 +41,20 @@ class EditPersonalProfileViewController: UIViewController {
         let backItem = UIBarButtonItem()
         backItem.title = "Something Else"
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+        
+        
     }
     
     @IBAction func seeSkinTypeModal(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "OnBoarding", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SkinTypeDetail") as UIViewController
-        self.present(vc, animated: true, completion: nil)
+//        let storyboard = UIStoryboard(name: "OnBoarding", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "SkinTypeDetail") as UIViewController
+//        self.present(vc, animated: true, completion: nil)
+        
+        self.performSegue(withIdentifier: "goToDetailSkinCareDetail", sender: self)
     }
+    
+    
     
     /*
     // MARK: - Navigation

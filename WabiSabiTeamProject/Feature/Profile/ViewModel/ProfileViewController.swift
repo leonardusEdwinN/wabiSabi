@@ -10,7 +10,11 @@ import UIKit
 
 class ProfileViewController : UIViewController, UIViewControllerTransitioningDelegate, SaveProductDelegate{
     func saveProductAndReloadIt() {
-        print("test")
+        DispatchQueue.main.async {
+            self.tableProductData = PersistanceManager.shared.fetchProduct().unique{$0.name ?? ""}
+            self.productTableView.reloadData()
+            Loading.sharedInstance.hideIndicator()
+        }
     }
     
     @IBOutlet weak var profileImage: UIView!
@@ -170,9 +174,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
         
         if currentProfileList == currentTableList.productList {
+            
             let tableData = tableProductData[indexPath.row]
             cell.setup(with: ProductAndRoutineList(
                 image: tableData.picture ?? "", name: tableData.name!,brand: tableData.brand ?? "", type: tableData.productType ??  ""))
+            
             
             return cell
         } else {
@@ -186,7 +192,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if currentProfileList == currentTableList.productList  {
-            self.selectedProductIndex = indexPath.row
+            
+        
+//            self.selectedProductIndex = indexPath.row
+            self.selectedProduct = tableProductData[indexPath.row]
+            self.selectedRoutine = tableProductData[indexPath.row].routineproduct
+            
+            print("Table : \(tableProductData[indexPath.row])")
+            
             performSegue(withIdentifier: "moveToAddProduct", sender: self)
         } else {
             print("ROUTINE CLICK : \(tableRoutinetData[indexPath.row].name)")
