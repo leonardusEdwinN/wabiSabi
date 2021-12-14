@@ -12,9 +12,12 @@ class OverlayCalenderView: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    var selectedDate : Date = Date()
+    
     var delegate : OverlayButtonProtocol?
     
     override func viewDidLoad() {
+        datePicker.date = selectedDate
         super.viewDidLoad()
     }
     

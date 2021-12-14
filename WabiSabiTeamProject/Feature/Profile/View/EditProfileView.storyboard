@@ -161,13 +161,6 @@
                                     <constraint firstAttribute="height" constant="1" id="rr0-Dd-EOP"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNY-cF-7UY">
-                                <rect key="frame" x="0.0" y="827.5" width="413" height="34.5"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Logout">
-                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
-                                </buttonConfiguration>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -179,7 +172,6 @@
                             <constraint firstItem="bCL-Qq-Is3" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="EMP-3F-WJG"/>
                             <constraint firstItem="u3m-9N-acM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MnJ-Eq-aKt"/>
                             <constraint firstItem="DiD-D7-Oqt" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="OO4-7c-fa4"/>
-                            <constraint firstItem="PNY-cF-7UY" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="Rm8-i5-6FL"/>
                             <constraint firstAttribute="trailing" secondItem="Gg3-zU-MPE" secondAttribute="trailing" id="SnG-Ig-DRM"/>
                             <constraint firstItem="T9g-Ie-GFA" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="TrD-mO-LCt"/>
                             <constraint firstItem="DiD-D7-Oqt" firstAttribute="top" secondItem="T9g-Ie-GFA" secondAttribute="bottom" constant="1" id="Utd-p5-xl5"/>
@@ -187,7 +179,6 @@
                             <constraint firstItem="T9g-Ie-GFA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aro-XN-JmX"/>
                             <constraint firstItem="pau-Zx-Vsm" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="bSS-zN-OC6"/>
                             <constraint firstItem="Z0M-xz-NEm" firstAttribute="top" secondItem="u3m-9N-acM" secondAttribute="bottom" id="c9P-gj-vit"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PNY-cF-7UY" secondAttribute="trailing" constant="1" id="cpt-Tk-t2n"/>
                             <constraint firstItem="T9g-Ie-GFA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hes-ga-rPL"/>
                             <constraint firstItem="Gg3-zU-MPE" firstAttribute="top" secondItem="bCL-Qq-Is3" secondAttribute="bottom" id="jup-KD-FSx"/>
                             <constraint firstAttribute="trailing" secondItem="DiD-D7-Oqt" secondAttribute="trailing" id="kE9-YH-HnF"/>
@@ -195,7 +186,6 @@
                             <constraint firstItem="u3m-9N-acM" firstAttribute="top" secondItem="DiD-D7-Oqt" secondAttribute="bottom" id="rDh-YS-6JK"/>
                             <constraint firstAttribute="trailing" secondItem="pau-Zx-Vsm" secondAttribute="trailing" id="tip-6o-73Z"/>
                             <constraint firstItem="u3m-9N-acM" firstAttribute="top" secondItem="DiD-D7-Oqt" secondAttribute="bottom" id="vJ1-XN-mOh"/>
-                            <constraint firstItem="PNY-cF-7UY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vbi-KC-ZNN"/>
                             <constraint firstItem="bCL-Qq-Is3" firstAttribute="top" secondItem="Z0M-xz-NEm" secondAttribute="bottom" id="wDQ-A4-zr5"/>
                         </constraints>
                     </view>
@@ -386,6 +376,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="seeSkinTypeModal:" destination="Ok7-Qk-jOE" eventType="touchUpInside" id="WmH-H5-e1d"/>
+                                    <segue destination="XNg-Px-Rjg" kind="show" identifier="goToDetailSkinCareDetail" id="wuh-1v-N2N"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not sure what it is?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-eO-Dqd">
@@ -477,6 +468,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6o3-EK-fuJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1728.985507246377" y="77.678571428571431"/>
+        </scene>
+        <!--SkinTypeDetail-->
+        <scene sceneID="yEM-yh-lFj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OnBoarding" referencedIdentifier="SkinTypeDetail" id="XNg-Px-Rjg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Onf-yp-Ehq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uMy-AD-nzx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2379" y="116"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="07M-fs-SAG">

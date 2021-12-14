@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YAU-Tf-tyc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YAU-Tf-tyc">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -167,6 +167,12 @@
                                 <rect key="frame" x="0.0" y="428" width="414" height="428"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Routines not available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYC-Hy-ad0">
+                                <rect key="frame" x="66.333333333333343" y="516" width="281.66666666666663" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" id="bEX-J1-A2p">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -227,7 +233,9 @@
                             <constraint firstItem="xTk-Lw-C0G" firstAttribute="leading" secondItem="5hZ-Nm-t8J" secondAttribute="leading" constant="20" id="9kA-Yy-I8K"/>
                             <constraint firstItem="9dh-dK-NJC" firstAttribute="top" secondItem="bef-mK-pzW" secondAttribute="topMargin" constant="38" id="AE7-UO-It9"/>
                             <constraint firstItem="5hZ-Nm-t8J" firstAttribute="bottom" secondItem="N7S-0D-Roz" secondAttribute="bottom" constant="6" id="Bd1-JV-6h6"/>
+                            <constraint firstItem="fYC-Hy-ad0" firstAttribute="centerX" secondItem="bef-mK-pzW" secondAttribute="centerX" id="Jjw-bJ-3H0"/>
                             <constraint firstItem="ffm-LO-AvL" firstAttribute="top" secondItem="9dh-dK-NJC" secondAttribute="bottom" constant="40" id="Mx3-rC-hJ3"/>
+                            <constraint firstItem="fYC-Hy-ad0" firstAttribute="top" secondItem="xTk-Lw-C0G" secondAttribute="bottom" constant="106" id="P65-NA-DsO"/>
                             <constraint firstItem="ffm-LO-AvL" firstAttribute="trailing" secondItem="5hZ-Nm-t8J" secondAttribute="trailing" id="Pay-zs-TyP"/>
                             <constraint firstItem="31q-wp-Ubd" firstAttribute="top" secondItem="bef-mK-pzW" secondAttribute="top" id="Skk-em-Eet"/>
                             <constraint firstItem="SG1-Ru-5mt" firstAttribute="centerX" secondItem="bef-mK-pzW" secondAttribute="centerX" id="Ua8-1j-bTx"/>
@@ -261,6 +269,7 @@
                         <outlet property="backgroundTutorial" destination="bEX-J1-A2p" id="qPQ-Jo-1Kg"/>
                         <outlet property="circularProgress" destination="9dh-dK-NJC" id="bPd-MI-SAn"/>
                         <outlet property="circularProgressPercentageLabel" destination="zOf-Zu-CH6" id="3Kd-CB-Ra9"/>
+                        <outlet property="empthyState" destination="fYC-Hy-ad0" id="aS0-zK-dX5"/>
                         <outlet property="routineTableView" destination="T3c-gO-kzX" id="GRn-eH-fc9"/>
                         <outlet property="statusSegmentedControl" destination="xTk-Lw-C0G" id="tdR-SR-dD0"/>
                         <outlet property="tutorial1" destination="SG1-Ru-5mt" id="gYg-Wz-Pbc"/>
@@ -474,7 +483,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nadia (25 y.o)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX8-Rw-pfw">
-                                <rect key="frame" x="113.66666666666667" y="150.66666666666666" width="133.66666666666663" height="26"/>
+                                <rect key="frame" x="113.66666666666667" y="150.66666666666666" width="128.33333333333331" height="26"/>
                                 <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="22"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -587,13 +596,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore other routine that you can do for your skin!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crN-qJ-TS7">
-                                                <rect key="frame" x="15" y="98.666666666666657" width="299" height="39.666666666666657"/>
+                                                <rect key="frame" x="15" y="98.666666666666657" width="299" height="40.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sC5-Kd-Frb">
-                                                <rect key="frame" x="0.0" y="158.33333333333326" width="414" height="1999.9999999999998"/>
+                                                <rect key="frame" x="0.0" y="159.33333333333326" width="414" height="1999.9999999999998"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qo6-Bl-pPd">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
@@ -841,8 +850,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SKy-Xd-fSO"/>
-        <segue reference="a5f-ho-4TD"/>
+        <segue reference="jph-xO-bLd"/>
+        <segue reference="wEe-gW-wo1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DefaultProfilePicture" width="90" height="90"/>
