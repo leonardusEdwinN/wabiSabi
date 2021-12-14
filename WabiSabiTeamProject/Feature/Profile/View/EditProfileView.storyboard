@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TItle-->
+        <!--Edit Profile-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="EditProfileViewController" customModule="WabiSabiTeamProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -153,14 +153,6 @@
                                     <constraint firstAttribute="height" constant="60" id="qhM-fi-BYX"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPs-Wl-PmG">
-                                <rect key="frame" x="0.0" y="272" width="414" height="1"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="Z8h-Wa-FOO"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pau-Zx-Vsm">
                                 <rect key="frame" x="0.0" y="271" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
@@ -183,16 +175,13 @@
                             <constraint firstItem="u3m-9N-acM" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="2CH-Z5-VVU"/>
                             <constraint firstItem="Gg3-zU-MPE" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="4Bb-Xe-iQi"/>
                             <constraint firstItem="bCL-Qq-Is3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="B3u-Ck-6Xq"/>
-                            <constraint firstItem="tPs-Wl-PmG" firstAttribute="top" secondItem="Gg3-zU-MPE" secondAttribute="bottom" id="BYW-ZR-Qlt"/>
                             <constraint firstItem="Z0M-xz-NEm" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="D5o-ms-mzQ"/>
                             <constraint firstItem="bCL-Qq-Is3" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="EMP-3F-WJG"/>
-                            <constraint firstItem="tPs-Wl-PmG" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="GRR-v5-kb5"/>
                             <constraint firstItem="u3m-9N-acM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MnJ-Eq-aKt"/>
                             <constraint firstItem="DiD-D7-Oqt" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="OO4-7c-fa4"/>
                             <constraint firstItem="PNY-cF-7UY" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="Rm8-i5-6FL"/>
                             <constraint firstAttribute="trailing" secondItem="Gg3-zU-MPE" secondAttribute="trailing" id="SnG-Ig-DRM"/>
                             <constraint firstItem="T9g-Ie-GFA" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="TrD-mO-LCt"/>
-                            <constraint firstAttribute="trailing" secondItem="tPs-Wl-PmG" secondAttribute="trailing" id="UdP-mF-eDV"/>
                             <constraint firstItem="DiD-D7-Oqt" firstAttribute="top" secondItem="T9g-Ie-GFA" secondAttribute="bottom" constant="1" id="Utd-p5-xl5"/>
                             <constraint firstAttribute="trailing" secondItem="Z0M-xz-NEm" secondAttribute="trailing" id="Z3f-NH-tRq"/>
                             <constraint firstItem="T9g-Ie-GFA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aro-XN-JmX"/>
@@ -210,7 +199,7 @@
                             <constraint firstItem="bCL-Qq-Is3" firstAttribute="top" secondItem="Z0M-xz-NEm" secondAttribute="bottom" id="wDQ-A4-zr5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="TItle" leftItemsSupplementBackButton="YES" id="NQg-jN-A5i">
+                    <navigationItem key="navigationItem" title="Edit Profile" leftItemsSupplementBackButton="YES" id="NQg-jN-A5i">
                         <barButtonItem key="backBarButtonItem" title="Profile" id="wMQ-Xs-TR3"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="JsJ-Ha-4cJ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="xAo-Ih-s4s">
@@ -318,9 +307,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mze-lc-Uyt">
-                                        <rect key="frame" x="264" y="4" width="130" height="36"/>
+                                        <rect key="frame" x="244" y="4" width="150" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="130" id="nKf-qH-X3X"/>
+                                            <constraint firstAttribute="width" constant="150" id="nKf-qH-X3X"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="10 / 04 / 1996"/>
@@ -346,9 +335,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgO-eS-1sr">
-                                        <rect key="frame" x="294" y="4" width="100" height="36"/>
+                                        <rect key="frame" x="274" y="4" width="120" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Tl2-7w-6fb"/>
+                                            <constraint firstAttribute="width" constant="120" id="Tl2-7w-6fb"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Normal"/>
@@ -400,9 +389,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not sure what it is?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-eO-Dqd">
-                                <rect key="frame" x="180.5" y="422" width="150" height="30"/>
+                                <rect key="frame" x="148.5" y="422" width="180" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="9ot-zo-Qnx"/>
+                                    <constraint firstAttribute="width" constant="180" id="9ot-zo-Qnx"/>
                                     <constraint firstAttribute="height" constant="30" id="JmR-MO-zdr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
@@ -470,7 +459,7 @@
                             <constraint firstItem="Nps-sh-Qlv" firstAttribute="trailing" secondItem="mhi-Z4-R8F" secondAttribute="trailing" id="pbK-ay-BYM"/>
                             <constraint firstItem="Nps-sh-Qlv" firstAttribute="leading" secondItem="mhi-Z4-R8F" secondAttribute="leading" id="rfQ-oh-Vez"/>
                             <constraint firstItem="mhi-Z4-R8F" firstAttribute="trailing" secondItem="rm8-w3-62n" secondAttribute="trailing" id="rle-sf-dgV"/>
-                            <constraint firstItem="cKl-Hk-5wo" firstAttribute="leading" secondItem="8Qa-eO-Dqd" secondAttribute="trailing" constant="-10" id="sGo-ip-fTh"/>
+                            <constraint firstItem="cKl-Hk-5wo" firstAttribute="leading" secondItem="8Qa-eO-Dqd" secondAttribute="trailing" constant="-8" id="sGo-ip-fTh"/>
                             <constraint firstItem="qis-H2-qiK" firstAttribute="top" secondItem="Yw6-PC-iZT" secondAttribute="bottom" id="sM0-Yd-Vch"/>
                             <constraint firstAttribute="trailing" secondItem="AcG-Po-m4K" secondAttribute="trailing" id="ucy-Vc-xzR"/>
                             <constraint firstItem="j1n-wb-MP7" firstAttribute="leading" secondItem="mhi-Z4-R8F" secondAttribute="leading" id="vWE-bz-89N"/>

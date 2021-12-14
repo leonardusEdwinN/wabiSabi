@@ -9,6 +9,7 @@ import UIKit
 
 class SkinCareGuideViewController: UIViewController {
 
+    @IBOutlet weak var skinCareGuideTitle: UILabel!
     @IBOutlet weak var skincareRoutineTitle: UILabel!
     @IBOutlet weak var skincareProductTableView: UITableView!
     
@@ -27,6 +28,8 @@ class SkinCareGuideViewController: UIViewController {
         levelIndex = UserDefaults.standard.integer(forKey: "levelIndex")
         
         skincareRoutineTitle.text = skinTypeRoutine.name
+        
+        skinCareGuideTitle.font = UIFont.boldSystemFont(ofSize: 28)
     }
 
     
@@ -53,7 +56,9 @@ extension SkinCareGuideViewController : UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75 + CGFloat((skinTypeRoutine.products[indexPath.row].description.count) / 28) * 18;
     }
+    */
 }
