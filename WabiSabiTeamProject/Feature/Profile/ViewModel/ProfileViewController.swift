@@ -25,8 +25,8 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
     var selectedProductIndex : Int = 0
     var selectedProduct : Product!
     
-    var tableProductData: [Product] = PersistanceManager.shared.fetchProduct()
-    var tableRoutinetData: [Routines] = PersistanceManager.shared.fetchRoutines()
+    var tableProductData: [Product] = PersistanceManager.shared.fetchProduct().unique{$0.name ?? ""}
+    var tableRoutinetData: [Routines] = PersistanceManager.shared.fetchRoutines().unique{$0.name ?? ""}
     
     var currentProfileList: currentTableList = currentTableList.productList
     
@@ -172,13 +172,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if currentProfileList == currentTableList.productList {
             let tableData = tableProductData[indexPath.row]
             cell.setup(with: ProductAndRoutineList(
-                image: UIImage(systemName: "sun.max.fill")!, name: tableData.name!,brand: tableData.brand ?? "", type: tableData.productType ??  ""))
+                image: tableData.picture ?? "", name: tableData.name!,brand: tableData.brand ?? "", type: tableData.productType ??  ""))
             
             return cell
         } else {
             let tableData = tableRoutinetData[indexPath.row]
             cell.setup(with: ProductAndRoutineList(
-                image: UIImage(systemName: "sun.max.fill")!, name: tableData.name!,brand: "", type: ""))
+                image: "sun.max.fill", name: tableData.name!,brand: "", type: ""))
             
             return cell
         }
@@ -226,4 +226,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 enum currentTableList {
     case productList
     case routineList
+}
+
+extension Array {
+    func unique<T:Hashable>(map: ((Element) -> (T)))  -> [Element] {
+        var set = Set<T>() //the unique list kept in a Set for fast retrieval
+        var arrayOrdered = [Element]() //keeping the unique list of elements but ordered
+        for value in self {
+            if !set.contains(map(value)) {
+                set.insert(map(value))
+                arrayOrdered.append(value)
+            }
+        }
+
+        return arrayOrdered
+    }
 }
