@@ -23,7 +23,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNq-AG-Yyy">
-                        <rect key="frame" x="12" y="12" width="76" height="76"/>
+                        <rect key="frame" x="5" y="5" width="90" height="90"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -33,13 +33,13 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="iNq-AG-Yyy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="84E-wW-zzn"/>
-                <constraint firstAttribute="bottom" secondItem="iNq-AG-Yyy" secondAttribute="bottom" constant="12" id="AxF-wL-mFh"/>
-                <constraint firstAttribute="trailing" secondItem="iNq-AG-Yyy" secondAttribute="trailing" constant="12" id="BSG-7L-J28"/>
+                <constraint firstItem="iNq-AG-Yyy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="84E-wW-zzn"/>
+                <constraint firstAttribute="bottom" secondItem="iNq-AG-Yyy" secondAttribute="bottom" constant="5" id="AxF-wL-mFh"/>
+                <constraint firstAttribute="trailing" secondItem="iNq-AG-Yyy" secondAttribute="trailing" constant="5" id="BSG-7L-J28"/>
                 <constraint firstItem="dyM-u9-sbe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Png-Ma-7rp"/>
                 <constraint firstItem="dyM-u9-sbe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="f8j-Oz-muW"/>
                 <constraint firstAttribute="bottom" secondItem="dyM-u9-sbe" secondAttribute="bottom" constant="5" id="o6Z-fa-Tpr"/>
-                <constraint firstItem="iNq-AG-Yyy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="oIe-CL-a9p"/>
+                <constraint firstItem="iNq-AG-Yyy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="oIe-CL-a9p"/>
                 <constraint firstItem="iNq-AG-Yyy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="oY5-Cc-j5j"/>
                 <constraint firstItem="iNq-AG-Yyy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="osa-jS-9WF"/>
                 <constraint firstAttribute="trailing" secondItem="dyM-u9-sbe" secondAttribute="trailing" constant="5" id="sTl-cU-FKb"/>
