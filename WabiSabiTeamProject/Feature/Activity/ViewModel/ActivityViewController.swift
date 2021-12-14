@@ -46,6 +46,8 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refetchAllRoutine()
         configureTableViewDataByStatus()
         configureNavigationBar()
         generateDailyRoutine()
@@ -59,6 +61,10 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         notificationCenter.delegate = self
     }
     
+    func refetchAllRoutine() {
+            let user = PersistanceManager.shared.fetchUser()
+            allRoutines = PersistanceManager.shared.fetchRoutines().filter({$0.userroutine?.id == user.id})
+        }
     
     func setScheduleReminder(){
         reminders.removeAll()
@@ -124,6 +130,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         super.viewWillAppear(animated)
         DispatchQueue.main.async {
             self.allRoutines = PersistanceManager.shared.fetchRoutines()
+            self.refetchAllRoutine()
             self.configureTableViewDataByStatus()
             self.configureSegmented()
             self.setUpTableView()
@@ -162,7 +169,10 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         
     func filterRoutineByDate(routines: [Routines]) -> [Routines] {
         let dateFormatter = DateFormatter()
+        let dateTitleFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY/MM/dd"
+        dateTitleFormatter.dateFormat = "MMM d"
+        title = dateTitleFormatter.string(from: selectedCalenderDate) == dateTitleFormatter.string(from: Date()) ? "Today" : dateTitleFormatter.string(from: selectedCalenderDate)
         let filteredRoutine = routines.filter({dateFormatter.string(from: $0.routineDate ?? Date.yesterday) == dateFormatter.string(from: selectedCalenderDate)})
         print("FILTEREEEED")
         print(selectedCalenderDate)

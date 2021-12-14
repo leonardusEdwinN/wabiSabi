@@ -14,6 +14,9 @@ class EditPersonalProfileViewController: UIViewController {
     @IBOutlet weak var birthdateButton: UIButton!
     @IBOutlet weak var skinTypeButton: UIButton!
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
     var user: User = PersistanceManager.shared.fetchUser()
     
     override func viewDidLoad() {

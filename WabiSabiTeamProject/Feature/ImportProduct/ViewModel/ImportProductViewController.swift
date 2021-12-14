@@ -42,14 +42,31 @@ class ImportProductViewController : UIViewController{
             }
         }
         
+       
+        
+//        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: {
+//            self.presentingViewController.
+//        })
+        
+//        let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "addRoutineNVC") as! UINavigationController
+//        vc.modalPresentationStyle = .fullScreen
+//
+//        guard let routineVC = vc.topViewController as? AddRoutineViewController else {
+//           return
+//        }
+//        routineVC.selectedRoutine = selectedRoutineToImport
+//        self.present(vc, animated: true, completion: nil)
+
+        
         self.view.window!.rootViewController?.dismiss(animated: false,completion: {
-            
             DispatchQueue.main.async {
                 Loading.sharedInstance.hideIndicator()
             }
+
             self.performSegue(withIdentifier: "moveToRoutinePage", sender: self)
         })
-        
+//
         
         
         
