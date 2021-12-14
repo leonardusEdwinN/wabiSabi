@@ -179,7 +179,7 @@
 		131F76CA2727E61300A7AB41 /* ArchieveActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchieveActivityViewController.swift; sourceTree = "<group>"; };
 		131F76CD2727E61300A7AB41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		131F76D02727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WabiSabiTeamProject.xcdatamodel; sourceTree = "<group>"; };
-		131F76D22727E61400A7AB41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		131F76D22727E61400A7AB41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CoreData/Assets.xcassets; sourceTree = "<group>"; };
 		131F76D52727E61400A7AB41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		131F76D72727E61400A7AB41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		134394EF273A557A00641983 /* SummaryAwardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryAwardsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -781,6 +781,7 @@
 				13AD9DA62739083F0083AE29 /* Extension.swift */,
 				1316910C274E3D3800049D3D /* Util.swift */,
 				13159C4E274F8EAC00EA5319 /* Loading.swift */,
+				131F76D22727E61400A7AB41 /* Assets.xcassets */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -790,7 +791,6 @@
 			children = (
 				131F76CF2727E61300A7AB41 /* WabiSabiTeamProject.xcdatamodeld */,
 				35950D4F273E129000CBF2E1 /* PersistanceManager.swift */,
-				131F76D22727E61400A7AB41 /* Assets.xcassets */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
