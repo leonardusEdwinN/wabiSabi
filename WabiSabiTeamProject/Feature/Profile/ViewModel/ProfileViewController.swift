@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-class ProfileViewController : UIViewController, UIViewControllerTransitioningDelegate{
+class ProfileViewController : UIViewController, UIViewControllerTransitioningDelegate, SaveProductDelegate{
+    func saveProductAndReloadIt() {
+        print("test")
+    }
+    
     @IBOutlet weak var profileImage: UIView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var switchTableViewButton: UISegmentedControl!
@@ -21,8 +25,8 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
     var selectedProductIndex : Int = 0
     var selectedProduct : Product!
     
-    var tableProductData: [Product] = PersistanceManager.shared.fetchProduct()
-    var tableRoutinetData: [Routines] = PersistanceManager.shared.fetchRoutines()
+    var tableProductData: [Product] = PersistanceManager.shared.fetchProduct().unique{$0.name ?? ""}
+    var tableRoutinetData: [Routines] = PersistanceManager.shared.fetchRoutines().unique{$0.name ?? ""}
     
     var currentProfileList: currentTableList = currentTableList.productList
     
@@ -78,19 +82,19 @@ class ProfileViewController : UIViewController, UIViewControllerTransitioningDel
             addRoutineVC.selectedRoutine = self.tableRoutinetData[selectedRoutineIndex]
             nav.modalPresentationStyle = .fullScreen
         } else if segue.identifier == "moveToAddProduct"{
-//            guard let nav = segue.destination as? UINavigationController else {
-//                return
-//            }
-//
-//            guard let addProductVC = nav.topViewController as? AddProductViewController else {
-//               return
-//            }
-//
-//            addProductVC.selectedRoutine = self.selectedRoutine
-//            addProductVC.delegate = self
-//            addProductVC.selectedProduct = self.selectedProduct
-//            addProductVC.isEdit = (self.selectedProduct != nil) ? true : false
-//            addProductVC.modalPresentationStyle = .fullScreen
+            guard let nav = segue.destination as? UINavigationController else {
+                return
+            }
+
+            guard let addProductVC = nav.topViewController as? AddProductViewController else {
+               return
+            }
+
+            addProductVC.selectedRoutine = self.selectedRoutine
+            addProductVC.delegate = self
+            addProductVC.selectedProduct = self.selectedProduct
+            addProductVC.isEdit = (self.selectedProduct != nil) ? true : false
+            addProductVC.modalPresentationStyle = .fullScreen
             
         } else if segue.identifier == "goToNewHabitVC"{
             
@@ -168,13 +172,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if currentProfileList == currentTableList.productList {
             let tableData = tableProductData[indexPath.row]
             cell.setup(with: ProductAndRoutineList(
-                image: UIImage(systemName: "sun.max.fill")!, name: tableData.name!,brand: tableData.brand ?? "", type: tableData.productType ??  ""))
+                image: tableData.picture ?? "", name: tableData.name!,brand: tableData.brand ?? "", type: tableData.productType ??  ""))
             
             return cell
         } else {
             let tableData = tableRoutinetData[indexPath.row]
             cell.setup(with: ProductAndRoutineList(
-                image: UIImage(systemName: "sun.max.fill")!, name: tableData.name!,brand: "", type: ""))
+                image: "sun.max.fill", name: tableData.name!,brand: "", type: ""))
             
             return cell
         }
@@ -182,7 +186,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if currentProfileList == currentTableList.productList  {
-//            performSegue(withIdentifier: "moveToAddProduct", sender: self)
+            self.selectedProductIndex = indexPath.row
+            performSegue(withIdentifier: "moveToAddProduct", sender: self)
         } else {
             print("ROUTINE CLICK : \(tableRoutinetData[indexPath.row].name)")
             var selectedRoutineName = tableRoutinetData[indexPath.row].name
@@ -221,4 +226,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 enum currentTableList {
     case productList
     case routineList
+}
+
+extension Array {
+    func unique<T:Hashable>(map: ((Element) -> (T)))  -> [Element] {
+        var set = Set<T>() //the unique list kept in a Set for fast retrieval
+        var arrayOrdered = [Element]() //keeping the unique list of elements but ordered
+        for value in self {
+            if !set.contains(map(value)) {
+                set.insert(map(value))
+                arrayOrdered.append(value)
+            }
+        }
+
+        return arrayOrdered
+    }
 }

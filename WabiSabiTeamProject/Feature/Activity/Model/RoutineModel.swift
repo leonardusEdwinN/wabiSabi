@@ -15,7 +15,7 @@ struct Routine{
 }
 
 struct ProductAndRoutineList{
-    let image: UIImage
+    let image: String
     let name: String
     let brand: String
     let type: String
