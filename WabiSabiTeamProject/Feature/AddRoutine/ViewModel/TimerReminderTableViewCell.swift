@@ -9,6 +9,7 @@ import UIKit
 
 class TimerReminderTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var labelTimer: UILabel!
     @IBOutlet weak var viewRounded: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,4 +23,8 @@ class TimerReminderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setUI(counTimerText : String){
+        labelTimer.text = counTimerText
+        
+    }
 }

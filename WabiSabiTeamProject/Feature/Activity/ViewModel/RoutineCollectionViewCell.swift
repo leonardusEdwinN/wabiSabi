@@ -25,6 +25,6 @@ class RoutineCollectionViewCell: UICollectionViewCell {
         routineContentView.layer.shadowOffset = CGSize(width: 1, height: 1)
         routineContentView.layer.shadowRadius = 1
         routineContentView.layer.shadowOpacity = 5
-        routineContentView.layer.masksToBounds = false //<-
+//        routineContentView.layer.masksToBounds = false //<-
     }
 }

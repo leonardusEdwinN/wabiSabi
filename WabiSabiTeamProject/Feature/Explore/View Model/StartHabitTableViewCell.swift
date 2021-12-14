@@ -48,7 +48,19 @@ class StartHabitTableViewCell: UITableViewCell {
         buttonTommorow.isSelected = false
         
         
+        
+        
+        
+        
         // Initialization code
+    }
+    
+    func checkButtonColor(){
+        if buttonToday.isSelected{
+            buttonToday.tintColor = UIColor(named: "ColorPrimary")
+            buttonTommorow.tintColor = UIColor(named: "ColorPrimary")
+            buttonCustom.tintColor = UIColor(named: "ColorPrimary")
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

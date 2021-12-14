@@ -62,17 +62,27 @@ class ProductUsedTableViewCell: UITableViewCell {
         contentView.layer.shadowColor = UIColor(red: 0.91, green: 0.85, blue: 0.82, alpha: 1.00).cgColor
         
         imageCell.layer.cornerRadius = 15
+        imageCell.image = UIImage(systemName: "plus")
         viewOuterAdd.layer.cornerRadius = 15
         viewEdit.isHidden = true
         buttonEdit.isHidden = true
         checkedIconImage.isHidden = true
         trashButton.isHidden = true
+        
         // Initialization code
         
         
         // 1. create a gesture recognizer (tap gesture)
         let editGesture = UITapGestureRecognizer(target: self, action: #selector(editProduct(_:)))
         checkedIconImage.addGestureRecognizer(editGesture)
+        
+        let whiteGradient = CAGradientLayer()
+        whiteGradient.colors = [UIColor(red: 1, green: 1, blue: 1, alpha: 0.8).cgColor, UIColor(red: 1, green: 1, blue: 1, alpha: 0.4).cgColor]
+        whiteGradient.locations = [0.0, 1.0]
+        whiteGradient.borderColor = UIColor.white.cgColor
+        whiteGradient.borderWidth = 2
+        whiteGradient.cornerRadius = 15
+        self.contentView.layer.insertSublayer(whiteGradient, at: 0)
 //
 //        let uncheckedGesture = UITapGestureRecognizer(target: self, action: #selector(uncheckedStatus(_:)))
 //        checkedIconImage.addGestureRecognizer(uncheckedGesture)
@@ -113,6 +123,11 @@ class ProductUsedTableViewCell: UITableViewCell {
 //            editIconImage.isHidden = true
 //            trashButton.isHidden = true
 //        }
+    }
+    
+    func setBlankImage(imageSystem: String){
+        imageCell.image = UIImage(systemName: imageSystem)
+        imageCell.contentMode = .center
     }
     
     func setDragableandTrashIcon(){

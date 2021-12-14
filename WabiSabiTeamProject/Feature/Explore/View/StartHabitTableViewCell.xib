@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Medium.otf">
+            <string>SFProRounded-Medium</string>
+        </array>
         <array key="SF-Pro-Rounded-Regular.otf">
             <string>SFProRounded-Regular</string>
         </array>
@@ -45,9 +48,11 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qss-yd-3gM">
                                         <rect key="frame" x="0.0" y="6" width="69.5" height="34.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         <color key="tintColor" name="ColorPrimary"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Today" cornerStyle="large">
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Today"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Today">
                                             <fontDescription key="titleFontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -56,8 +61,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOZ-tG-8pC">
                                         <rect key="frame" x="79.5" y="6" width="107" height="34.5"/>
+                                        <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         <color key="tintColor" name="ColorPrimary"/>
-                                        <state key="normal" title="Button"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Tommorow"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Tommorow">
                                             <fontDescription key="titleFontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         </buttonConfiguration>
@@ -67,8 +74,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4x-Sf-Pld">
                                         <rect key="frame" x="196.5" y="6" width="83.5" height="34.5"/>
+                                        <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         <color key="tintColor" name="ColorPrimary"/>
-                                        <state key="normal" title="Button"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Custom"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Custom">
                                             <fontDescription key="titleFontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
                                         </buttonConfiguration>

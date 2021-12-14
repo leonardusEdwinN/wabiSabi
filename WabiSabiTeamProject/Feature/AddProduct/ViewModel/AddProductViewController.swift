@@ -220,7 +220,7 @@ class AddProductViewController : UIViewController, UINavigationControllerDelegat
         productTypeArray.append(ProductTypeModel(name: "Face Mask", isSelected: false))
         productTypeArray.append(ProductTypeModel(name: "Face Oil", isSelected: false))
         productTypeArray.append(ProductTypeModel(name: "Makeup Remover", isSelected: false))
-        productTypeArray.append(ProductTypeModel(name: "Moizturizer", isSelected: false))
+        productTypeArray.append(ProductTypeModel(name: "Moisturizer", isSelected: false))
         productTypeArray.append(ProductTypeModel(name: "Serum", isSelected: false))
         productTypeArray.append(ProductTypeModel(name: "Sunscreen", isSelected: false))
         productTypeArray.append(ProductTypeModel(name: "Toner", isSelected: false))

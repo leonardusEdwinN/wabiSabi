@@ -8,13 +8,14 @@
 import UIKit
 
 //timerTableViewCell
-struct TimerModel {
-    var timerName : String
-    var timerImage : String
+protocol GetDataAndReloadDelegate{
+    func getDataAndReload(countTimer : Int)
 }
 
 
 class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
+    var delegate : GetDataAndReloadDelegate?
+    
     func buttonSavePressed(time: String) {
 //        tableAlarmArray.append(TimerModel(timerName: time, timerImage: "alarm"))
         
@@ -81,6 +82,7 @@ class TimerReminderViewController: UIViewController, OverlayButtonProtocol {
     @IBOutlet weak var buttonBack: UIButton!
     
     @IBAction func buttonBackPressed(_ sender: Any) {
+        delegate?.getDataAndReload(countTimer: reminders.count)
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -152,7 +154,7 @@ extension TimerReminderViewController : UITableViewDelegate, UITableViewDataSour
             let hour = splitTime[0].suffix(2)
             let minute = splitTime[1]
             
-            row.labelAlarm.text = "\(hour) . \(minute)"
+            row.labelAlarm.text = "\(hour).\(minute)"
         }
 //        row.setUI(
 //            title: ,
