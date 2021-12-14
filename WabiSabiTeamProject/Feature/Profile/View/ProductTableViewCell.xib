@@ -80,8 +80,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="backgroundImage" destination="NWv-PI-SL1" id="bEU-cD-hmg"/>
                 <outlet property="brand" destination="EMN-lO-Rj2" id="vxo-0t-aje"/>
+                <outlet property="imageBackground" destination="NWv-PI-SL1" id="dyy-bD-Vzk"/>
+                <outlet property="imageProduct" destination="IOq-dz-7RO" id="ZHV-J6-Z5I"/>
                 <outlet property="name" destination="RaR-Jh-vMm" id="yls-Sk-xdG"/>
                 <outlet property="type" destination="cUp-58-ted" id="sog-hY-UoO"/>
             </connections>
