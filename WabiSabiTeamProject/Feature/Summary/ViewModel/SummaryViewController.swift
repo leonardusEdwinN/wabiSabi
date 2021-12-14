@@ -13,7 +13,7 @@ class SummaryViewController: UIViewController{
     
     @IBOutlet weak var dummyButton: UIButton!
     
-    let allRoutines: [Routines] = Array(PersistanceManager.shared.fetchRoutines())
+    var allRoutines: [Routines] = Array(PersistanceManager.shared.fetchRoutines())
     var selectedDateRoutines: [Routines]!
     
 //    @IBAction func dummyButtonPressed(_ sender: Any) {
@@ -26,6 +26,15 @@ class SummaryViewController: UIViewController{
         selectedDateRoutines = filterRoutine(filterDate: Date(), routines: allRoutines)
         selectedDateRoutines = selectedDateRoutines.filter({$0.userroutine?.id == user.id})
         selectedDateRoutines = selectedDateRoutines.filter({$0.startHabit != nil })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        allRoutines = Array(PersistanceManager.shared.fetchRoutines())
+        summaryTableView.beginUpdates()
+        summaryTableView.reloadData()
+        summaryTableView.delegate = self
+        summaryTableView.dataSource = self
+        summaryTableView.endUpdates()
     }
     
 //    func refetchAllRoutine() {

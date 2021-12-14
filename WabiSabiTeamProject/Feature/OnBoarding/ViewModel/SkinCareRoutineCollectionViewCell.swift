@@ -20,7 +20,7 @@ class SkinCareRoutineCollectionViewCell: UICollectionViewCell {
         whiteGradientBackground.cornerRadius = 15
         whiteGradientBackground.borderColor = UIColor.white.cgColor
         whiteGradientBackground.borderWidth = 2
-        whiteGradientBackground.frame.size = CGSize(width: 140, height: 170)
+        whiteGradientBackground.frame.size = CGSize(width: 150, height: 200)
         
         self.skinCareRoutineBackground.layer.insertSublayer(whiteGradientBackground, at:0)
         

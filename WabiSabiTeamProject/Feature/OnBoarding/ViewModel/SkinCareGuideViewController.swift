@@ -51,14 +51,14 @@ extension SkinCareGuideViewController : UITableViewDataSource, UITableViewDelega
         
         // cell.skinCareProductIcon.image = UIImage(named: data.icon)
         cell.skinCareProductName.text = data.name
-        cell.skinCareProductDescription.text = data.description
+        cell.skinCareProductDescription.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus tortor sit amet nisl semper iaculis."
         
         return cell
     }
     
-    /*
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75 + CGFloat((skinTypeRoutine.products[indexPath.row].description.count) / 28) * 18;
+        var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus tortor sit amet nisl semper iaculis."
+        return 75 + CGFloat((text.count) * 10 / (Int(UIScreen.main.bounds.width) - 130)) * 18;
+        // return 75 + CGFloat((skinTypeRoutine.products[indexPath.row].description.count) * 10 / (Int(UIScreen.main.bounds.width) - 130)) * 18;
     }
-    */
 }
