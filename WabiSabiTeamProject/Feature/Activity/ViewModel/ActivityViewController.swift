@@ -22,6 +22,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     @IBOutlet weak var tutorial6: UIImageView!
     @IBOutlet weak var backgroundTutorial: UIView!
     @IBOutlet weak var statusSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var empthyState: UILabel!
     
     var selectedDate: String = ""
     var skinCareRoutines: [Routines]!
@@ -65,59 +66,6 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
             let user = PersistanceManager.shared.fetchUser()
             allRoutines = PersistanceManager.shared.fetchRoutines().filter({$0.userroutine?.id == user.id})
         }
-    
-    func setScheduleReminder(){
-        reminders.removeAll()
-        print("SET SCHEDULE")
-        reminders = PersistanceManager.shared.fetchReminder()
-        
-        print("REMINDER BEFORE FILTERED : \(reminders)")
-        reminders = filterTodayReminder(reminders: reminders)
-        print("REMINDER FILTERED : \(reminders)")
-        
-        for reminder in reminders{
-            print("SET SCHEDULE REMINDER")
-            guard let date = reminder.reminderTime else {return}
-//            var calendar = Calendar.current.dateComponents(
-//                  [.day, .month, .year, .hour, .minute],
-//                  from: date)
-//
-//            if let timeZone = TimeZone(abbreviation: "WIT") {
-//               calendar.timeZone = timeZone
-//            }
-            
-            let center = UNUserNotificationCenter.current()
-            center.removeAllDeliveredNotifications()
-            
-            let content = UNMutableNotificationContent()
-            content.title = reminder.titleReminder ?? "Title Notification"
-            content.body = reminder.bodyReminder ?? "Body Notification"
-            content.sound = .default
-            content.categoryIdentifier = "alarm"
-            
-            print("SET SCHEDULE DATE : \(date)")
-            let splitTime = "\(date)".split(separator: ":")
-            print("SET SCHE SPLIT \(splitTime)")
-            let hour = Int(splitTime[0].suffix(2))
-            let minute = Int(splitTime[1])
-            
-            print("SET SCHED Hour : \(hour) and minute \(minute)")
-            
-            var dateComponents = DateComponents()
-            dateComponents.hour = hour
-            dateComponents.minute = minute
-            print("SET SCHEDULE DATE COM \(dateComponents)")
-            
-            let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-//            let timeIntervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-            
-            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: calendarTrigger)
-            center.add(request)
-        }
-        
-      
-        
-    }
 
     func filterTodayReminder(reminders: [Reminder]) -> [Reminder] {
         let calendar = Calendar.current
@@ -174,10 +122,15 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         dateTitleFormatter.dateFormat = "MMM d"
         title = dateTitleFormatter.string(from: selectedCalenderDate) == dateTitleFormatter.string(from: Date()) ? "Today" : dateTitleFormatter.string(from: selectedCalenderDate)
         let filteredRoutine = routines.filter({dateFormatter.string(from: $0.routineDate ?? Date.yesterday) == dateFormatter.string(from: selectedCalenderDate)})
+        if filteredRoutine.isEmpty {
+            empthyState.isHidden = false
+        } else {
+            empthyState.isHidden = true
+        }
         print("FILTEREEEED")
         print(selectedCalenderDate)
-        print(dateFormatter.string(from: routines[0].routineDate!))
         print(filteredRoutine)
+        print("/////////////////////")
         return filteredRoutine
     }
     
@@ -259,6 +212,9 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     
     func configureTableViewDataByStatus(isFilterByDate: Bool = false) {
         if isFilterByDate {
+            print("FILTEREEED BY DATEEEEE");
+            print(selectedCalenderDate)
+            print("///////////////////////")
             skinCareRoutines = filterRoutineByDate(routines: allRoutines)
         } else {
             skinCareRoutines = filterTodayRoutine(routines: allRoutines)
@@ -383,6 +339,56 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
         return datePicker
     }()
     
+    func setScheduleReminder(){
+        reminders.removeAll()
+        print("SET SCHEDULE")
+        reminders = PersistanceManager.shared.fetchReminder()
+        
+        print("REMINDER BEFORE FILTERED : \(reminders)")
+        reminders = filterTodayReminder(reminders: reminders)
+        print("REMINDER FILTERED : \(reminders)")
+        
+        for reminder in reminders{
+            print("SET SCHEDULE REMINDER")
+            guard let date = reminder.reminderTime else {return}
+//            var calendar = Calendar.current.dateComponents(
+//                  [.day, .month, .year, .hour, .minute],
+//                  from: date)
+//
+//            if let timeZone = TimeZone(abbreviation: "WIT") {
+//               calendar.timeZone = timeZone
+//            }
+            
+            let center = UNUserNotificationCenter.current()
+            center.removeAllDeliveredNotifications()
+            
+            let content = UNMutableNotificationContent()
+            content.title = reminder.titleReminder ?? "Title Notification"
+            content.body = reminder.bodyReminder ?? "Body Notification"
+            content.sound = .default
+            content.categoryIdentifier = "alarm"
+            
+            print("SET SCHEDULE DATE : \(date)")
+            let splitTime = "\(date)".split(separator: ":")
+            print("SET SCHE SPLIT \(splitTime)")
+            let hour = Int(splitTime[0].suffix(2))
+            let minute = Int(splitTime[1])
+            
+            print("SET SCHED Hour : \(hour) and minute \(minute)")
+            
+            var dateComponents = DateComponents()
+            dateComponents.hour = hour
+            dateComponents.minute = minute
+            print("SET SCHEDULE DATE COM \(dateComponents)")
+            
+            let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+//            let timeIntervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: calendarTrigger)
+            center.add(request)
+        }
+    }
+    
     @IBAction func changeTableView(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             currentTableView = todoTableView
@@ -435,6 +441,7 @@ class ActivityViewController: UIViewController, OverlayButtonProtocol {
     
     @objc func tapMenuButton(_ sender: Any) {
         let slideVC = OverlayCalenderView()
+        slideVC.selectedDate = selectedCalenderDate
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
         slideVC.delegate = self
@@ -674,4 +681,18 @@ extension Date {
 
 extension ActivityViewController : UNUserNotificationCenterDelegate{
     
+}
+
+extension UIDatePicker {
+
+   func setDate(from string: String, format: String, animated: Bool = true) {
+
+      let formater = DateFormatter()
+
+      formater.dateFormat = format
+
+      let date = formater.date(from: string) ?? Date()
+
+      setDate(date, animated: animated)
+   }
 }
