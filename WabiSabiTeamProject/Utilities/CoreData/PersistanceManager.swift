@@ -555,7 +555,7 @@ class PersistanceManager {
         var userID = UserDefaults.standard.string(forKey: "userID")
         
         let request: NSFetchRequest<User> = User.fetchRequest()
-        request.predicate = NSPredicate(format: "id = %@", userID as? CVarArg)
+        request.predicate = NSPredicate(format: "id = %@", userID as! CVarArg)
         
         var user: [User] = []
         
