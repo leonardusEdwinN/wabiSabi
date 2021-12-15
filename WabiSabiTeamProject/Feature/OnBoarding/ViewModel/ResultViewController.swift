@@ -48,7 +48,9 @@ class ResultViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let birthdate = UserDefaults.standard.object(forKey: "birthdate") as! Date
+        
+        
+        let birthdate = UserDefaults.standard.object(forKey: "birthdate") as? Date ?? Date()
         let df = DateFormatter()
         df.dateFormat = "dd/MM/yyyy HH:mm"
         
